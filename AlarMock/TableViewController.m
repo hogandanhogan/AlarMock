@@ -29,9 +29,12 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.alarms.count;
+    return 1;
 }
 
-
+- (IBAction)unwindToThisViewController:(UIStoryboardSegue *)unwindSegue
+{
+    
+}
 
 @end
