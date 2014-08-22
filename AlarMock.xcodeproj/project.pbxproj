@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F6CACA519A7C5070025CB67 /* TimePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6CACA419A7C5070025CB67 /* TimePickerViewController.m */; };
 		98962DBD19A7C0E700DEE9B5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98962DBC19A7C0E700DEE9B5 /* Foundation.framework */; };
 		98962DBF19A7C0E700DEE9B5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98962DBE19A7C0E700DEE9B5 /* CoreGraphics.framework */; };
 		98962DC119A7C0E700DEE9B5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98962DC019A7C0E700DEE9B5 /* UIKit.framework */; };
@@ -14,7 +15,7 @@
 		98962DC919A7C0E700DEE9B5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 98962DC819A7C0E700DEE9B5 /* main.m */; };
 		98962DCD19A7C0E700DEE9B5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 98962DCC19A7C0E700DEE9B5 /* AppDelegate.m */; };
 		98962DD019A7C0E700DEE9B5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98962DCE19A7C0E700DEE9B5 /* Main.storyboard */; };
-		98962DD319A7C0E700DEE9B5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98962DD219A7C0E700DEE9B5 /* ViewController.m */; };
+		98962DD319A7C0E700DEE9B5 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98962DD219A7C0E700DEE9B5 /* TableViewController.m */; };
 		98962DD519A7C0E700DEE9B5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 98962DD419A7C0E700DEE9B5 /* Images.xcassets */; };
 		98962DDC19A7C0E700DEE9B5 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98962DDB19A7C0E700DEE9B5 /* XCTest.framework */; };
 		98962DDD19A7C0E700DEE9B5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98962DBC19A7C0E700DEE9B5 /* Foundation.framework */; };
@@ -34,6 +35,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1F6CACA319A7C5070025CB67 /* TimePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimePickerViewController.h; sourceTree = "<group>"; };
+		1F6CACA419A7C5070025CB67 /* TimePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimePickerViewController.m; sourceTree = "<group>"; };
 		98962DB919A7C0E700DEE9B5 /* AlarMock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AlarMock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		98962DBC19A7C0E700DEE9B5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		98962DBE19A7C0E700DEE9B5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -45,8 +48,8 @@
 		98962DCB19A7C0E700DEE9B5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		98962DCC19A7C0E700DEE9B5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		98962DCF19A7C0E700DEE9B5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		98962DD119A7C0E700DEE9B5 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		98962DD219A7C0E700DEE9B5 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		98962DD119A7C0E700DEE9B5 /* TableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
+		98962DD219A7C0E700DEE9B5 /* TableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
 		98962DD419A7C0E700DEE9B5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		98962DDA19A7C0E700DEE9B5 /* AlarMockTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AlarMockTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		98962DDB19A7C0E700DEE9B5 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -115,8 +118,10 @@
 				98962DCB19A7C0E700DEE9B5 /* AppDelegate.h */,
 				98962DCC19A7C0E700DEE9B5 /* AppDelegate.m */,
 				98962DCE19A7C0E700DEE9B5 /* Main.storyboard */,
-				98962DD119A7C0E700DEE9B5 /* ViewController.h */,
-				98962DD219A7C0E700DEE9B5 /* ViewController.m */,
+				1F6CACA319A7C5070025CB67 /* TimePickerViewController.h */,
+				1F6CACA419A7C5070025CB67 /* TimePickerViewController.m */,
+				98962DD119A7C0E700DEE9B5 /* TableViewController.h */,
+				98962DD219A7C0E700DEE9B5 /* TableViewController.m */,
 				98962DD419A7C0E700DEE9B5 /* Images.xcassets */,
 				98962DC319A7C0E700DEE9B5 /* Supporting Files */,
 			);
@@ -249,7 +254,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				98962DD319A7C0E700DEE9B5 /* ViewController.m in Sources */,
+				98962DD319A7C0E700DEE9B5 /* TableViewController.m in Sources */,
+				1F6CACA519A7C5070025CB67 /* TimePickerViewController.m in Sources */,
 				98962DCD19A7C0E700DEE9B5 /* AppDelegate.m in Sources */,
 				98962DC919A7C0E700DEE9B5 /* main.m in Sources */,
 			);
@@ -456,6 +462,7 @@
 				98962DED19A7C0E800DEE9B5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		98962DEE19A7C0E800DEE9B5 /* Build configuration list for PBXNativeTarget "AlarMockTests" */ = {
 			isa = XCConfigurationList;
@@ -464,6 +471,7 @@
 				98962DF019A7C0E800DEE9B5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
