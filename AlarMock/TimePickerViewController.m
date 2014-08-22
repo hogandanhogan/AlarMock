@@ -20,14 +20,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-<<<<<<< HEAD
     
     self.datePicker.date = [NSDate date];
     
     self.settingsTableView.scrollEnabled = NO;
     self.settingsTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-=======
->>>>>>> 1c1cef28b11137b44733fd3c4b3d7e468ca04382
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -38,7 +35,6 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SettingsCell"];
-<<<<<<< HEAD
     NSArray *settings = [[NSArray alloc] initWithObjects:@"Repeat", @"Sound", @"Snooze", nil];
     cell.textLabel.text = [settings objectAtIndex:indexPath.row];
     UISwitch *switchView = [[UISwitch alloc] initWithFrame:CGRectZero];
@@ -53,9 +49,4 @@
 {
     
 }
-
-=======
-    return cell;
-}
->>>>>>> 1c1cef28b11137b44733fd3c4b3d7e468ca04382
 @end
