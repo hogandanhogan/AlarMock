@@ -20,6 +20,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.datePicker.date = [NSDate date];
+    
+    self.settingsTableView.scrollEnabled = NO;
+    self.settingsTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -30,6 +35,18 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SettingsCell"];
+    NSArray *settings = [[NSArray alloc] initWithObjects:@"Repeat", @"Sound", @"Snooze", nil];
+    cell.textLabel.text = [settings objectAtIndex:indexPath.row];
+    UISwitch *switchView = [[UISwitch alloc] initWithFrame:CGRectZero];
+    if ([cell.textLabel.text isEqualToString:@"Snooze"]) {
+        cell.accessoryView  = switchView;
+    }
+    
     return cell;
+}
+
+- (IBAction)onSavePressed:(id)sender
+{
+    
 }
 @end
