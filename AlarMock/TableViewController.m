@@ -32,13 +32,18 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
-    cell.textLabel.text = [self.alarms objectAtIndex:indexPath.row];
+    
+    NSData *alarmData = [[NSUserDefaults standardUserDefaults] objectForKey:@"alarm"];
+    NSString *alarm = [NSKeyedUnarchiver unarchiveObjectWithData:alarmData];
+    
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeBarButtonItemColor) name:@"NewDogNotification" object:nil];
+    cell.textLabel.text = alarm;
     return cell;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.alarms.count;
+    return 1;
 }
 
 - (IBAction)unwindToThisViewController:(UIStoryboardSegue *)unwindSegue

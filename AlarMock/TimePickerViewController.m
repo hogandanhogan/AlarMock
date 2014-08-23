@@ -8,15 +8,15 @@
 
 #import "TimePickerViewController.h"
 
+
 @interface TimePickerViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *settingsTableView;
 @property (strong, nonatomic) IBOutlet UIDatePicker *datePicker;
-@property NSString *dateTimeString;
 @property (weak, nonatomic) IBOutlet UISlider *slider;
 @property (weak, nonatomic) IBOutlet UILabel *snoozeTimeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *seriouslyLabel;
-
+@property NSMutableArray *alarms;
 
 @end
 
@@ -25,9 +25,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    if (self.alarms == nil) {
+        self.alarms = [NSMutableArray new];
+    }
     
     self.datePicker.date = [NSDate date];
-    
+
     self.settingsTableView.scrollEnabled = NO;
     self.settingsTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     self.slider.hidden = YES;
@@ -74,11 +77,15 @@
     dateFormatter.timeZone = [NSTimeZone defaultTimeZone];
     dateFormatter.dateStyle = NSDateFormatterShortStyle;
     dateFormatter.timeStyle = NSDateFormatterShortStyle;
-    self.dateTimeString = [dateFormatter stringFromDate:self.datePicker.date];
+    [dateFormatter setDateFormat:@"HH:mm a"];
+    NSString *timeString = [dateFormatter stringFromDate:self.datePicker.date];
 
-    TableViewController *tvc = [TableViewController new];
-    [tvc.alarms addObject:self.dateTimeString];
-    [self.navigationController popToViewController:tvc animated:YES];
+    [self.alarms addObject:timeString];
+    [self saveDefault:timeString];
+
+//    TableViewController *tvc = [TableViewController new];
+//    [tvc.alarms addObject:self.dateTimeString];
+//    [self.navigationController popToViewController:tvc animated:YES];
 }
 
 - (IBAction)onMoveSlider:(id)sender
@@ -98,13 +105,21 @@
     } else if (val >= 20 && val <= 58) {
         self.seriouslyLabel.text = @"Seriously, who snoozes for more than 20 minutes?";
     } else if (val > 58) {
-        self.seriouslyLabel.text = @"Just call in sick and go back to bed";
+        self.seriouslyLabel.text = @"If you think you will need to snooze this long just call in sick";
     }
 }
 
 - (void)showSeriouslyLabel:(id)sender
 {
     
+}
+
+-(void)saveDefault:(NSString *)alarm
+{
+    NSData *alarmData = [NSKeyedArchiver archivedDataWithRootObject:alarm];
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    [prefs setValue:alarmData forKey:@"alarm"];
+    [prefs synchronize];
 }
 
 
