@@ -10,6 +10,7 @@
 
 @interface TableViewController : UIViewController
 
-@property NSMutableArray *alarms;
+-(void)setValue:(NSMutableArray* )array;
+@property NSMutableArray *timeStrings;
 
 @end

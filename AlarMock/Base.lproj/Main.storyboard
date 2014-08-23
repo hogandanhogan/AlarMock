@@ -143,7 +143,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <barButtonItem id="Zcx-Tr-4Ar"/>
                     </toolbarItems>
                     <navigationItem key="navigationItem" id="Yx4-8k-Amt">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="qYb-Nr-BI7">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="qYb-Nr-BI7">
                             <connections>
                                 <segue destination="OYN-uF-9Ok" kind="unwind" unwindAction="unwindToThisViewController:" id="5tQ-cg-NMN"/>
                             </connections>
@@ -157,9 +157,9 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="datePicker" destination="A69-J5-BpF" id="9TJ-AX-FhY"/>
-                        <outlet property="seriouslyLabel" destination="NeL-D8-Rgy" id="tLm-jZ-GDE"/>
                         <outlet property="settingsTableView" destination="0d0-Kt-K1p" id="4yN-ZP-UpJ"/>
                         <outlet property="slider" destination="v8C-Td-FdW" id="0tO-Sf-pSk"/>
+                        <outlet property="snoozeMockLabel" destination="NeL-D8-Rgy" id="apK-UA-leD"/>
                         <outlet property="snoozeTimeLabel" destination="tdj-KO-J7T" id="h6v-xz-0hk"/>
                     </connections>
                 </viewController>

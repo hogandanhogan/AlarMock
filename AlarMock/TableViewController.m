@@ -20,30 +20,34 @@
 {
     [super viewDidLoad];
     
-    self.alarms = [NSMutableArray new];
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    
+    
+    NSArray *timeStrings = [[NSUserDefaults standardUserDefaults] objectForKey:@"timeStrings"];
+    self.timeStrings = [[NSMutableArray alloc] initWithArray:timeStrings];
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    [[UIApplication sharedApplication] scheduledLocalNotifications];
     [self.tableView reloadData];
 }
 
+-(void)setValue:(NSMutableArray* )array
+{
+    self.timeStrings = [array mutableCopy];
+}
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+    cell.textLabel.text = [self.timeStrings objectAtIndex:indexPath.row];
     
-    NSData *alarmData = [[NSUserDefaults standardUserDefaults] objectForKey:@"alarm"];
-    NSString *alarm = [NSKeyedUnarchiver unarchiveObjectWithData:alarmData];
-    
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeBarButtonItemColor) name:@"NewDogNotification" object:nil];
-    cell.textLabel.text = alarm;
     return cell;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 1;
+    return self.timeStrings.count;
 }
 
 - (IBAction)unwindToThisViewController:(UIStoryboardSegue *)unwindSegue

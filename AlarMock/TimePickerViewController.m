@@ -15,8 +15,7 @@
 @property (strong, nonatomic) IBOutlet UIDatePicker *datePicker;
 @property (weak, nonatomic) IBOutlet UISlider *slider;
 @property (weak, nonatomic) IBOutlet UILabel *snoozeTimeLabel;
-@property (weak, nonatomic) IBOutlet UILabel *seriouslyLabel;
-@property NSMutableArray *alarms;
+@property (weak, nonatomic) IBOutlet UILabel *snoozeMockLabel;
 
 @end
 
@@ -26,7 +25,7 @@
 {
     [super viewDidLoad];
     
-    self.alarms = [NSMutableArray new];
+    self.timeStrings = [NSMutableArray new];
     
     self.datePicker.date = [NSDate date];
 
@@ -79,18 +78,23 @@
     dateFormatter.timeStyle = NSDateFormatterShortStyle;
     [dateFormatter setDateFormat:@"h:mm a"];
     NSString *timeString = [dateFormatter stringFromDate:date];
-
-    [self.alarms addObject:timeString];
     [self saveDefault:timeString];
     
     UILocalNotification* localNotification = [[UILocalNotification alloc] init];
-    localNotification.fireDate = self.datePicker.date;
+    
+    //localNotification.fireDate = self.datePicker.date;
+    //notification fires in 4 seconds while testing
+    localNotification.fireDate = [NSDate dateWithTimeIntervalSinceNow:4];
     localNotification.alertBody = @"Wake up fucko";
     localNotification.alertAction = @"Snooze";
     localNotification.timeZone = [NSTimeZone defaultTimeZone];
-    //localNotification.applicationIconBadgeNumber = [[UIApplication sharedApplication] applicationIconBadgeNumber] + 1;
+    localNotification.applicationIconBadgeNumber = [[UIApplication sharedApplication] applicationIconBadgeNumber] + 1;
     
     [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
+    
+    TableViewController *tvc = [[TableViewController alloc] initWithNibName:@"TableViewController" bundle: nil];
+    [tvc setValue:self.timeStrings];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 - (IBAction)onMoveSlider:(id)sender
@@ -105,19 +109,24 @@
     }
     
     if (val >=1 && val < 21) {
-        self.seriouslyLabel.text = @"I suppose this is a reasonable snooze interval";
+        self.snoozeMockLabel.text = @"I suppose this is a reasonable snooze interval";
     } else if (val >= 21 && val <= 58) {
-        self.seriouslyLabel.text = @"Seriously, who snoozes for more than 20 minutes?";
+        self.snoozeMockLabel.text = @"Seriously, who snoozes for more than 20 minutes?";
     } else if (val > 58) {
-        self.seriouslyLabel.text = @"If you think you will need to snooze this long just call in sick";
+        self.snoozeMockLabel.text = @"If you think you will need to snooze this long just call in sick";
     }
 }
 
--(void)saveDefault:(NSString *)alarm
+-(void)saveDefault:(NSString *)timeString
 {
-    NSData *alarmData = [NSKeyedArchiver archivedDataWithRootObject:alarm];
+    NSData *timeStringData = [NSKeyedArchiver archivedDataWithRootObject:timeString];
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-    [prefs setValue:alarmData forKey:@"alarm"];
+    [prefs setValue:timeStringData forKey:@"timeString"];
+    
+    NSMutableArray *timeStrings = [[NSMutableArray alloc] initWithArray:[prefs objectForKey:@"timeStrings"]];
+    [timeStrings addObject:timeString];
+    [prefs setObject:timeStrings forKey:@"timeStrings"];
+    self.timeStrings = timeStrings;
     [prefs synchronize];
 }
 
