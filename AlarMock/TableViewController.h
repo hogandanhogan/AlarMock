@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface TableViewController : UIViewController
+@property NSMutableArray *alarms;
 
 @end
