@@ -84,13 +84,21 @@
 - (IBAction)onMoveSlider:(id)sender
 {
     UISlider *slider = (UISlider *)sender;
-    float val = slider.value * 59.0f;
-    self.snoozeTimeLabel.text = [NSString stringWithFormat:@"%ld minutes", (long)val];
-   
-    if (val == 59.0) {
-        self.seriouslyLabel.text = @"Seriously? You need to snooze for more than 59 minutes?";
-    } else if (val != 59) {
-        self.seriouslyLabel.text = @"";
+    float val = 1 + slider.value * 58.0f;
+    NSLog(@"%f",slider.value);
+    
+    if (val == 1) {
+        self.snoozeTimeLabel.text =[NSString stringWithFormat:@"Snooze for %ld minute", (long)val];
+    } else {
+        self.snoozeTimeLabel.text = [NSString stringWithFormat:@"Snooze for %ld minutes", (long)val];
+    }
+    
+    if (val >=1 && val < 20) {
+        self.seriouslyLabel.text = @"I suppose this is a reasonable snooze interval";
+    } else if (val >= 20 && val <= 58) {
+        self.seriouslyLabel.text = @"Seriously, who snoozes for more than 20 minutes?";
+    } else if (val > 58) {
+        self.seriouslyLabel.text = @"Just call in sick and go back to bed";
     }
 }
 
