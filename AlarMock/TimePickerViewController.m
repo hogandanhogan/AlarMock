@@ -25,16 +25,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    if (self.alarms == nil) {
-        self.alarms = [NSMutableArray new];
-    }
+    
+    self.alarms = [NSMutableArray new];
     
     self.datePicker.date = [NSDate date];
 
     self.settingsTableView.scrollEnabled = NO;
     self.settingsTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     self.slider.hidden = YES;
-
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -73,26 +71,32 @@
 
 - (IBAction)onSavePressed:(id)sender
 {
+    NSDate *date = [NSDate new];
+    date = self.datePicker.date;
     NSDateFormatter *dateFormatter = [NSDateFormatter new];
     dateFormatter.timeZone = [NSTimeZone defaultTimeZone];
     dateFormatter.dateStyle = NSDateFormatterShortStyle;
     dateFormatter.timeStyle = NSDateFormatterShortStyle;
-    [dateFormatter setDateFormat:@"HH:mm a"];
-    NSString *timeString = [dateFormatter stringFromDate:self.datePicker.date];
+    [dateFormatter setDateFormat:@"h:mm a"];
+    NSString *timeString = [dateFormatter stringFromDate:date];
 
     [self.alarms addObject:timeString];
     [self saveDefault:timeString];
-
-//    TableViewController *tvc = [TableViewController new];
-//    [tvc.alarms addObject:self.dateTimeString];
-//    [self.navigationController popToViewController:tvc animated:YES];
+    
+    UILocalNotification* localNotification = [[UILocalNotification alloc] init];
+    localNotification.fireDate = self.datePicker.date;
+    localNotification.alertBody = @"Wake up fucko";
+    localNotification.alertAction = @"Snooze";
+    localNotification.timeZone = [NSTimeZone defaultTimeZone];
+    //localNotification.applicationIconBadgeNumber = [[UIApplication sharedApplication] applicationIconBadgeNumber] + 1;
+    
+    [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
 }
 
 - (IBAction)onMoveSlider:(id)sender
 {
     UISlider *slider = (UISlider *)sender;
     float val = 1 + slider.value * 58.0f;
-    NSLog(@"%f",slider.value);
     
     if (val == 1) {
         self.snoozeTimeLabel.text =[NSString stringWithFormat:@"Snooze for %ld minute", (long)val];
@@ -100,18 +104,13 @@
         self.snoozeTimeLabel.text = [NSString stringWithFormat:@"Snooze for %ld minutes", (long)val];
     }
     
-    if (val >=1 && val < 20) {
+    if (val >=1 && val < 21) {
         self.seriouslyLabel.text = @"I suppose this is a reasonable snooze interval";
-    } else if (val >= 20 && val <= 58) {
+    } else if (val >= 21 && val <= 58) {
         self.seriouslyLabel.text = @"Seriously, who snoozes for more than 20 minutes?";
     } else if (val > 58) {
         self.seriouslyLabel.text = @"If you think you will need to snooze this long just call in sick";
     }
-}
-
-- (void)showSeriouslyLabel:(id)sender
-{
-    
 }
 
 -(void)saveDefault:(NSString *)alarm
