@@ -10,6 +10,6 @@
 #import "AlarMockViewController.h"
 
 @interface AddAlarmViewController : UIViewController
-@property NSMutableArray *timeStrings;
+@property NSMutableArray *localNotifications;
 
 @end

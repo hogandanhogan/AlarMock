@@ -32,10 +32,7 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    [[UIApplication sharedApplication] scheduledLocalNotifications];
-    NSArray *timeStrings = [[NSUserDefaults standardUserDefaults] objectForKey:@"timeStrings"];
-    self.timeStrings = [[NSMutableArray alloc] initWithArray:timeStrings];
-    
+    self.localNotifications = [[NSUserDefaults standardUserDefaults] objectForKey:@"localNotificationsDatas"];
     [self.tableView reloadData];
 }
 
@@ -43,7 +40,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.timeStrings.count;
+    return self.localNotifications.count;
 }
 
 #pragma mark Table View Delegate Methods
@@ -56,7 +53,16 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
-    cell.textLabel.text = [self.timeStrings objectAtIndex:indexPath.row];
+    
+    [[UIApplication sharedApplication] scheduledLocalNotifications];
+    
+    NSData *data = [self.localNotifications objectAtIndex:indexPath.row];
+    UILocalNotification *localNotification = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    NSDateFormatter *dateFormatter = [NSDateFormatter new];
+    dateFormatter.timeStyle = NSDateFormatterShortStyle;
+    [dateFormatter setDateFormat:@"h:mm a"];
+    NSString *timeString = [dateFormatter stringFromDate:localNotification.fireDate];
+    cell.textLabel.text = timeString;
     
     UISwitch *switcheroo = [[UISwitch alloc] initWithFrame:CGRectZero];
     [switcheroo addTarget:self
@@ -64,16 +70,15 @@
          forControlEvents:UIControlEventValueChanged];
     
     [self.view addSubview:switcheroo];
-        cell.accessoryView  = switcheroo;
+    cell.accessoryView  = switcheroo;
     
     return cell;
 }
 
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-    //Need code to delete local notification and user default
-    [self.timeStrings removeObjectAtIndex:indexPath.row];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"localNotificationsDatas"];
+    [self.localNotifications removeObjectAtIndex:indexPath.row];
     [self.tableView reloadData];
 }
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
@@ -114,7 +119,7 @@
 
 -(void)setValue:(NSMutableArray* )array
 {
-    self.timeStrings = [array mutableCopy];
+    self.localNotifications = [array mutableCopy];
 }
 
 -(IBAction)unwindToThisViewController:(UIStoryboardSegue *)unwindSegue

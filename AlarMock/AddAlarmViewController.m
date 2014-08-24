@@ -26,9 +26,9 @@
 {
     [super viewDidLoad];
     
-    self.timeStrings = [NSMutableArray new];
+    self.localNotifications = [NSMutableArray new];
     
-    self.datePicker.date = [[NSDate date] dateByAddingTimeInterval:60];;
+    self.datePicker.date = [NSDate date];
 
     self.tableView.scrollEnabled = NO;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
@@ -45,6 +45,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SettingsCell"];
     NSArray *settings = [[NSArray alloc] initWithObjects:@"Repeat", @"Sound", @"Snooze", nil];
     cell.textLabel.text = [settings objectAtIndex:indexPath.row];
+    
     UISwitch *switcheroo = [[UISwitch alloc] initWithFrame:CGRectZero];
     [switcheroo addTarget:self
                    action:@selector(changeSwitch:)
@@ -91,17 +92,10 @@
     localNotification.timeZone = [NSTimeZone defaultTimeZone];
     localNotification.applicationIconBadgeNumber = [[UIApplication sharedApplication] applicationIconBadgeNumber] + 1;
     [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
-   
-    NSDateFormatter *dateFormatter = [NSDateFormatter new];
-    dateFormatter.timeZone = [NSTimeZone defaultTimeZone];
-    dateFormatter.dateStyle = NSDateFormatterShortStyle;
-    dateFormatter.timeStyle = NSDateFormatterShortStyle;
-    [dateFormatter setDateFormat:@"h:mm a"];
-    NSString *timeString = [dateFormatter stringFromDate:localNotification.fireDate];
-    [self saveDefault:timeString];
+    [self saveDefault:localNotification];
     
     AlarMockViewController *tvc = [[AlarMockViewController alloc] initWithNibName:@"TableViewController" bundle: nil];
-    [tvc setValue:self.timeStrings];
+    [tvc setValue:self.localNotifications];
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
@@ -125,16 +119,16 @@
     }
 }
 
--(void)saveDefault:(NSString *)timeString
+-(void)saveDefault:(UILocalNotification *)localNotification
 {
-    NSData *timeStringData = [NSKeyedArchiver archivedDataWithRootObject:timeString];
+    NSData *localNotificationData = [NSKeyedArchiver archivedDataWithRootObject:localNotification];
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-    [prefs setValue:timeStringData forKey:@"timeString"];
+    [prefs setValue:localNotificationData forKey:@"localNotificationData"];
     
-    NSMutableArray *timeStrings = [[NSMutableArray alloc] initWithArray:[prefs objectForKey:@"timeStrings"]];
-    [timeStrings addObject:timeString];
-    [prefs setObject:timeStrings forKey:@"timeStrings"];
-    self.timeStrings = timeStrings;
+    NSMutableArray *localNotificationsDatas = [[NSMutableArray alloc] initWithArray:[prefs objectForKey:@"localNotificationsDatas"]];
+    [localNotificationsDatas addObject:localNotificationData];
+    [prefs setObject:localNotificationsDatas forKey:@"localNotificationsDatas"];
+    self.localNotifications = localNotificationsDatas;
     [prefs synchronize];
 }
 
