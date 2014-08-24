@@ -7,6 +7,7 @@
 //
 
 #import "TimePickerViewController.h"
+#import "DaysViewController.h"
 
 
 @interface TimePickerViewController () <UITableViewDataSource, UITableViewDelegate>
@@ -52,11 +53,17 @@
     [self.view addSubview:switcheroo];
     if ([cell.textLabel.text isEqualToString:@"Snooze"]) {
         cell.accessoryView  = switcheroo;
-    } if ([cell.textLabel.text isEqualToString:@"Repeat"]) {
-        [self performSegueWithIdentifier:@"daysVC" sender:self];
     }
-    
+
     return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row == 0) {
+        DaysViewController *dvc = [self.storyboard instantiateViewControllerWithIdentifier:@"daysVC"];
+        [self presentViewController:dvc animated:YES completion:nil];
+    }
 }
 
 - (void)changeSwitch:(id)sender
