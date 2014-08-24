@@ -25,6 +25,8 @@
 {
     [super viewDidLoad];
     
+    self.tableView.allowsSelection = NO;
+    self.tableView.allowsSelectionDuringEditing = YES;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 }
 
@@ -98,6 +100,7 @@
     
     if ([self.tableView isEditing]) {
         [self.tableView setEditing:NO animated:YES];
+        
         [self.editButton setTitle:@"Edit"];
         self.addButton.enabled = YES;
     }
