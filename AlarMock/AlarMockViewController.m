@@ -79,6 +79,7 @@
 {
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"localNotificationsDatas"];
     [self.localNotifications removeObjectAtIndex:indexPath.row];
+
     [self.tableView reloadData];
 }
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
@@ -96,9 +97,9 @@
 - (void)changeSwitch:(id)sender
 {
     if([sender isOn]) {
-        //send local notification
+        //local notification
     } else{
-        //don't send local notification
+        //no local notification
     }
 }
 - (IBAction)enterEditMode:(id)sender {
@@ -117,12 +118,7 @@
     }
 }
 
--(void)setValue:(NSMutableArray* )array
-{
-    self.localNotifications = [array mutableCopy];
-}
-
--(IBAction)unwindToThisViewController:(UIStoryboardSegue *)unwindSegue
+-(IBAction)unwindToAlarmMockViewController:(UIStoryboardSegue *)unwindSegue
 {
     
 }

@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UISlider *slider;
 @property (weak, nonatomic) IBOutlet UILabel *snoozeTimeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *snoozeMockLabel;
+@property float sliderVal;
 
 @end
 
@@ -66,6 +67,7 @@
     if (indexPath.row == 0) {
         RepeatViewController *dvc = [self.storyboard instantiateViewControllerWithIdentifier:@"daysVC"];
         [self presentViewController:dvc animated:YES completion:nil];
+        dvc.navigationController.navigationBarHidden = NO;
     }
 }
 
@@ -90,12 +92,11 @@
     localNotification.alertBody = @"Wake up";
     localNotification.alertAction = @"Snooze";
     localNotification.timeZone = [NSTimeZone defaultTimeZone];
-    localNotification.applicationIconBadgeNumber = [[UIApplication sharedApplication] applicationIconBadgeNumber] + 1;
+    
     [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
+    
     [self saveDefault:localNotification];
     
-    AlarMockViewController *tvc = [[AlarMockViewController alloc] initWithNibName:@"TableViewController" bundle: nil];
-    [tvc setValue:self.localNotifications];
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
@@ -103,6 +104,7 @@
 {
     UISlider *slider = (UISlider *)sender;
     float val = 1 + slider.value * 58.0f;
+    self.sliderVal = val;
     
     if (val == 1) {
         self.snoozeTimeLabel.text =[NSString stringWithFormat:@"Snooze for %ld minute", (long)val];

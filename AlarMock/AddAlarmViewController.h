@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "AlarMockViewController.h"
 
 @interface AddAlarmViewController : UIViewController
 @property NSMutableArray *localNotifications;

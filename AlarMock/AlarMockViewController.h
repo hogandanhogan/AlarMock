@@ -10,7 +10,6 @@
 
 @interface AlarMockViewController : UIViewController
 
--(void)setValue:(NSMutableArray* )array;
 @property NSMutableArray *localNotifications;
 
 @end
