@@ -89,7 +89,9 @@
 - (void)changeSwitch:(id)sender
 {
     if([sender isOn]) {
+        //send local notification
     } else{
+        //don't send local notification
     }
 }
 - (IBAction)enterEditMode:(id)sender {
