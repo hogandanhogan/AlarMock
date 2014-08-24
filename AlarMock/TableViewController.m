@@ -45,6 +45,14 @@
     return cell;
 }
 
+-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    //Delete local notification
+    [self.timeStrings removeObjectAtIndex:indexPath.row];
+    [self.tableView reloadData];
+}
+
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return self.timeStrings.count;

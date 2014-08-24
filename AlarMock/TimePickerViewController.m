@@ -52,6 +52,8 @@
     [self.view addSubview:switcheroo];
     if ([cell.textLabel.text isEqualToString:@"Snooze"]) {
         cell.accessoryView  = switcheroo;
+    } if ([cell.textLabel.text isEqualToString:@"Repeat"]) {
+        [self performSegueWithIdentifier:@"daysVC" sender:self];
     }
     
     return cell;
@@ -109,7 +111,7 @@
     }
     
     if (val >=1 && val < 21) {
-        self.snoozeMockLabel.text = @"I suppose this is a reasonable snooze interval";
+        self.snoozeMockLabel.text = @"We suppose this is a reasonable snooze interval";
     } else if (val >= 21 && val <= 58) {
         self.snoozeMockLabel.text = @"Seriously, who snoozes for more than 20 minutes?";
     } else if (val > 58) {
