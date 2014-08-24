@@ -60,11 +60,15 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
     if (indexPath.row == 0) {
         DaysViewController *dvc = [self.storyboard instantiateViewControllerWithIdentifier:@"daysVC"];
         [self presentViewController:dvc animated:YES completion:nil];
     }
 }
+
+
 
 - (void)changeSwitch:(id)sender
 {
