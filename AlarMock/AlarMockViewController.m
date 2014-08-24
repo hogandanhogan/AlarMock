@@ -13,6 +13,7 @@
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *editButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *addButton;
+@property (weak, nonatomic) IBOutlet UITextField *textField;
 
 
 @end
@@ -121,6 +122,14 @@
 -(IBAction)unwindToAlarmMockViewController:(UIStoryboardSegue *)unwindSegue
 {
     
+}
+- (IBAction)onSubmitJoke:(id)sender
+{
+    PFObject *joke = [PFObject objectWithClassName:@"Joke"];
+    joke[@"joke"] = self.textField.text;
+    [joke saveInBackground];
+    self.textField.text = @"";
+    self.textField.placeholder = self.textField.placeholder;
 }
 
 @end

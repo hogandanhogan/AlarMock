@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
-        <!--Alar Mock View Controller - AlarMock-->
+        <!--Alar Mock View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController id="vXZ-lx-hvc" customClass="AlarMockViewController" sceneMemberID="viewController">
@@ -38,12 +38,22 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="AlarMock" id="667-nz-W29">
+                    <navigationItem key="navigationItem" id="667-nz-W29">
+                        <nil key="title"/>
                         <barButtonItem key="leftBarButtonItem" title="Edit" id="2ru-Ml-puL">
                             <connections>
                                 <action selector="enterEditMode:" destination="vXZ-lx-hvc" id="0AZ-4N-rbt"/>
                             </connections>
                         </barButtonItem>
+                        <textField key="titleView" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Submit a Joke to AlarMock Industries" textAlignment="center" minimumFontSize="17" id="Vgv-Ig-FwW">
+                            <rect key="frame" x="44" y="7" width="226" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <action selector="onSubmitJoke:" destination="vXZ-lx-hvc" eventType="editingDidEndOnExit" id="Is5-FQ-fIA"/>
+                            </connections>
+                        </textField>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="lav-hh-sJr">
                             <connections>
                                 <segue destination="AjE-70-so0" kind="push" id="d6o-yk-gfH"/>
@@ -54,13 +64,14 @@
                         <outlet property="addButton" destination="lav-hh-sJr" id="x2b-dP-LgS"/>
                         <outlet property="editButton" destination="2ru-Ml-puL" id="7ID-dS-BD3"/>
                         <outlet property="tableView" destination="cKX-XF-MJ6" id="ePu-so-Fdl"/>
+                        <outlet property="textField" destination="Vgv-Ig-FwW" id="aIa-5h-Fc5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="613" y="119"/>
+            <point key="canvasLocation" x="631" y="119"/>
         </scene>
-        <!--Repeat View Controller - Repeat-->
+        <!--Repeat View Controller-->
         <scene sceneID="wNR-6Z-tPc">
             <objects>
                 <viewController id="W2F-c8-mB8" customClass="RepeatViewController" sceneMemberID="viewController">
@@ -94,7 +105,8 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Repeat" id="2nT-QX-Egc">
+                    <navigationItem key="navigationItem" id="2nT-QX-Egc">
+                        <nil key="title"/>
                         <barButtonItem key="leftBarButtonItem" title="Back" id="pQV-e6-1Ig">
                             <connections>
                                 <segue destination="YhB-pp-zMa" kind="unwind" unwindAction="unwindToAddAlarmViewController:" id="a5i-nD-Fys"/>
