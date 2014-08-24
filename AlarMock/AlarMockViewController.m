@@ -56,6 +56,14 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     cell.textLabel.text = [self.timeStrings objectAtIndex:indexPath.row];
     
+    UISwitch *switcheroo = [[UISwitch alloc] initWithFrame:CGRectZero];
+    [switcheroo addTarget:self
+                   action:@selector(changeSwitch:)
+         forControlEvents:UIControlEventValueChanged];
+    
+    [self.view addSubview:switcheroo];
+        cell.accessoryView  = switcheroo;
+    
     return cell;
 }
 
@@ -78,6 +86,12 @@
 
 #pragma mark Other Methods
 
+- (void)changeSwitch:(id)sender
+{
+    if([sender isOn]) {
+    } else{
+    }
+}
 - (IBAction)enterEditMode:(id)sender {
     
     if ([self.tableView isEditing]) {

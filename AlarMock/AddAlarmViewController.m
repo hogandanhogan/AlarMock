@@ -125,7 +125,7 @@
         self.snoozeMockLabel.text = @"We suppose this is a reasonable snooze interval";
     } else if (val >= 21 && val <= 58) {
         self.snoozeMockLabel.text = @"Seriously, who snoozes for more than 20 minutes?";
-    } else if (val > 58) {
+    } else if (val == 59) {
         self.snoozeMockLabel.text = @"If you think you will need to snooze this long just call in sick";
     }
 }
