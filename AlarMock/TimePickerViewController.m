@@ -12,7 +12,7 @@
 
 @interface TimePickerViewController () <UITableViewDataSource, UITableViewDelegate>
 
-@property (strong, nonatomic) IBOutlet UITableView *settingsTableView;
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) IBOutlet UIDatePicker *datePicker;
 @property (weak, nonatomic) IBOutlet UISlider *slider;
 @property (weak, nonatomic) IBOutlet UILabel *snoozeTimeLabel;
@@ -30,8 +30,8 @@
     
     self.datePicker.date = [NSDate date];
 
-    self.settingsTableView.scrollEnabled = NO;
-    self.settingsTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    self.tableView.scrollEnabled = NO;
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     self.slider.hidden = YES;
 }
 

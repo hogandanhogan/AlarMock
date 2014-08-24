@@ -19,6 +19,7 @@
 {
     [super viewDidLoad];
     self.tableView.scrollEnabled = NO;
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
