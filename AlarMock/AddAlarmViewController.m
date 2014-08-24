@@ -68,8 +68,6 @@
     }
 }
 
-
-
 - (void)changeSwitch:(id)sender
 {
     if([sender isOn]) {
