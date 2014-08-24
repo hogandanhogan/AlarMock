@@ -28,7 +28,7 @@
     
     self.timeStrings = [NSMutableArray new];
     
-    self.datePicker.date = [NSDate date];
+    self.datePicker.date = [[NSDate date] dateByAddingTimeInterval:60];;
 
     self.tableView.scrollEnabled = NO;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
@@ -81,16 +81,6 @@
 
 - (IBAction)onSavePressed:(id)sender
 {
-    NSDate *date = [NSDate new];
-    date = self.datePicker.date;
-    NSDateFormatter *dateFormatter = [NSDateFormatter new];
-    dateFormatter.timeZone = [NSTimeZone defaultTimeZone];
-    dateFormatter.dateStyle = NSDateFormatterShortStyle;
-    dateFormatter.timeStyle = NSDateFormatterShortStyle;
-    [dateFormatter setDateFormat:@"h:mm a"];
-    NSString *timeString = [dateFormatter stringFromDate:date];
-    [self saveDefault:timeString];
-    
     UILocalNotification* localNotification = [[UILocalNotification alloc] init];
     
     //localNotification.fireDate = self.datePicker.date;
@@ -100,8 +90,15 @@
     localNotification.alertAction = @"Snooze";
     localNotification.timeZone = [NSTimeZone defaultTimeZone];
     localNotification.applicationIconBadgeNumber = [[UIApplication sharedApplication] applicationIconBadgeNumber] + 1;
-    
     [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
+   
+    NSDateFormatter *dateFormatter = [NSDateFormatter new];
+    dateFormatter.timeZone = [NSTimeZone defaultTimeZone];
+    dateFormatter.dateStyle = NSDateFormatterShortStyle;
+    dateFormatter.timeStyle = NSDateFormatterShortStyle;
+    [dateFormatter setDateFormat:@"h:mm a"];
+    NSString *timeString = [dateFormatter stringFromDate:localNotification.fireDate];
+    [self saveDefault:timeString];
     
     AlarMockViewController *tvc = [[AlarMockViewController alloc] initWithNibName:@"TableViewController" bundle: nil];
     [tvc setValue:self.timeStrings];
