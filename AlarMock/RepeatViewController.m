@@ -6,14 +6,14 @@
 //  Copyright (c) 2014 AlarMock Industries. All rights reserved.
 //
 
-#import "DaysViewController.h"
+#import "RepeatViewController.h"
 
-@interface DaysViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface RepeatViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
-@implementation DaysViewController
+@implementation RepeatViewController
 
 - (void)viewDidLoad
 {

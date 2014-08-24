@@ -6,11 +6,11 @@
 //  Copyright (c) 2014 AlarMock Industries. All rights reserved.
 //
 
-#import "TimePickerViewController.h"
-#import "DaysViewController.h"
+#import "AddAlarmViewController.h"
+#import "RepeatViewController.h"
 
 
-@interface TimePickerViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface AddAlarmViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) IBOutlet UIDatePicker *datePicker;
@@ -20,7 +20,7 @@
 
 @end
 
-@implementation TimePickerViewController
+@implementation AddAlarmViewController
 
 - (void)viewDidLoad
 {
@@ -63,7 +63,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     if (indexPath.row == 0) {
-        DaysViewController *dvc = [self.storyboard instantiateViewControllerWithIdentifier:@"daysVC"];
+        RepeatViewController *dvc = [self.storyboard instantiateViewControllerWithIdentifier:@"daysVC"];
         [self presentViewController:dvc animated:YES completion:nil];
     }
 }
@@ -105,7 +105,7 @@
     
     [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
     
-    TableViewController *tvc = [[TableViewController alloc] initWithNibName:@"TableViewController" bundle: nil];
+    AlarMockViewController *tvc = [[AlarMockViewController alloc] initWithNibName:@"TableViewController" bundle: nil];
     [tvc setValue:self.timeStrings];
     [self.navigationController popToRootViewControllerAnimated:YES];
 }

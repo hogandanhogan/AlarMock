@@ -6,19 +6,22 @@
 //  Copyright (c) 2014 AlarMock Industries. All rights reserved.
 //
 
-#import "TableViewController.h"
+#import "AlarMockViewController.h"
 
-@interface TableViewController() <UITableViewDelegate, UITableViewDataSource>
+@interface AlarMockViewController() <UITableViewDelegate, UITableViewDataSource>
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *editButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *addButton;
+
 
 @end
 
 #pragma mark View Life Cycle
 
-@implementation TableViewController
+@implementation AlarMockViewController
 
-- (void)viewDidLoad
+-(void)viewDidLoad
 {
     [super viewDidLoad];
     
@@ -34,23 +37,14 @@
     [self.tableView reloadData];
 }
 
--(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    
-    //Need code to delete local notification
-    [self.timeStrings removeObjectAtIndex:indexPath.row];
-    [self.tableView reloadData];
-}
+#pragma mark Table View Data Source Methods
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return self.timeStrings.count;
 }
 
--(void)setValue:(NSMutableArray* )array
-{
-    self.timeStrings = [array mutableCopy];
-}
+#pragma mark Table View Delegate Methods
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -65,12 +59,46 @@
     return cell;
 }
 
+-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    //Need code to delete local notification and user default
+    [self.timeStrings removeObjectAtIndex:indexPath.row];
+    [self.tableView reloadData];
+}
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return YES;
+}
+
 -(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
-- (IBAction)unwindToThisViewController:(UIStoryboardSegue *)unwindSegue
+#pragma mark Other Methods
+
+- (IBAction)enterEditMode:(id)sender {
+    
+    if ([self.tableView isEditing]) {
+        [self.tableView setEditing:NO animated:YES];
+        [self.editButton setTitle:@"Edit"];
+        self.addButton.enabled = YES;
+    }
+    else {
+        [self.editButton setTitle:@"Done"];
+        self.addButton.enabled = NO;
+        
+        [self.tableView setEditing:YES animated:YES];
+    }
+}
+
+-(void)setValue:(NSMutableArray* )array
+{
+    self.timeStrings = [array mutableCopy];
+}
+
+-(IBAction)unwindToThisViewController:(UIStoryboardSegue *)unwindSegue
 {
     
 }

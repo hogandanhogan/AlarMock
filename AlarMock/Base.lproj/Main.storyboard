@@ -4,10 +4,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
-        <!--Table View Controller-->
+        <!--Alar Mock View Controller - AlarMock-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="TableViewController" sceneMemberID="viewController">
+                <viewController id="vXZ-lx-hvc" customClass="AlarMockViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -41,7 +41,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="667-nz-W29">
+                    <navigationItem key="navigationItem" title="AlarMock" id="667-nz-W29">
+                        <barButtonItem key="leftBarButtonItem" title="Edit" id="2ru-Ml-puL">
+                            <connections>
+                                <action selector="enterEditMode:" destination="vXZ-lx-hvc" id="0AZ-4N-rbt"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="lav-hh-sJr">
                             <connections>
                                 <segue destination="AjE-70-so0" kind="push" id="d6o-yk-gfH"/>
@@ -49,6 +54,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="addButton" destination="lav-hh-sJr" id="x2b-dP-LgS"/>
+                        <outlet property="editButton" destination="2ru-Ml-puL" id="7ID-dS-BD3"/>
                         <outlet property="tableView" destination="cKX-XF-MJ6" id="ePu-so-Fdl"/>
                     </connections>
                 </viewController>
@@ -56,10 +63,10 @@
             </objects>
             <point key="canvasLocation" x="613" y="119"/>
         </scene>
-        <!--Days View Controller-->
+        <!--Repeat View Controller - Repeat-->
         <scene sceneID="wNR-6Z-tPc">
             <objects>
-                <viewController storyboardIdentifier="daysVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="W2F-c8-mB8" customClass="DaysViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="daysVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="W2F-c8-mB8" customClass="RepeatViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="mpF-ZW-EQY"/>
                         <viewControllerLayoutGuide type="bottom" id="piU-c2-qAN"/>
@@ -90,19 +97,19 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="2nT-QX-Egc"/>
+                    <navigationItem key="navigationItem" title="Repeat" id="2nT-QX-Egc"/>
                     <connections>
                         <outlet property="tableView" destination="J4f-1b-xko" id="AlM-Gg-wHy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bUh-vz-2HG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1415" y="119"/>
+            <point key="canvasLocation" x="1459" y="119"/>
         </scene>
-        <!--Time Picker View Controller-->
+        <!--Add Alarm View Controller - Add Alarm-->
         <scene sceneID="Zu8-Yv-70k">
             <objects>
-                <viewController id="AjE-70-so0" customClass="TimePickerViewController" sceneMemberID="viewController">
+                <viewController id="AjE-70-so0" customClass="AddAlarmViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jGO-Bj-jmF"/>
                         <viewControllerLayoutGuide type="bottom" id="nUY-W8-DZh"/>
@@ -185,7 +192,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     <toolbarItems>
                         <barButtonItem id="Zcx-Tr-4Ar"/>
                     </toolbarItems>
-                    <navigationItem key="navigationItem" id="Yx4-8k-Amt">
+                    <navigationItem key="navigationItem" title="Add Alarm" id="Yx4-8k-Amt">
                         <barButtonItem key="leftBarButtonItem" title="Back" id="qYb-Nr-BI7">
                             <connections>
                                 <segue destination="OYN-uF-9Ok" kind="unwind" unwindAction="unwindToThisViewController:" id="5tQ-cg-NMN"/>

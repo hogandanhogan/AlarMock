@@ -1,15 +1,16 @@
 //
-//  TimePickerViewController.h
+//  ViewController.h
 //  AlarMock
 //
-//  Created by Rick Wolchuk on 8/22/14.
+//  Created by Ben Bueltmann on 8/22/14.
 //  Copyright (c) 2014 AlarMock Industries. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
-#import "TableViewController.h"
 
-@interface TimePickerViewController : UIViewController
+@interface AlarMockViewController : UIViewController
+
+-(void)setValue:(NSMutableArray* )array;
 @property NSMutableArray *timeStrings;
 
 @end
