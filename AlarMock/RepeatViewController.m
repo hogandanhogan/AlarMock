@@ -64,6 +64,8 @@
 
 -(void)scheduleRepeatedDay
 {
+    self.selectedDays = 
+
 
 }
 
