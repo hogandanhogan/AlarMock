@@ -92,7 +92,6 @@
     localNotification.alertBody = @"Wake up";
     localNotification.alertAction = @"Snooze";
     localNotification.timeZone = [NSTimeZone defaultTimeZone];
-    
     [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
     
     [self saveDefault:localNotification];
