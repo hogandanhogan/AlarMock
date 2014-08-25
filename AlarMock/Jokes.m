@@ -24,6 +24,7 @@
 -(void)queryAlarmJokes
 {
     PFQuery *query = [PFQuery queryWithClassName:@"AlarmJokes"];
+    query.cachePolicy = kPFCachePolicyNetworkElseCache;
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (error)
         {

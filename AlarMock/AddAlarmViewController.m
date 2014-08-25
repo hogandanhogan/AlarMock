@@ -153,7 +153,7 @@
     {
         [self.alarmJokes addObject:joke.joke];
     }
-    NSLog(@"%@", jokes);
+//    NSLog(@"%@", jokes);
 }
 
 
