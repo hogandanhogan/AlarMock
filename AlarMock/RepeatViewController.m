@@ -52,8 +52,4 @@
     return cell;
 }
 
--(IBAction)unwindToAddAlarmViewController:(UIStoryboardSegue *)unwindSegue
-{
-    
-}
 @end
