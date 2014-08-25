@@ -98,6 +98,8 @@
     [self saveDefault:localNotification];
     
     [self.navigationController popToRootViewControllerAnimated:YES];
+
+
 }
 
 - (IBAction)onMoveSlider:(id)sender
@@ -133,6 +135,7 @@
     self.localNotifications = localNotificationsDatas;
     [prefs synchronize];
 }
+
 
 
 @end

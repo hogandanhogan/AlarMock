@@ -11,6 +11,9 @@
 @interface RepeatViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
+@property NSArray *days;
+@property NSMutableArray *selectedDays;
+
 @end
 
 @implementation RepeatViewController
@@ -20,6 +23,9 @@
     [super viewDidLoad];
     self.tableView.scrollEnabled = NO;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+
+    self.days = [NSArray new];
+    self.selectedDays = [NSMutableArray new];
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -32,6 +38,11 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if ([self.tableView cellForRowAtIndexPath:indexPath].accessoryType == UITableViewCellAccessoryNone) {
         [self.tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
+
+        //add the day from the selected cell to selectedDays array
+        [self.selectedDays addObject:[self.days objectAtIndex:indexPath.row]];
+
+
     } else {
         [self.tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
     }
@@ -40,28 +51,23 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DaysCell"];
-    NSArray *days = [[NSArray alloc] initWithObjects:@"Every Monday",
+    self.days = [[NSArray alloc] initWithObjects:@"Every Monday",
                      @"Every Tuesday",
                      @"Every Wednesday",
                      @"Every Thursday",
                      @"Every Friday",
                      @"Every Saturday",
                      @"Every Sunday", nil];
-    cell.textLabel.text = [days objectAtIndex:indexPath.row];
-
+    cell.textLabel.text = [self.days objectAtIndex:indexPath.row];
     return cell;
 }
+
 -(void)scheduleRepeatedDay
 {
-    NSDate *ScheduleDay = [NSDate date];
-    NSDateFormatter *dateFormatter1 = [[[NSDateFormatter alloc]init]autorelease];
-    dateFormatter1.dateFormat = @"EEEE MMMM d, yyyy";
-
-    NSDate *days = [dateFormatter dateFromString:dateString];
-    return ScheduleDay
-
 
 }
+
+
 
 -(IBAction)unwindToAddAlarmViewController:(UIStoryboardSegue *)unwindSegue
 {
