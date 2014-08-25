@@ -8,6 +8,7 @@
 
 #import "AddAlarmViewController.h"
 #import "RepeatViewController.h"
+#import "Jokes.h"
 
 
 @interface AddAlarmViewController () <UITableViewDataSource, UITableViewDelegate>
@@ -18,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *snoozeTimeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *snoozeMockLabel;
 @property float sliderVal;
+@property Jokes *jokes;
 
 @end
 
@@ -28,12 +30,15 @@
     [super viewDidLoad];
     
     self.localNotifications = [NSMutableArray new];
-    
+//    self.alarmJokes = [[NSArray alloc] initWithObjects:@ nil;]
+//    self.snoozeJokes = [NSArray new];
     self.datePicker.date = [NSDate date];
 
     self.tableView.scrollEnabled = NO;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     self.slider.hidden = YES;
+    self.jokes = [[Jokes alloc]init];
+    NSLog(@"%@", self.jokes.alarmJokes);
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -88,8 +93,10 @@
     
     //localNotification.fireDate = self.datePicker.date;
     //notification fires in 4 seconds while testing
+
+//    Jokes *jokes = [Jokes new];
     localNotification.fireDate = [NSDate dateWithTimeIntervalSinceNow:4];
-    localNotification.alertBody = @"Wake up";
+    localNotification.alertBody = [NSString stringWithFormat:@"%@", [self.jokes.alarmJokes objectAtIndex:arc4random_uniform(self.jokes.alarmJokes.count)]];
     localNotification.alertAction = @"Snooze";
     localNotification.timeZone = [NSTimeZone defaultTimeZone];
     
