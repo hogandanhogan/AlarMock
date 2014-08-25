@@ -69,9 +69,15 @@
     [switcheroo addTarget:self
                    action:@selector(changeSwitch:)
          forControlEvents:UIControlEventValueChanged];
+
     
     [self.view addSubview:switcheroo];
-    cell.accessoryView  = switcheroo;
+    if([switcheroo isOn]) {
+        [[UIApplication sharedApplication] scheduleLocalNotification:[self.localNotifications objectAtIndex:indexPath.row]];
+    } else{
+        [[UIApplication sharedApplication] cancelLocalNotification:[self.localNotifications objectAtIndex:indexPath.row]];
+    }
+    cell.accessoryView = switcheroo;
     
     return cell;
 }
@@ -97,11 +103,7 @@
 
 - (void)changeSwitch:(id)sender
 {
-    if([sender isOn]) {
-        //local notification
-    } else{
-        //no local notification
-    }
+    
 }
 - (IBAction)enterEditMode:(id)sender {
     
