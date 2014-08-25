@@ -66,8 +66,7 @@
     
     if (indexPath.row == 0) {
         RepeatViewController *dvc = [self.storyboard instantiateViewControllerWithIdentifier:@"daysVC"];
-        [self presentViewController:dvc animated:YES completion:nil];
-        dvc.navigationController.navigationBarHidden = NO;
+        [self.navigationController pushViewController:dvc animated:YES];
     }
 }
 
@@ -92,7 +91,6 @@
     localNotification.alertBody = @"Wake up";
     localNotification.alertAction = @"Snooze";
     localNotification.timeZone = [NSTimeZone defaultTimeZone];
-    
     [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
     
     [self saveDefault:localNotification];
