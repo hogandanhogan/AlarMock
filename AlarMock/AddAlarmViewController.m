@@ -9,9 +9,10 @@
 #import "AddAlarmViewController.h"
 #import "RepeatViewController.h"
 #import "Jokes.h"
+#import "AlarmJokes.h"
 
 
-@interface AddAlarmViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface AddAlarmViewController () <UITableViewDataSource, UITableViewDelegate, JokesManager>
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) IBOutlet UIDatePicker *datePicker;
@@ -20,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *snoozeMockLabel;
 @property float sliderVal;
 @property Jokes *jokes;
+@property NSMutableArray *alarmJokes;
 
 @end
 
@@ -38,7 +40,9 @@
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     self.slider.hidden = YES;
     self.jokes = [[Jokes alloc]init];
-    NSLog(@"%@", self.jokes.alarmJokes);
+//    NSLog(@"%@", self.jokes.alarmJokes);
+    self.jokes.delegate =self;
+    [self.jokes queryAlarmJokes];
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -95,7 +99,7 @@
 
 //    Jokes *jokes = [Jokes new];
     localNotification.fireDate = [NSDate dateWithTimeIntervalSinceNow:4];
-    localNotification.alertBody = [NSString stringWithFormat:@"%@", [self.jokes.alarmJokes objectAtIndex:arc4random_uniform(self.jokes.alarmJokes.count)]];
+    localNotification.alertBody = [NSString stringWithFormat:@"%@", [self.alarmJokes objectAtIndex:arc4random_uniform(self.alarmJokes.count)]];
     localNotification.alertAction = @"Snooze";
     localNotification.timeZone = [NSTimeZone defaultTimeZone];
     [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
@@ -138,6 +142,19 @@
     self.localNotifications = localNotificationsDatas;
     [prefs synchronize];
 }
+
+-(void)alarmJokesReturned:(NSArray *)jokes
+{
+    self.alarmJokes = [NSMutableArray array];
+
+    for (AlarmJokes *joke in jokes)
+    {
+        [self.alarmJokes addObject:joke.joke];
+    }
+    NSLog(@"%@", jokes);
+}
+
+
 
 
 @end

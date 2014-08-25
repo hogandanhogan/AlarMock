@@ -10,25 +10,30 @@
 
 @implementation Jokes
 
-//-(void)makeJokes
-//{
-//    self.snoozeJokes = [NSArray arrayWithObjects:@"What did you do last night that you've pressed snooze 8 times?", @"Ouch, that hurts", @"I'm trying not to take this personally", nil];
-//    self.alarmJokes = [NSArray arrayWithObjects:@"Well, you're another day closer to death…", @"So, you've finally decided to get out of bed…", @"If I had a hand, I'd slap you…", @"Time to make the donuts…", nil];
-//}
 
 -(id)init
 {
     if (self = [super init])
     {
-        self.snoozeJokes = [NSArray arrayWithObjects:@"What did you do last night that you've pressed snooze 8 times?",
-                            @"Ouch, that hurts", @"I'm trying not to take this personally",
-                            nil];
-        self.alarmJokes = [NSArray arrayWithObjects:@"Well, you're another day closer to death…",
-                           @"So, you've finally decided to get out of bed…",
-                           @"If I had a hand, I'd slap you…", @"Time to make the donuts…",
-                           nil];
+
     }
     return self;
 
+}
+
+-(void)queryAlarmJokes
+{
+    PFQuery *query = [PFQuery queryWithClassName:@"AlarmJokes"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (error)
+        {
+            NSLog(@"%@", error);
+        }
+        else
+        {
+            [self.delegate alarmJokesReturned:objects];
+        
+        }
+    }];
 }
 @end
