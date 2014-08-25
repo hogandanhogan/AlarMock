@@ -33,7 +33,7 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    self.localNotifications = [[NSUserDefaults standardUserDefaults] objectForKey:@"localNotificationsDatas"];
+    self.localNotifications = [[NSMutableArray alloc] initWithArray:[[NSUserDefaults standardUserDefaults] objectForKey:@"localNotificationsDatas"]];
     [self.tableView reloadData];
 }
 
