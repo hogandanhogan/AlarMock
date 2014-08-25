@@ -32,8 +32,6 @@
     [super viewDidLoad];
     
     self.localNotifications = [NSMutableArray new];
-//    self.alarmJokes = [[NSArray alloc] initWithObjects:@ nil;]
-//    self.snoozeJokes = [NSArray new];
     self.datePicker.date = [NSDate date];
 
     self.tableView.scrollEnabled = NO;
@@ -97,7 +95,6 @@
     //localNotification.fireDate = self.datePicker.date;
     //notification fires in 4 seconds while testing
 
-//    Jokes *jokes = [Jokes new];
     localNotification.fireDate = [NSDate dateWithTimeIntervalSinceNow:4];
     localNotification.alertBody = [NSString stringWithFormat:@"%@", [self.alarmJokes objectAtIndex:arc4random_uniform(self.alarmJokes.count)]];
     localNotification.alertAction = @"Snooze";
