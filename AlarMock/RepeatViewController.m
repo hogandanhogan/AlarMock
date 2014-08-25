@@ -40,16 +40,27 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DaysCell"];
-    NSArray *days = [[NSArray alloc] initWithObjects:@"Monday",
-                     @"Tuesday",
-                     @"Wednesday",
-                     @"Thursday",
-                     @"Friday",
-                     @"Saturday",
-                     @"Sunday", nil];
+    NSArray *days = [[NSArray alloc] initWithObjects:@"Every Monday",
+                     @"Every Tuesday",
+                     @"Every Wednesday",
+                     @"Every Thursday",
+                     @"Every Friday",
+                     @"Every Saturday",
+                     @"Every Sunday", nil];
     cell.textLabel.text = [days objectAtIndex:indexPath.row];
-    
+
     return cell;
+}
+-(void)scheduleRepeatedDay
+{
+    NSDate *ScheduleDay = [NSDate date];
+    NSDateFormatter *dateFormatter1 = [[[NSDateFormatter alloc]init]autorelease];
+    dateFormatter1.dateFormat = @"EEEE MMMM d, yyyy";
+
+    NSDate *days = [dateFormatter dateFromString:dateString];
+    return ScheduleDay
+
+
 }
 
 -(IBAction)unwindToAddAlarmViewController:(UIStoryboardSegue *)unwindSegue
