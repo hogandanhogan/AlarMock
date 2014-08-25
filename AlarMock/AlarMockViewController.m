@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *editButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *addButton;
 @property (weak, nonatomic) IBOutlet UITextField *textField;
+@property UISwitch *switcheroo;
 
 
 @end
@@ -69,7 +70,8 @@
     [switcheroo addTarget:self
                    action:@selector(changeSwitch:)
          forControlEvents:UIControlEventValueChanged];
-    
+
+    switcheroo.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleHeight;
     [self.view addSubview:switcheroo];
     cell.accessoryView  = switcheroo;
     
@@ -125,7 +127,7 @@
 }
 - (IBAction)onSubmitJoke:(id)sender
 {
-    PFObject *joke = [PFObject objectWithClassName:@"Joke"];
+    PFObject *joke = [PFObject objectWithClassName:@"UserJokes"];
     joke[@"joke"] = self.textField.text;
     [joke saveInBackground];
     self.textField.text = @"";
