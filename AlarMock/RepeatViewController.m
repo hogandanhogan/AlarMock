@@ -26,6 +26,22 @@
 
     self.days = [NSArray new];
     self.selectedDays = [NSMutableArray new];
+
+    
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DaysCell"];
+    self.days = [[NSArray alloc] initWithObjects:@"Every Monday",
+                 @"Every Tuesday",
+                 @"Every Wednesday",
+                 @"Every Thursday",
+                 @"Every Friday",
+                 @"Every Saturday",
+                 @"Every Sunday", nil];
+    cell.textLabel.text = [self.days objectAtIndex:indexPath.row];
+    return cell;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -48,27 +64,21 @@
     }
 }
 
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DaysCell"];
-    self.days = [[NSArray alloc] initWithObjects:@"Every Monday",
-                     @"Every Tuesday",
-                     @"Every Wednesday",
-                     @"Every Thursday",
-                     @"Every Friday",
-                     @"Every Saturday",
-                     @"Every Sunday", nil];
-    cell.textLabel.text = [self.days objectAtIndex:indexPath.row];
-    return cell;
+
+-(NSDate *)scheduleRepeatedDay:(NSInteger ) day /// here day will be 1 or 2.. or 7
+    {
+        NSInteger desiredWeekday = day;
+        NSRange weekDateRange = [[NSCalendar currentCalendar] maximumRangeOfUnit:NSWeekdayCalendarUnit];
+        NSInteger daysInWeek = weekDateRange.length - weekDateRange.location + 1;
+
+        NSDateComponents *dateComponents = [[NSCalendar currentCalendar] components:NSWeekdayCalendarUnit fromDate:[NSDate date]];
+        NSInteger currentWeekday = dateComponents.weekday;
+        NSInteger differenceDays = (desiredWeekday - currentWeekday + daysInWeek) % daysInWeek;
+        NSDateComponents *daysComponents = [[NSDateComponents alloc] init];
+        daysComponents.day = differenceDays;
+        NSDate *resultDate = [[NSCalendar currentCalendar] dateByAddingComponents:daysComponents toDate:[NSDate date] options:0];
+        return resultDate;
 }
-
--(void)scheduleRepeatedDay
-{
-    self.selectedDays = 
-
-
-}
-
 
 
 -(IBAction)unwindToAddAlarmViewController:(UIStoryboardSegue *)unwindSegue
