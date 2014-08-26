@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *editButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *addButton;
 @property (weak, nonatomic) IBOutlet UITextField *textField;
+@property UISwitch *switcheroo;
 
 
 @end
@@ -69,9 +70,14 @@
     [switcheroo addTarget:self
                    action:@selector(changeSwitch:)
          forControlEvents:UIControlEventValueChanged];
-    
+
     [self.view addSubview:switcheroo];
-    cell.accessoryView  = switcheroo;
+    if([switcheroo isOn]) {
+        [[UIApplication sharedApplication] scheduleLocalNotification:[self.localNotifications objectAtIndex:indexPath.row]];
+    } else{
+        [[UIApplication sharedApplication] cancelLocalNotification:[self.localNotifications objectAtIndex:indexPath.row]];
+    }
+    cell.accessoryView = switcheroo;
     
     return cell;
 }
@@ -97,11 +103,7 @@
 
 - (void)changeSwitch:(id)sender
 {
-    if([sender isOn]) {
-        //local notification
-    } else{
-        //no local notification
-    }
+    
 }
 - (IBAction)enterEditMode:(id)sender {
     
@@ -125,7 +127,7 @@
 }
 - (IBAction)onSubmitJoke:(id)sender
 {
-    PFObject *joke = [PFObject objectWithClassName:@"Joke"];
+    PFObject *joke = [PFObject objectWithClassName:@"UserJokes"];
     joke[@"joke"] = self.textField.text;
     [joke saveInBackground];
     self.textField.text = @"";

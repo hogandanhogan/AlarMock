@@ -8,9 +8,11 @@
 
 #import "AddAlarmViewController.h"
 #import "RepeatViewController.h"
+#import "Jokes.h"
+#import "AlarmJokes.h"
 
 
-@interface AddAlarmViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface AddAlarmViewController () <UITableViewDataSource, UITableViewDelegate, JokesManager>
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) IBOutlet UIDatePicker *datePicker;
@@ -18,6 +20,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *snoozeTimeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *snoozeMockLabel;
 @property float sliderVal;
+@property Jokes *jokes;
+@property NSMutableArray *alarmJokes;
 
 @end
 
@@ -28,12 +32,15 @@
     [super viewDidLoad];
     
     self.localNotifications = [NSMutableArray new];
-    
     self.datePicker.date = [NSDate date];
 
     self.tableView.scrollEnabled = NO;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     self.slider.hidden = YES;
+    self.jokes = [[Jokes alloc]init];
+//    NSLog(@"%@", self.jokes.alarmJokes);
+    self.jokes.delegate =self;
+    [self.jokes queryAlarmJokes];
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -87,8 +94,9 @@
     
     //localNotification.fireDate = self.datePicker.date;
     //notification fires in 4 seconds while testing
+
     localNotification.fireDate = [NSDate dateWithTimeIntervalSinceNow:4];
-    localNotification.alertBody = @"Wake up";
+    localNotification.alertBody = [NSString stringWithFormat:@"%@", [self.alarmJokes objectAtIndex:arc4random_uniform(self.alarmJokes.count)]];
     localNotification.alertAction = @"Snooze";
     localNotification.timeZone = [NSTimeZone defaultTimeZone];
     [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
@@ -131,6 +139,19 @@
     self.localNotifications = localNotificationsDatas;
     [prefs synchronize];
 }
+
+-(void)alarmJokesReturned:(NSArray *)jokes
+{
+    self.alarmJokes = [NSMutableArray array];
+
+    for (AlarmJokes *joke in jokes)
+    {
+        [self.alarmJokes addObject:joke.joke];
+    }
+    NSLog(@"%@", jokes);
+}
+
+
 
 
 @end
