@@ -10,9 +10,10 @@
 #import "RepeatViewController.h"
 #import "Jokes.h"
 #import "AlarmJokes.h"
+@import MediaPlayer;
 
 
-@interface AddAlarmViewController () <UITableViewDataSource, UITableViewDelegate, JokesManager>
+@interface AddAlarmViewController () <UITableViewDataSource, UITableViewDelegate, JokesManager, MPMediaPickerControllerDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) IBOutlet UIDatePicker *datePicker;
@@ -150,8 +151,30 @@
     }
 //    NSLog(@"%@", jokes);
 }
+//onRowTapped is not real…
+- (void)onRowTapped:(BOOL)animated {
+    MPMediaPickerController *picker = [[MPMediaPickerController alloc] initWithMediaTypes:MPMediaTypeAnyAudio];
+	picker.delegate = self;
+	picker.allowsPickingMultipleItems = YES;
+	picker.prompt = @"Choose a song that might wake your bitch ass up";
+	[self presentViewController:picker animated:YES completion:nil];
 
+}
 
+//- (void) mediaPicker: (MPMediaPickerController *) mediaPicker didPickMediaItems: (MPMediaItemCollection *) mediaItemCollection {
+//
+//	[self dismissViewControllerAnimated:YES completion:^{
+//        [self updatePlayerQueueWithMediaCollection: mediaItemCollection];
+//        [AddAlarmViewController reloadData];
+//    }];
+//}
+//
+//// Responds to the user tapping done having chosen no music.
+//- (void) mediaPickerDidCancel: (MPMediaPickerController *) mediaPicker {
+//
+//	[self dismissViewControllerAnimated:YES completion:^{
+//
+//    }];}
 
 
 @end
