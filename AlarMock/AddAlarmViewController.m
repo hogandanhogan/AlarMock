@@ -10,6 +10,7 @@
 #import "RepeatViewController.h"
 #import "Jokes.h"
 #import "AlarmJokes.h"
+#import "SnoozeJokes.h"
 
 
 @interface AddAlarmViewController () <UITableViewDataSource, UITableViewDelegate, JokesManager>
@@ -22,6 +23,7 @@
 @property float sliderVal;
 @property Jokes *jokes;
 @property NSMutableArray *alarmJokes;
+@property NSMutableArray *snoozeJokes;
 
 @end
 
@@ -40,9 +42,10 @@
     self.slider.hidden = YES;
     
     self.jokes = [[Jokes alloc] init];
-//    NSLog(@"%@", self.jokes.alarmJokes);
+
     self.jokes.delegate =self;
     [self.jokes queryAlarmJokes];
+    [self.jokes querySnoozeJokes];
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -92,19 +95,31 @@
 
 - (IBAction)onSavePressed:(id)sender
 {
-    UILocalNotification* localNotification = [[UILocalNotification alloc] init];
-    
+    UILocalNotification* localNotification = [UILocalNotification new];
+   
     //localNotification.fireDate = self.datePicker.date;
     //notification fires in 4 seconds while testing
-
     localNotification.fireDate = [NSDate dateWithTimeIntervalSinceNow:4];
     localNotification.alertBody = [NSString stringWithFormat:@"%@", [self.alarmJokes objectAtIndex:arc4random_uniform(self.alarmJokes.count)]];
-    localNotification.alertAction = @"Snooze";
+    //localNotification.alertAction = @"Snooze";
     localNotification.timeZone = [NSTimeZone defaultTimeZone];
-    [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
     
+    [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
     [self saveDefault:localNotification];
     
+    for (int i = 1; i < 5; i++) {
+        UILocalNotification * snoozeNotification = [UILocalNotification new];
+        snoozeNotification.alertBody = [NSString stringWithFormat:@"%@", [self.snoozeJokes objectAtIndex:arc4random_uniform(self.snoozeJokes.count)]];
+        //snoozeNotification.fireDate = [NSDate dateWithTimeInterval:60 * i * self.sliderVal sinceDate:self.datePicker.date];
+        
+        snoozeNotification.fireDate = [NSDate dateWithTimeIntervalSinceNow:10 * i];
+        localNotification.timeZone = [NSTimeZone defaultTimeZone];
+
+        
+        [[UIApplication sharedApplication] scheduleLocalNotification:snoozeNotification];
+        [self saveSnoozeDefault:snoozeNotification];
+    }
+        
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
@@ -141,6 +156,19 @@
     [prefs synchronize];
 }
 
+-(void)saveSnoozeDefault:(UILocalNotification *)localNotification
+{
+    NSData *localNotificationData = [NSKeyedArchiver archivedDataWithRootObject:localNotification];
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    
+    id encodedNotes = [prefs objectForKey:@"snoozeNotificationsData"];
+    
+    NSMutableArray *datas = [[NSMutableArray alloc] initWithArray:encodedNotes];
+    [datas addObject:localNotificationData];
+    [prefs setObject:datas forKey:@"snoozeNotificationsData"];
+    [prefs synchronize];
+}
+
 -(void)alarmJokesReturned:(NSArray *)jokes
 {
     self.alarmJokes = [NSMutableArray array];
@@ -149,7 +177,16 @@
     {
         [self.alarmJokes addObject:joke.joke];
     }
-    NSLog(@"%@", jokes);
+}
+
+-(void)snoozeJokesReturned:(NSArray *)jokes
+{
+    self.snoozeJokes = [NSMutableArray array];
+    
+    for (SnoozeJokes *joke in jokes)
+    {
+        [self.snoozeJokes addObject:joke.joke];
+    }
 }
 
 

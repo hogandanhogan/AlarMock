@@ -36,4 +36,20 @@
         }
     }];
 }
+
+-(void)querySnoozeJokes
+{
+    PFQuery *query = [PFQuery queryWithClassName:@"SnoozeJokes"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (error)
+        {
+            NSLog(@"%@", error);
+        }
+        else
+        {
+            [self.delegate snoozeJokesReturned:objects];
+            
+        }
+    }];
+}
 @end

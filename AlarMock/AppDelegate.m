@@ -8,7 +8,8 @@
 
 #import "AppDelegate.h"
 #import <Parse/Parse.h>
-#import "SnoozeJokes.h"
+#import "Jokes.h"
+#import "AlarMockViewController.h"
 
 
 @implementation AppDelegate
@@ -51,13 +52,17 @@
 - (void)application:(UIApplication *)application
 didReceiveLocalNotification:(UILocalNotification *)notification
 {
-    SnoozeJokes *snoozejoke = [SnoozeJokes new];
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:snoozejoke.joke
-                                                        message:snoozejoke.joke
-                                                       delegate:nil
+    id vc = self.window.rootViewController;
+    vc = [vc viewControllers].firstObject;
+    
+    Jokes *snoozejoke = [Jokes new];
+    [snoozejoke queryAlarmJokes];
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Wake the fuck up"
+                                                        message:nil
+                                                       delegate:vc
                                               cancelButtonTitle:nil
-                                              otherButtonTitles:@"Ok I'm Awake",
-                                                                @"I'm too pathetic to wake up. Snooze",nil];
+                                              otherButtonTitles:@"Dismiss",
+                                                                @"Snooze",nil];
     [alertView show];
 }
 

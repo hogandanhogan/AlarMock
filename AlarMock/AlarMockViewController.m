@@ -9,7 +9,7 @@
 #import "AlarMockViewController.h"
 #import "TableViewCell.h"
 
-@interface AlarMockViewController() <UITableViewDelegate, UITableViewDataSource, TableViewCellDelegate>
+@interface AlarMockViewController() <UITableViewDelegate, UITableViewDataSource, TableViewCellDelegate, UIAlertViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *editButton;
@@ -100,9 +100,17 @@
     [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
+#pragma mark Alert View Delegate Methods
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+
+}
+
 #pragma mark Other Methods
 
-- (IBAction)enterEditMode:(id)sender {
+- (IBAction)enterEditMode:(id)sender
+{
     
     if ([self.tableView isEditing]) {
         [self.tableView setEditing:NO animated:YES];
@@ -134,6 +142,18 @@
 -(IBAction)unwindToAddAlarmViewController:(UIStoryboardSegue *)unwindSegue
 {
     
+}
+
+-(void)saveDefault:(UILocalNotification *)localNotification
+{
+    NSData *localNotificationData = [NSKeyedArchiver archivedDataWithRootObject:localNotification];
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    
+    NSMutableArray *localNotificationsData = [[NSMutableArray alloc] initWithArray:[prefs objectForKey:@"localNotificationsData"]];
+    [localNotificationsData addObject:localNotificationData];
+    [prefs setObject:localNotificationsData forKey:@"localNotificationsData"];
+    self.localNotifications = localNotificationsData;
+    [prefs synchronize];
 }
 
 @end
