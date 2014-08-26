@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *snoozeTimeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *snoozeMockLabel;
 @property float sliderVal;
+@property NSMutableArray *passedSelectedDays;
 
 @end
 
@@ -34,6 +35,8 @@
     self.tableView.scrollEnabled = NO;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     self.slider.hidden = YES;
+
+    self.passedSelectedDays = [NSMutableArray new];
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -134,6 +137,11 @@
     [prefs setObject:localNotificationsDatas forKey:@"localNotificationsDatas"];
     self.localNotifications = localNotificationsDatas;
     [prefs synchronize];
+}
+-(IBAction)unwindToAddAlarmViewController:(UIStoryboardSegue *)unwindSegue
+{
+    RepeatViewController *repeatVC = unwindSegue.sourceViewController;
+    self.passedSelectedDays = repeatVC.selectedDays;
 }
 
 

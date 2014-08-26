@@ -10,4 +10,6 @@
 
 @interface RepeatViewController : UIViewController
 
+@property NSMutableArray *selectedDays;
+
 @end
