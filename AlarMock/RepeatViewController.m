@@ -11,6 +11,7 @@
 @interface RepeatViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
+
 @property NSArray *days;
 
 @end
@@ -30,7 +31,6 @@
         @"Every Friday",
         @"Every Saturday",
         @"Every Sunday", nil];
-    self.selectedDays = [NSMutableArray new];
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

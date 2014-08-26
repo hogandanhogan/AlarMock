@@ -145,6 +145,41 @@
 }
 
 
+-(void)determineDaysForAlarm
+{
+       if ([self.passedSelectedDays containsObject:@0])
+    {
+        //code for monday
+    }
+    else if([self.passedSelectedDays containsObject:@1])
+    {
+        //code for tuesday
+    }
+    else if([self.passedSelectedDays containsObject:@2])
+    {
+        //code for wednesday
+    }
+    else if([self.passedSelectedDays containsObject:@3])
+    {
+        //code for thursday
+    }
+    else if([self.passedSelectedDays containsObject:@4])
+    {
+        //code for friday
+    }
+    else if ([self.passedSelectedDays containsObject:@5])
+    {
+        //code for saturday
+    }
+    else if ([self.passedSelectedDays containsObject:@6])
+    {
+        //code for sunday
+    }
+
+}
+
+
+
 
 @end
 
