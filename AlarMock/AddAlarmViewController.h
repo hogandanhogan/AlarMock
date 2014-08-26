@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface AddAlarmViewController : UIViewController
+
 @property NSMutableArray *localNotifications;
 
 @end

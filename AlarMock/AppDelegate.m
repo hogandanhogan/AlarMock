@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 #import <Parse/Parse.h>
+#import "SnoozeJokes.h"
+
 
 @implementation AppDelegate
 
@@ -44,6 +46,19 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (void)application:(UIApplication *)application
+didReceiveLocalNotification:(UILocalNotification *)notification
+{
+    SnoozeJokes *snoozejoke = [SnoozeJokes new];
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:snoozejoke.joke
+                                                        message:snoozejoke.joke
+                                                       delegate:nil
+                                              cancelButtonTitle:nil
+                                              otherButtonTitles:@"Ok I'm Awake",
+                                                                @"I'm too pathetic to wake up. Snooze",nil];
+    [alertView show];
 }
 
 @end

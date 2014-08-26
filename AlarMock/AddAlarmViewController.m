@@ -36,8 +36,10 @@
 
     self.tableView.scrollEnabled = NO;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    
     self.slider.hidden = YES;
-    self.jokes = [[Jokes alloc]init];
+    
+    self.jokes = [[Jokes alloc] init];
 //    NSLog(@"%@", self.jokes.alarmJokes);
     self.jokes.delegate =self;
     [self.jokes queryAlarmJokes];
@@ -82,7 +84,7 @@
     if([sender isOn]) {
         self.slider.hidden = NO;
         self.snoozeTimeLabel.hidden = NO;
-    } else{
+    } else {
         self.slider.hidden = YES;
         self.snoozeTimeLabel.hidden = YES;
     }
@@ -131,12 +133,11 @@
 {
     NSData *localNotificationData = [NSKeyedArchiver archivedDataWithRootObject:localNotification];
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-    [prefs setValue:localNotificationData forKey:@"localNotificationData"];
     
-    NSMutableArray *localNotificationsDatas = [[NSMutableArray alloc] initWithArray:[prefs objectForKey:@"localNotificationsDatas"]];
-    [localNotificationsDatas addObject:localNotificationData];
-    [prefs setObject:localNotificationsDatas forKey:@"localNotificationsDatas"];
-    self.localNotifications = localNotificationsDatas;
+    NSMutableArray *localNotificationsData = [[NSMutableArray alloc] initWithArray:[prefs objectForKey:@"localNotificationsData"]];
+    [localNotificationsData addObject:localNotificationData];
+    [prefs setObject:localNotificationsData forKey:@"localNotificationsData"];
+    self.localNotifications = localNotificationsData;
     [prefs synchronize];
 }
 
