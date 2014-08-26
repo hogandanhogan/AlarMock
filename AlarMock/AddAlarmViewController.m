@@ -32,8 +32,6 @@
     [super viewDidLoad];
     
     self.localNotifications = [NSMutableArray new];
-//    self.alarmJokes = [[NSArray alloc] initWithObjects:@ nil;]
-//    self.snoozeJokes = [NSArray new];
     self.datePicker.date = [NSDate date];
 
     self.tableView.scrollEnabled = NO;
@@ -75,8 +73,7 @@
     
     if (indexPath.row == 0) {
         RepeatViewController *dvc = [self.storyboard instantiateViewControllerWithIdentifier:@"daysVC"];
-        [self presentViewController:dvc animated:YES completion:nil];
-        dvc.navigationController.navigationBarHidden = NO;
+        [self.navigationController pushViewController:dvc animated:YES];
     }
 }
 
@@ -98,12 +95,10 @@
     //localNotification.fireDate = self.datePicker.date;
     //notification fires in 4 seconds while testing
 
-//    Jokes *jokes = [Jokes new];
     localNotification.fireDate = [NSDate dateWithTimeIntervalSinceNow:4];
     localNotification.alertBody = [NSString stringWithFormat:@"%@", [self.alarmJokes objectAtIndex:arc4random_uniform(self.alarmJokes.count)]];
     localNotification.alertAction = @"Snooze";
     localNotification.timeZone = [NSTimeZone defaultTimeZone];
-    
     [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
     
     [self saveDefault:localNotification];

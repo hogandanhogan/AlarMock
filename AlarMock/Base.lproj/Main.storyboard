@@ -69,12 +69,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="631" y="119"/>
+            <point key="canvasLocation" x="573" y="99"/>
         </scene>
         <!--Repeat View Controller-->
         <scene sceneID="wNR-6Z-tPc">
             <objects>
-                <viewController id="W2F-c8-mB8" customClass="RepeatViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="daysVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="W2F-c8-mB8" customClass="RepeatViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="mpF-ZW-EQY"/>
                         <viewControllerLayoutGuide type="bottom" id="piU-c2-qAN"/>
@@ -89,7 +89,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DaysCell" id="Yd4-WZ-W1A">
-                                        <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Yd4-WZ-W1A" id="MJH-eE-uhZ">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -109,7 +109,7 @@
                         <nil key="title"/>
                         <barButtonItem key="leftBarButtonItem" title="Back" id="pQV-e6-1Ig">
                             <connections>
-                                <segue destination="YhB-pp-zMa" kind="unwind" unwindAction="unwindToAddAlarmViewController:" id="a5i-nD-Fys"/>
+                                <segue destination="YhB-pp-zMa" kind="unwind" unwindAction="unwindToAddAlarmViewController:" id="Aeq-Gx-AJt"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -120,7 +120,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bUh-vz-2HG" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="YhB-pp-zMa" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1985" y="119"/>
+            <point key="canvasLocation" x="1438" y="126"/>
         </scene>
         <!--Add Alarm View Controller - Add Alarm-->
         <scene sceneID="Zu8-Yv-70k">
@@ -251,24 +251,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KOF-lR-gbS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="138" y="99"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="xu8-Gc-azY">
-            <objects>
-                <navigationController storyboardIdentifier="daysVC" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="rfr-A4-xX4" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="4bc-Ta-1fd">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="W2F-c8-mB8" kind="relationship" relationship="rootViewController" id="5T4-SV-fAl"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hpC-Ri-4Kd" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1459" y="119"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
