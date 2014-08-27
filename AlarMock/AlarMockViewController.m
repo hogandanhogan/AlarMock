@@ -55,7 +55,6 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     TableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
-    //cell.delegate = self;
     
     [[UIApplication sharedApplication] scheduledLocalNotifications];
     
