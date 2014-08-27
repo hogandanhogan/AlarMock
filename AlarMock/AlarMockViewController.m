@@ -10,15 +10,16 @@
 #import "TableViewCell.h"
 #import "SnoozeJokes.h"
 #import "Jokes.h"
+#import "AddAlarmViewController.h"
 
-@interface AlarMockViewController() <UITableViewDelegate, UITableViewDataSource, TableViewCellDelegate, UIAlertViewDelegate>
+@interface AlarMockViewController() <UITableViewDelegate, UITableViewDataSource, TableViewCellDelegate, JokesManager, UIAlertViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *editButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *addButton;
 @property (weak, nonatomic) IBOutlet UITextField *textField;
-@property NSMutableArray *snoozeJokes;
 @property Jokes *jokes;
+@property NSMutableArray *snoozeJokes;
 
 @end
 
@@ -35,7 +36,7 @@
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 
     self.jokes = [[Jokes alloc] init];
-
+    self.jokes.delegate =self;
     [self.jokes querySnoozeJokes];
 }
 
@@ -104,7 +105,7 @@
 
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    if (buttonIndex == 1) {
+    if (buttonIndex == 0) {
         UILocalNotification * snoozeNotification = [UILocalNotification new];
         snoozeNotification.alertBody = [NSString stringWithFormat:@"%@", [self.snoozeJokes objectAtIndex:arc4random_uniform((uint32_t)self.snoozeJokes.count)]];
         //snoozeNotification.fireDate = [NSDate dateWithTimeInterval:60 * i * self.sliderVal sinceDate:self.datePicker.date];
@@ -121,7 +122,6 @@
 -(void)tableViewCell:(TableViewCell *)tableViewCell switchDidChangeValue:(UISwitch *)switcheroo
 {
     //set switch on/off functionality
-
 }
 
 

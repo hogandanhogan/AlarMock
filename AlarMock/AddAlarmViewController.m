@@ -100,6 +100,9 @@
     localNotification.alertBody = [NSString stringWithFormat:@"%@", [self.alarmJokes objectAtIndex:arc4random_uniform((uint32_t)self.alarmJokes.count)]];
     //localNotification.alertAction = @"Snooze";
     localNotification.timeZone = [NSTimeZone defaultTimeZone];
+    if (self.sliderVal) {
+        //schedule more snoozes
+    }
     
     [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
     [self saveDefault:localNotification];
