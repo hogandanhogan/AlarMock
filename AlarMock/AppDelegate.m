@@ -8,6 +8,9 @@
 
 #import "AppDelegate.h"
 #import <Parse/Parse.h>
+#import "Jokes.h"
+#import "AlarMockViewController.h"
+
 
 @implementation AppDelegate
 
@@ -44,6 +47,23 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (void)application:(UIApplication *)application
+didReceiveLocalNotification:(UILocalNotification *)notification
+{
+    id vc = self.window.rootViewController;
+    vc = [vc viewControllers].firstObject;
+    
+    Jokes *snoozejoke = [Jokes new];
+    [snoozejoke queryAlarmJokes];
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Wake the fuck up"
+                                                        message:nil
+                                                       delegate:vc
+                                              cancelButtonTitle:nil
+                                              otherButtonTitles:@"Snooze",
+                                                                @"Dismiss",nil];
+    [alertView show];
 }
 
 @end

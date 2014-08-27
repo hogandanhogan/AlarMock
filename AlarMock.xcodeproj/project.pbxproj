@@ -8,8 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		1F6CACA519A7C5070025CB67 /* AddAlarmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6CACA419A7C5070025CB67 /* AddAlarmViewController.m */; };
+		792A791619ABF4C80099A32F /* TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 792A791519ABF4C80099A32F /* TableViewCell.m */; };
 		79318CCF19A8E7F70021D655 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79318CCE19A8E7F70021D655 /* CoreData.framework */; };
 		797DF3DC19A962FE00FDD94B /* RepeatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 797DF3DB19A962FE00FDD94B /* RepeatViewController.m */; };
+		79A2518F19AE2E7F009174C8 /* AlarmEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 79A2518E19AE2E7F009174C8 /* AlarmEngine.m */; };
 		98315AFE19ABAE3F00D717F0 /* Jokes.m in Sources */ = {isa = PBXBuildFile; fileRef = 98315AFD19ABAE3F00D717F0 /* Jokes.m */; };
 		98315B0119ABD40300D717F0 /* AlarmJokes.m in Sources */ = {isa = PBXBuildFile; fileRef = 98315B0019ABD40300D717F0 /* AlarmJokes.m */; };
 		98315B0419ABD4E700D717F0 /* SnoozeJokes.m in Sources */ = {isa = PBXBuildFile; fileRef = 98315B0319ABD4E700D717F0 /* SnoozeJokes.m */; };
@@ -27,6 +29,7 @@
 		98962DDE19A7C0E700DEE9B5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98962DC019A7C0E700DEE9B5 /* UIKit.framework */; };
 		98962DE619A7C0E800DEE9B5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 98962DE419A7C0E800DEE9B5 /* InfoPlist.strings */; };
 		98962DE819A7C0E800DEE9B5 /* AlarMockTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 98962DE719A7C0E800DEE9B5 /* AlarMockTests.m */; };
+		989F4C0B19ACE3150002B543 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 989F4C0A19ACE3150002B543 /* MediaPlayer.framework */; };
 		E7AAF5ED19AAAE3C0055D07B /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7AAF5EB19AAAE3C0055D07B /* Bolts.framework */; };
 		E7AAF5EE19AAAE3C0055D07B /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7AAF5EC19AAAE3C0055D07B /* Parse.framework */; };
 		E7AAF5F819AAAE910055D07B /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7AAF5EF19AAAE910055D07B /* AudioToolbox.framework */; };
@@ -53,9 +56,13 @@
 /* Begin PBXFileReference section */
 		1F6CACA319A7C5070025CB67 /* AddAlarmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddAlarmViewController.h; sourceTree = "<group>"; };
 		1F6CACA419A7C5070025CB67 /* AddAlarmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddAlarmViewController.m; sourceTree = "<group>"; };
+		792A791419ABF4C80099A32F /* TableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewCell.h; sourceTree = "<group>"; };
+		792A791519ABF4C80099A32F /* TableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewCell.m; sourceTree = "<group>"; };
 		79318CCE19A8E7F70021D655 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		797DF3DA19A962FE00FDD94B /* RepeatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepeatViewController.h; sourceTree = "<group>"; };
 		797DF3DB19A962FE00FDD94B /* RepeatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepeatViewController.m; sourceTree = "<group>"; };
+		79A2518D19AE2E7F009174C8 /* AlarmEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmEngine.h; sourceTree = "<group>"; };
+		79A2518E19AE2E7F009174C8 /* AlarmEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmEngine.m; sourceTree = "<group>"; };
 		98315AFC19ABAE3F00D717F0 /* Jokes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Jokes.h; sourceTree = "<group>"; };
 		98315AFD19ABAE3F00D717F0 /* Jokes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Jokes.m; sourceTree = "<group>"; };
 		98315AFF19ABD40300D717F0 /* AlarmJokes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmJokes.h; sourceTree = "<group>"; };
@@ -81,6 +88,7 @@
 		98962DE319A7C0E800DEE9B5 /* AlarMockTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AlarMockTests-Info.plist"; sourceTree = "<group>"; };
 		98962DE519A7C0E800DEE9B5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		98962DE719A7C0E800DEE9B5 /* AlarMockTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AlarMockTests.m; sourceTree = "<group>"; };
+		989F4C0A19ACE3150002B543 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		E7AAF5EB19AAAE3C0055D07B /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		E7AAF5EC19AAAE3C0055D07B /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		E7AAF5EF19AAAE910055D07B /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -99,6 +107,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				989F4C0B19ACE3150002B543 /* MediaPlayer.framework in Frameworks */,
 				E7AAF5F819AAAE910055D07B /* AudioToolbox.framework in Frameworks */,
 				E7AAF5F919AAAE910055D07B /* CFNetwork.framework in Frameworks */,
 				E7AAF5FA19AAAE910055D07B /* CoreLocation.framework in Frameworks */,
@@ -152,6 +161,7 @@
 		98962DBB19A7C0E700DEE9B5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				989F4C0A19ACE3150002B543 /* MediaPlayer.framework */,
 				E7AAF5EF19AAAE910055D07B /* AudioToolbox.framework */,
 				E7AAF5F019AAAE910055D07B /* CFNetwork.framework */,
 				E7AAF5F119AAAE910055D07B /* CoreLocation.framework */,
@@ -180,10 +190,14 @@
 				98962DCE19A7C0E700DEE9B5 /* Main.storyboard */,
 				1F6CACA319A7C5070025CB67 /* AddAlarmViewController.h */,
 				1F6CACA419A7C5070025CB67 /* AddAlarmViewController.m */,
+				79A2518D19AE2E7F009174C8 /* AlarmEngine.h */,
+				79A2518E19AE2E7F009174C8 /* AlarmEngine.m */,
 				98962DD119A7C0E700DEE9B5 /* AlarMockViewController.h */,
 				98962DD219A7C0E700DEE9B5 /* AlarMockViewController.m */,
 				797DF3DA19A962FE00FDD94B /* RepeatViewController.h */,
 				797DF3DB19A962FE00FDD94B /* RepeatViewController.m */,
+				792A791419ABF4C80099A32F /* TableViewCell.h */,
+				792A791519ABF4C80099A32F /* TableViewCell.m */,
 				98962DD419A7C0E700DEE9B5 /* Images.xcassets */,
 				98962DC319A7C0E700DEE9B5 /* Supporting Files */,
 				98315AFF19ABD40300D717F0 /* AlarmJokes.h */,
@@ -326,6 +340,8 @@
 				98315AFE19ABAE3F00D717F0 /* Jokes.m in Sources */,
 				98315B0419ABD4E700D717F0 /* SnoozeJokes.m in Sources */,
 				98962DD319A7C0E700DEE9B5 /* AlarMockViewController.m in Sources */,
+				79A2518F19AE2E7F009174C8 /* AlarmEngine.m in Sources */,
+				792A791619ABF4C80099A32F /* TableViewCell.m in Sources */,
 				1F6CACA519A7C5070025CB67 /* AddAlarmViewController.m in Sources */,
 				98962DCD19A7C0E700DEE9B5 /* AppDelegate.m in Sources */,
 				797DF3DC19A962FE00FDD94B /* RepeatViewController.m in Sources */,

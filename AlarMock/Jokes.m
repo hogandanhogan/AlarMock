@@ -24,6 +24,7 @@
 -(void)queryAlarmJokes
 {
     PFQuery *query = [PFQuery queryWithClassName:@"AlarmJokes"];
+    query.cachePolicy = kPFCachePolicyNetworkElseCache;
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (error)
         {
@@ -33,6 +34,19 @@
         {
             [self.delegate alarmJokesReturned:objects];
         
+        }
+    }];
+}
+
+-(void)querySnoozeJokes
+{
+    PFQuery *query = [PFQuery queryWithClassName:@"SnoozeJokes"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (error) {
+            NSLog(@"%@", error);
+        }
+        else {
+            [self.delegate snoozeJokesReturned:objects];
         }
     }];
 }

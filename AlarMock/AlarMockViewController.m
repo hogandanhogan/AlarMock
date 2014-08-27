@@ -7,15 +7,19 @@
 //
 
 #import "AlarMockViewController.h"
+#import "TableViewCell.h"
+#import "SnoozeJokes.h"
+#import "Jokes.h"
+#import "AddAlarmViewController.h"
 
-@interface AlarMockViewController() <UITableViewDelegate, UITableViewDataSource>
+@interface AlarMockViewController() <UITableViewDelegate, UITableViewDataSource, TableViewCellDelegate, JokesManager, UIAlertViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *editButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *addButton;
 @property (weak, nonatomic) IBOutlet UITextField *textField;
-@property UISwitch *switcheroo;
-
+@property Jokes *jokes;
+@property NSMutableArray *snoozeJokes;
 
 @end
 
@@ -30,11 +34,17 @@
     self.tableView.allowsSelection = NO;
     self.tableView.allowsSelectionDuringEditing = YES;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+
+    self.jokes = [[Jokes alloc] init];
+    self.jokes.delegate =self;
+    [self.jokes querySnoozeJokes];
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    self.localNotifications = [[NSMutableArray alloc] initWithArray:[[NSUserDefaults standardUserDefaults] objectForKey:@"localNotificationsDatas"]];
+    [super viewWillAppear:animated];
+    //create custom class for the collection of local notification data
+    self.localNotifications = [[[NSUserDefaults standardUserDefaults] objectForKey:@"localNotificationsData"] mutableCopy];
     [self.tableView reloadData];
 }
 
@@ -54,37 +64,29 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
-    
-    [[UIApplication sharedApplication] scheduledLocalNotifications];
+    //[[UIApplication sharedApplication] scheduledLocalNotifications];
     
     NSData *data = [self.localNotifications objectAtIndex:indexPath.row];
     UILocalNotification *localNotification = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+
+    TableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+    
+    [cell setSwitchState:YES];
+    //subclass nsobject and compose of 2 properties localnotification and isOn
+    cell.delegate = self;
+        
     NSDateFormatter *dateFormatter = [NSDateFormatter new];
     dateFormatter.timeStyle = NSDateFormatterShortStyle;
     [dateFormatter setDateFormat:@"h:mm a"];
     NSString *timeString = [dateFormatter stringFromDate:localNotification.fireDate];
     cell.textLabel.text = timeString;
-    
-    UISwitch *switcheroo = [[UISwitch alloc] initWithFrame:CGRectZero];
-    [switcheroo addTarget:self
-                   action:@selector(changeSwitch:)
-         forControlEvents:UIControlEventValueChanged];
 
-    [self.view addSubview:switcheroo];
-    if([switcheroo isOn]) {
-        [[UIApplication sharedApplication] scheduleLocalNotification:[self.localNotifications objectAtIndex:indexPath.row]];
-    } else{
-        [[UIApplication sharedApplication] cancelLocalNotification:[self.localNotifications objectAtIndex:indexPath.row]];
-    }
-    cell.accessoryView = switcheroo;
-    
     return cell;
 }
 
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"localNotificationsDatas"];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"localNotificationsData"];
     [self.localNotifications removeObjectAtIndex:indexPath.row];
 
     [self.tableView reloadData];
@@ -99,13 +101,57 @@
     [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
-#pragma mark Other Methods
+#pragma mark Alert View Delegate Methods
 
-- (void)changeSwitch:(id)sender
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    
+    if (buttonIndex == 0) {
+        UILocalNotification * snoozeNotification = [UILocalNotification new];
+        snoozeNotification.alertBody = [NSString stringWithFormat:@"%@", [self.snoozeJokes objectAtIndex:arc4random_uniform((uint32_t)self.snoozeJokes.count)]];
+        //snoozeNotification.fireDate = [NSDate dateWithTimeInterval:60 * i * self.sliderVal sinceDate:self.datePicker.date];
+
+        snoozeNotification.fireDate = [NSDate dateWithTimeIntervalSinceNow:10];
+        snoozeNotification.timeZone = [NSTimeZone defaultTimeZone];
+
+        [[UIApplication sharedApplication] scheduleLocalNotification:snoozeNotification];
+        [self saveSnoozeDefault:snoozeNotification];
+    }
 }
-- (IBAction)enterEditMode:(id)sender {
+#pragma mark - Table View Cell Delegate Method
+
+-(void)tableViewCell:(TableViewCell *)tableViewCell switchDidChangeValue:(UISwitch *)switcheroo
+{
+    //set switch on/off functionality
+}
+
+
+#pragma mark - Other Methods
+
+-(void)saveSnoozeDefault:(UILocalNotification *)localNotification
+{
+    NSData *localNotificationData = [NSKeyedArchiver archivedDataWithRootObject:localNotification];
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+
+    id encodedNotes = [prefs objectForKey:@"snoozeNotificationsData"];
+
+    NSMutableArray *datas = [[NSMutableArray alloc] initWithArray:encodedNotes];
+    [datas addObject:localNotificationData];
+    [prefs setObject:datas forKey:@"snoozeNotificationsData"];
+    [prefs synchronize];
+}
+
+-(void)snoozeJokesReturned:(NSArray *)jokes
+{
+    self.snoozeJokes = [NSMutableArray array];
+
+    for (SnoozeJokes *joke in jokes)
+    {
+        [self.snoozeJokes addObject:joke.joke];
+    }
+}
+
+- (IBAction)enterEditMode:(id)sender
+{
     
     if ([self.tableView isEditing]) {
         [self.tableView setEditing:NO animated:YES];
@@ -137,6 +183,18 @@
 -(IBAction)unwindToAddAlarmViewController:(UIStoryboardSegue *)unwindSegue
 {
     
+}
+
+-(void)saveDefault:(UILocalNotification *)localNotification
+{
+    NSData *localNotificationData = [NSKeyedArchiver archivedDataWithRootObject:localNotification];
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    
+    NSMutableArray *localNotificationsData = [[NSMutableArray alloc] initWithArray:[prefs objectForKey:@"localNotificationsData"]];
+    [localNotificationsData addObject:localNotificationData];
+    [prefs setObject:localNotificationsData forKey:@"localNotificationsData"];
+    self.localNotifications = localNotificationsData;
+    [prefs synchronize];
 }
 
 @end
