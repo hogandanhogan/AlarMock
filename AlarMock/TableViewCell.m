@@ -8,24 +8,22 @@
 
 #import "TableViewCell.h"
 
+@interface TableViewCell ()
+
+@property (nonatomic, weak) IBOutlet UISwitch *switcheroo;
+
+@end
+
 @implementation TableViewCell
 
--(id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+-(IBAction)switchDidChangeValue:(UISwitch *)sender
 {
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self) {
-        self.switcheroo = [[UISwitch alloc] initWithFrame:CGRectZero];
-        [self.switcheroo addTarget:self
-                            action:@selector(switchDidChangeValue:)
-                  forControlEvents:UIControlEventValueChanged];
-    }
-    return self;
+    [self.delegate tableViewCell:self switchDidChangeValue:sender];
 }
 
--(void)switchDidChangeValue:(UISwitch *)sender
+-(void)setSwitchState:(BOOL)on
 {
-    [self.delegate switchDidChangeValue:sender.on];
+    self.switcheroo.on = on;
 }
-
 
 @end

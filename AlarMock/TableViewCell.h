@@ -7,13 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+@class TableViewCell;
 
 @protocol TableViewCellDelegate
--(void)switchDidChangeValue:(BOOL)value;
+
+-(void)tableViewCell:(TableViewCell *)tableViewCell switchDidChangeValue:(UISwitch *)switcheroo;
+
 @end
 
 
 @interface TableViewCell : UITableViewCell
-@property id<TableViewCellDelegate> delegate;
-@property UISwitch *switcheroo;
+
+@property (nonatomic, weak) id<TableViewCellDelegate> delegate;
+
+-(void)setSwitchState:(BOOL)on;
+
 @end
