@@ -21,13 +21,29 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell" id="EEm-pc-7X2">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="EEm-pc-7X2" customClass="TableViewCell">
                                         <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EEm-pc-7X2" id="mmb-KU-PI1">
-                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="naV-Od-VO3">
+                                                    <rect key="frame" x="261" y="6" width="51" height="31"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <connections>
+                                                        <action selector="switchDidChangeValue:" destination="EEm-pc-7X2" eventType="valueChanged" id="AJZ-3l-zxd"/>
+                                                    </connections>
+                                                </switch>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="naV-Od-VO3" secondAttribute="trailing" constant="10" id="4Wy-HG-aVK"/>
+                                                <constraint firstAttribute="centerY" secondItem="naV-Od-VO3" secondAttribute="centerY" id="9vk-V0-P4a"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="switcheroo" destination="naV-Od-VO3" id="Dvp-Og-TDh"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -120,7 +136,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bUh-vz-2HG" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="YhB-pp-zMa" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1438" y="126"/>
+            <point key="canvasLocation" x="1514" y="-328"/>
         </scene>
         <!--Add Alarm View Controller - Add Alarm-->
         <scene sceneID="Zu8-Yv-70k">
@@ -232,7 +248,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 <placeholder placeholderIdentifier="IBFirstResponder" id="avP-AO-fIa" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="OYN-uF-9Ok" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1035" y="119"/>
+            <point key="canvasLocation" x="1025" y="99"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="PuD-oF-KGD">

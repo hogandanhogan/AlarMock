@@ -10,9 +10,9 @@
 #import "RepeatViewController.h"
 #import "Jokes.h"
 #import "AlarmJokes.h"
+#import <MediaPlayer/MediaPlayer.h>
 
-
-@interface AddAlarmViewController () <UITableViewDataSource, UITableViewDelegate, JokesManager>
+@interface AddAlarmViewController () <UITableViewDataSource, UITableViewDelegate, JokesManager, MPMediaPickerControllerDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) IBOutlet UIDatePicker *datePicker;
@@ -36,11 +36,15 @@
 
     self.tableView.scrollEnabled = NO;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    
     self.slider.hidden = YES;
-    self.jokes = [[Jokes alloc]init];
-//    NSLog(@"%@", self.jokes.alarmJokes);
+    
+    self.jokes = [[Jokes alloc] init];
+
     self.jokes.delegate =self;
     [self.jokes queryAlarmJokes];
+
+    
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -82,7 +86,7 @@
     if([sender isOn]) {
         self.slider.hidden = NO;
         self.snoozeTimeLabel.hidden = NO;
-    } else{
+    } else {
         self.slider.hidden = YES;
         self.snoozeTimeLabel.hidden = YES;
     }
@@ -90,19 +94,18 @@
 
 - (IBAction)onSavePressed:(id)sender
 {
-    UILocalNotification* localNotification = [[UILocalNotification alloc] init];
-    
+    UILocalNotification* localNotification = [UILocalNotification new];
+   
     //localNotification.fireDate = self.datePicker.date;
     //notification fires in 4 seconds while testing
-
     localNotification.fireDate = [NSDate dateWithTimeIntervalSinceNow:4];
-    localNotification.alertBody = [NSString stringWithFormat:@"%@", [self.alarmJokes objectAtIndex:arc4random_uniform(self.alarmJokes.count)]];
-    localNotification.alertAction = @"Snooze";
+    localNotification.alertBody = [NSString stringWithFormat:@"%@", [self.alarmJokes objectAtIndex:arc4random_uniform((uint32_t)self.alarmJokes.count)]];
+    //localNotification.alertAction = @"Snooze";
     localNotification.timeZone = [NSTimeZone defaultTimeZone];
+    
     [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
-    
     [self saveDefault:localNotification];
-    
+        
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
@@ -131,12 +134,11 @@
 {
     NSData *localNotificationData = [NSKeyedArchiver archivedDataWithRootObject:localNotification];
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-    [prefs setValue:localNotificationData forKey:@"localNotificationData"];
     
-    NSMutableArray *localNotificationsDatas = [[NSMutableArray alloc] initWithArray:[prefs objectForKey:@"localNotificationsDatas"]];
-    [localNotificationsDatas addObject:localNotificationData];
-    [prefs setObject:localNotificationsDatas forKey:@"localNotificationsDatas"];
-    self.localNotifications = localNotificationsDatas;
+    NSMutableArray *localNotificationsData = [[NSMutableArray alloc] initWithArray:[prefs objectForKey:@"localNotificationsData"]];
+    [localNotificationsData addObject:localNotificationData];
+    [prefs setObject:localNotificationsData forKey:@"localNotificationsData"];
+    self.localNotifications = localNotificationsData;
     [prefs synchronize];
 }
 
@@ -148,10 +150,32 @@
     {
         [self.alarmJokes addObject:joke.joke];
     }
-    NSLog(@"%@", jokes);
 }
 
+//onRowTapped is not real…
+- (void)onRowTapped:(BOOL)animated {
+    MPMediaPickerController *picker = [[MPMediaPickerController alloc] initWithMediaTypes:MPMediaTypeAnyAudio];
+	picker.delegate = self;
+	picker.allowsPickingMultipleItems = YES;
+	picker.prompt = @"Choose a song that might wake your bitch ass up";
+	[self presentViewController:picker animated:YES completion:nil];
 
+}
+
+//- (void) mediaPicker: (MPMediaPickerController *) mediaPicker didPickMediaItems: (MPMediaItemCollection *) mediaItemCollection {
+//
+//	[self dismissViewControllerAnimated:YES completion:^{
+//        [self updatePlayerQueueWithMediaCollection: mediaItemCollection];
+//        [AddAlarmViewController reloadData];
+//    }];
+//}
+//
+//// Responds to the user tapping done having chosen no music.
+//- (void) mediaPickerDidCancel: (MPMediaPickerController *) mediaPicker {
+//
+//	[self dismissViewControllerAnimated:YES completion:^{
+//
+//    }];}
 
 
 @end

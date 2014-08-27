@@ -9,16 +9,19 @@
 #import <Foundation/Foundation.h>
 
 @protocol JokesManager <NSObject>
-
--(void)alarmJokesReturned:(NSArray *)jokes;
+//used to be just *jokes
+@optional
+-(void)alarmJokesReturned:(NSArray *)alarmJokesReturned;
+-(void)snoozeJokesReturned:(NSArray *)snoozeJokesReturned;
 
 @end
 @interface Jokes : NSObject
 
 @property id<JokesManager>delegate;
-@property NSArray *alarmJokes;
-@property NSArray *snoozeJokes;
+//@property NSArray *alarmJokes;
+//@property NSArray *snoozeJokes;
 
 -(void)queryAlarmJokes;
+-(void)querySnoozeJokes;
 
 @end
