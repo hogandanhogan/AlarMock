@@ -7,12 +7,12 @@
 //
 
 #import "RepeatViewController.h"
+#import "AlarmEngine.h"
 
 @interface RepeatViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-
-
 @property NSArray *days;
+@property ()selectedDays;
 
 @end
 
@@ -45,6 +45,7 @@
     return self.days.count;
 }
 
+
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -62,6 +63,5 @@
         [self.tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
     }
 }
-
-
+//-(void)
 @end

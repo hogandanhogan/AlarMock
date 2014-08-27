@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F4FDB2119AD30AB0031B7AA /* AlarmEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F4FDB2019AD30AB0031B7AA /* AlarmEngine.m */; };
 		1F6CACA519A7C5070025CB67 /* AddAlarmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6CACA419A7C5070025CB67 /* AddAlarmViewController.m */; };
 		79318CCF19A8E7F70021D655 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79318CCE19A8E7F70021D655 /* CoreData.framework */; };
 		797DF3DC19A962FE00FDD94B /* RepeatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 797DF3DB19A962FE00FDD94B /* RepeatViewController.m */; };
@@ -48,6 +49,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1F4FDB1F19AD30AB0031B7AA /* AlarmEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlarmEngine.h; path = ../AlarmEngine.h; sourceTree = "<group>"; };
+		1F4FDB2019AD30AB0031B7AA /* AlarmEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AlarmEngine.m; path = ../AlarmEngine.m; sourceTree = "<group>"; };
 		1F6CACA319A7C5070025CB67 /* AddAlarmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddAlarmViewController.h; sourceTree = "<group>"; };
 		1F6CACA419A7C5070025CB67 /* AddAlarmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddAlarmViewController.m; sourceTree = "<group>"; };
 		79318CCE19A8E7F70021D655 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -175,6 +178,8 @@
 				98962DD219A7C0E700DEE9B5 /* AlarMockViewController.m */,
 				797DF3DA19A962FE00FDD94B /* RepeatViewController.h */,
 				797DF3DB19A962FE00FDD94B /* RepeatViewController.m */,
+				1F4FDB1F19AD30AB0031B7AA /* AlarmEngine.h */,
+				1F4FDB2019AD30AB0031B7AA /* AlarmEngine.m */,
 				98962DD419A7C0E700DEE9B5 /* Images.xcassets */,
 				98962DC319A7C0E700DEE9B5 /* Supporting Files */,
 			);
@@ -310,6 +315,7 @@
 				98962DD319A7C0E700DEE9B5 /* AlarMockViewController.m in Sources */,
 				1F6CACA519A7C5070025CB67 /* AddAlarmViewController.m in Sources */,
 				98962DCD19A7C0E700DEE9B5 /* AppDelegate.m in Sources */,
+				1F4FDB2119AD30AB0031B7AA /* AlarmEngine.m in Sources */,
 				797DF3DC19A962FE00FDD94B /* RepeatViewController.m in Sources */,
 				98962DC919A7C0E700DEE9B5 /* main.m in Sources */,
 			);
