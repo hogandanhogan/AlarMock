@@ -41,6 +41,7 @@
 -(void)querySnoozeJokes
 {
     PFQuery *query = [PFQuery queryWithClassName:@"SnoozeJokes"];
+    query.cachePolicy = kPFCachePolicyNetworkElseCache;
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (error) {
             NSLog(@"%@", error);
