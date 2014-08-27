@@ -1,13 +1,13 @@
 //
-//  AlarmLogic.m
+//  AlarmLogic.h
 //  AlarMock
 //
 //  Created by Patrick Hogan on 8/27/14.
 //  Copyright (c) 2014 AlarMock Industries. All rights reserved.
 //
 
-#import "AlarmLogic.h"
+#import <Foundation/Foundation.h>
 
-@implementation AlarmLogic
+@interface AlarmEngine : NSObject
 
 @end
