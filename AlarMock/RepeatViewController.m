@@ -51,16 +51,5 @@
 
     return cell;
 }
--(void)scheduleRepeatedDay
-{
-    NSDate *ScheduleDay = [NSDate date];
-    NSDateFormatter *dateFormatter1 = [[[NSDateFormatter alloc]init]autorelease];
-    dateFormatter1.dateFormat = @"EEEE MMMM d, yyyy";
-
-    NSDate *days = [dateFormatter dateFromString:dateString];
-    return ScheduleDay
-
-
-}
 
 @end
