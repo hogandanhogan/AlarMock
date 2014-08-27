@@ -42,14 +42,11 @@
 {
     PFQuery *query = [PFQuery queryWithClassName:@"SnoozeJokes"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if (error)
-        {
+        if (error) {
             NSLog(@"%@", error);
         }
-        else
-        {
+        else {
             [self.delegate snoozeJokesReturned:objects];
-            
         }
     }];
 }
