@@ -113,6 +113,12 @@
     localNotification.alertBody = [NSString stringWithFormat:@"%@", [self.alarmJokes objectAtIndex:arc4random_uniform((uint32_t)self.alarmJokes.count)]];
     //localNotification.alertAction = @"Snooze";
     localNotification.timeZone = [NSTimeZone defaultTimeZone];
+<<<<<<< HEAD
+=======
+    if (self.sliderVal) {
+        //schedule more snoozes
+    }
+>>>>>>> master
     
     [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
     [self saveDefault:localNotification];
@@ -170,9 +176,15 @@
 	picker.allowsPickingMultipleItems = YES;
 	picker.prompt = @"Choose a song that might wake your bitch ass up";
 	[self presentViewController:picker animated:YES completion:nil];
+<<<<<<< HEAD
 
 }
 
+=======
+
+}
+
+>>>>>>> master
 //- (void) mediaPicker: (MPMediaPickerController *) mediaPicker didPickMediaItems: (MPMediaItemCollection *) mediaItemCollection {
 //
 //	[self dismissViewControllerAnimated:YES completion:^{

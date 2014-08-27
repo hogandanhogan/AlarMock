@@ -10,15 +10,26 @@
 #import "TableViewCell.h"
 #import "SnoozeJokes.h"
 #import "Jokes.h"
+<<<<<<< HEAD
 
 @interface AlarMockViewController() <UITableViewDelegate, UITableViewDataSource, TableViewCellDelegate, UIAlertViewDelegate>
+=======
+#import "AddAlarmViewController.h"
+
+@interface AlarMockViewController() <UITableViewDelegate, UITableViewDataSource, TableViewCellDelegate, JokesManager, UIAlertViewDelegate>
+>>>>>>> master
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *editButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *addButton;
 @property (weak, nonatomic) IBOutlet UITextField *textField;
+<<<<<<< HEAD
 @property NSMutableArray *snoozeJokes;
 @property Jokes *jokes;
+=======
+@property Jokes *jokes;
+@property NSMutableArray *snoozeJokes;
+>>>>>>> master
 
 @end
 
@@ -35,7 +46,11 @@
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 
     self.jokes = [[Jokes alloc] init];
+<<<<<<< HEAD
 
+=======
+    self.jokes.delegate =self;
+>>>>>>> master
     [self.jokes querySnoozeJokes];
 }
 
@@ -112,7 +127,11 @@
 
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
+<<<<<<< HEAD
     if (buttonIndex == 1) {
+=======
+    if (buttonIndex == 0) {
+>>>>>>> master
         UILocalNotification * snoozeNotification = [UILocalNotification new];
         snoozeNotification.alertBody = [NSString stringWithFormat:@"%@", [self.snoozeJokes objectAtIndex:arc4random_uniform((uint32_t)self.snoozeJokes.count)]];
         //snoozeNotification.fireDate = [NSDate dateWithTimeInterval:60 * i * self.sliderVal sinceDate:self.datePicker.date];
@@ -129,7 +148,10 @@
 -(void)tableViewCell:(TableViewCell *)tableViewCell switchDidChangeValue:(UISwitch *)switcheroo
 {
     //set switch on/off functionality
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
 }
 
 
@@ -158,7 +180,10 @@
     }
 }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
 - (IBAction)enterEditMode:(id)sender
 {
     

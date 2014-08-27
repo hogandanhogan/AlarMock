@@ -61,8 +61,13 @@ didReceiveLocalNotification:(UILocalNotification *)notification
                                                         message:nil
                                                        delegate:vc
                                               cancelButtonTitle:nil
+<<<<<<< HEAD
                                               otherButtonTitles:@"Dismiss",
                                                                 @"Snooze",nil];
+=======
+                                              otherButtonTitles:@"Snooze",
+                                                                @"Dismiss",nil];
+>>>>>>> master
     [alertView show];
 }
 
