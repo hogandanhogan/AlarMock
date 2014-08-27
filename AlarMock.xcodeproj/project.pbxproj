@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1F6CACA519A7C5070025CB67 /* AddAlarmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6CACA419A7C5070025CB67 /* AddAlarmViewController.m */; };
+		1F967ECC19AE4D2B0045B4D2 /* MyAlarm.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F967ECB19AE4D2B0045B4D2 /* MyAlarm.m */; };
 		792A791619ABF4C80099A32F /* TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 792A791519ABF4C80099A32F /* TableViewCell.m */; };
 		79318CCF19A8E7F70021D655 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79318CCE19A8E7F70021D655 /* CoreData.framework */; };
 		797DF3DC19A962FE00FDD94B /* RepeatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 797DF3DB19A962FE00FDD94B /* RepeatViewController.m */; };
@@ -55,6 +56,8 @@
 /* Begin PBXFileReference section */
 		1F6CACA319A7C5070025CB67 /* AddAlarmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddAlarmViewController.h; sourceTree = "<group>"; };
 		1F6CACA419A7C5070025CB67 /* AddAlarmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddAlarmViewController.m; sourceTree = "<group>"; };
+		1F967ECA19AE4D2B0045B4D2 /* MyAlarm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAlarm.h; sourceTree = "<group>"; };
+		1F967ECB19AE4D2B0045B4D2 /* MyAlarm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAlarm.m; sourceTree = "<group>"; };
 		792A791419ABF4C80099A32F /* TableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewCell.h; sourceTree = "<group>"; };
 		792A791519ABF4C80099A32F /* TableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewCell.m; sourceTree = "<group>"; };
 		79318CCE19A8E7F70021D655 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -191,6 +194,8 @@
 				98962DD219A7C0E700DEE9B5 /* AlarMockViewController.m */,
 				797DF3DA19A962FE00FDD94B /* RepeatViewController.h */,
 				797DF3DB19A962FE00FDD94B /* RepeatViewController.m */,
+				1F967ECA19AE4D2B0045B4D2 /* MyAlarm.h */,
+				1F967ECB19AE4D2B0045B4D2 /* MyAlarm.m */,
 				792A791419ABF4C80099A32F /* TableViewCell.h */,
 				792A791519ABF4C80099A32F /* TableViewCell.m */,
 				98962DD419A7C0E700DEE9B5 /* Images.xcassets */,
@@ -332,6 +337,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				98315B0119ABD40300D717F0 /* AlarmJokes.m in Sources */,
+				1F967ECC19AE4D2B0045B4D2 /* MyAlarm.m in Sources */,
 				98315AFE19ABAE3F00D717F0 /* Jokes.m in Sources */,
 				98315B0419ABD4E700D717F0 /* SnoozeJokes.m in Sources */,
 				98962DD319A7C0E700DEE9B5 /* AlarMockViewController.m in Sources */,

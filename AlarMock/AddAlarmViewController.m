@@ -1,3 +1,14 @@
+//Steps:
+// • Create new model (MyAlarm)
+// • Pass model to all the different controllers that need to set data (time picker, repeat day picker, etc)
+// • On save, persist model (coredata? NSUserDefaults?), then use -notificationValue to create the notification to actually be sceduled with UIApplication.
+// • use the persisted models to fill in tables and other UI rather than the UILocalNotifications
+
+
+
+
+
+
 //
 //  TimePickerViewController.m
 //  AlarMock
