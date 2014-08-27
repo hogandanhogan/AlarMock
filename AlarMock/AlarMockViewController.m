@@ -66,19 +66,6 @@
     NSString *timeString = [dateFormatter stringFromDate:localNotification.fireDate];
     cell.textLabel.text = timeString;
     
-//    cell.switcheroo = [[UISwitch alloc] initWithFrame:CGRectZero];
-//    [cell.switcheroo addTarget:self
-//                   action:@selector(changeSwitch:)
-//         forControlEvents:UIControlEventValueChanged];
-//
-//    [self.view addSubview:cell.switcheroo];
-//    if([switcheroo isOn]) {
-//        [[UIApplication sharedApplication] scheduleLocalNotification:[self.localNotifications objectAtIndex:indexPath.row]];
-//    } else{
-//        [[UIApplication sharedApplication] cancelLocalNotification:[self.localNotifications objectAtIndex:indexPath.row]];
-//    }
-//    cell.accessoryView = switcheroo;
-    
     return cell;
 }
 
