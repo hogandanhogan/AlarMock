@@ -12,6 +12,8 @@
 		79318CCF19A8E7F70021D655 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79318CCE19A8E7F70021D655 /* CoreData.framework */; };
 		797DF3DC19A962FE00FDD94B /* RepeatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 797DF3DB19A962FE00FDD94B /* RepeatViewController.m */; };
 		79A2518F19AE2E7F009174C8 /* AlarmEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 79A2518E19AE2E7F009174C8 /* AlarmEngine.m */; };
+		79A2519119AF8366009174C8 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79A2519019AF8365009174C8 /* AVFoundation.framework */; };
+		79A2519919AFB923009174C8 /* groudhog.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 79A2519819AFB923009174C8 /* groudhog.mp3 */; };
 		98315AFE19ABAE3F00D717F0 /* Jokes.m in Sources */ = {isa = PBXBuildFile; fileRef = 98315AFD19ABAE3F00D717F0 /* Jokes.m */; };
 		98315B0119ABD40300D717F0 /* AlarmJokes.m in Sources */ = {isa = PBXBuildFile; fileRef = 98315B0019ABD40300D717F0 /* AlarmJokes.m */; };
 		98315B0419ABD4E700D717F0 /* SnoozeJokes.m in Sources */ = {isa = PBXBuildFile; fileRef = 98315B0319ABD4E700D717F0 /* SnoozeJokes.m */; };
@@ -63,6 +65,8 @@
 		797DF3DB19A962FE00FDD94B /* RepeatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepeatViewController.m; sourceTree = "<group>"; };
 		79A2518D19AE2E7F009174C8 /* AlarmEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmEngine.h; sourceTree = "<group>"; };
 		79A2518E19AE2E7F009174C8 /* AlarmEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmEngine.m; sourceTree = "<group>"; };
+		79A2519019AF8365009174C8 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		79A2519819AFB923009174C8 /* groudhog.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = groudhog.mp3; path = ../../../Downloads/groudhog.mp3; sourceTree = "<group>"; };
 		98315AFC19ABAE3F00D717F0 /* Jokes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Jokes.h; sourceTree = "<group>"; };
 		98315AFD19ABAE3F00D717F0 /* Jokes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Jokes.m; sourceTree = "<group>"; };
 		98315AFF19ABD40300D717F0 /* AlarmJokes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmJokes.h; sourceTree = "<group>"; };
@@ -107,6 +111,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				79A2519119AF8366009174C8 /* AVFoundation.framework in Frameworks */,
 				989F4C0B19ACE3150002B543 /* MediaPlayer.framework in Frameworks */,
 				E7AAF5F819AAAE910055D07B /* AudioToolbox.framework in Frameworks */,
 				E7AAF5F919AAAE910055D07B /* CFNetwork.framework in Frameworks */,
@@ -161,6 +166,7 @@
 		98962DBB19A7C0E700DEE9B5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				79A2519019AF8365009174C8 /* AVFoundation.framework */,
 				989F4C0A19ACE3150002B543 /* MediaPlayer.framework */,
 				E7AAF5EF19AAAE910055D07B /* AudioToolbox.framework */,
 				E7AAF5F019AAAE910055D07B /* CFNetwork.framework */,
@@ -190,6 +196,7 @@
 				98962DCE19A7C0E700DEE9B5 /* Main.storyboard */,
 				1F6CACA319A7C5070025CB67 /* AddAlarmViewController.h */,
 				1F6CACA419A7C5070025CB67 /* AddAlarmViewController.m */,
+				79A2519819AFB923009174C8 /* groudhog.mp3 */,
 				79A2518D19AE2E7F009174C8 /* AlarmEngine.h */,
 				79A2518E19AE2E7F009174C8 /* AlarmEngine.m */,
 				98962DD119A7C0E700DEE9B5 /* AlarMockViewController.h */,
@@ -286,6 +293,9 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "AlarMock Industries";
 				TargetAttributes = {
+					98962DB819A7C0E700DEE9B5 = {
+						DevelopmentTeam = ERG78UCJDH;
+					};
 					98962DD919A7C0E700DEE9B5 = {
 						TestTargetID = 98962DB819A7C0E700DEE9B5;
 					};
@@ -316,6 +326,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				98962DD519A7C0E700DEE9B5 /* Images.xcassets in Resources */,
+				79A2519919AFB923009174C8 /* groudhog.mp3 in Resources */,
 				98962DC719A7C0E700DEE9B5 /* InfoPlist.strings in Resources */,
 				98962DD019A7C0E700DEE9B5 /* Main.storyboard in Resources */,
 			);
@@ -449,7 +460,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Daniel Hogan (ERG78UCJDH)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Daniel Hogan (ERG78UCJDH)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -460,6 +472,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				PROVISIONING_PROFILE = "28c6ec7f-aed0-4b96-8ecc-81285579196a";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -469,7 +482,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -478,6 +492,7 @@
 				GCC_PREFIX_HEADER = "AlarMock/AlarMock-Prefix.pch";
 				INFOPLIST_FILE = "AlarMock/AlarMock-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "2ddddff9-b730-442b-9261-a1b84286de69";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -486,7 +501,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Daniel Hogan (ERG78UCJDH)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Daniel Hogan (ERG78UCJDH)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -495,6 +511,7 @@
 				GCC_PREFIX_HEADER = "AlarMock/AlarMock-Prefix.pch";
 				INFOPLIST_FILE = "AlarMock/AlarMock-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "28c6ec7f-aed0-4b96-8ecc-81285579196a";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

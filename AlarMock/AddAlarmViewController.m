@@ -11,6 +11,7 @@
 #import "Jokes.h"
 #import "AlarmJokes.h"
 #import <MediaPlayer/MediaPlayer.h>
+#import <AVFoundation/AVFoundation.h>
 
 @interface AddAlarmViewController () <UITableViewDataSource, UITableViewDelegate, JokesManager, MPMediaPickerControllerDelegate>
 
@@ -22,8 +23,8 @@
 @property float sliderVal;
 @property Jokes *jokes;
 @property NSMutableArray *alarmJokes;
-
 @property MPMediaPickerController *picker;
+@property MPMediaItem *mpsong;
 
 @end
 
@@ -85,14 +86,26 @@
         self.picker.allowsPickingMultipleItems = NO;
         self.picker.prompt = @"Choose a song that might wake your bitch ass up";
         [self presentViewController:self.picker animated:YES completion:nil];
+        
+//        NSURL *songUrl = [[mediaItems objectAtIndex: 0] valueForProperty:MPMediaItemPropertyAssetURL];
+//        self.audioPlayerMusic = [[[AVPlayer alloc] initWithURL:songUrl] retain];
+//        [self.audioPlayerMusic play];
     }
 }
 
 -(void)mediaPicker:(MPMediaPickerController *)mediaPicker didPickMediaItems:(MPMediaItemCollection *)mediaItemCollection
 {
-    [self dismissViewControllerAnimated:YES completion:^{
-        //code for saving song or whatever
-    }];
+   // self.mediaItemCollection = mediaItemCollection;
+    
+//    NSURL *anUrl = [[mediaItems objectAtIndex: 0] valueForProperty:MPMediaItemPropertyAssetURL];
+//    self.audioPlayerMusic = [[[AVPlayer alloc] initWithURL:anUrl] retain];
+//    [self.audioPlayerMusic play];
+    
+    //self.songTitle = [mediaItemCollection valueForProperty:MPMediaItemPropertyAssetURL];
+    
+//      NSString *songTitle = [song valueForProperty: MPMediaItemPropertyTitle];
+//      self.songName.text = songTitle;
+    self.mpsong =[mediaItemCollection.items objectAtIndex:0];
 }
 -(void)mediaPickerDidCancel:(MPMediaPickerController *)mediaPicker
 {
@@ -121,6 +134,8 @@
     localNotification.alertBody = [NSString stringWithFormat:@"%@", [self.alarmJokes objectAtIndex:arc4random_uniform((uint32_t)self.alarmJokes.count)]];
     //localNotification.alertAction = @"Snooze";
     localNotification.timeZone = [NSTimeZone defaultTimeZone];
+    //localNotification.soundName = [self.mpsong valueForProperty:MPMediaItemPropertyTitle];
+    localNotification.soundName = @"groudhog.mp3";
     if (self.sliderVal) {
         //schedule more snoozes
     }

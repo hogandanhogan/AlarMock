@@ -112,6 +112,7 @@
 
         snoozeNotification.fireDate = [NSDate dateWithTimeIntervalSinceNow:10];
         snoozeNotification.timeZone = [NSTimeZone defaultTimeZone];
+        snoozeNotification.soundName = @"groudhog.mp3";
 
         [[UIApplication sharedApplication] scheduleLocalNotification:snoozeNotification];
         [self saveSnoozeDefault:snoozeNotification];
