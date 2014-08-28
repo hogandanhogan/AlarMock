@@ -9,6 +9,7 @@
 #import "AlarMockViewController.h"
 #import "TableViewCell.h"
 #import "SnoozeJokes.h"
+#import "AlarmJokes.h"
 #import "Jokes.h"
 #import "AddAlarmViewController.h"
 
@@ -20,6 +21,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *textField;
 @property Jokes *jokes;
 @property NSMutableArray *snoozeJokes;
+@property NSMutableArray *alarmJokes;
+
 
 @end
 
@@ -38,6 +41,10 @@
     self.jokes = [[Jokes alloc] init];
     self.jokes.delegate =self;
     [self.jokes querySnoozeJokes];
+    [self.jokes queryAlarmJokes];
+
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onAlertView) name:@"openedWithNotification" object:nil];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -110,6 +117,7 @@
         snoozeNotification.alertBody = [NSString stringWithFormat:@"%@", [self.snoozeJokes objectAtIndex:arc4random_uniform((uint32_t)self.snoozeJokes.count)]];
         //snoozeNotification.fireDate = [NSDate dateWithTimeInterval:60 * i * self.sliderVal sinceDate:self.datePicker.date];
 
+
         snoozeNotification.fireDate = [NSDate dateWithTimeIntervalSinceNow:10];
         snoozeNotification.timeZone = [NSTimeZone defaultTimeZone];
 
@@ -147,6 +155,16 @@
     for (SnoozeJokes *joke in jokes)
     {
         [self.snoozeJokes addObject:joke.joke];
+    }
+}
+
+-(void)alarmJokesReturned:(NSArray *)jokes
+{
+    self.alarmJokes = [NSMutableArray array];
+
+    for (AlarmJokes *joke in jokes)
+    {
+        [self.alarmJokes addObject:joke.joke];
     }
 }
 
@@ -195,6 +213,16 @@
     [prefs setObject:localNotificationsData forKey:@"localNotificationsData"];
     self.localNotifications = localNotificationsData;
     [prefs synchronize];
+}
+-(void)onAlertView
+{
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Wake the @#*$ up"
+                                                        message:[NSString stringWithFormat:@"%@", [self.alarmJokes objectAtIndex:arc4random_uniform((uint32_t)self.alarmJokes.count)]]
+                                                       delegate:self
+                                              cancelButtonTitle:nil
+                                              otherButtonTitles:@"Snooze",
+                              @"Dismiss",nil];
+    [alertView show];
 }
 
 @end

@@ -11,9 +11,11 @@
 #import "Jokes.h"
 #import "AlarmJokes.h"
 #import <MediaPlayer/MediaPlayer.h>
+#import <AVFoundation/AVFoundation.h>
+
+NSString *const MPMediaItemPropertyAssetURL;
 
 @interface AddAlarmViewController () <UITableViewDataSource, UITableViewDelegate, JokesManager, MPMediaPickerControllerDelegate>
-
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) IBOutlet UIDatePicker *datePicker;
 @property (weak, nonatomic) IBOutlet UISlider *slider;
@@ -22,7 +24,6 @@
 @property float sliderVal;
 @property Jokes *jokes;
 @property NSMutableArray *alarmJokes;
-
 @property MPMediaPickerController *picker;
 
 @end
@@ -91,7 +92,10 @@
 -(void)mediaPicker:(MPMediaPickerController *)mediaPicker didPickMediaItems:(MPMediaItemCollection *)mediaItemCollection
 {
     [self dismissViewControllerAnimated:YES completion:^{
-        //code for saving song or whatever
+        self.picker.delegate = self;
+//        [self.delegate updatePlayerQueueWithMediaCollection: mediaItemCollection];
+//        [self.mediaItemCollectionTable reloadData];
+        // somehow I need to give the url of the selected song to the AVPlayer, but where to put that I wonder…
     }];
 }
 -(void)mediaPickerDidCancel:(MPMediaPickerController *)mediaPicker
@@ -100,6 +104,7 @@
      
     }];
 }
+
 - (void)changeSwitch:(id)sender
 {
     if([sender isOn]) {
@@ -121,6 +126,8 @@
     localNotification.alertBody = [NSString stringWithFormat:@"%@", [self.alarmJokes objectAtIndex:arc4random_uniform((uint32_t)self.alarmJokes.count)]];
     //localNotification.alertAction = @"Snooze";
     localNotification.timeZone = [NSTimeZone defaultTimeZone];
+    localNotification.soundName = @"groundhog.mp3";
+
     if (self.sliderVal) {
         //schedule more snoozes
     }
@@ -144,7 +151,7 @@
     }
     
     if (val >=1 && val < 21) {
-        self.snoozeMockLabel.text = @"We suppose this is a reasonable snooze interval";
+        self.snoozeMockLabel.text = @"I suppose this is a reasonable snooze interval";
     } else if (val >= 21 && val <= 58) {
         self.snoozeMockLabel.text = @"Seriously, who snoozes for more than 20 minutes?";
     } else if (val == 59) {

@@ -12,6 +12,8 @@
 		79318CCF19A8E7F70021D655 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79318CCE19A8E7F70021D655 /* CoreData.framework */; };
 		797DF3DC19A962FE00FDD94B /* RepeatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 797DF3DB19A962FE00FDD94B /* RepeatViewController.m */; };
 		79A2518F19AE2E7F009174C8 /* AlarmLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 79A2518E19AE2E7F009174C8 /* AlarmLogic.m */; };
+		98171E8D19AF729C0005BDEB /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98171E8C19AF729C0005BDEB /* AVFoundation.framework */; };
+		98171E8F19AFB3040005BDEB /* groudhog.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 98171E8E19AFB3040005BDEB /* groudhog.mp3 */; };
 		98315AFE19ABAE3F00D717F0 /* Jokes.m in Sources */ = {isa = PBXBuildFile; fileRef = 98315AFD19ABAE3F00D717F0 /* Jokes.m */; };
 		98315B0119ABD40300D717F0 /* AlarmJokes.m in Sources */ = {isa = PBXBuildFile; fileRef = 98315B0019ABD40300D717F0 /* AlarmJokes.m */; };
 		98315B0419ABD4E700D717F0 /* SnoozeJokes.m in Sources */ = {isa = PBXBuildFile; fileRef = 98315B0319ABD4E700D717F0 /* SnoozeJokes.m */; };
@@ -63,6 +65,8 @@
 		797DF3DB19A962FE00FDD94B /* RepeatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepeatViewController.m; sourceTree = "<group>"; };
 		79A2518D19AE2E7F009174C8 /* AlarmLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmLogic.h; sourceTree = "<group>"; };
 		79A2518E19AE2E7F009174C8 /* AlarmLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmLogic.m; sourceTree = "<group>"; };
+		98171E8C19AF729C0005BDEB /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		98171E8E19AFB3040005BDEB /* groudhog.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = groudhog.mp3; path = ../../../groudhog.mp3; sourceTree = "<group>"; };
 		98315AFC19ABAE3F00D717F0 /* Jokes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Jokes.h; sourceTree = "<group>"; };
 		98315AFD19ABAE3F00D717F0 /* Jokes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Jokes.m; sourceTree = "<group>"; };
 		98315AFF19ABD40300D717F0 /* AlarmJokes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmJokes.h; sourceTree = "<group>"; };
@@ -107,6 +111,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98171E8D19AF729C0005BDEB /* AVFoundation.framework in Frameworks */,
 				989F4C0B19ACE3150002B543 /* MediaPlayer.framework in Frameworks */,
 				E7AAF5F819AAAE910055D07B /* AudioToolbox.framework in Frameworks */,
 				E7AAF5F919AAAE910055D07B /* CFNetwork.framework in Frameworks */,
@@ -161,6 +166,7 @@
 		98962DBB19A7C0E700DEE9B5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				98171E8C19AF729C0005BDEB /* AVFoundation.framework */,
 				989F4C0A19ACE3150002B543 /* MediaPlayer.framework */,
 				E7AAF5EF19AAAE910055D07B /* AudioToolbox.framework */,
 				E7AAF5F019AAAE910055D07B /* CFNetwork.framework */,
@@ -204,6 +210,7 @@
 				98315B0019ABD40300D717F0 /* AlarmJokes.m */,
 				98315B0219ABD4E700D717F0 /* SnoozeJokes.h */,
 				98315B0319ABD4E700D717F0 /* SnoozeJokes.m */,
+				98171E8E19AFB3040005BDEB /* groudhog.mp3 */,
 				98315AFC19ABAE3F00D717F0 /* Jokes.h */,
 				98315AFD19ABAE3F00D717F0 /* Jokes.m */,
 			);
@@ -316,6 +323,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				98962DD519A7C0E700DEE9B5 /* Images.xcassets in Resources */,
+				98171E8F19AFB3040005BDEB /* groudhog.mp3 in Resources */,
 				98962DC719A7C0E700DEE9B5 /* InfoPlist.strings in Resources */,
 				98962DD019A7C0E700DEE9B5 /* Main.storyboard in Resources */,
 			);
