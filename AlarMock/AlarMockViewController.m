@@ -38,6 +38,7 @@
     self.jokes = [[Jokes alloc] init];
     self.jokes.delegate =self;
     [self.jokes querySnoozeJokes];
+    self.editButton.enabled = NO;
 }
 
 -(void)viewWillAppear:(BOOL)animated
