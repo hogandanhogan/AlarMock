@@ -40,15 +40,15 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DaysCell"];
-    NSArray *days = [[NSArray alloc] initWithObjects:@"Monday",
-                     @"Tuesday",
-                     @"Wednesday",
-                     @"Thursday",
-                     @"Friday",
-                     @"Saturday",
-                     @"Sunday", nil];
+    NSArray *days = [[NSArray alloc] initWithObjects:@"Every Monday",
+                     @"Every Tuesday",
+                     @"Every Wednesday",
+                     @"Every Thursday",
+                     @"Every Friday",
+                     @"Every Saturday",
+                     @"Every Sunday", nil];
     cell.textLabel.text = [days objectAtIndex:indexPath.row];
-    
+
     return cell;
 }
 

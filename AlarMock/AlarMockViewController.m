@@ -38,6 +38,7 @@
     self.jokes = [[Jokes alloc] init];
     self.jokes.delegate =self;
     [self.jokes querySnoozeJokes];
+    self.editButton.enabled = NO;
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -60,6 +61,7 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -170,7 +172,7 @@
 
 -(IBAction)unwindToAlarmMockViewController:(UIStoryboardSegue *)unwindSegue
 {
-    
+
 }
 - (IBAction)onSubmitJoke:(id)sender
 {
