@@ -23,6 +23,8 @@
 @property Jokes *jokes;
 @property NSMutableArray *alarmJokes;
 
+@property MPMediaPickerController *picker;
+
 @end
 
 @implementation AddAlarmViewController
@@ -77,8 +79,27 @@
         RepeatViewController *dvc = [self.storyboard instantiateViewControllerWithIdentifier:@"daysVC"];
         [self.navigationController pushViewController:dvc animated:YES];
     }
+    if (indexPath.row == 1) {
+        self.picker = [[MPMediaPickerController alloc] initWithMediaTypes:MPMediaTypeAnyAudio];
+        self.picker.delegate = self;
+        self.picker.allowsPickingMultipleItems = NO;
+        self.picker.prompt = @"Choose a song that might wake your bitch ass up";
+        [self presentViewController:self.picker animated:YES completion:nil];
+    }
 }
 
+-(void)mediaPicker:(MPMediaPickerController *)mediaPicker didPickMediaItems:(MPMediaItemCollection *)mediaItemCollection
+{
+    [self dismissViewControllerAnimated:YES completion:^{
+        //code for saving song or whatever
+    }];
+}
+-(void)mediaPickerDidCancel:(MPMediaPickerController *)mediaPicker
+{
+    [self dismissViewControllerAnimated:YES completion:^{
+     
+    }];
+}
 - (void)changeSwitch:(id)sender
 {
     if([sender isOn]) {
@@ -152,31 +173,6 @@
         [self.alarmJokes addObject:joke.joke];
     }
 }
-
-//onRowTapped is not real…
-- (void)onRowTapped:(BOOL)animated {
-    MPMediaPickerController *picker = [[MPMediaPickerController alloc] initWithMediaTypes:MPMediaTypeAnyAudio];
-	picker.delegate = self;
-	picker.allowsPickingMultipleItems = YES;
-	picker.prompt = @"Choose a song that might wake your bitch ass up";
-	[self presentViewController:picker animated:YES completion:nil];
-
-}
-
-//- (void) mediaPicker: (MPMediaPickerController *) mediaPicker didPickMediaItems: (MPMediaItemCollection *) mediaItemCollection {
-//
-//	[self dismissViewControllerAnimated:YES completion:^{
-//        [self updatePlayerQueueWithMediaCollection: mediaItemCollection];
-//        [AddAlarmViewController reloadData];
-//    }];
-//}
-//
-//// Responds to the user tapping done having chosen no music.
-//- (void) mediaPickerDidCancel: (MPMediaPickerController *) mediaPicker {
-//
-//	[self dismissViewControllerAnimated:YES completion:^{
-//
-//    }];}
 
 
 @end
