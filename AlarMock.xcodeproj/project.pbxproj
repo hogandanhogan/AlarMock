@@ -14,6 +14,8 @@
 		79A2518F19AE2E7F009174C8 /* AlarmEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 79A2518E19AE2E7F009174C8 /* AlarmEngine.m */; };
 		79A2519119AF8366009174C8 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79A2519019AF8365009174C8 /* AVFoundation.framework */; };
 		79A2519919AFB923009174C8 /* groudhog.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 79A2519819AFB923009174C8 /* groudhog.mp3 */; };
+		79A2A95B19B0C5EC005BB9AC /* Alarm.m in Sources */ = {isa = PBXBuildFile; fileRef = 79A2A95A19B0C5EC005BB9AC /* Alarm.m */; };
+		79A2A95D19B0C6CA005BB9AC /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 79A2A95C19B0C6CA005BB9AC /* Default-568h@2x.png */; };
 		98315AFE19ABAE3F00D717F0 /* Jokes.m in Sources */ = {isa = PBXBuildFile; fileRef = 98315AFD19ABAE3F00D717F0 /* Jokes.m */; };
 		98315B0119ABD40300D717F0 /* AlarmJokes.m in Sources */ = {isa = PBXBuildFile; fileRef = 98315B0019ABD40300D717F0 /* AlarmJokes.m */; };
 		98315B0419ABD4E700D717F0 /* SnoozeJokes.m in Sources */ = {isa = PBXBuildFile; fileRef = 98315B0319ABD4E700D717F0 /* SnoozeJokes.m */; };
@@ -25,7 +27,6 @@
 		98962DCD19A7C0E700DEE9B5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 98962DCC19A7C0E700DEE9B5 /* AppDelegate.m */; };
 		98962DD019A7C0E700DEE9B5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98962DCE19A7C0E700DEE9B5 /* Main.storyboard */; };
 		98962DD319A7C0E700DEE9B5 /* AlarMockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98962DD219A7C0E700DEE9B5 /* AlarMockViewController.m */; };
-		98962DD519A7C0E700DEE9B5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 98962DD419A7C0E700DEE9B5 /* Images.xcassets */; };
 		98962DDC19A7C0E700DEE9B5 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98962DDB19A7C0E700DEE9B5 /* XCTest.framework */; };
 		98962DDD19A7C0E700DEE9B5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98962DBC19A7C0E700DEE9B5 /* Foundation.framework */; };
 		98962DDE19A7C0E700DEE9B5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98962DC019A7C0E700DEE9B5 /* UIKit.framework */; };
@@ -67,6 +68,9 @@
 		79A2518E19AE2E7F009174C8 /* AlarmEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmEngine.m; sourceTree = "<group>"; };
 		79A2519019AF8365009174C8 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		79A2519819AFB923009174C8 /* groudhog.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = groudhog.mp3; path = ../../../Downloads/groudhog.mp3; sourceTree = "<group>"; };
+		79A2A95919B0C5EC005BB9AC /* Alarm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Alarm.h; sourceTree = "<group>"; };
+		79A2A95A19B0C5EC005BB9AC /* Alarm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Alarm.m; sourceTree = "<group>"; };
+		79A2A95C19B0C6CA005BB9AC /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
 		98315AFC19ABAE3F00D717F0 /* Jokes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Jokes.h; sourceTree = "<group>"; };
 		98315AFD19ABAE3F00D717F0 /* Jokes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Jokes.m; sourceTree = "<group>"; };
 		98315AFF19ABD40300D717F0 /* AlarmJokes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmJokes.h; sourceTree = "<group>"; };
@@ -86,7 +90,6 @@
 		98962DCF19A7C0E700DEE9B5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		98962DD119A7C0E700DEE9B5 /* AlarMockViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AlarMockViewController.h; sourceTree = "<group>"; };
 		98962DD219A7C0E700DEE9B5 /* AlarMockViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AlarMockViewController.m; sourceTree = "<group>"; };
-		98962DD419A7C0E700DEE9B5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		98962DDA19A7C0E700DEE9B5 /* AlarMockTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AlarMockTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		98962DDB19A7C0E700DEE9B5 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		98962DE319A7C0E800DEE9B5 /* AlarMockTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AlarMockTests-Info.plist"; sourceTree = "<group>"; };
@@ -196,7 +199,8 @@
 				98962DCE19A7C0E700DEE9B5 /* Main.storyboard */,
 				1F6CACA319A7C5070025CB67 /* AddAlarmViewController.h */,
 				1F6CACA419A7C5070025CB67 /* AddAlarmViewController.m */,
-				79A2519819AFB923009174C8 /* groudhog.mp3 */,
+				79A2A95919B0C5EC005BB9AC /* Alarm.h */,
+				79A2A95A19B0C5EC005BB9AC /* Alarm.m */,
 				79A2518D19AE2E7F009174C8 /* AlarmEngine.h */,
 				79A2518E19AE2E7F009174C8 /* AlarmEngine.m */,
 				98962DD119A7C0E700DEE9B5 /* AlarMockViewController.h */,
@@ -205,13 +209,14 @@
 				797DF3DB19A962FE00FDD94B /* RepeatViewController.m */,
 				792A791419ABF4C80099A32F /* TableViewCell.h */,
 				792A791519ABF4C80099A32F /* TableViewCell.m */,
-				98962DD419A7C0E700DEE9B5 /* Images.xcassets */,
+				79A2A95C19B0C6CA005BB9AC /* Default-568h@2x.png */,
 				98962DC319A7C0E700DEE9B5 /* Supporting Files */,
 				98315AFF19ABD40300D717F0 /* AlarmJokes.h */,
 				98315B0019ABD40300D717F0 /* AlarmJokes.m */,
 				98315B0219ABD4E700D717F0 /* SnoozeJokes.h */,
 				98315B0319ABD4E700D717F0 /* SnoozeJokes.m */,
 				98315AFC19ABAE3F00D717F0 /* Jokes.h */,
+				79A2519819AFB923009174C8 /* groudhog.mp3 */,
 				98315AFD19ABAE3F00D717F0 /* Jokes.m */,
 			);
 			path = AlarMock;
@@ -325,9 +330,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				98962DD519A7C0E700DEE9B5 /* Images.xcassets in Resources */,
 				79A2519919AFB923009174C8 /* groudhog.mp3 in Resources */,
 				98962DC719A7C0E700DEE9B5 /* InfoPlist.strings in Resources */,
+				79A2A95D19B0C6CA005BB9AC /* Default-568h@2x.png in Resources */,
 				98962DD019A7C0E700DEE9B5 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -348,6 +353,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				98315B0119ABD40300D717F0 /* AlarmJokes.m in Sources */,
+				79A2A95B19B0C5EC005BB9AC /* Alarm.m in Sources */,
 				98315AFE19ABAE3F00D717F0 /* Jokes.m in Sources */,
 				98315B0419ABD4E700D717F0 /* SnoozeJokes.m in Sources */,
 				98962DD319A7C0E700DEE9B5 /* AlarMockViewController.m in Sources */,

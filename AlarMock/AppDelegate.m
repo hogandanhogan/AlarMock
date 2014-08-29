@@ -11,6 +11,7 @@
 #import "Jokes.h"
 #import "AlarMockViewController.h"
 #import "AddAlarmViewController.h"
+#import "Alarm.h"
 
 
 
@@ -22,6 +23,11 @@
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
     return YES;
+}
+
++ (Alarm *)loadFromSavedData;
+{
+    return nil;
 }
 
 
@@ -40,9 +46,6 @@ didReceiveLocalNotification:(UILocalNotification *)notification
                                               otherButtonTitles:@"Snooze",
                                                                 @"Dismiss",nil];
     [alertView show];
-    AddAlarmViewController *aavc = [AddAlarmViewController new];
-    
-//    [audioPlayerMusic play];
 }
 
 @end

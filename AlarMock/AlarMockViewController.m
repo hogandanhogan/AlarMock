@@ -11,6 +11,7 @@
 #import "SnoozeJokes.h"
 #import "Jokes.h"
 #import "AddAlarmViewController.h"
+#import "Alarm.h"
 
 @interface AlarMockViewController() <UITableViewDelegate, UITableViewDataSource, TableViewCellDelegate, JokesManager, UIAlertViewDelegate>
 
@@ -120,11 +121,17 @@
         [self saveSnoozeDefault:snoozeNotification];
     }
 }
+
 #pragma mark - Table View Cell Delegate Method
 
 -(void)tableViewCell:(TableViewCell *)tableViewCell switchDidChangeValue:(UISwitch *)switcheroo
 {
-    //set switch on/off functionality
+    Alarm *alarm = [Alarm new];
+    if (switcheroo.isEnabled) {
+        alarm.on = YES;
+    } else {
+        alarm.on = NO;
+    }
 }
 
 

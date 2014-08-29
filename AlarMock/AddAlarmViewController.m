@@ -10,10 +10,12 @@
 #import "RepeatViewController.h"
 #import "Jokes.h"
 #import "AlarmJokes.h"
+#import "AlarmEngine.h"
+#import "Alarm.h"
 #import <MediaPlayer/MediaPlayer.h>
 #import <AVFoundation/AVFoundation.h>
 
-@interface AddAlarmViewController () <UITableViewDataSource, UITableViewDelegate, JokesManager, MPMediaPickerControllerDelegate>
+@interface AddAlarmViewController () <UITableViewDataSource, UITableViewDelegate, JokesManager, MPMediaPickerControllerDelegate, AlarmEngineDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) IBOutlet UIDatePicker *datePicker;
@@ -24,7 +26,7 @@
 @property Jokes *jokes;
 @property NSMutableArray *alarmJokes;
 @property MPMediaPickerController *picker;
-@property MPMediaItem *mpsong;
+@property MPMediaItem *alarmSong;
 
 @end
 
@@ -61,7 +63,7 @@
     
     UISwitch *switcheroo = [[UISwitch alloc] initWithFrame:CGRectZero];
     [switcheroo addTarget:self
-                   action:@selector(changeSwitch:)
+                   action:@selector(changeSnoozeSwitch:)
          forControlEvents:UIControlEventValueChanged];
     
     [self.view addSubview:switcheroo];
@@ -95,17 +97,7 @@
 
 -(void)mediaPicker:(MPMediaPickerController *)mediaPicker didPickMediaItems:(MPMediaItemCollection *)mediaItemCollection
 {
-   // self.mediaItemCollection = mediaItemCollection;
-    
-//    NSURL *anUrl = [[mediaItems objectAtIndex: 0] valueForProperty:MPMediaItemPropertyAssetURL];
-//    self.audioPlayerMusic = [[[AVPlayer alloc] initWithURL:anUrl] retain];
-//    [self.audioPlayerMusic play];
-    
-    //self.songTitle = [mediaItemCollection valueForProperty:MPMediaItemPropertyAssetURL];
-    
-//      NSString *songTitle = [song valueForProperty: MPMediaItemPropertyTitle];
-//      self.songName.text = songTitle;
-    self.mpsong =[mediaItemCollection.items objectAtIndex:0];
+    self.alarmSong =[mediaItemCollection.items objectAtIndex:0];
 }
 -(void)mediaPickerDidCancel:(MPMediaPickerController *)mediaPicker
 {
@@ -113,7 +105,7 @@
      
     }];
 }
-- (void)changeSwitch:(id)sender
+- (void)changeSnoozeSwitch:(id)sender
 {
     if([sender isOn]) {
         self.slider.hidden = NO;
@@ -136,14 +128,18 @@
     localNotification.timeZone = [NSTimeZone defaultTimeZone];
     //localNotification.soundName = [self.mpsong valueForProperty:MPMediaItemPropertyTitle];
     localNotification.soundName = @"groudhog.mp3";
-    if (self.sliderVal) {
-        //schedule more snoozes
-    }
     
     [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
     [self saveDefault:localNotification];
         
     [self.navigationController popToRootViewControllerAnimated:YES];
+    
+    Alarm *alarm = [Alarm new];
+    alarm.notification = localNotification;
+    alarm.snoozeInterval = self.sliderVal;
+    alarm.alarmSong = self.alarmSong;
+    
+    //[alarm addAlrarm];
 }
 
 - (IBAction)onMoveSlider:(id)sender
