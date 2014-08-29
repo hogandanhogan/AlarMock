@@ -39,14 +39,16 @@
     self.jokes = [[Jokes alloc] init];
     self.jokes.delegate =self;
     [self.jokes querySnoozeJokes];
-    self.editButton.enabled = NO;
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    //create custom class for the collection of local notification data
+
     self.localNotifications = [[[NSUserDefaults standardUserDefaults] objectForKey:@"localNotificationsData"] mutableCopy];
+    if (self.localNotifications.count == 0) {
+        
+    }
     [self.tableView reloadData];
 }
 
@@ -162,7 +164,6 @@
 
 - (IBAction)enterEditMode:(id)sender
 {
-    
     if ([self.tableView isEditing]) {
         [self.tableView setEditing:NO animated:YES];
         
@@ -188,11 +189,6 @@
     [joke saveInBackground];
     self.textField.text = @"";
     self.textField.placeholder = self.textField.placeholder;
-}
-
--(IBAction)unwindToAddAlarmViewController:(UIStoryboardSegue *)unwindSegue
-{
-    
 }
 
 -(void)saveDefault:(UILocalNotification *)localNotification
