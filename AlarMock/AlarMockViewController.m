@@ -12,6 +12,7 @@
 #import "Jokes.h"
 #import "AddAlarmViewController.h"
 #import "Alarm.h"
+#import "AlarmEngine.h"
 
 @interface AlarMockViewController() <UITableViewDelegate, UITableViewDataSource, TableViewCellDelegate, JokesManager, UIAlertViewDelegate>
 
@@ -45,8 +46,9 @@
 {
     [super viewWillAppear:animated];
 
-    self.localNotifications = [[[NSUserDefaults standardUserDefaults] objectForKey:@"localNotificationsData"] mutableCopy];
-    if (self.localNotifications.count == 0) {
+    //how do I use the constant from the alarm engine class
+    self.alarms = [[[NSUserDefaults standardUserDefaults] objectForKey:@"kAlarmEngineDefaultsKey"] mutableCopy];
+    if (self.alarms.count == 0) {
         
     }
     [self.tableView reloadData];
@@ -56,27 +58,31 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.localNotifications.count;
+    return self.alarms.count;
 }
-
-#pragma mark Table View Delegate Methods
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 88;
 }
 
+#pragma mark Table View Delegate Methods
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
+    [self.alarms removeObjectAtIndex:indexPath.row];
+    [self removeAlarm:[self.alarms objectAtIndex:indexPath.row]];
+    [self.tableView reloadData];
 }
+
+-removeala
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    //[[UIApplication sharedApplication] scheduledLocalNotifications];
+    [[UIApplication sharedApplication] scheduledLocalNotifications];
     
-    NSData *data = [self.localNotifications objectAtIndex:indexPath.row];
+    NSData *data = [self.alarms objectAtIndex:indexPath.row];
     UILocalNotification *localNotification = [NSKeyedUnarchiver unarchiveObjectWithData:data];
 
     TableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
@@ -97,7 +103,7 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"localNotificationsData"];
-    [self.localNotifications removeObjectAtIndex:indexPath.row];
+    [self.alarms removeObjectAtIndex:indexPath.row];
 
     [self.tableView reloadData];
 }
@@ -122,7 +128,6 @@
 
         snoozeNotification.fireDate = [NSDate dateWithTimeIntervalSinceNow:10];
         snoozeNotification.timeZone = [NSTimeZone defaultTimeZone];
-        snoozeNotification.soundName = @"groudhog.mp3";
 
         [[UIApplication sharedApplication] scheduleLocalNotification:snoozeNotification];
         [self saveSnoozeDefault:snoozeNotification];
@@ -194,6 +199,14 @@
     [joke saveInBackground];
     self.textField.text = @"";
     self.textField.placeholder = self.textField.placeholder;
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"editAlarm"]) {
+        AddAlarmViewController *aavc = [AddAlarmViewController new];
+        aavc.title = @"Edit Alarm";
+    }
 }
 
 @end

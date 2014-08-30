@@ -10,6 +10,6 @@
 
 @interface AlarMockViewController : UIViewController
 
-@property NSMutableArray *localNotifications;
+@property NSMutableArray *alarms;
 
 @end

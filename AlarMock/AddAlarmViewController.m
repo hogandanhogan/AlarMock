@@ -127,14 +127,14 @@
     //notification fires in 4 seconds while testing
     self.alarm.snoozeInterval = self.sliderVal;
     self.alarm.alarmSong = self.alarmSong;
-    [self addAlarm];
+    [self addAlarm:self.alarm];
 
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 - (void)addAlarm:(Alarm *)alarm;
 {
-    self.alarm = alarm;
+    alarm = self.alarm;
 }
 
 - (IBAction)onMoveSlider:(id)sender
@@ -176,7 +176,8 @@
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue destinationViewController] isKindOfClass:[AlarMockViewController class]]) {
-
+        AlarMockViewController *amvc = [AlarMockViewController new];
+        [amvc.alarms addObject:self.alarm];
     }
 }
 

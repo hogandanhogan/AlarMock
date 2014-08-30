@@ -18,11 +18,11 @@
 @interface AlarmEngine : NSObject
 
 @property (nonatomic, readonly) NSArray *alarms;
-
 @property (nonatomic, weak) id<AlarmEngineDelegate> delegate;
 
 - (void)addAlarm:(Alarm *)alarm;
 - (void)removeAlarm:(Alarm *)alarm;
+- (void)editAlarm:(Alarm *)alarm;
 + (instancetype)loadFromSavedData;
 
 @end
