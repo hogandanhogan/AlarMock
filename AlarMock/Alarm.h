@@ -9,11 +9,18 @@
 #import <Foundation/Foundation.h>
 #import <MediaPlayer/MediaPlayer.h>
 
+@class AlarmJokes;
+@class SnoozeJokes;
+
 @interface Alarm : NSObject <NSCoding>
 
-@property UILocalNotification *notification;
-@property float snoozeInterval;
-@property MPMediaItem *alarmSong;
-@property BOOL on;
+@property (nonatomic) NSTimeInterval snoozeInterval;
+@property (nonatomic) MPMediaItem *alarmSong;
+//days repeat property
+
+@property (nonatomic) BOOL on;
+@property (nonatomic) NSDate *fireDate;
+@property (nonatomic) AlarmJokes *alarmJokes;
+@property (nonatomic) SnoozeJokes *snoozeJokes;
 
 @end

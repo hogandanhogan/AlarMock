@@ -8,45 +8,68 @@
 
 #import "AlarmEngine.h"
 
+static NSString * const kAlarmEngineDefaultsKey;
+
 @implementation AlarmEngine
-
-+ (AlarmEngine *)loadFromSavedData
 {
-//Call this in the AppDelegate to instantiate from serialized data.  Use NSKeyedUnarchiver to deserialize this object from the defaults.
-    return nil;
+    NSMutableArray *_alarms;
 }
 
-- (Alarm *)addAlarm
++ (instancetype)loadFromSavedData
 {
-//(return the created alarm in case you need to turn it off or on immediately)
-    return nil;
+    return [[NSUserDefaults standardUserDefaults] objectForKey:kAlarmEngineDefaultsKey] ?: [[self alloc] init];
 }
 
-- (void)snoozeAlarmWithFireDate:(NSDate *)fireDate
+- (id)init
 {
+    self = [super init];
+    if (self) {
+        _alarms = [NSMutableArray array];
+    }
+    return self;
+}
+
+#pragma mark - NSCoding
+
+- (id)initWithCoder:(NSCoder *)decoder
+{
+    self = [super init];
     
+    if (self) {
+        _alarms = [[decoder decodeObjectForKey:@"alarms"] mutableCopy] ?: [NSMutableArray array];
+    }
+    
+    return self;
 }
 
-- (void)removeAlarmWithFireDate:(NSDate *)fireDate
+- (void)encodeWithCoder:(NSCoder *)encoder
 {
-    
+    [encoder encodeObject:_alarms forKey:@"alarms"];
+}
+
+- (void)addAlarm:(Alarm *)alarm
+{
+    if ([_alarms containsObject:alarm]) {
+        return;
+    }
+
+    [_alarms addObject:alarm];
+    [self save];
 }
 
 - (void)removeAlarm:(Alarm *)alarm
 {
+    if (![_alarms containsObject:alarm]) {
+        return;
+    }
     
-    
+    [_alarms removeObject:alarm];
+    [self save];
 }
 
 - (void)save
 {
-    
-    //Call this every time you add or remove an alarm inside of the public methods listed above.
+    [[NSUserDefaults standardUserDefaults] setObject:self forKey:kAlarmEngineDefaultsKey];
+}
 
-}
-- alarmWithFireDate:(NSDate *)fireDate
-{
-    //(iterate through array of alarms and find the alarm with the given fire date and return it.  This will be useful when you are trying to remove or snooze an alarm that just went off)
-    return nil;
-}
 @end

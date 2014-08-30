@@ -216,8 +216,8 @@
 				98315B0219ABD4E700D717F0 /* SnoozeJokes.h */,
 				98315B0319ABD4E700D717F0 /* SnoozeJokes.m */,
 				98315AFC19ABAE3F00D717F0 /* Jokes.h */,
-				79A2519819AFB923009174C8 /* groudhog.mp3 */,
 				98315AFD19ABAE3F00D717F0 /* Jokes.m */,
+				79A2519819AFB923009174C8 /* groudhog.mp3 */,
 			);
 			path = AlarMock;
 			sourceTree = "<group>";

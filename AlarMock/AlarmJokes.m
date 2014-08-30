@@ -10,6 +10,8 @@
 
 @implementation AlarmJokes
 
+@dynamic joke;
+
 +(void)load
 {
     [self registerSubclass];
@@ -20,6 +22,4 @@
     return @"AlarmJokes";
 }
 
-
-@dynamic joke;
 @end

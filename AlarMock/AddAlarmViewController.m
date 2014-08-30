@@ -27,6 +27,7 @@
 @property NSMutableArray *alarmJokes;
 @property MPMediaPickerController *picker;
 @property MPMediaItem *alarmSong;
+@property Alarm *alarm;
 
 @end
 
@@ -134,12 +135,18 @@
         
     [self.navigationController popToRootViewControllerAnimated:YES];
     
-    Alarm *alarm = [Alarm new];
-    alarm.notification = localNotification;
-    alarm.snoozeInterval = self.sliderVal;
-    alarm.alarmSong = self.alarmSong;
-    
-    //[alarm addAlrarm];
+    self.alarm = [Alarm new];
+    self.alarm.fireDate = [NSDate dateWithTimeIntervalSinceNow:4];
+    //self.alarm.fireDate = self.datePicker.date;
+    //notification fires in 4 seconds while testing
+    self.alarm.snoozeInterval = self.sliderVal;
+    self.alarm.alarmSong = self.alarmSong;
+    [self addAlarm];
+}
+
+-(Alarm *)addAlarm
+{
+    return self.alarm;
 }
 
 - (IBAction)onMoveSlider:(id)sender

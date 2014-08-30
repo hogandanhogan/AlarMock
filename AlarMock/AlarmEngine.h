@@ -17,12 +17,12 @@
 
 @interface AlarmEngine : NSObject
 
-@property NSArray *alarms;
-@property id<AlarmEngineDelegate> delegate;
+@property (nonatomic, readonly) NSArray *alarms;
 
-- (void)snoozeAlarmWithFireDate:(NSDate *)fireDate;
-- (void)removeAlarmWithFireDate:(NSDate *)fireDate;
+@property (nonatomic, weak) id<AlarmEngineDelegate> delegate;
+
+- (void)addAlarm:(Alarm *)alarm;
 - (void)removeAlarm:(Alarm *)alarm;
-+ (Alarm *)loadFromSavedData;
++ (instancetype)loadFromSavedData;
 
 @end
