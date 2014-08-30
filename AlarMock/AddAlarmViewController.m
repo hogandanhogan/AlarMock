@@ -7,6 +7,7 @@
 //
 
 #import "AddAlarmViewController.h"
+#import "AlarMockViewController.h"
 #import "RepeatViewController.h"
 #import "Jokes.h"
 #import "AlarmJokes.h"
@@ -25,7 +26,6 @@
 @property float sliderVal;
 @property Jokes *jokes;
 @property NSMutableArray *alarmJokes;
-@property MPMediaPickerController *picker;
 @property MPMediaItem *alarmSong;
 @property Alarm *alarm;
 
@@ -36,6 +36,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    self.automaticallyAdjustsScrollViewInsets = NO;
     
     self.localNotifications = [NSMutableArray new];
     self.datePicker.date = [NSDate date];
@@ -84,11 +86,11 @@
         [self.navigationController pushViewController:dvc animated:YES];
     }
     if (indexPath.row == 1) {
-        self.picker = [[MPMediaPickerController alloc] initWithMediaTypes:MPMediaTypeAnyAudio];
-        self.picker.delegate = self;
-        self.picker.allowsPickingMultipleItems = NO;
-        self.picker.prompt = @"Choose a song that might wake your bitch ass up";
-        [self presentViewController:self.picker animated:YES completion:nil];
+        MPMediaPickerController *mediaPicker = [[MPMediaPickerController alloc] initWithMediaTypes:MPMediaTypeAnyAudio];
+        mediaPicker.delegate = self;
+        mediaPicker.allowsPickingMultipleItems = NO;
+        mediaPicker.prompt = @"Choose a song that might wake your bitch ass up";
+        [self presentViewController:mediaPicker animated:YES completion:nil];
         
 //        NSURL *songUrl = [[mediaItems objectAtIndex: 0] valueForProperty:MPMediaItemPropertyAssetURL];
 //        self.audioPlayerMusic = [[[AVPlayer alloc] initWithURL:songUrl] retain];
@@ -119,22 +121,6 @@
 
 - (IBAction)onSavePressed:(id)sender
 {
-    UILocalNotification* localNotification = [UILocalNotification new];
-   
-    //localNotification.fireDate = self.datePicker.date;
-    //notification fires in 4 seconds while testing
-    localNotification.fireDate = [NSDate dateWithTimeIntervalSinceNow:4];
-    localNotification.alertBody = [NSString stringWithFormat:@"%@", [self.alarmJokes objectAtIndex:arc4random_uniform((uint32_t)self.alarmJokes.count)]];
-    //localNotification.alertAction = @"Snooze";
-    localNotification.timeZone = [NSTimeZone defaultTimeZone];
-    //localNotification.soundName = [self.mpsong valueForProperty:MPMediaItemPropertyTitle];
-    localNotification.soundName = @"groudhog.mp3";
-    
-    [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
-    [self saveDefault:localNotification];
-        
-    [self.navigationController popToRootViewControllerAnimated:YES];
-    
     self.alarm = [Alarm new];
     self.alarm.fireDate = [NSDate dateWithTimeIntervalSinceNow:4];
     //self.alarm.fireDate = self.datePicker.date;
@@ -142,11 +128,13 @@
     self.alarm.snoozeInterval = self.sliderVal;
     self.alarm.alarmSong = self.alarmSong;
     [self addAlarm];
+
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
--(Alarm *)addAlarm
+- (void)addAlarm:(Alarm *)alarm;
 {
-    return self.alarm;
+    self.alarm = alarm;
 }
 
 - (IBAction)onMoveSlider:(id)sender
@@ -162,24 +150,12 @@
     }
     
     if (val >=1 && val < 21) {
-        self.snoozeMockLabel.text = @"We suppose this is a reasonable snooze interval";
+        self.snoozeMockLabel.text = @"I suppose this is a reasonable snooze interval";
     } else if (val >= 21 && val <= 58) {
         self.snoozeMockLabel.text = @"Seriously, who snoozes for more than 20 minutes?";
     } else if (val == 59) {
         self.snoozeMockLabel.text = @"If you think you will need to snooze this long just call in sick";
     }
-}
-
--(void)saveDefault:(UILocalNotification *)localNotification
-{
-    NSData *localNotificationData = [NSKeyedArchiver archivedDataWithRootObject:localNotification];
-    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-    
-    NSMutableArray *localNotificationsData = [[NSMutableArray alloc] initWithArray:[prefs objectForKey:@"localNotificationsData"]];
-    [localNotificationsData addObject:localNotificationData];
-    [prefs setObject:localNotificationsData forKey:@"localNotificationsData"];
-    self.localNotifications = localNotificationsData;
-    [prefs synchronize];
 }
 
 -(void)alarmJokesReturned:(NSArray *)jokes
@@ -195,6 +171,13 @@
 -(IBAction)unwindToAddAlarmViewController:(UIStoryboardSegue *)unwindSegue
 {
     
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue destinationViewController] isKindOfClass:[AlarMockViewController class]]) {
+
+    }
 }
 
 @end

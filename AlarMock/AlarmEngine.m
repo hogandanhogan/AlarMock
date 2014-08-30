@@ -69,7 +69,9 @@ static NSString * const kAlarmEngineDefaultsKey;
 
 - (void)save
 {
-    [[NSUserDefaults standardUserDefaults] setObject:self forKey:kAlarmEngineDefaultsKey];
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:[self.alarms lastObject]];
+    [[NSUserDefaults standardUserDefaults] setObject:data forKey:kAlarmEngineDefaultsKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 @end

@@ -16,12 +16,12 @@
 
 @implementation TableViewCell
 
--(IBAction)switchDidChangeValue:(UISwitch *)sender
+- (IBAction)switchDidChangeValue:(UISwitch *)sender
 {
     [self.delegate tableViewCell:self switchDidChangeValue:sender];
 }
 
--(void)setSwitchState:(BOOL)on
+-( void)setSwitchState:(BOOL)on
 {
     self.switcheroo.on = on;
 }

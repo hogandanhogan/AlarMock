@@ -12,12 +12,12 @@
 
 @dynamic joke;
 
-+(void)load
++ (void)load
 {
     [self registerSubclass];
 }
 
-+(NSString *)parseClassName
++ (NSString *)parseClassName
 {
     return @"AlarmJokes";
 }

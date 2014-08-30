@@ -10,17 +10,16 @@
 
 @implementation SnoozeJokes
 
-+(NSString *)parseClassName
+@dynamic joke;
+
++ (NSString *)parseClassName
 {
     return @"SnoozeJokes";
 }
 
-+(void)load
++ (void)load
 {
     [self registerSubclass];
 }
 
-
-
-@dynamic joke;
 @end

@@ -28,7 +28,7 @@
 
 @implementation AlarMockViewController
 
--(void)viewDidLoad
+- (void)viewDidLoad
 {
     [super viewDidLoad];
     
@@ -41,7 +41,7 @@
     [self.jokes querySnoozeJokes];
 }
 
--(void)viewWillAppear:(BOOL)animated
+- (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
 
@@ -54,20 +54,25 @@
 
 #pragma mark Table View Data Source Methods
 
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return self.localNotifications.count;
 }
 
 #pragma mark Table View Delegate Methods
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 88;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
 }
 
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     //[[UIApplication sharedApplication] scheduledLocalNotifications];
     
@@ -89,7 +94,7 @@
     return cell;
 }
 
--(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"localNotificationsData"];
     [self.localNotifications removeObjectAtIndex:indexPath.row];
@@ -101,14 +106,14 @@
     return YES;
 }
 
--(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
 #pragma mark Alert View Delegate Methods
 
--(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if (buttonIndex == 0) {
         UILocalNotification * snoozeNotification = [UILocalNotification new];
@@ -126,7 +131,7 @@
 
 #pragma mark - Table View Cell Delegate Method
 
--(void)tableViewCell:(TableViewCell *)tableViewCell switchDidChangeValue:(UISwitch *)switcheroo
+- (void)tableViewCell:(TableViewCell *)tableViewCell switchDidChangeValue:(UISwitch *)switcheroo
 {
     Alarm *alarm = [Alarm new];
     if (switcheroo.isEnabled) {
@@ -136,10 +141,9 @@
     }
 }
 
-
 #pragma mark - Other Methods
 
--(void)saveSnoozeDefault:(UILocalNotification *)localNotification
+- (void)saveSnoozeDefault:(UILocalNotification *)localNotification
 {
     NSData *localNotificationData = [NSKeyedArchiver archivedDataWithRootObject:localNotification];
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
@@ -152,7 +156,7 @@
     [prefs synchronize];
 }
 
--(void)snoozeJokesReturned:(NSArray *)jokes
+- (void)snoozeJokesReturned:(NSArray *)jokes
 {
     self.snoozeJokes = [NSMutableArray array];
 
@@ -178,10 +182,11 @@
     }
 }
 
--(IBAction)unwindToAlarmMockViewController:(UIStoryboardSegue *)unwindSegue
+- (IBAction)unwindToAlarmMockViewController:(UIStoryboardSegue *)unwindSegue
 {
 
 }
+
 - (IBAction)onSubmitJoke:(id)sender
 {
     PFObject *joke = [PFObject objectWithClassName:@"UserJokes"];
@@ -189,18 +194,6 @@
     [joke saveInBackground];
     self.textField.text = @"";
     self.textField.placeholder = self.textField.placeholder;
-}
-
--(void)saveDefault:(UILocalNotification *)localNotification
-{
-    NSData *localNotificationData = [NSKeyedArchiver archivedDataWithRootObject:localNotification];
-    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-    
-    NSMutableArray *localNotificationsData = [[NSMutableArray alloc] initWithArray:[prefs objectForKey:@"localNotificationsData"]];
-    [localNotificationsData addObject:localNotificationData];
-    [prefs setObject:localNotificationsData forKey:@"localNotificationsData"];
-    self.localNotifications = localNotificationsData;
-    [prefs synchronize];
 }
 
 @end

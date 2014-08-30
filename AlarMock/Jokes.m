@@ -26,12 +26,9 @@
     PFQuery *query = [PFQuery queryWithClassName:@"AlarmJokes"];
     query.cachePolicy = kPFCachePolicyNetworkElseCache;
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if (error)
-        {
+        if (error) {
             NSLog(@"%@", error);
-        }
-        else
-        {
+        } else {
             [self.delegate alarmJokesReturned:objects];
         }
     }];
@@ -44,8 +41,7 @@
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (error) {
             NSLog(@"%@", error);
-        }
-        else {
+        } else {
             [self.delegate snoozeJokesReturned:objects];
         }
     }];

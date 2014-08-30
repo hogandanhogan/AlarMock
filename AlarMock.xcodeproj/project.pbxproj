@@ -13,7 +13,6 @@
 		797DF3DC19A962FE00FDD94B /* RepeatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 797DF3DB19A962FE00FDD94B /* RepeatViewController.m */; };
 		79A2518F19AE2E7F009174C8 /* AlarmEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 79A2518E19AE2E7F009174C8 /* AlarmEngine.m */; };
 		79A2519119AF8366009174C8 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79A2519019AF8365009174C8 /* AVFoundation.framework */; };
-		79A2519919AFB923009174C8 /* groudhog.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 79A2519819AFB923009174C8 /* groudhog.mp3 */; };
 		79A2A95B19B0C5EC005BB9AC /* Alarm.m in Sources */ = {isa = PBXBuildFile; fileRef = 79A2A95A19B0C5EC005BB9AC /* Alarm.m */; };
 		79A2A95D19B0C6CA005BB9AC /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 79A2A95C19B0C6CA005BB9AC /* Default-568h@2x.png */; };
 		98315AFE19ABAE3F00D717F0 /* Jokes.m in Sources */ = {isa = PBXBuildFile; fileRef = 98315AFD19ABAE3F00D717F0 /* Jokes.m */; };
@@ -67,7 +66,6 @@
 		79A2518D19AE2E7F009174C8 /* AlarmEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmEngine.h; sourceTree = "<group>"; };
 		79A2518E19AE2E7F009174C8 /* AlarmEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmEngine.m; sourceTree = "<group>"; };
 		79A2519019AF8365009174C8 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		79A2519819AFB923009174C8 /* groudhog.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = groudhog.mp3; path = ../../../Downloads/groudhog.mp3; sourceTree = "<group>"; };
 		79A2A95919B0C5EC005BB9AC /* Alarm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Alarm.h; sourceTree = "<group>"; };
 		79A2A95A19B0C5EC005BB9AC /* Alarm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Alarm.m; sourceTree = "<group>"; };
 		79A2A95C19B0C6CA005BB9AC /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -217,7 +215,6 @@
 				98315B0319ABD4E700D717F0 /* SnoozeJokes.m */,
 				98315AFC19ABAE3F00D717F0 /* Jokes.h */,
 				98315AFD19ABAE3F00D717F0 /* Jokes.m */,
-				79A2519819AFB923009174C8 /* groudhog.mp3 */,
 			);
 			path = AlarMock;
 			sourceTree = "<group>";
@@ -330,7 +327,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				79A2519919AFB923009174C8 /* groudhog.mp3 in Resources */,
 				98962DC719A7C0E700DEE9B5 /* InfoPlist.strings in Resources */,
 				79A2A95D19B0C6CA005BB9AC /* Default-568h@2x.png in Resources */,
 				98962DD019A7C0E700DEE9B5 /* Main.storyboard in Resources */,

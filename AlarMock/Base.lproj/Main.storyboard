@@ -153,7 +153,7 @@
         <!--Add Alarm View Controller - Add Alarm-->
         <scene sceneID="Zu8-Yv-70k">
             <objects>
-                <viewController id="AjE-70-so0" customClass="AddAlarmViewController" sceneMemberID="viewController">
+                <viewController autoresizesArchivedViewToFullSize="NO" id="AjE-70-so0" customClass="AddAlarmViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jGO-Bj-jmF"/>
                         <viewControllerLayoutGuide type="bottom" id="nUY-W8-DZh"/>
