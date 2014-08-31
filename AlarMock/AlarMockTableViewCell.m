@@ -6,22 +6,22 @@
 //  Copyright (c) 2014 AlarMock Industries. All rights reserved.
 //
 
-#import "TableViewCell.h"
+#import "AlarMockTableViewCell.h"
 
-@interface TableViewCell ()
+@interface AlarMockTableViewCell ()
 
 @property (nonatomic, weak) IBOutlet UISwitch *switcheroo;
 
 @end
 
-@implementation TableViewCell
+@implementation AlarMockTableViewCell
 
 - (IBAction)switchDidChangeValue:(UISwitch *)sender
 {
-    [self.delegate tableViewCell:self switchDidChangeValue:sender];
+    [self.delegate alarMockTableViewCell:self switchDidChangeValue:sender];
 }
 
--( void)setSwitchState:(BOOL)on
+- ( void)setSwitchState:(BOOL)on
 {
     self.switcheroo.on = on;
 }
