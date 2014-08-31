@@ -11,8 +11,6 @@
 
 @protocol AlarmEngineDelegate
 
-- (Alarm *)addAlarm;
-
 @end
 
 @interface AlarmEngine : NSObject
@@ -22,7 +20,6 @@
 
 - (void)addAlarm:(Alarm *)alarm;
 - (void)removeAlarm:(Alarm *)alarm;
-- (void)editAlarm:(Alarm *)alarm;
 + (instancetype)loadFromSavedData;
 
 @end

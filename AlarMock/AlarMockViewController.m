@@ -12,9 +12,8 @@
 #import "Jokes.h"
 #import "AddAlarmViewController.h"
 #import "Alarm.h"
-#import "AlarmEngine.h"
 
-@interface AlarMockViewController() <UITableViewDelegate, UITableViewDataSource, TableViewCellDelegate, JokesManager, UIAlertViewDelegate>
+@interface AlarMockViewController() <UITableViewDelegate, UITableViewDataSource, TableViewCellDelegate, JokesManager, UIAlertViewDelegate, AlarmEngineDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *editButton;
@@ -38,15 +37,22 @@
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 
     self.jokes = [[Jokes alloc] init];
-    self.jokes.delegate =self;
+    self.jokes.delegate = self;
     [self.jokes querySnoozeJokes];
+}
+
+-(void)awakeFromNib
+{
+    [super awakeFromNib];
+    self.alarmEngine = [AlarmEngine new];
+    self.alarmEngine.delegate = self;
+    self.alarmEngine = [AlarmEngine loadFromSavedData];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
 
-    //how do I use the constant from the alarm engine class
     self.alarms = [[[NSUserDefaults standardUserDefaults] objectForKey:@"kAlarmEngineDefaultsKey"] mutableCopy];
     if (self.alarms.count == 0) {
         
@@ -71,19 +77,14 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    [self.alarms removeObjectAtIndex:indexPath.row];
-    [self removeAlarm:[self.alarms objectAtIndex:indexPath.row]];
-    [self.tableView reloadData];
 }
-
--removeala
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [[UIApplication sharedApplication] scheduledLocalNotifications];
     
     NSData *data = [self.alarms objectAtIndex:indexPath.row];
-    UILocalNotification *localNotification = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    Alarm *alarm = [NSKeyedUnarchiver unarchiveObjectWithData:data];
 
     TableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     
@@ -94,7 +95,7 @@
     NSDateFormatter *dateFormatter = [NSDateFormatter new];
     dateFormatter.timeStyle = NSDateFormatterShortStyle;
     [dateFormatter setDateFormat:@"h:mm a"];
-    NSString *timeString = [dateFormatter stringFromDate:localNotification.fireDate];
+    NSString *timeString = [dateFormatter stringFromDate:alarm.fireDate];
     cell.textLabel.text = timeString;
 
     return cell;
@@ -102,8 +103,9 @@
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"localNotificationsData"];
     [self.alarms removeObjectAtIndex:indexPath.row];
+    [self.alarmEngine removeAlarm:[self.alarms objectAtIndex:indexPath.row]];
+    [self.tableView reloadData];
 
     [self.tableView reloadData];
 }

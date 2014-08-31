@@ -113,9 +113,11 @@
     if([sender isOn]) {
         self.slider.hidden = NO;
         self.snoozeTimeLabel.hidden = NO;
+        self.snoozeMockLabel.hidden = NO;
     } else {
         self.slider.hidden = YES;
         self.snoozeTimeLabel.hidden = YES;
+        self.snoozeMockLabel.hidden = YES;
     }
 }
 
@@ -127,14 +129,12 @@
     //notification fires in 4 seconds while testing
     self.alarm.snoozeInterval = self.sliderVal;
     self.alarm.alarmSong = self.alarmSong;
-    [self addAlarm:self.alarm];
+
+    AlarmEngine *alarmEngine = [AlarmEngine new];
+    alarmEngine.delegate = self;
+    [alarmEngine addAlarm:self.alarm];
 
     [self.navigationController popToRootViewControllerAnimated:YES];
-}
-
-- (void)addAlarm:(Alarm *)alarm;
-{
-    alarm = self.alarm;
 }
 
 - (IBAction)onMoveSlider:(id)sender

@@ -12,6 +12,7 @@
 #import "AlarMockViewController.h"
 #import "AddAlarmViewController.h"
 #import "Alarm.h"
+#import "AlarmEngine.h"
 
 
 
@@ -21,15 +22,9 @@
 {
     [Parse setApplicationId:@"I62Vun47l0d1KLv218eijHMxPG9dK6nxy54DtqQl" clientKey:@"rLVtvCOQVMqLrb5qijsmuC2y0MZAHVyZubSrFYqC"];
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
-    
+
     return YES;
 }
-
-+ (Alarm *)loadFromSavedData;
-{
-    return nil;
-}
-
 
 - (void)application:(UIApplication *)application
 didReceiveLocalNotification:(UILocalNotification *)notification

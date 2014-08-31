@@ -17,12 +17,23 @@ static NSString * const kAlarmEngineDefaultsKey;
 
 + (instancetype)loadFromSavedData
 {
-    return [[NSUserDefaults standardUserDefaults] objectForKey:kAlarmEngineDefaultsKey] ?: [[self alloc] init];
+//    static NSString *const kAlarmEngineDefaultsKey = @"kAlarmEngineDefaultsKey";
+//    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+//    [NSKeyedUnarchiver unarchiveObjectWithData:prefs];
+//    NSArray *defaults = [[NSMutableArray alloc] initWithArray:[prefs objectForKey:@"kAlarmEngineDefaultsKey"]] ?: [[self alloc] init];
+//
+//    [NSKeyedUnarchiver unarchiveObjectWithData:defaults];
+    NSArray *dataArray = [[NSUserDefaults standardUserDefaults] objectForKey:@"kAlarmEngineDefaultsKey"];
+    NSArray *alarms = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+
+
+    return nil;
 }
 
 - (id)init
 {
     self = [super init];
+
     if (self) {
         _alarms = [NSMutableArray array];
     }
@@ -70,7 +81,12 @@ static NSString * const kAlarmEngineDefaultsKey;
 - (void)save
 {
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:[self.alarms lastObject]];
-    [[NSUserDefaults standardUserDefaults] setObject:data forKey:kAlarmEngineDefaultsKey];
+    NSMutableArray *alarmsData = [NSMutableArray array];
+    [alarmsData addObject:data];
+
+    static NSString *const kAlarmEngineDefaultsKey = @"kAlarmEngineDefaultsKey";
+
+    [[NSUserDefaults standardUserDefaults] setObject:alarmsData forKey:kAlarmEngineDefaultsKey];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 

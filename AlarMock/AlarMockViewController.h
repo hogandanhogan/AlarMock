@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AlarmEngine.h"
 
 @interface AlarMockViewController : UIViewController
 
 @property NSMutableArray *alarms;
+@property AlarmEngine *alarmEngine;
 
 @end
