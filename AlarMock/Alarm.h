@@ -9,8 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <MediaPlayer/MediaPlayer.h>
 
-@class AlarmJokes;
-@class SnoozeJokes;
+@class JokeCollection;
 
 @interface Alarm : NSObject <NSCoding>
 
@@ -19,7 +18,9 @@
 //days repeat property
 @property (nonatomic) BOOL on;
 @property (nonatomic) NSDate *fireDate;
-@property (nonatomic) AlarmJokes *alarmJokes;
-@property (nonatomic) SnoozeJokes *snoozeJokes;
+@property (nonatomic) JokeCollection *jokeCollection;
+
+- (void)snooze;
+- (void)stop;
 
 @end

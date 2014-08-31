@@ -9,17 +9,17 @@
 #import <Foundation/Foundation.h>
 #import "Alarm.h"
 
-@protocol AlarmEngineDelegate
-
-@end
-
 @interface AlarmEngine : NSObject
 
 @property (nonatomic, readonly) NSArray *alarms;
-@property (nonatomic, weak) id<AlarmEngineDelegate> delegate;
+@property (nonatomic, readonly) NSString *randomAlarmJoke;
+@property (nonatomic, readonly) NSString *randomSnoozeJoke;
+
++ (instancetype)loadFromSavedData;
 
 - (void)addAlarm:(Alarm *)alarm;
 - (void)removeAlarm:(Alarm *)alarm;
-+ (instancetype)loadFromSavedData;
+
+- (Alarm *)alarmWithFireDate:(NSDate *)fireDate;
 
 @end

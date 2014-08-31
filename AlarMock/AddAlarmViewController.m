@@ -9,14 +9,13 @@
 #import "AddAlarmViewController.h"
 #import "AlarMockViewController.h"
 #import "RepeatViewController.h"
-#import "Jokes.h"
-#import "AlarmJokes.h"
+#import "AlarmJoke.h"
 #import "AlarmEngine.h"
 #import "Alarm.h"
 #import <MediaPlayer/MediaPlayer.h>
 #import <AVFoundation/AVFoundation.h>
 
-@interface AddAlarmViewController () <UITableViewDataSource, UITableViewDelegate, JokesManager, MPMediaPickerControllerDelegate, AlarmEngineDelegate>
+@interface AddAlarmViewController () <UITableViewDataSource, UITableViewDelegate, MPMediaPickerControllerDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) IBOutlet UIDatePicker *datePicker;
@@ -24,14 +23,16 @@
 @property (weak, nonatomic) IBOutlet UILabel *snoozeTimeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *snoozeMockLabel;
 @property float sliderVal;
-@property Jokes *jokes;
-@property NSMutableArray *alarmJokes;
-@property MPMediaItem *alarmSong;
-@property Alarm *alarm;
+
+
+@property (nonatomic) MPMediaItem *alarmSong;
+@property (nonatomic) Alarm *alarm;
 
 @end
 
 @implementation AddAlarmViewController
+
+#pragma mark - View lifecycle
 
 - (void)viewDidLoad
 {
@@ -39,26 +40,22 @@
 
     self.automaticallyAdjustsScrollViewInsets = NO;
     
-    self.localNotifications = [NSMutableArray new];
     self.datePicker.date = [NSDate date];
 
     self.tableView.scrollEnabled = NO;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
-    self.slider.hidden = YES;
-    
-    self.jokes = [[Jokes alloc] init];
-
-    self.jokes.delegate =self;
-    [self.jokes queryAlarmJokes];
+    self.slider.hidden = YES;    
 }
 
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+#pragma mark - UITableViewDelegate/DataSource
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return 3;
 }
 
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SettingsCell"];
     NSArray *settings = [[NSArray alloc] initWithObjects:@"Repeat", @"Sound", @"Snooze", nil];
@@ -77,7 +74,7 @@
     return cell;
 }
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
@@ -98,16 +95,22 @@
     }
 }
 
--(void)mediaPicker:(MPMediaPickerController *)mediaPicker didPickMediaItems:(MPMediaItemCollection *)mediaItemCollection
+#pragma mark - MPMediaPickerControllerDelegate
+
+- (void)mediaPicker:(MPMediaPickerController *)mediaPicker didPickMediaItems:(MPMediaItemCollection *)mediaItemCollection
 {
     self.alarmSong =[mediaItemCollection.items objectAtIndex:0];
 }
--(void)mediaPickerDidCancel:(MPMediaPickerController *)mediaPicker
+
+- (void)mediaPickerDidCancel:(MPMediaPickerController *)mediaPicker
 {
     [self dismissViewControllerAnimated:YES completion:^{
      
     }];
 }
+
+#pragma mark - Action handlers
+
 - (void)changeSnoozeSwitch:(id)sender
 {
     if([sender isOn]) {
@@ -130,9 +133,7 @@
     self.alarm.snoozeInterval = self.sliderVal;
     self.alarm.alarmSong = self.alarmSong;
 
-    AlarmEngine *alarmEngine = [AlarmEngine new];
-    alarmEngine.delegate = self;
-    [alarmEngine addAlarm:self.alarm];
+    [self.alarmEngine addAlarm:self.alarm];
 
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
@@ -158,27 +159,9 @@
     }
 }
 
--(void)alarmJokesReturned:(NSArray *)jokes
-{
-    self.alarmJokes = [NSMutableArray array];
-
-    for (AlarmJokes *joke in jokes)
-    {
-        [self.alarmJokes addObject:joke.joke];
-    }
-}
-
--(IBAction)unwindToAddAlarmViewController:(UIStoryboardSegue *)unwindSegue
+- (IBAction)unwindToAddAlarmViewController:(UIStoryboardSegue *)unwindSegue
 {
     
-}
-
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if ([[segue destinationViewController] isKindOfClass:[AlarMockViewController class]]) {
-        AlarMockViewController *amvc = [AlarMockViewController new];
-        [amvc.alarms addObject:self.alarm];
-    }
 }
 
 @end

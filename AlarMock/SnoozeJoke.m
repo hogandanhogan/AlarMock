@@ -6,14 +6,15 @@
 //  Copyright (c) 2014 AlarMock Industries. All rights reserved.
 //
 
-#import "SnoozeJokes.h"
+#import "SnoozeJoke.h"
 
-@implementation SnoozeJokes
+@implementation SnoozeJoke
 
 @dynamic joke;
 
 + (NSString *)parseClassName
 {
+    // TODO: Change this to singular
     return @"SnoozeJokes";
 }
 

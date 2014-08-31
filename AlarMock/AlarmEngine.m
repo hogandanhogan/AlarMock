@@ -8,27 +8,25 @@
 
 #import "AlarmEngine.h"
 
-static NSString * const kAlarmEngineDefaultsKey;
+#import "JokeCollection.h"
+#import "AlarmJoke.h"
+#import "SnoozeJoke.h"
+
+static NSString * const kAlarmEngineDefaultsKey = @"AlarmEngineDefaultsKey";
+
+@interface AlarmEngine ()
+
+// TODO: Add this to keyed archiver stuff
+@property (nonatomic) JokeCollection *jokeCollection;
+
+@end
 
 @implementation AlarmEngine
 {
     NSMutableArray *_alarms;
 }
 
-+ (instancetype)loadFromSavedData
-{
-//    static NSString *const kAlarmEngineDefaultsKey = @"kAlarmEngineDefaultsKey";
-//    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-//    [NSKeyedUnarchiver unarchiveObjectWithData:prefs];
-//    NSArray *defaults = [[NSMutableArray alloc] initWithArray:[prefs objectForKey:@"kAlarmEngineDefaultsKey"]] ?: [[self alloc] init];
-//
-//    [NSKeyedUnarchiver unarchiveObjectWithData:defaults];
-    NSArray *dataArray = [[NSUserDefaults standardUserDefaults] objectForKey:@"kAlarmEngineDefaultsKey"];
-    NSArray *alarms = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-
-
-    return nil;
-}
+#pragma mark - Initialization
 
 - (id)init
 {
@@ -36,7 +34,14 @@ static NSString * const kAlarmEngineDefaultsKey;
 
     if (self) {
         _alarms = [NSMutableArray array];
+        
+        for (Alarm *alarm in _alarms) {
+            alarm.jokeCollection = self.jokeCollection;
+        }
+        
+        [self updateJokes];
     }
+    
     return self;
 }
 
@@ -44,7 +49,7 @@ static NSString * const kAlarmEngineDefaultsKey;
 
 - (id)initWithCoder:(NSCoder *)decoder
 {
-    self = [super init];
+    self = [self init];
     
     if (self) {
         _alarms = [[decoder decodeObjectForKey:@"alarms"] mutableCopy] ?: [NSMutableArray array];
@@ -58,6 +63,8 @@ static NSString * const kAlarmEngineDefaultsKey;
     [encoder encodeObject:_alarms forKey:@"alarms"];
 }
 
+#pragma mark - Collection
+
 - (void)addAlarm:(Alarm *)alarm
 {
     if ([_alarms containsObject:alarm]) {
@@ -65,6 +72,9 @@ static NSString * const kAlarmEngineDefaultsKey;
     }
 
     [_alarms addObject:alarm];
+
+    alarm.jokeCollection = self.jokeCollection;
+    
     [self save];
 }
 
@@ -78,16 +88,67 @@ static NSString * const kAlarmEngineDefaultsKey;
     [self save];
 }
 
+- (Alarm *)alarmWithFireDate:(NSDate *)fireDate
+{
+    for (Alarm *alarm in _alarms) {
+        if ([alarm.fireDate isEqual:fireDate]) {
+            return alarm;
+        }
+    }
+    
+    return nil;
+}
+
+#pragma mark - Jokes
+
+- (void)updateJokes
+{
+    [self.jokeCollection queryAlarmJokesWithHandler:^(NSArray *alarmJokes, NSError *error) { }];
+    [self.jokeCollection querySnoozeJokesWithHandler:^(NSArray *snoozeJokes, NSError *error) { }];
+}
+
+#pragma mark - Persistence
+
++ (instancetype)loadFromSavedData
+{
+    NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:kAlarmEngineDefaultsKey];
+    AlarmEngine *alarmEngine = [NSKeyedUnarchiver unarchiveObjectWithData:data] ?: [[self alloc] init];
+    return alarmEngine;
+}
+
 - (void)save
 {
-    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:[self.alarms lastObject]];
-    NSMutableArray *alarmsData = [NSMutableArray array];
-    [alarmsData addObject:data];
-
-    static NSString *const kAlarmEngineDefaultsKey = @"kAlarmEngineDefaultsKey";
-
-    [[NSUserDefaults standardUserDefaults] setObject:alarmsData forKey:kAlarmEngineDefaultsKey];
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:self];
+    [[NSUserDefaults standardUserDefaults] setObject:data forKey:kAlarmEngineDefaultsKey];
     [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+#pragma mark - Accessors
+
+- (JokeCollection *)jokeCollection
+{
+    if (!_jokeCollection) {
+        self.jokeCollection = [JokeCollection new];
+    }
+    
+    return _jokeCollection;
+}
+
+- (NSString *)randomAlarmJoke
+{
+    return self.jokeCollection.randomAlarmJoke;
+}
+
+- (NSString *)randomSnoozeJoke
+{
+    return self.jokeCollection.randomSnoozeJoke;
+}
+
+#pragma mark - Description
+
+- (NSString *)description
+{
+    return [NSString stringWithFormat:@"%@ - Alarms: %@", [super description], _alarms];
 }
 
 @end

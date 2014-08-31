@@ -21,7 +21,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell" id="EEm-pc-7X2" customClass="TableViewCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell" id="EEm-pc-7X2" customClass="AlarMockTableViewCell">
                                         <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EEm-pc-7X2" id="mmb-KU-PI1">
@@ -43,7 +43,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="switcheroo" destination="naV-Od-VO3" id="Dvp-Og-TDh"/>
-                                            <segue destination="AjE-70-so0" kind="push" id="ikb-04-cDQ"/>
+                                            <segue destination="AjE-70-so0" kind="push" identifier="editAlarm" id="ikb-04-cDQ"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -79,7 +79,7 @@
                         </textField>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="lav-hh-sJr">
                             <connections>
-                                <segue destination="AjE-70-so0" kind="push" identifier="editAlarm" id="d6o-yk-gfH"/>
+                                <segue destination="AjE-70-so0" kind="push" identifier="addAlarm" id="d6o-yk-gfH"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -319,6 +319,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="d6o-yk-gfH"/>
+        <segue reference="ikb-04-cDQ"/>
     </inferredMetricsTieBreakers>
 </document>
