@@ -64,6 +64,7 @@
     Alarm *alarm = self.alarmEngine.alarms[indexPath.row];
     AlarMockTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     
+    //cell.accessoryType = u
     [cell setSwitchState:YES];
     //subclass nsobject and compose of 2 properties localnotification and isOn
     cell.delegate = self;

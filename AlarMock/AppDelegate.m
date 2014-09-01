@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 AlarMock Industries. All rights reserved.
 //
 
+#import <AVFoundation/AVFoundation.h>
 #import "AppDelegate.h"
 #import <Parse/Parse.h>
 #import "AlarmJoke.h"
@@ -19,6 +20,7 @@
 
 @property (nonatomic) AlarmEngine *alarmEngine;
 @property (nonatomic, readonly) AlarMockViewController *rootViewController;
+@property (nonatomic) AVPlayer *aVPlayer;
 
 @property (nonatomic) NSMutableOrderedSet *alarmQueue;
 
@@ -61,6 +63,9 @@
                                    delegate:self
                           cancelButtonTitle:nil
                           otherButtonTitles:@"Snooze", @"Dismiss",nil] show];
+        NSURL *songUrl = [firstFiredAlarm.alarmSong valueForProperty:MPMediaItemPropertyAssetURL];
+        self.aVPlayer = [[AVPlayer alloc] initWithURL:songUrl];
+        [self.aVPlayer play];
     }
 }
 

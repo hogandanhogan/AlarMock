@@ -32,6 +32,7 @@
         _on = [[decoder decodeObjectForKey:@"on"] boolValue];
         _snoozed = [[decoder decodeObjectForKey:@"hasSnoozed"] boolValue];
         _fireDate = [decoder decodeObjectForKey:@"fireDate"];
+        _jokeCollection = [decoder decodeObjectForKey:@"jokeCollection"];
     }
     
     return self;
@@ -45,6 +46,7 @@
     [encoder encodeObject:@(_on) forKey:@"on"];
     [encoder encodeObject:@(_snoozed) forKey:@"hasSnoozed"];
     [encoder encodeObject:_fireDate forKey:@"fireDate"];
+    [encoder encodeObject:_jokeCollection forKey:@"jokeCollection"];
 }
 
 #pragma mark - Snooze

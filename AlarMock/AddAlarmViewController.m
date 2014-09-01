@@ -13,7 +13,6 @@
 #import "AlarmEngine.h"
 #import "Alarm.h"
 #import <MediaPlayer/MediaPlayer.h>
-#import <AVFoundation/AVFoundation.h>
 
 @interface AddAlarmViewController () <UITableViewDataSource, UITableViewDelegate, MPMediaPickerControllerDelegate>
 
@@ -88,10 +87,7 @@
         mediaPicker.allowsPickingMultipleItems = NO;
         mediaPicker.prompt = @"Choose a song that might wake your bitch ass up";
         [self presentViewController:mediaPicker animated:YES completion:nil];
-        
-//        NSURL *songUrl = [[mediaItems objectAtIndex: 0] valueForProperty:MPMediaItemPropertyAssetURL];
-//        self.audioPlayerMusic = [[[AVPlayer alloc] initWithURL:songUrl] retain];
-//        [self.audioPlayerMusic play];
+
     }
 }
 
@@ -99,13 +95,9 @@
 
 - (void)mediaPicker:(MPMediaPickerController *)mediaPicker didPickMediaItems:(MPMediaItemCollection *)mediaItemCollection
 {
-    self.alarmSong =[mediaItemCollection.items objectAtIndex:0];
-}
-
-- (void)mediaPickerDidCancel:(MPMediaPickerController *)mediaPicker
-{
     [self dismissViewControllerAnimated:YES completion:^{
-     
+        self.alarmSong =[mediaItemCollection.items objectAtIndex:0];
+        
     }];
 }
 
