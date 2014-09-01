@@ -7,9 +7,12 @@
 //
 
 #import "Alarm.h"
+
 #import "JokeCollection.h"
 
 @interface Alarm ()
+
+@property (nonatomic) JokeCollection *jokeCollection;
 
 @property (nonatomic) UILocalNotification *notification;
 @property (nonatomic, getter = hasSnoozed) BOOL snoozed;
@@ -17,6 +20,19 @@
 @end
 
 @implementation Alarm
+
+#pragma mark - Initialization
+
+- (id)initWithJokeCollection:(JokeCollection *)jokeCollection
+{
+    self = [super init];
+    
+    if (self) {
+        self.jokeCollection = jokeCollection;
+    }
+    
+    return self;
+}
 
 #pragma mark - NSCoding
 
@@ -90,7 +106,7 @@
 {
     _fireDate = fireDate;
     self.notification.fireDate = fireDate;
-
+    
     [[UIApplication sharedApplication] scheduleLocalNotification:self.notification];
 }
 

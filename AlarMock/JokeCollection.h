@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 AlarMock Industries. All rights reserved.
 //
 
-@interface JokeCollection : NSObject
+@interface JokeCollection : NSObject <NSCoding>
 
 @property (nonatomic, readonly) NSString *randomAlarmJoke;
 @property (nonatomic, readonly) NSString *randomSnoozeJoke;

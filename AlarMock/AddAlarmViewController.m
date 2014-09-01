@@ -118,7 +118,7 @@
 
 - (IBAction)onSavePressed:(id)sender
 {
-    self.alarm = [Alarm new];
+    self.alarm = [[Alarm alloc] initWithJokeCollection:self.alarmEngine.jokeCollection];
     self.alarm.fireDate = [NSDate dateWithTimeIntervalSinceNow:4];
     //self.alarm.fireDate = self.datePicker.date;
     //notification fires in 4 seconds while testing

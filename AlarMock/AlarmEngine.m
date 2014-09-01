@@ -16,7 +16,6 @@ static NSString * const kAlarmEngineDefaultsKey = @"AlarmEngineDefaultsKey";
 
 @interface AlarmEngine ()
 
-// TODO: Add this to keyed archiver stuff
 @property (nonatomic) JokeCollection *jokeCollection;
 
 @end
@@ -34,11 +33,6 @@ static NSString * const kAlarmEngineDefaultsKey = @"AlarmEngineDefaultsKey";
 
     if (self) {
         _alarms = [NSMutableArray array];
-        
-        for (Alarm *alarm in _alarms) {
-            alarm.jokeCollection = self.jokeCollection;
-        }
-        
         [self updateJokes];
     }
     
@@ -71,10 +65,7 @@ static NSString * const kAlarmEngineDefaultsKey = @"AlarmEngineDefaultsKey";
         return;
     }
 
-    [_alarms addObject:alarm];
-
-    alarm.jokeCollection = self.jokeCollection;
-    
+    [_alarms addObject:alarm];    
     [self save];
 }
 

@@ -14,6 +14,7 @@
 @property (nonatomic, readonly) NSArray *alarms;
 @property (nonatomic, readonly) NSString *randomAlarmJoke;
 @property (nonatomic, readonly) NSString *randomSnoozeJoke;
+@property (nonatomic, readonly) JokeCollection *jokeCollection;
 
 + (instancetype)loadFromSavedData;
 
