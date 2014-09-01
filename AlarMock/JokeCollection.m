@@ -42,7 +42,7 @@
     PFQuery *query = [PFQuery queryWithClassName:[SnoozeJoke parseClassName]];
     query.cachePolicy = kPFCachePolicyNetworkElseCache;
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        self.alarmJokes = objects;
+        self.snoozeJokes = objects;
         if (handler) {
             handler(objects, error);
         }
