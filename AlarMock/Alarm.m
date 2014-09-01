@@ -70,7 +70,8 @@
 - (void)snooze
 {
     self.snoozed = YES;
-    self.fireDate = [NSDate dateWithTimeInterval:self.snoozeInterval sinceDate:[NSDate date]];
+    //[self setFireDate:[NSDate dateWithTimeInterval:self.snoozeInterval sinceDate:[NSDate date]]];
+    [self setFireDate:[NSDate dateWithTimeIntervalSinceNow:4]];
 }
 
 - (void)stop

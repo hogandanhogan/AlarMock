@@ -53,7 +53,14 @@
 {
     return 3;
 }
-
+- (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row == 2) {
+        return NO;
+    } else {
+        return YES;
+    }
+}
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SettingsCell"];
@@ -85,7 +92,7 @@
         MPMediaPickerController *mediaPicker = [[MPMediaPickerController alloc] initWithMediaTypes:MPMediaTypeAnyAudio];
         mediaPicker.delegate = self;
         mediaPicker.allowsPickingMultipleItems = NO;
-        mediaPicker.prompt = @"Choose a song that might wake your bitch ass up";
+        mediaPicker.prompt = @"What would you like stuck in your head?";
         [self presentViewController:mediaPicker animated:YES completion:nil];
 
     }
@@ -99,6 +106,11 @@
         self.alarmSong =[mediaItemCollection.items objectAtIndex:0];
         
     }];
+}
+
+-(void)mediaPickerDidCancel:(MPMediaPickerController *)mediaPicker
+{
+    [self dismissViewControllerAnimated:YES completion:^{}];
 }
 
 #pragma mark - Action handlers
@@ -122,7 +134,7 @@
     self.alarm.fireDate = [NSDate dateWithTimeIntervalSinceNow:4];
     //self.alarm.fireDate = self.datePicker.date;
     //notification fires in 4 seconds while testing
-    self.alarm.snoozeInterval = self.sliderVal;
+    self.alarm.snoozeInterval = self.sliderVal * 60;
     self.alarm.alarmSong = self.alarmSong;
 
     [self.alarmEngine addAlarm:self.alarm];

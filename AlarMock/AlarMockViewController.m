@@ -64,7 +64,9 @@
     Alarm *alarm = self.alarmEngine.alarms[indexPath.row];
     AlarMockTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     
-    //cell.accessoryType = u
+    cell.accessoryType = UITableViewCellAccessoryNone;
+    cell.textLabel.font  = [UIFont systemFontOfSize:35.0];
+    
     [cell setSwitchState:YES];
     //subclass nsobject and compose of 2 properties localnotification and isOn
     cell.delegate = self;
@@ -83,6 +85,7 @@
     [self.alarmEngine removeAlarm:self.alarmEngine.alarms[indexPath.row]];
     [self.tableView reloadData];
 }
+
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return YES;
@@ -100,6 +103,10 @@
     NSIndexPath *indexPath = [self.tableView indexPathForCell:tableViewCell];
     Alarm *alarm = self.alarmEngine.alarms[indexPath.row];
     alarm.on = switcheroo.isEnabled;
+    
+    if (!alarm.on) {
+    } else {
+    }
 }
 
 #pragma mark - Segues
