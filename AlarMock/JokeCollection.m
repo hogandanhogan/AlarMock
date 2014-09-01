@@ -11,17 +11,37 @@
 #import "JokeCollection.h"
 
 #import "AlarmJoke.h"
+#import "NSArray+AMRandomElement.h"
 #import "SnoozeJoke.h"
 
 @interface JokeCollection ()
 
-// TODO: Add keyed archiver stuff
 @property (nonatomic) NSArray *alarmJokes;
 @property (nonatomic) NSArray *snoozeJokes;
 
 @end
 
 @implementation JokeCollection
+
+#pragma mark - NSCoding
+
+- (id)initWithCoder:(NSCoder *)decoder
+{
+    self = [super init];
+    
+    if (self) {
+        _alarmJokes = [decoder decodeObjectForKey:@"alarmJokes"];
+        _snoozeJokes = [decoder decodeObjectForKey:@"snoozeJokes"];
+    }
+    
+    return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)encoder
+{
+    [encoder encodeObject:_alarmJokes forKey:@"alarmJokes"];
+    [encoder encodeObject:_snoozeJokes forKey:@"snoozeJokes"];
+}
 
 #pragma mark - Query Jokes
 
@@ -47,6 +67,18 @@
             handler(objects, error);
         }
     }];
+}
+
+#pragma mark - Accessors
+
+- (NSString *)randomAlarmJoke
+{
+    return [self.alarmJokes.am_randomElement joke];
+}
+
+- (NSString *)randomSnoozeJoke
+{
+    return [self.snoozeJokes.am_randomElement joke];
 }
 
 @end

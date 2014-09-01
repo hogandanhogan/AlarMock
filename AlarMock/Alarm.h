@@ -18,7 +18,8 @@
 //days repeat property
 @property (nonatomic) BOOL on;
 @property (nonatomic) NSDate *fireDate;
-@property (nonatomic) JokeCollection *jokeCollection;
+
+- (id)initWithJokeCollection:(JokeCollection *)jokeCollection;
 
 - (void)snooze;
 - (void)stop;
