@@ -44,7 +44,12 @@
     self.tableView.scrollEnabled = NO;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
-    self.slider.hidden = YES;    
+    self.slider.hidden = YES;
+   // mpmedi
+   // mpVolumeViewParentView.backgroundColor = [UIColor clearColor];
+   // MPVolumeView *myVolumeView = [[MPVolumeView alloc] initWithFrame: mpVolumeViewParentView.bounds];
+   // [mpVolumeViewParentView addSubview: myVolumeView];
+   // [myVolumeView release];
 }
 
 #pragma mark - UITableViewDelegate/DataSource
