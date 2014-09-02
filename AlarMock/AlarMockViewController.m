@@ -33,6 +33,7 @@
     self.tableView.allowsSelection = NO;
     self.tableView.allowsSelectionDuringEditing = YES;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    self.editButton.enabled = NO;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -46,7 +47,13 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    if (self.alarmEngine.alarms.count == 0) {
+        self.editButton.enabled = NO;
+    }else{
+        self.editButton.enabled = YES;
+    }
     return self.alarmEngine.alarms.count;
+
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -77,6 +84,7 @@
     NSString *timeString = [dateFormatter stringFromDate:alarm.fireDate];
     cell.textLabel.text = timeString;
 
+
     return cell;
 }
 
@@ -105,6 +113,7 @@
     alarm.on = switcheroo.isEnabled;
     
     if (!alarm.on) {
+
     } else {
     }
 }
@@ -145,10 +154,12 @@
         
         [self.editButton setTitle:@"Edit"];
         self.addButton.enabled = YES;
+
     }
     else {
         [self.editButton setTitle:@"Done"];
         self.addButton.enabled = NO;
+        self.editButton.enabled = NO;
         
         [self.tableView setEditing:YES animated:YES];
     }
