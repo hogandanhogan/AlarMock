@@ -10,6 +10,5 @@
 
 @interface RepeatViewController : UIViewController
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated;
 
 @end

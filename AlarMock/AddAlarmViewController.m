@@ -99,7 +99,7 @@
 }
 
 #pragma mark - MPMediaPickerControllerDelegate
-
+//TODO: need a new vc where user can choose between sounds or the media picker (against Ben's wishes!)
 - (void)mediaPicker:(MPMediaPickerController *)mediaPicker didPickMediaItems:(MPMediaItemCollection *)mediaItemCollection
 {
     [self dismissViewControllerAnimated:YES completion:^{

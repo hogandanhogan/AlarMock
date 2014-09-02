@@ -120,21 +120,21 @@
     }
 }
 
-#pragma mark - Snooze methods
-
-- (void)saveSnoozeDefault:(UILocalNotification *)localNotification
-{
-    // TODO: Encapsulate in AlarmEngine
-    NSData *localNotificationData = [NSKeyedArchiver archivedDataWithRootObject:localNotification];
-    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-
-    id encodedNotes = [prefs objectForKey:@"snoozeNotificationsData"];
-
-    NSMutableArray *datas = [[NSMutableArray alloc] initWithArray:encodedNotes];
-    [datas addObject:localNotificationData];
-    [prefs setObject:datas forKey:@"snoozeNotificationsData"];
-    [prefs synchronize];
-}
+//TODO: this can go probably keep it around for a while in case it actually did something useful
+//#pragma mark - Snooze methods
+//
+//- (void)saveSnoozeDefault:(UILocalNotification *)localNotification
+//{
+//    NSData *localNotificationData = [NSKeyedArchiver archivedDataWithRootObject:localNotification];
+//    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+//
+//    id encodedNotes = [prefs objectForKey:@"snoozeNotificationsData"];
+//
+//    NSMutableArray *datas = [[NSMutableArray alloc] initWithArray:encodedNotes];
+//    [datas addObject:localNotificationData];
+//    [prefs setObject:datas forKey:@"snoozeNotificationsData"];
+//    [prefs synchronize];
+//}
 
 #pragma mark - Action Handlers
 

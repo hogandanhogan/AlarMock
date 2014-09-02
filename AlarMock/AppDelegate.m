@@ -63,6 +63,7 @@
                                    delegate:self
                           cancelButtonTitle:nil
                           otherButtonTitles:@"Snooze", @"Dismiss",nil] show];
+        //TODO: get song to play when notification is fired in background (fuck you WenderlichMyBalls)
         NSURL *songUrl = [firstFiredAlarm.alarmSong valueForProperty:MPMediaItemPropertyAssetURL];
         self.aVPlayer = [[AVPlayer alloc] initWithURL:songUrl];
         [self.aVPlayer play];

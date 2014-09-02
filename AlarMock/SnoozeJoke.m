@@ -16,6 +16,7 @@
 {
     // TODO: Change this to singular
     return @"SnoozeJokes";
+    //TODO: go fuck a goat!
 }
 
 + (void)load

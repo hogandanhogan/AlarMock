@@ -15,7 +15,6 @@
 		792A791619ABF4C80099A32F /* AlarMockTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 792A791519ABF4C80099A32F /* AlarMockTableViewCell.m */; };
 		79318CCF19A8E7F70021D655 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79318CCE19A8E7F70021D655 /* CoreData.framework */; };
 		79350E2619B4EFD4009E47E6 /* groudhog.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 79350E2519B4EFD4009E47E6 /* groudhog.mp3 */; };
-		794047B219B51D600098C993 /* DaysTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 794047B119B51D600098C993 /* DaysTableViewCell.m */; };
 		797DF3DC19A962FE00FDD94B /* RepeatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 797DF3DB19A962FE00FDD94B /* RepeatViewController.m */; };
 		79A2518F19AE2E7F009174C8 /* AlarmEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 79A2518E19AE2E7F009174C8 /* AlarmEngine.m */; };
 		79A2519119AF8366009174C8 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79A2519019AF8365009174C8 /* AVFoundation.framework */; };
@@ -70,8 +69,6 @@
 		792A791519ABF4C80099A32F /* AlarMockTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarMockTableViewCell.m; sourceTree = "<group>"; };
 		79318CCE19A8E7F70021D655 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		79350E2519B4EFD4009E47E6 /* groudhog.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = groudhog.mp3; sourceTree = "<group>"; };
-		794047B019B51D600098C993 /* DaysTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DaysTableViewCell.h; sourceTree = "<group>"; };
-		794047B119B51D600098C993 /* DaysTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DaysTableViewCell.m; sourceTree = "<group>"; };
 		797DF3DA19A962FE00FDD94B /* RepeatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepeatViewController.h; sourceTree = "<group>"; };
 		797DF3DB19A962FE00FDD94B /* RepeatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepeatViewController.m; sourceTree = "<group>"; };
 		79A2518D19AE2E7F009174C8 /* AlarmEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmEngine.h; sourceTree = "<group>"; };
@@ -213,8 +210,6 @@
 			children = (
 				797DF3DA19A962FE00FDD94B /* RepeatViewController.h */,
 				797DF3DB19A962FE00FDD94B /* RepeatViewController.m */,
-				794047B019B51D600098C993 /* DaysTableViewCell.h */,
-				794047B119B51D600098C993 /* DaysTableViewCell.m */,
 			);
 			name = RepeatViewController;
 			sourceTree = "<group>";
@@ -465,7 +460,6 @@
 				98962DD319A7C0E700DEE9B5 /* AlarMockViewController.m in Sources */,
 				79A2518F19AE2E7F009174C8 /* AlarmEngine.m in Sources */,
 				792A791619ABF4C80099A32F /* AlarMockTableViewCell.m in Sources */,
-				794047B219B51D600098C993 /* DaysTableViewCell.m in Sources */,
 				1F6CACA519A7C5070025CB67 /* AddAlarmViewController.m in Sources */,
 				71623D2519B2B6EC0025AE4B /* JokeCollection.m in Sources */,
 				71A3AE9319B4D23B00D1001C /* NSArray+AMRandomElement.m in Sources */,

@@ -15,9 +15,9 @@
 
 @property (nonatomic) NSTimeInterval snoozeInterval;
 @property (nonatomic) MPMediaItem *alarmSong;
-//days repeat property
 @property (nonatomic) BOOL on;
 @property (nonatomic) NSDate *fireDate;
+@property (nonatomic) NSArray *daysChecked;;
 
 - (id)initWithJokeCollection:(JokeCollection *)jokeCollection;
 
