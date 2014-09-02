@@ -38,7 +38,7 @@
     self.jokes = [[Jokes alloc] init];
     self.jokes.delegate =self;
     [self.jokes querySnoozeJokes];
-    self.editButton.enabled = NO;
+
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -46,6 +46,10 @@
     [super viewWillAppear:animated];
     //create custom class for the collection of local notification data
     self.localNotifications = [[[NSUserDefaults standardUserDefaults] objectForKey:@"localNotificationsData"] mutableCopy];
+//code for disabling the edit button
+    self.editButton.enabled = (self.localNotifications.count)?YES:NO;
+
+
     [self.tableView reloadData];
 }
 
@@ -70,7 +74,6 @@
     
     NSData *data = [self.localNotifications objectAtIndex:indexPath.row];
     UILocalNotification *localNotification = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-
     TableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     
     [cell setSwitchState:YES];
@@ -90,6 +93,7 @@
 {
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"localNotificationsData"];
     [self.localNotifications removeObjectAtIndex:indexPath.row];
+    self.editButton.enabled = (self.localNotifications.count)?YES:NO;
 
     [self.tableView reloadData];
 }
