@@ -132,6 +132,7 @@
 {
     self.alarm = [[Alarm alloc] initWithJokeCollection:self.alarmEngine.jokeCollection];
     self.alarm.fireDate = [NSDate dateWithTimeIntervalSinceNow:4];
+    [self.alarm getDateOfSpecificDay:self.alarm.daysChecked.count];
     //self.alarm.fireDate = self.datePicker.date;
     //notification fires in 4 seconds while testing
     self.alarm.snoozeInterval = self.sliderVal * 60;
