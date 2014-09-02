@@ -7,7 +7,20 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Alarm.h"
 
 @interface AlarmEngine : NSObject
+
+@property (nonatomic, readonly) NSArray *alarms;
+@property (nonatomic, readonly) NSString *randomAlarmJoke;
+@property (nonatomic, readonly) NSString *randomSnoozeJoke;
+@property (nonatomic, readonly) JokeCollection *jokeCollection;
+
++ (instancetype)loadFromSavedData;
+
+- (void)addAlarm:(Alarm *)alarm;
+- (void)removeAlarm:(Alarm *)alarm;
+
+- (Alarm *)alarmWithFireDate:(NSDate *)fireDate;
 
 @end

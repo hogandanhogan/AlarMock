@@ -2,16 +2,26 @@
 //  Alarm.h
 //  AlarMock
 //
-//  Created by Patrick Hogan on 8/23/14.
+//  Created by Patrick Hogan on 8/29/14.
 //  Copyright (c) 2014 AlarMock Industries. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
-#import <CoreData/CoreData.h>
+#import <MediaPlayer/MediaPlayer.h>
 
+@class JokeCollection;
 
-@interface Alarm : NSManagedObject
+@interface Alarm : NSObject <NSCoding>
 
-@property (nonatomic, retain) NSString * date;
+@property (nonatomic) NSTimeInterval snoozeInterval;
+@property (nonatomic) MPMediaItem *alarmSong;
+@property (nonatomic) BOOL on;
+@property (nonatomic) NSDate *fireDate;
+@property (nonatomic) NSArray *daysChecked;;
+
+- (id)initWithJokeCollection:(JokeCollection *)jokeCollection;
+
+- (void)snooze;
+- (void)stop;
 
 @end

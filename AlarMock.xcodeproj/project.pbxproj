@@ -8,13 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		1F6CACA519A7C5070025CB67 /* AddAlarmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6CACA419A7C5070025CB67 /* AddAlarmViewController.m */; };
-		792A791619ABF4C80099A32F /* TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 792A791519ABF4C80099A32F /* TableViewCell.m */; };
+		410D4096FBC94DA38C5FBA9E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 60DF75B9A60E451FB11298AB /* libPods.a */; };
+		71623D2519B2B6EC0025AE4B /* JokeCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 71623D2419B2B6EC0025AE4B /* JokeCollection.m */; };
+		71A3AE9319B4D23B00D1001C /* NSArray+AMRandomElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 71A3AE9219B4D23B00D1001C /* NSArray+AMRandomElement.m */; };
+		71E6BCEB19B2CD0A00FC94F3 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 71E6BCEA19B2CD0A00FC94F3 /* Default-568h@2x.png */; };
+		792A791619ABF4C80099A32F /* AlarMockTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 792A791519ABF4C80099A32F /* AlarMockTableViewCell.m */; };
 		79318CCF19A8E7F70021D655 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79318CCE19A8E7F70021D655 /* CoreData.framework */; };
+		79350E2619B4EFD4009E47E6 /* groudhog.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 79350E2519B4EFD4009E47E6 /* groudhog.mp3 */; };
 		797DF3DC19A962FE00FDD94B /* RepeatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 797DF3DB19A962FE00FDD94B /* RepeatViewController.m */; };
 		79A2518F19AE2E7F009174C8 /* AlarmEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 79A2518E19AE2E7F009174C8 /* AlarmEngine.m */; };
-		98315AFE19ABAE3F00D717F0 /* Jokes.m in Sources */ = {isa = PBXBuildFile; fileRef = 98315AFD19ABAE3F00D717F0 /* Jokes.m */; };
-		98315B0119ABD40300D717F0 /* AlarmJokes.m in Sources */ = {isa = PBXBuildFile; fileRef = 98315B0019ABD40300D717F0 /* AlarmJokes.m */; };
-		98315B0419ABD4E700D717F0 /* SnoozeJokes.m in Sources */ = {isa = PBXBuildFile; fileRef = 98315B0319ABD4E700D717F0 /* SnoozeJokes.m */; };
+		79A2519119AF8366009174C8 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79A2519019AF8365009174C8 /* AVFoundation.framework */; };
+		79A2A95B19B0C5EC005BB9AC /* Alarm.m in Sources */ = {isa = PBXBuildFile; fileRef = 79A2A95A19B0C5EC005BB9AC /* Alarm.m */; };
+		98315B0119ABD40300D717F0 /* AlarmJoke.m in Sources */ = {isa = PBXBuildFile; fileRef = 98315B0019ABD40300D717F0 /* AlarmJoke.m */; };
+		98315B0419ABD4E700D717F0 /* SnoozeJoke.m in Sources */ = {isa = PBXBuildFile; fileRef = 98315B0319ABD4E700D717F0 /* SnoozeJoke.m */; };
 		98962DBD19A7C0E700DEE9B5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98962DBC19A7C0E700DEE9B5 /* Foundation.framework */; };
 		98962DBF19A7C0E700DEE9B5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98962DBE19A7C0E700DEE9B5 /* CoreGraphics.framework */; };
 		98962DC119A7C0E700DEE9B5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98962DC019A7C0E700DEE9B5 /* UIKit.framework */; };
@@ -23,15 +29,12 @@
 		98962DCD19A7C0E700DEE9B5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 98962DCC19A7C0E700DEE9B5 /* AppDelegate.m */; };
 		98962DD019A7C0E700DEE9B5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98962DCE19A7C0E700DEE9B5 /* Main.storyboard */; };
 		98962DD319A7C0E700DEE9B5 /* AlarMockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98962DD219A7C0E700DEE9B5 /* AlarMockViewController.m */; };
-		98962DD519A7C0E700DEE9B5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 98962DD419A7C0E700DEE9B5 /* Images.xcassets */; };
 		98962DDC19A7C0E700DEE9B5 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98962DDB19A7C0E700DEE9B5 /* XCTest.framework */; };
 		98962DDD19A7C0E700DEE9B5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98962DBC19A7C0E700DEE9B5 /* Foundation.framework */; };
 		98962DDE19A7C0E700DEE9B5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98962DC019A7C0E700DEE9B5 /* UIKit.framework */; };
 		98962DE619A7C0E800DEE9B5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 98962DE419A7C0E800DEE9B5 /* InfoPlist.strings */; };
 		98962DE819A7C0E800DEE9B5 /* AlarMockTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 98962DE719A7C0E800DEE9B5 /* AlarMockTests.m */; };
 		989F4C0B19ACE3150002B543 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 989F4C0A19ACE3150002B543 /* MediaPlayer.framework */; };
-		E7AAF5ED19AAAE3C0055D07B /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7AAF5EB19AAAE3C0055D07B /* Bolts.framework */; };
-		E7AAF5EE19AAAE3C0055D07B /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7AAF5EC19AAAE3C0055D07B /* Parse.framework */; };
 		E7AAF5F819AAAE910055D07B /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7AAF5EF19AAAE910055D07B /* AudioToolbox.framework */; };
 		E7AAF5F919AAAE910055D07B /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7AAF5F019AAAE910055D07B /* CFNetwork.framework */; };
 		E7AAF5FA19AAAE910055D07B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7AAF5F119AAAE910055D07B /* CoreLocation.framework */; };
@@ -56,19 +59,27 @@
 /* Begin PBXFileReference section */
 		1F6CACA319A7C5070025CB67 /* AddAlarmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddAlarmViewController.h; sourceTree = "<group>"; };
 		1F6CACA419A7C5070025CB67 /* AddAlarmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddAlarmViewController.m; sourceTree = "<group>"; };
-		792A791419ABF4C80099A32F /* TableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewCell.h; sourceTree = "<group>"; };
-		792A791519ABF4C80099A32F /* TableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewCell.m; sourceTree = "<group>"; };
+		60DF75B9A60E451FB11298AB /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		71623D2319B2B6EC0025AE4B /* JokeCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JokeCollection.h; sourceTree = "<group>"; };
+		71623D2419B2B6EC0025AE4B /* JokeCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JokeCollection.m; sourceTree = "<group>"; };
+		71A3AE9119B4D23B00D1001C /* NSArray+AMRandomElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+AMRandomElement.h"; sourceTree = "<group>"; };
+		71A3AE9219B4D23B00D1001C /* NSArray+AMRandomElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+AMRandomElement.m"; sourceTree = "<group>"; };
+		71E6BCEA19B2CD0A00FC94F3 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = SOURCE_ROOT; };
+		792A791419ABF4C80099A32F /* AlarMockTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarMockTableViewCell.h; sourceTree = "<group>"; };
+		792A791519ABF4C80099A32F /* AlarMockTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarMockTableViewCell.m; sourceTree = "<group>"; };
 		79318CCE19A8E7F70021D655 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		79350E2519B4EFD4009E47E6 /* groudhog.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = groudhog.mp3; sourceTree = "<group>"; };
 		797DF3DA19A962FE00FDD94B /* RepeatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepeatViewController.h; sourceTree = "<group>"; };
 		797DF3DB19A962FE00FDD94B /* RepeatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepeatViewController.m; sourceTree = "<group>"; };
 		79A2518D19AE2E7F009174C8 /* AlarmEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmEngine.h; sourceTree = "<group>"; };
 		79A2518E19AE2E7F009174C8 /* AlarmEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmEngine.m; sourceTree = "<group>"; };
-		98315AFC19ABAE3F00D717F0 /* Jokes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Jokes.h; sourceTree = "<group>"; };
-		98315AFD19ABAE3F00D717F0 /* Jokes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Jokes.m; sourceTree = "<group>"; };
-		98315AFF19ABD40300D717F0 /* AlarmJokes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmJokes.h; sourceTree = "<group>"; };
-		98315B0019ABD40300D717F0 /* AlarmJokes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmJokes.m; sourceTree = "<group>"; };
-		98315B0219ABD4E700D717F0 /* SnoozeJokes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnoozeJokes.h; sourceTree = "<group>"; };
-		98315B0319ABD4E700D717F0 /* SnoozeJokes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnoozeJokes.m; sourceTree = "<group>"; };
+		79A2519019AF8365009174C8 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		79A2A95919B0C5EC005BB9AC /* Alarm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Alarm.h; sourceTree = "<group>"; };
+		79A2A95A19B0C5EC005BB9AC /* Alarm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Alarm.m; sourceTree = "<group>"; };
+		98315AFF19ABD40300D717F0 /* AlarmJoke.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmJoke.h; sourceTree = "<group>"; };
+		98315B0019ABD40300D717F0 /* AlarmJoke.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmJoke.m; sourceTree = "<group>"; };
+		98315B0219ABD4E700D717F0 /* SnoozeJoke.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnoozeJoke.h; sourceTree = "<group>"; };
+		98315B0319ABD4E700D717F0 /* SnoozeJoke.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnoozeJoke.m; sourceTree = "<group>"; };
 		98962DB919A7C0E700DEE9B5 /* AlarMock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AlarMock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		98962DBC19A7C0E700DEE9B5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		98962DBE19A7C0E700DEE9B5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -82,15 +93,12 @@
 		98962DCF19A7C0E700DEE9B5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		98962DD119A7C0E700DEE9B5 /* AlarMockViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AlarMockViewController.h; sourceTree = "<group>"; };
 		98962DD219A7C0E700DEE9B5 /* AlarMockViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AlarMockViewController.m; sourceTree = "<group>"; };
-		98962DD419A7C0E700DEE9B5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		98962DDA19A7C0E700DEE9B5 /* AlarMockTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AlarMockTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		98962DDB19A7C0E700DEE9B5 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		98962DE319A7C0E800DEE9B5 /* AlarMockTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AlarMockTests-Info.plist"; sourceTree = "<group>"; };
 		98962DE519A7C0E800DEE9B5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		98962DE719A7C0E800DEE9B5 /* AlarMockTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AlarMockTests.m; sourceTree = "<group>"; };
 		989F4C0A19ACE3150002B543 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
-		E7AAF5EB19AAAE3C0055D07B /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
-		E7AAF5EC19AAAE3C0055D07B /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		E7AAF5EF19AAAE910055D07B /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		E7AAF5F019AAAE910055D07B /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		E7AAF5F119AAAE910055D07B /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -100,6 +108,7 @@
 		E7AAF5F519AAAE910055D07B /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		E7AAF5F619AAAE910055D07B /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		E7AAF5F719AAAE910055D07B /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		F4B85EE3794C404785136EE1 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +116,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				79A2519119AF8366009174C8 /* AVFoundation.framework in Frameworks */,
 				989F4C0B19ACE3150002B543 /* MediaPlayer.framework in Frameworks */,
 				E7AAF5F819AAAE910055D07B /* AudioToolbox.framework in Frameworks */,
 				E7AAF5F919AAAE910055D07B /* CFNetwork.framework in Frameworks */,
@@ -118,11 +128,10 @@
 				E7AAF5FF19AAAE910055D07B /* StoreKit.framework in Frameworks */,
 				E7AAF60019AAAE910055D07B /* SystemConfiguration.framework in Frameworks */,
 				98962DBF19A7C0E700DEE9B5 /* CoreGraphics.framework in Frameworks */,
-				E7AAF5ED19AAAE3C0055D07B /* Bolts.framework in Frameworks */,
 				79318CCF19A8E7F70021D655 /* CoreData.framework in Frameworks */,
 				98962DC119A7C0E700DEE9B5 /* UIKit.framework in Frameworks */,
-				E7AAF5EE19AAAE3C0055D07B /* Parse.framework in Frameworks */,
 				98962DBD19A7C0E700DEE9B5 /* Foundation.framework in Frameworks */,
+				410D4096FBC94DA38C5FBA9E /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -139,6 +148,89 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		71A3AE9019B4D21E00D1001C /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				71A3AE9119B4D23B00D1001C /* NSArray+AMRandomElement.h */,
+				71A3AE9219B4D23B00D1001C /* NSArray+AMRandomElement.m */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
+		71E6BCDE19B2CAF400FC94F3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				79A2518D19AE2E7F009174C8 /* AlarmEngine.h */,
+				79A2518E19AE2E7F009174C8 /* AlarmEngine.m */,
+				71623D2319B2B6EC0025AE4B /* JokeCollection.h */,
+				71623D2419B2B6EC0025AE4B /* JokeCollection.m */,
+				98315AFF19ABD40300D717F0 /* AlarmJoke.h */,
+				98315B0019ABD40300D717F0 /* AlarmJoke.m */,
+				79A2A95919B0C5EC005BB9AC /* Alarm.h */,
+				79A2A95A19B0C5EC005BB9AC /* Alarm.m */,
+				98315B0219ABD4E700D717F0 /* SnoozeJoke.h */,
+				98315B0319ABD4E700D717F0 /* SnoozeJoke.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		71E6BCDF19B2CB9000FC94F3 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				98962DCE19A7C0E700DEE9B5 /* Main.storyboard */,
+				71E6BCE419B2CC0200FC94F3 /* AddAlarmViewController */,
+				71E6BCE219B2CBE400FC94F3 /* AlarMockViewController */,
+				71E6BCE319B2CBF500FC94F3 /* RepeatViewController */,
+			);
+			name = ViewController;
+			sourceTree = "<group>";
+		};
+		71E6BCE119B2CBAB00FC94F3 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				98962DCB19A7C0E700DEE9B5 /* AppDelegate.h */,
+				98962DCC19A7C0E700DEE9B5 /* AppDelegate.m */,
+			);
+			name = Application;
+			sourceTree = "<group>";
+		};
+		71E6BCE219B2CBE400FC94F3 /* AlarMockViewController */ = {
+			isa = PBXGroup;
+			children = (
+				98962DD119A7C0E700DEE9B5 /* AlarMockViewController.h */,
+				98962DD219A7C0E700DEE9B5 /* AlarMockViewController.m */,
+				792A791419ABF4C80099A32F /* AlarMockTableViewCell.h */,
+				792A791519ABF4C80099A32F /* AlarMockTableViewCell.m */,
+			);
+			name = AlarMockViewController;
+			sourceTree = "<group>";
+		};
+		71E6BCE319B2CBF500FC94F3 /* RepeatViewController */ = {
+			isa = PBXGroup;
+			children = (
+				797DF3DA19A962FE00FDD94B /* RepeatViewController.h */,
+				797DF3DB19A962FE00FDD94B /* RepeatViewController.m */,
+			);
+			name = RepeatViewController;
+			sourceTree = "<group>";
+		};
+		71E6BCE419B2CC0200FC94F3 /* AddAlarmViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1F6CACA319A7C5070025CB67 /* AddAlarmViewController.h */,
+				1F6CACA419A7C5070025CB67 /* AddAlarmViewController.m */,
+			);
+			name = AddAlarmViewController;
+			sourceTree = "<group>";
+		};
+		71E6BCE919B2CC9800FC94F3 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				71E6BCEA19B2CD0A00FC94F3 /* Default-568h@2x.png */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		98962DB019A7C0E700DEE9B5 = {
 			isa = PBXGroup;
 			children = (
@@ -146,6 +238,7 @@
 				98962DE119A7C0E800DEE9B5 /* AlarMockTests */,
 				98962DBB19A7C0E700DEE9B5 /* Frameworks */,
 				98962DBA19A7C0E700DEE9B5 /* Products */,
+				F4B85EE3794C404785136EE1 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -161,6 +254,7 @@
 		98962DBB19A7C0E700DEE9B5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				79A2519019AF8365009174C8 /* AVFoundation.framework */,
 				989F4C0A19ACE3150002B543 /* MediaPlayer.framework */,
 				E7AAF5EF19AAAE910055D07B /* AudioToolbox.framework */,
 				E7AAF5F019AAAE910055D07B /* CFNetwork.framework */,
@@ -171,13 +265,12 @@
 				E7AAF5F519AAAE910055D07B /* Security.framework */,
 				E7AAF5F619AAAE910055D07B /* StoreKit.framework */,
 				E7AAF5F719AAAE910055D07B /* SystemConfiguration.framework */,
-				E7AAF5EB19AAAE3C0055D07B /* Bolts.framework */,
-				E7AAF5EC19AAAE3C0055D07B /* Parse.framework */,
 				79318CCE19A8E7F70021D655 /* CoreData.framework */,
 				98962DBC19A7C0E700DEE9B5 /* Foundation.framework */,
 				98962DBE19A7C0E700DEE9B5 /* CoreGraphics.framework */,
 				98962DC019A7C0E700DEE9B5 /* UIKit.framework */,
 				98962DDB19A7C0E700DEE9B5 /* XCTest.framework */,
+				60DF75B9A60E451FB11298AB /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -185,27 +278,12 @@
 		98962DC219A7C0E700DEE9B5 /* AlarMock */ = {
 			isa = PBXGroup;
 			children = (
-				98962DCB19A7C0E700DEE9B5 /* AppDelegate.h */,
-				98962DCC19A7C0E700DEE9B5 /* AppDelegate.m */,
-				98962DCE19A7C0E700DEE9B5 /* Main.storyboard */,
-				1F6CACA319A7C5070025CB67 /* AddAlarmViewController.h */,
-				1F6CACA419A7C5070025CB67 /* AddAlarmViewController.m */,
-				79A2518D19AE2E7F009174C8 /* AlarmEngine.h */,
-				79A2518E19AE2E7F009174C8 /* AlarmEngine.m */,
-				98962DD119A7C0E700DEE9B5 /* AlarMockViewController.h */,
-				98962DD219A7C0E700DEE9B5 /* AlarMockViewController.m */,
-				797DF3DA19A962FE00FDD94B /* RepeatViewController.h */,
-				797DF3DB19A962FE00FDD94B /* RepeatViewController.m */,
-				792A791419ABF4C80099A32F /* TableViewCell.h */,
-				792A791519ABF4C80099A32F /* TableViewCell.m */,
-				98962DD419A7C0E700DEE9B5 /* Images.xcassets */,
+				71E6BCE119B2CBAB00FC94F3 /* Application */,
+				71E6BCDF19B2CB9000FC94F3 /* ViewController */,
+				71E6BCDE19B2CAF400FC94F3 /* Model */,
+				71A3AE9019B4D21E00D1001C /* Utilities */,
+				71E6BCE919B2CC9800FC94F3 /* Resources */,
 				98962DC319A7C0E700DEE9B5 /* Supporting Files */,
-				98315AFF19ABD40300D717F0 /* AlarmJokes.h */,
-				98315B0019ABD40300D717F0 /* AlarmJokes.m */,
-				98315B0219ABD4E700D717F0 /* SnoozeJokes.h */,
-				98315B0319ABD4E700D717F0 /* SnoozeJokes.m */,
-				98315AFC19ABAE3F00D717F0 /* Jokes.h */,
-				98315AFD19ABAE3F00D717F0 /* Jokes.m */,
 			);
 			path = AlarMock;
 			sourceTree = "<group>";
@@ -213,6 +291,7 @@
 		98962DC319A7C0E700DEE9B5 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				79350E2519B4EFD4009E47E6 /* groudhog.mp3 */,
 				98962DC419A7C0E700DEE9B5 /* AlarMock-Info.plist */,
 				98962DC519A7C0E700DEE9B5 /* InfoPlist.strings */,
 				98962DC819A7C0E700DEE9B5 /* main.m */,
@@ -246,9 +325,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 98962DEB19A7C0E800DEE9B5 /* Build configuration list for PBXNativeTarget "AlarMock" */;
 			buildPhases = (
+				3F553982D25645C48BF3A76D /* Check Pods Manifest.lock */,
 				98962DB519A7C0E700DEE9B5 /* Sources */,
 				98962DB619A7C0E700DEE9B5 /* Frameworks */,
 				98962DB719A7C0E700DEE9B5 /* Resources */,
+				2B8CDFF4EE024FCEB175D48D /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -286,6 +367,9 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "AlarMock Industries";
 				TargetAttributes = {
+					98962DB819A7C0E700DEE9B5 = {
+						DevelopmentTeam = ERG78UCJDH;
+					};
 					98962DD919A7C0E700DEE9B5 = {
 						TestTargetID = 98962DB819A7C0E700DEE9B5;
 					};
@@ -315,8 +399,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				98962DD519A7C0E700DEE9B5 /* Images.xcassets in Resources */,
 				98962DC719A7C0E700DEE9B5 /* InfoPlist.strings in Resources */,
+				79350E2619B4EFD4009E47E6 /* groudhog.mp3 in Resources */,
+				71E6BCEB19B2CD0A00FC94F3 /* Default-568h@2x.png in Resources */,
 				98962DD019A7C0E700DEE9B5 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -331,18 +416,53 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		2B8CDFF4EE024FCEB175D48D /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3F553982D25645C48BF3A76D /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		98962DB519A7C0E700DEE9B5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				98315B0119ABD40300D717F0 /* AlarmJokes.m in Sources */,
-				98315AFE19ABAE3F00D717F0 /* Jokes.m in Sources */,
-				98315B0419ABD4E700D717F0 /* SnoozeJokes.m in Sources */,
+				98315B0119ABD40300D717F0 /* AlarmJoke.m in Sources */,
+				79A2A95B19B0C5EC005BB9AC /* Alarm.m in Sources */,
+				98315B0419ABD4E700D717F0 /* SnoozeJoke.m in Sources */,
 				98962DD319A7C0E700DEE9B5 /* AlarMockViewController.m in Sources */,
 				79A2518F19AE2E7F009174C8 /* AlarmEngine.m in Sources */,
-				792A791619ABF4C80099A32F /* TableViewCell.m in Sources */,
+				792A791619ABF4C80099A32F /* AlarMockTableViewCell.m in Sources */,
 				1F6CACA519A7C5070025CB67 /* AddAlarmViewController.m in Sources */,
+				71623D2519B2B6EC0025AE4B /* JokeCollection.m in Sources */,
+				71A3AE9319B4D23B00D1001C /* NSArray+AMRandomElement.m in Sources */,
 				98962DCD19A7C0E700DEE9B5 /* AppDelegate.m in Sources */,
 				797DF3DC19A962FE00FDD94B /* RepeatViewController.m in Sources */,
 				98962DC919A7C0E700DEE9B5 /* main.m in Sources */,
@@ -449,7 +569,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Daniel Hogan (ERG78UCJDH)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Daniel Hogan (ERG78UCJDH)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -460,6 +581,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				PROVISIONING_PROFILE = "28c6ec7f-aed0-4b96-8ecc-81285579196a";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -467,8 +589,14 @@
 		};
 		98962DEC19A7C0E800DEE9B5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F4B85EE3794C404785136EE1 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+<<<<<<< HEAD
+=======
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+>>>>>>> 7184d546d0725bc61ceebca9e50e2a9b6fb94b4d
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -477,14 +605,21 @@
 				GCC_PREFIX_HEADER = "AlarMock/AlarMock-Prefix.pch";
 				INFOPLIST_FILE = "AlarMock/AlarMock-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "2ddddff9-b730-442b-9261-a1b84286de69";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
 		};
 		98962DED19A7C0E800DEE9B5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F4B85EE3794C404785136EE1 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+<<<<<<< HEAD
+=======
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Daniel Hogan (ERG78UCJDH)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Daniel Hogan (ERG78UCJDH)";
+>>>>>>> 7184d546d0725bc61ceebca9e50e2a9b6fb94b4d
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -493,6 +628,7 @@
 				GCC_PREFIX_HEADER = "AlarMock/AlarMock-Prefix.pch";
 				INFOPLIST_FILE = "AlarMock/AlarMock-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "28c6ec7f-aed0-4b96-8ecc-81285579196a";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

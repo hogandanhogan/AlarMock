@@ -7,9 +7,12 @@
 //
 
 #import "RepeatViewController.h"
+#import "Alarm.h"
 
 @interface RepeatViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property Alarm *alarm;
+@property (nonatomic) NSMutableArray *daysChecked;
 
 @end
 
@@ -18,26 +21,37 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.alarm = [Alarm new];
+    
+    self.daysChecked = [NSMutableArray new];
+    
     self.tableView.scrollEnabled = NO;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 }
 
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return 7;
 }
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    NSString *day = [NSString stringWithFormat:@"%ld", (long)indexPath.row];
+    
     if ([self.tableView cellForRowAtIndexPath:indexPath].accessoryType == UITableViewCellAccessoryNone) {
         [self.tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
+        [self.daysChecked addObject:day];
+        
     } else {
         [self.tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
+        [self.daysChecked removeObject:day];
     }
 }
 
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DaysCell"];
     NSArray *days = [[NSArray alloc] initWithObjects:@"Every Monday",
@@ -50,6 +64,11 @@
     cell.textLabel.text = [days objectAtIndex:indexPath.row];
 
     return cell;
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    self.alarm.daysChecked = [NSArray arrayWithArray:self.daysChecked];
 }
 
 @end

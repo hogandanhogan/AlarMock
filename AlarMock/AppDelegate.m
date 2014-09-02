@@ -6,64 +6,99 @@
 //  Copyright (c) 2014 AlarMock Industries. All rights reserved.
 //
 
+#import <AVFoundation/AVFoundation.h>
 #import "AppDelegate.h"
 #import <Parse/Parse.h>
-#import "Jokes.h"
+#import "AlarmJoke.h"
+#import "SnoozeJoke.h"
 #import "AlarMockViewController.h"
+#import "AddAlarmViewController.h"
+#import "Alarm.h"
+#import "AlarmEngine.h"
 
+@interface AppDelegate ()
+
+@property (nonatomic) AlarmEngine *alarmEngine;
+@property (nonatomic, readonly) AlarMockViewController *rootViewController;
+@property (nonatomic) AVPlayer *aVPlayer;
+
+@property (nonatomic) NSMutableOrderedSet *alarmQueue;
+
+@end
 
 @implementation AppDelegate
+
+#pragma mark - Application Lifecycle
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [Parse setApplicationId:@"I62Vun47l0d1KLv218eijHMxPG9dK6nxy54DtqQl" clientKey:@"rLVtvCOQVMqLrb5qijsmuC2y0MZAHVyZubSrFYqC"];
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+
+    self.alarmEngine = [AlarmEngine loadFromSavedData];
+    self.rootViewController.alarmEngine = self.alarmEngine;
     
     return YES;
 }
-							
-- (void)applicationWillResignActive:(UIApplication *)application
+
+- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
 {
-    // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-    // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+    Alarm *alarm = [self.alarmEngine alarmWithFireDate:notification.fireDate];
+    if (alarm) {
+        [self.alarmQueue addObject:alarm];
+        [self updateAlarmQueue];
+    } else {
+        NSLog(@"WARNING: Alarm fired, but was not saved in alarm engine persistence layer.");
+    }
 }
 
-- (void)applicationDidEnterBackground:(UIApplication *)application
+#pragma mark - Alarm Queue
+
+- (void)updateAlarmQueue
 {
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
-    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    Alarm *firstFiredAlarm = self.alarmQueue.firstObject;
+    if (firstFiredAlarm) {
+        [[[UIAlertView alloc] initWithTitle:@"Wake the fuck up"
+                                    message:nil
+                                   delegate:self
+                          cancelButtonTitle:nil
+                          otherButtonTitles:@"Snooze", @"Dismiss",nil] show];
+        //TODO: get song to play when notification is fired in background (fuck you WenderlichMyBalls)
+        NSURL *songUrl = [firstFiredAlarm.alarmSong valueForProperty:MPMediaItemPropertyAssetURL];
+        self.aVPlayer = [[AVPlayer alloc] initWithURL:songUrl];
+        [self.aVPlayer play];
+    }
 }
 
-- (void)applicationWillEnterForeground:(UIApplication *)application
-{
-    // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
-}
+#pragma mark - UIAlertViewDelegate
 
-- (void)applicationDidBecomeActive:(UIApplication *)application
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-}
-
-- (void)applicationWillTerminate:(UIApplication *)application
-{
-    // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-}
-
-- (void)application:(UIApplication *)application
-didReceiveLocalNotification:(UILocalNotification *)notification
-{
-    id vc = self.window.rootViewController;
-    vc = [vc viewControllers].firstObject;
+    Alarm *firstFiredAlarm = self.alarmQueue.firstObject;
+    if (buttonIndex == 0) {
+        [firstFiredAlarm snooze];
+    } else {
+        [firstFiredAlarm stop];
+        [self.alarmQueue removeObject:firstFiredAlarm];
+    }
     
-    Jokes *snoozejoke = [Jokes new];
-    [snoozejoke queryAlarmJokes];
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Wake the fuck up"
-                                                        message:nil
-                                                       delegate:vc
-                                              cancelButtonTitle:nil
-                                              otherButtonTitles:@"Snooze",
-                                                                @"Dismiss",nil];
-    [alertView show];
+    [self updateAlarmQueue];
+}
+
+#pragma mark - Accessors
+
+- (AlarMockViewController *)rootViewController
+{
+    return ((UINavigationController *)self.window.rootViewController).viewControllers.firstObject;
+}
+
+- (NSMutableOrderedSet *)alarmQueue
+{
+    if (!_alarmQueue) {
+        self.alarmQueue = [NSMutableOrderedSet new];
+    }
+    
+    return _alarmQueue;
 }
 
 @end
