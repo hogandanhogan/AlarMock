@@ -58,13 +58,18 @@
 {
     Alarm *firstFiredAlarm = self.alarmQueue.firstObject;
     if (firstFiredAlarm) {
-        [[[UIAlertView alloc] initWithTitle:@"Wake the fuck up"
+        [[[UIAlertView alloc] initWithTitle:self.alarmEngine.randomAlarmJoke
                                     message:nil
                                    delegate:self
                           cancelButtonTitle:nil
                           otherButtonTitles:@"Snooze", @"Dismiss",nil] show];
         //TODO: get song to play when notification is fired in background (fuck you WenderlichMyBalls)
         NSURL *songUrl = [firstFiredAlarm.alarmSong valueForProperty:MPMediaItemPropertyAssetURL];
+        
+        //MPMusicPlayerController *mPMusicPlayerController = [MPMusicPlayerController new];
+        //TODO:This might be a bad idea. There is no way to do this anymore. The other alarms do it though
+        //mPMusicPlayerController.volume = 1.0f;
+        
         self.aVPlayer = [[AVPlayer alloc] initWithURL:songUrl];
         [self.aVPlayer play];
     }
@@ -77,12 +82,13 @@
     Alarm *firstFiredAlarm = self.alarmQueue.firstObject;
     if (buttonIndex == 0) {
         [firstFiredAlarm snooze];
+        [self.aVPlayer pause];
     } else {
         [firstFiredAlarm stop];
         [self.alarmQueue removeObject:firstFiredAlarm];
+        [self.aVPlayer pause];
     }
     
-    [self updateAlarmQueue];
 }
 
 #pragma mark - Accessors

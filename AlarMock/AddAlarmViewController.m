@@ -37,18 +37,20 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
+    self.daysChecked = [NSArray new];
+    
     self.automaticallyAdjustsScrollViewInsets = NO;
     
     self.datePicker.date = [NSDate date];
 
     self.tableView.scrollEnabled = NO;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"backgroundImage.png"]];
     self.backGroundimage.backgroundColor = [UIColor clearColor];
 
     self.slider.hidden = YES;
-
 }
 
 #pragma mark - UITableViewDelegate/DataSource
@@ -99,7 +101,6 @@
         mediaPicker.allowsPickingMultipleItems = NO;
         mediaPicker.prompt = @"What would you like stuck in your head?";
         [self presentViewController:mediaPicker animated:YES completion:nil];
-
     }
 }
 
@@ -137,13 +138,19 @@
 {
     self.alarm = [[Alarm alloc] initWithJokeCollection:self.alarmEngine.jokeCollection];
     self.alarm.fireDate = [NSDate dateWithTimeIntervalSinceNow:4];
+    //[self.alarm getDateOfSpecificDay:self.alarm.daysChecked.count];
     //self.alarm.fireDate = self.datePicker.date;
     //notification fires in 4 seconds while testing
     self.alarm.snoozeInterval = self.sliderVal * 60;
     self.alarm.alarmSong = self.alarmSong;
 
     [self.alarmEngine addAlarm:self.alarm];
-
+    
+    for (NSString *dayChecked in self.daysChecked) {
+        NSInteger dayCheckedIntVal = dayChecked.integerValue;
+        [self.alarm getDateOfSpecificDay:dayCheckedIntVal];
+    }
+    
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
