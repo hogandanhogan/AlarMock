@@ -377,7 +377,7 @@
 				ORGANIZATIONNAME = "AlarMock Industries";
 				TargetAttributes = {
 					98962DB819A7C0E700DEE9B5 = {
-						DevelopmentTeam = EN4K8XQC2W;
+						DevelopmentTeam = ERG78UCJDH;
 					};
 					98962DD919A7C0E700DEE9B5 = {
 						TestTargetID = 98962DB819A7C0E700DEE9B5;
