@@ -7,10 +7,12 @@
 //
 
 @class AlarmEngine;
+@class Alarm;
 
 @interface AddAlarmViewController : UIViewController
 
 @property (nonatomic) AlarmEngine *alarmEngine;
-@property (nonatomic) NSArray *daysChecked;;
+@property (nonatomic) Alarm *currentAlarm;
+@property (nonatomic) NSArray *daysChecked;
 
 @end

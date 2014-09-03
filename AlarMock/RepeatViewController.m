@@ -11,7 +11,6 @@
 
 @interface RepeatViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property AddAlarmViewController *addAlarmViewController;
 @property (nonatomic) NSMutableArray *daysChecked;
 
 @end
@@ -21,8 +20,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    self.addAlarmViewController = [AddAlarmViewController new];
     
     self.daysChecked = [NSMutableArray new];
     
@@ -68,7 +65,7 @@
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    self.addAlarmViewController.daysChecked = self.daysChecked;
+    ((AddAlarmViewController *)[segue destinationViewController]).daysChecked = [[NSArray alloc] initWithArray:self.daysChecked];
 }
 
 @end

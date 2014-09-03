@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *editButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *addButton;
 @property (weak, nonatomic) IBOutlet UITextField *textField;
+@property (nonatomic) Alarm *currentAlarm;
 
 @end
 
@@ -83,6 +84,7 @@
     [dateFormatter setDateFormat:@"h:mm a"];
     NSString *timeString = [dateFormatter stringFromDate:alarm.fireDate];
     cell.textLabel.text = timeString;
+    self.currentAlarm = self.alarmEngine.alarms[indexPath.row];
 
 
     return cell;
@@ -112,9 +114,10 @@
     Alarm *alarm = self.alarmEngine.alarms[indexPath.row];
     alarm.on = switcheroo.isEnabled;
     
-    if (!alarm.on) {
-
+    if (alarm.on) {
+        [alarm alarmWillFire];
     } else {
+        [alarm alarmWillNotFire];
     }
 }
 
@@ -125,26 +128,11 @@
     if ([segue.identifier isEqualToString:@"editAlarm"]) {
         //TODO: edit current alarm
         ((AddAlarmViewController *)[segue destinationViewController]).title = @"Edit Alarm";
+        ((AddAlarmViewController *)[segue destinationViewController]).currentAlarm = self.currentAlarm;
     } else if ([segue.identifier isEqualToString:@"addAlarm"]) {
         ((AddAlarmViewController *)[segue destinationViewController]).alarmEngine = self.alarmEngine;
     }
 }
-
-//TODO: this can go probably keep it around for a while in case it actually did something useful
-//#pragma mark - Snooze methods
-//
-//- (void)saveSnoozeDefault:(UILocalNotification *)localNotification
-//{
-//    NSData *localNotificationData = [NSKeyedArchiver archivedDataWithRootObject:localNotification];
-//    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-//
-//    id encodedNotes = [prefs objectForKey:@"snoozeNotificationsData"];
-//
-//    NSMutableArray *datas = [[NSMutableArray alloc] initWithArray:encodedNotes];
-//    [datas addObject:localNotificationData];
-//    [prefs setObject:datas forKey:@"snoozeNotificationsData"];
-//    [prefs synchronize];
-//}
 
 #pragma mark - Action Handlers
 

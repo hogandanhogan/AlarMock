@@ -61,6 +61,7 @@ static NSString * const kAlarmEngineDefaultsKey = @"AlarmEngineDefaultsKey";
 
 - (void)addAlarm:(Alarm *)alarm
 {
+    //TODO:This is a possible source of not being able to edit alarm
     if ([_alarms containsObject:alarm]) {
         return;
     }

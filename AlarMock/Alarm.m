@@ -48,6 +48,7 @@
         _on = [[decoder decodeObjectForKey:@"on"] boolValue];
         _snoozed = [[decoder decodeObjectForKey:@"hasSnoozed"] boolValue];
         _fireDate = [decoder decodeObjectForKey:@"fireDate"];
+        _daysChecked = [decoder decodeObjectForKey:@"daysChecked"];
         _jokeCollection = [decoder decodeObjectForKey:@"jokeCollection"];
     }
     
@@ -62,6 +63,7 @@
     [encoder encodeObject:@(_on) forKey:@"on"];
     [encoder encodeObject:@(_snoozed) forKey:@"hasSnoozed"];
     [encoder encodeObject:_fireDate forKey:@"fireDate"];
+    [encoder encodeObject:_daysChecked forKey:@"daysChecked"];
     [encoder encodeObject:_jokeCollection forKey:@"jokeCollection"];
 }
 
@@ -127,6 +129,16 @@
     self.notification.fireDate = fireDate;
     
     [[UIApplication sharedApplication] scheduleLocalNotification:self.notification];
+}
+
+- (void)alarmWillFire
+{
+    [[UIApplication sharedApplication] scheduleLocalNotification:self.notification];
+}
+
+- (void)alarmWillNotFire
+{
+    [[UIApplication sharedApplication] cancelLocalNotification:self.notification];
 }
 
 - (void)setJokeCollection:(JokeCollection *)jokeCollection

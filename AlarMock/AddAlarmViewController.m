@@ -11,7 +11,6 @@
 #import "RepeatViewController.h"
 #import "AlarmJoke.h"
 #import "AlarmEngine.h"
-#import "Alarm.h"
 #import <MediaPlayer/MediaPlayer.h>
 
 @interface AddAlarmViewController () <UITableViewDataSource, UITableViewDelegate, MPMediaPickerControllerDelegate>
@@ -36,9 +35,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    self.daysChecked = [NSArray new];
-    
+        
     self.automaticallyAdjustsScrollViewInsets = NO;
     
     self.datePicker.date = [NSDate date];
@@ -131,17 +128,23 @@
 
 - (IBAction)onSavePressed:(id)sender
 {
+    if ([self.title isEqualToString:@"Edit Alarm"]) {
+        //TODO:bug, alarm fires but not saved in persistence layer. Figure out why
+        [self.alarmEngine removeAlarm:self.currentAlarm];
+    }
+    
     self.alarm = [[Alarm alloc] initWithJokeCollection:self.alarmEngine.jokeCollection];
-    self.alarm.fireDate = [NSDate dateWithTimeIntervalSinceNow:4];
+    self.alarm.fireDate = [NSDate dateWithTimeIntervalSinceNow:10];
     //[self.alarm getDateOfSpecificDay:self.alarm.daysChecked.count];
     //self.alarm.fireDate = self.datePicker.date;
     //notification fires in 4 seconds while testing
     self.alarm.snoozeInterval = self.sliderVal * 60;
     self.alarm.alarmSong = self.alarmSong;
-
+    
     [self.alarmEngine addAlarm:self.alarm];
     
-    for (NSString *dayChecked in self.daysChecked) {
+    //TODO:this loop is being skipped for some reason
+    for (NSString *dayChecked in self.alarm.daysChecked) {
         NSInteger dayCheckedIntVal = dayChecked.integerValue;
         [self.alarm getDateOfSpecificDay:dayCheckedIntVal];
     }

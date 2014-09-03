@@ -21,8 +21,8 @@
 
 - (id)initWithJokeCollection:(JokeCollection *)jokeCollection;
 -(NSDate *) getDateOfSpecificDay:(NSInteger ) day;
-
--(NSDate *) getDateOfSpecificDay:(NSInteger ) day;
+- (void)alarmWillFire;
+- (void)alarmWillNotFire;
 - (void)snooze;
 - (void)stop;
 
