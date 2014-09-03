@@ -72,7 +72,9 @@
     AlarMockTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     
     cell.accessoryType = UITableViewCellAccessoryNone;
-    cell.textLabel.font  = [UIFont systemFontOfSize:35.0];
+    cell.textLabel.font  = [UIFont systemFontOfSize:22.0];
+//    fontWithName:@"Futura" size:22.0
+    cell.textLabel.textColor = [UIColor whiteColor];
     
     [cell setSwitchState:YES];
     //subclass nsobject and compose of 2 properties localnotification and isOn
