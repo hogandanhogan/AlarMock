@@ -17,10 +17,10 @@
 @property (nonatomic) MPMediaItem *alarmSong;
 @property (nonatomic) BOOL on;
 @property (nonatomic) NSDate *fireDate;
-@property (nonatomic) NSArray *daysChecked;;
 
 - (id)initWithJokeCollection:(JokeCollection *)jokeCollection;
 
+-(NSDate *) getDateOfSpecificDay:(NSInteger ) day;
 - (void)snooze;
 - (void)stop;
 

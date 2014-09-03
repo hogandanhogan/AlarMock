@@ -36,7 +36,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
+    self.daysChecked = [NSArray new];
+    
     self.automaticallyAdjustsScrollViewInsets = NO;
     
     self.datePicker.date = [NSDate date];
@@ -45,11 +47,6 @@
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
     self.slider.hidden = YES;
-   // mpmedi
-   // mpVolumeViewParentView.backgroundColor = [UIColor clearColor];
-   // MPVolumeView *myVolumeView = [[MPVolumeView alloc] initWithFrame: mpVolumeViewParentView.bounds];
-   // [mpVolumeViewParentView addSubview: myVolumeView];
-   // [myVolumeView release];
 }
 
 #pragma mark - UITableViewDelegate/DataSource
@@ -99,7 +96,6 @@
         mediaPicker.allowsPickingMultipleItems = NO;
         mediaPicker.prompt = @"What would you like stuck in your head?";
         [self presentViewController:mediaPicker animated:YES completion:nil];
-
     }
 }
 
@@ -143,7 +139,12 @@
     self.alarm.alarmSong = self.alarmSong;
 
     [self.alarmEngine addAlarm:self.alarm];
-
+    
+    for (NSString *dayChecked in self.daysChecked) {
+        NSInteger dayCheckedIntVal = dayChecked.integerValue;
+        [self.alarm getDateOfSpecificDay:dayCheckedIntVal];
+    }
+    
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 

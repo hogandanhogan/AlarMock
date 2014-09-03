@@ -114,6 +114,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"editAlarm"]) {
+        //TODO: edit current alarm
         ((AddAlarmViewController *)[segue destinationViewController]).title = @"Edit Alarm";
     } else if ([segue.identifier isEqualToString:@"addAlarm"]) {
         ((AddAlarmViewController *)[segue destinationViewController]).alarmEngine = self.alarmEngine;
