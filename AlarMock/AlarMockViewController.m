@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *addButton;
 @property (weak, nonatomic) IBOutlet UITextField *textField;
 @property (nonatomic) Alarm *currentAlarm;
+@property (strong, nonatomic) IBOutlet UIImageView *backGroundimage;
 
 @end
 
@@ -35,6 +36,10 @@
     self.tableView.allowsSelectionDuringEditing = YES;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     self.editButton.enabled = NO;
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"backgroundImage.png"]];
+    self.backGroundimage.backgroundColor = [UIColor clearColor];
+    self.tableView.backgroundColor = [UIColor clearColor];
+
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -73,8 +78,10 @@
     AlarMockTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     
     cell.accessoryType = UITableViewCellAccessoryNone;
-    cell.textLabel.font  = [UIFont systemFontOfSize:35.0];
-    
+    cell.textLabel.font  = [UIFont systemFontOfSize:22.0];
+//    fontWithName:@"Futura" size:22.0
+    cell.textLabel.textColor = [UIColor whiteColor];
+    cell.backgroundColor = [UIColor clearColor];
     [cell setSwitchState:YES];
     //subclass nsobject and compose of 2 properties localnotification and isOn
     cell.delegate = self;
@@ -147,7 +154,6 @@
     }
     else {
         [self.editButton setTitle:@"Done"];
-        self.addButton.enabled = NO;
         self.editButton.enabled = NO;
         
         [self.tableView setEditing:YES animated:YES];
