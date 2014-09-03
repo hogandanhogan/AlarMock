@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *editButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *addButton;
 @property (weak, nonatomic) IBOutlet UITextField *textField;
+@property (strong, nonatomic) IBOutlet UIImageView *backGroundimage;
 
 @end
 
@@ -34,6 +35,9 @@
     self.tableView.allowsSelectionDuringEditing = YES;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     self.editButton.enabled = NO;
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"backgroundImage.png"]];
+    self.backGroundimage.backgroundColor = [UIColor clearColor];
+
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -158,7 +162,6 @@
     }
     else {
         [self.editButton setTitle:@"Done"];
-        self.addButton.enabled = NO;
         self.editButton.enabled = NO;
         
         [self.tableView setEditing:YES animated:YES];
