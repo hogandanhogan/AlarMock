@@ -22,7 +22,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *snoozeTimeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *snoozeMockLabel;
 @property float sliderVal;
-@property (strong, nonatomic) IBOutlet UIImageView *backGroundimage;
 
 
 @property (nonatomic) MPMediaItem *alarmSong;
@@ -46,10 +45,9 @@
 
     self.tableView.scrollEnabled = NO;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-
+    self.tableView.backgroundColor = [UIColor clearColor];
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"backgroundImage.png"]];
-    self.backGroundimage.backgroundColor = [UIColor clearColor];
-
+//    self.view.backgroundColor = [UIColor clearColor];
     self.slider.hidden = YES;
 }
 
@@ -72,6 +70,8 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SettingsCell"];
     NSArray *settings = [[NSArray alloc] initWithObjects:@"Repeat", @"Sound", @"Snooze", nil];
     cell.textLabel.text = [settings objectAtIndex:indexPath.row];
+    cell.textLabel.textColor = [UIColor whiteColor];
+    cell.backgroundColor = [UIColor clearColor];
 
 
     UISwitch *switcheroo = [[UISwitch alloc] initWithFrame:CGRectZero];

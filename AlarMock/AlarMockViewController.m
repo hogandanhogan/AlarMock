@@ -37,6 +37,7 @@
     self.editButton.enabled = NO;
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"backgroundImage.png"]];
     self.backGroundimage.backgroundColor = [UIColor clearColor];
+    self.tableView.backgroundColor = [UIColor clearColor];
 
 }
 
@@ -79,7 +80,7 @@
     cell.textLabel.font  = [UIFont systemFontOfSize:22.0];
 //    fontWithName:@"Futura" size:22.0
     cell.textLabel.textColor = [UIColor whiteColor];
-    
+    cell.backgroundColor = [UIColor clearColor];
     [cell setSwitchState:YES];
     //subclass nsobject and compose of 2 properties localnotification and isOn
     cell.delegate = self;
