@@ -34,7 +34,12 @@
     self.tableView.allowsSelection = NO;
     self.tableView.allowsSelectionDuringEditing = YES;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-    self.editButton.enabled = NO;
+    if (self.tableView ==0) {
+        self.editButton.enabled = NO;
+    }else{
+        self.editing = YES;
+}
+
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"backgroundImage.png"]];
     self.backGroundimage.backgroundColor = [UIColor clearColor];
 
@@ -150,23 +155,20 @@
 //}
 
 #pragma mark - Action Handlers
-
+//Here is the action code for the button and should you modify anything it should go here
 - (IBAction)enterEditMode:(id)sender
 {
-    if ([self.tableView isEditing]) {
-        [self.tableView setEditing:NO animated:YES];
-        
-        [self.editButton setTitle:@"Edit"];
-        self.addButton.enabled = YES;
-
+    if (![self.tableView isEditing]) {
+        [self.tableView setEditing:YES animated:YES];
+        [self.editButton setTitle:@"Done"];
     }
     else {
-        [self.editButton setTitle:@"Done"];
-        self.editButton.enabled = NO;
-        
-        [self.tableView setEditing:YES animated:YES];
+        [self.editButton setTitle:@"Edit"];
+        [self.tableView setEditing:NO animated:YES];
     }
 }
+
+//end of edit button action
 
 - (IBAction)unwindToAlarmMockViewController:(UIStoryboardSegue *)unwindSegue
 {
