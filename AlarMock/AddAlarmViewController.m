@@ -37,8 +37,8 @@
 {
     [super viewDidLoad];
     
-    self.daysChecked = [NSArray new];
-    
+
+
     self.automaticallyAdjustsScrollViewInsets = NO;
     
     self.datePicker.date = [NSDate date];
@@ -139,13 +139,14 @@
     self.alarm = [[Alarm alloc] initWithJokeCollection:self.alarmEngine.jokeCollection];
     self.alarm.fireDate = [NSDate dateWithTimeIntervalSinceNow:4];
     //[self.alarm getDateOfSpecificDay:self.alarm.daysChecked.count];
-    //self.alarm.fireDate = self.datePicker.date;
+//    self.alarm.fireDate = self.datePicker.date;
     //notification fires in 4 seconds while testing
     self.alarm.snoozeInterval = self.sliderVal * 60;
     self.alarm.alarmSong = self.alarmSong;
 
     [self.alarmEngine addAlarm:self.alarm];
-    
+
+
     for (NSString *dayChecked in self.daysChecked) {
         NSInteger dayCheckedIntVal = dayChecked.integerValue;
         [self.alarm getDateOfSpecificDay:dayCheckedIntVal];
@@ -195,25 +196,21 @@
     });
 }
 
-// Forces the text colour of the label to be white only for UIDatePicker and its components
 -(void) swizzledSetTextColor:(UIColor *)textColor {
     if([self view:self hasSuperviewOfClass:[UIDatePicker class]] ||
        [self view:self hasSuperviewOfClass:NSClassFromString(@"UIDatePickerWeekMonthDayView")] ||
        [self view:self hasSuperviewOfClass:NSClassFromString(@"UIDatePickerContentView")]){
         [self swizzledSetTextColor:[UIColor whiteColor]];
     } else {
-        //Carry on with the default
         [self swizzledSetTextColor:textColor];
     }
 }
 
-// Some of the UILabels haven't been added to a superview yet so listen for when they do.
 - (void) swizzledWillMoveToSuperview:(UIView *)newSuperview {
     [self swizzledSetTextColor:self.textColor];
     [self swizzledWillMoveToSuperview:newSuperview];
 }
 
-// -- helpers --
 - (BOOL) view:(UIView *) view hasSuperviewOfClass:(Class) class {
     if(view.superview){
         if ([view.superview isKindOfClass:class]){

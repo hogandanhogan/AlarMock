@@ -11,6 +11,6 @@
 @interface AddAlarmViewController : UIViewController
 
 @property (nonatomic) AlarmEngine *alarmEngine;
-@property (nonatomic) NSArray *daysChecked;;
+@property (strong, nonatomic) NSArray *daysChecked;;
 
 @end
