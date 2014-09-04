@@ -38,7 +38,6 @@
 
 - (id)initWithCoder:(NSCoder *)decoder
 {
-    //Encode Jokes at some point
     self = [super init];
     
     if (self) {
@@ -121,6 +120,11 @@
     
     _snoozed = snoozed;
     [self updateAlertBody];
+}
+
+- (void)setDaysChecked:(NSArray *)daysChecked
+{
+    _daysChecked = daysChecked;
 }
 
 - (void)setFireDate:(NSDate *)fireDate

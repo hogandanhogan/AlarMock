@@ -11,9 +11,9 @@
 #import "RepeatViewController.h"
 #import "AlarmJoke.h"
 #import "AlarmEngine.h"
-#import <MediaPlayer/MediaPlayer.h>
+#import "SoundViewController.h"
 
-@interface AddAlarmViewController () <UITableViewDataSource, UITableViewDelegate, MPMediaPickerControllerDelegate>
+@interface AddAlarmViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) IBOutlet UIDatePicker *datePicker;
@@ -21,9 +21,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *snoozeTimeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *snoozeMockLabel;
 @property float sliderVal;
-
-
-@property (nonatomic) MPMediaItem *alarmSong;
 @property (nonatomic) Alarm *alarm;
 
 @end
@@ -46,6 +43,7 @@
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"backgroundImage.png"]];
 //    self.view.backgroundColor = [UIColor clearColor];
     self.slider.hidden = YES;
+    self.alarmSong = [MPMediaItem new];
 }
 
 #pragma mark - UITableViewDelegate/DataSource
@@ -93,27 +91,9 @@
         [self.navigationController pushViewController:dvc animated:YES];
     }
     if (indexPath.row == 1) {
-        MPMediaPickerController *mediaPicker = [[MPMediaPickerController alloc] initWithMediaTypes:MPMediaTypeAnyAudio];
-        mediaPicker.delegate = self;
-        mediaPicker.allowsPickingMultipleItems = NO;
-        mediaPicker.prompt = @"What would you like stuck in your head?";
-        [self presentViewController:mediaPicker animated:YES completion:nil];
+        SoundViewController *svc = [self.storyboard instantiateViewControllerWithIdentifier:@"soundVC"];
+        [self.navigationController pushViewController:svc animated:YES];
     }
-}
-
-#pragma mark - MPMediaPickerControllerDelegate
-//TODO: need a new vc where user can choose between sounds or the media picker (against Ben's wishes!)
-- (void)mediaPicker:(MPMediaPickerController *)mediaPicker didPickMediaItems:(MPMediaItemCollection *)mediaItemCollection
-{
-    [self dismissViewControllerAnimated:YES completion:^{
-        self.alarmSong =[mediaItemCollection.items objectAtIndex:0];
-        
-    }];
-}
-
--(void)mediaPickerDidCancel:(MPMediaPickerController *)mediaPicker
-{
-    [self dismissViewControllerAnimated:YES completion:^{}];
 }
 
 #pragma mark - Action handlers
@@ -193,7 +173,7 @@
     dispatch_once(&onceToken, ^{
         [self swizzleInstanceSelector:@selector(setTextColor:)
                       withNewSelector:@selector(swizzledSetTextColor:)];
-        [self swizzleInstanceSelector:@selector(willMoveToSuperview::)
+        [self swizzleInstanceSelector:@selector(willMoveToSuperview:)
                       withNewSelector:@selector(swizzledWillMoveToSuperview:)];
     });
 }

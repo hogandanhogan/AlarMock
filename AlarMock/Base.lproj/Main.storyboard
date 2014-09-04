@@ -4,10 +4,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
-        <!--Alar Mock View Controller-->
+        <!--Alar Mock View Controller - Alarm Mock-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="AlarMockViewController" sceneMemberID="viewController">
+                <viewController autoresizesArchivedViewToFullSize="NO" automaticallyAdjustsScrollViewInsets="NO" id="vXZ-lx-hvc" customClass="AlarMockViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -17,12 +17,12 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="cKX-XF-MJ6">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                                <rect key="frame" x="0.0" y="104" width="320" height="376"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell" id="EEm-pc-7X2" customClass="AlarMockTableViewCell">
-                                        <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EEm-pc-7X2" id="mmb-KU-PI1">
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
@@ -52,31 +52,34 @@
                                     <outlet property="delegate" destination="vXZ-lx-hvc" id="Lcx-tp-9HQ"/>
                                 </connections>
                             </tableView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Submit a Joke to AlarMock Industries" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vgv-Ig-FwW">
+                                <rect key="frame" x="20" y="70" width="280" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="send"/>
+                                <connections>
+                                    <action selector="onSubmitJoke:" destination="vXZ-lx-hvc" eventType="editingDidEndOnExit" id="Is5-FQ-fIA"/>
+                                </connections>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="cKX-XF-MJ6" firstAttribute="top" secondItem="Vgv-Ig-FwW" secondAttribute="bottom" constant="5" id="BCb-7u-k6J"/>
                             <constraint firstAttribute="trailing" secondItem="cKX-XF-MJ6" secondAttribute="trailing" id="Hde-Qb-N8z"/>
+                            <constraint firstAttribute="trailing" secondItem="Vgv-Ig-FwW" secondAttribute="trailing" constant="20" id="KG9-g4-STt"/>
+                            <constraint firstItem="Vgv-Ig-FwW" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="6" id="O7S-KG-9f4"/>
                             <constraint firstItem="cKX-XF-MJ6" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="VxO-lC-sfE"/>
-                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="cKX-XF-MJ6" secondAttribute="bottom" id="s7f-K1-V5o"/>
-                            <constraint firstItem="cKX-XF-MJ6" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="xR1-er-SmX"/>
+                            <constraint firstItem="cKX-XF-MJ6" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="40" id="fKV-mT-HQo"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="cKX-XF-MJ6" secondAttribute="bottom" id="iVP-dS-Ezf"/>
+                            <constraint firstItem="Vgv-Ig-FwW" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="j0N-hw-04g"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="667-nz-W29">
-                        <nil key="title"/>
+                    <navigationItem key="navigationItem" title="Alarm Mock" id="667-nz-W29">
                         <barButtonItem key="leftBarButtonItem" title="Edit" id="2ru-Ml-puL">
                             <connections>
                                 <action selector="enterEditMode:" destination="vXZ-lx-hvc" id="0AZ-4N-rbt"/>
                             </connections>
                         </barButtonItem>
-                        <textField key="titleView" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Submit a Joke to AlarMock Industries" textAlignment="center" minimumFontSize="17" id="Vgv-Ig-FwW">
-                            <rect key="frame" x="44" y="7" width="226" height="30"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                            <textInputTraits key="textInputTraits" returnKeyType="send"/>
-                            <connections>
-                                <action selector="onSubmitJoke:" destination="vXZ-lx-hvc" eventType="editingDidEndOnExit" id="Is5-FQ-fIA"/>
-                            </connections>
-                        </textField>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="lav-hh-sJr">
                             <connections>
                                 <segue destination="AjE-70-so0" kind="push" identifier="addAlarm" id="d6o-yk-gfH"/>
@@ -111,7 +114,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DaysCell" id="Yd4-WZ-W1A" customClass="DaysTableViewCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DaysCell" id="Yd4-WZ-W1A">
                                         <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Yd4-WZ-W1A" id="MJH-eE-uhZ">
@@ -149,7 +152,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bUh-vz-2HG" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="YhB-pp-zMa" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1466" y="99"/>
+            <point key="canvasLocation" x="1516" y="-269"/>
         </scene>
         <!--Add Alarm View Controller - Add Alarm-->
         <scene sceneID="Zu8-Yv-70k">
@@ -326,6 +329,64 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KOF-lR-gbS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="138" y="99"/>
+        </scene>
+        <!--Sound View Controller-->
+        <scene sceneID="9ix-WY-EhP">
+            <objects>
+                <viewController storyboardIdentifier="soundVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="fie-sn-jIQ" customClass="SoundViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="sff-7e-Lrg"/>
+                        <viewControllerLayoutGuide type="bottom" id="ZgY-G7-a96"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="2SO-zF-xcl">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="kjv-DL-RON">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" restorationIdentifier="SoundCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="SoundCell" id="mP8-6Z-Fc2">
+                                        <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mP8-6Z-Fc2" id="b21-Kb-XJ8">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="fie-sn-jIQ" id="iUM-K1-dS8"/>
+                                    <outlet property="delegate" destination="fie-sn-jIQ" id="deB-MY-aCY"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="kjv-DL-RON" firstAttribute="top" secondItem="2SO-zF-xcl" secondAttribute="top" id="LFp-tO-sdv"/>
+                            <constraint firstItem="ZgY-G7-a96" firstAttribute="top" secondItem="kjv-DL-RON" secondAttribute="bottom" id="VgX-0c-Fsx"/>
+                            <constraint firstAttribute="trailing" secondItem="kjv-DL-RON" secondAttribute="trailing" id="rhq-Hk-F7M"/>
+                            <constraint firstItem="kjv-DL-RON" firstAttribute="leading" secondItem="2SO-zF-xcl" secondAttribute="leading" id="u2J-As-FkW"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Rx6-qJ-FXu">
+                        <nil key="title"/>
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="797-Lg-0Ux">
+                            <connections>
+                                <segue destination="56v-5W-W7R" kind="unwind" unwindAction="unwindToAddAlarmViewController:" id="OsZ-cl-nJ7"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="kjv-DL-RON" id="fVa-Aq-R1b"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Sg6-iI-XOY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="56v-5W-W7R" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1516" y="322"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

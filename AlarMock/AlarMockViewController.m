@@ -35,6 +35,7 @@
     self.tableView.allowsSelection = NO;
     self.tableView.allowsSelectionDuringEditing = YES;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    self.tableView.tableHeaderView = nil;
     self.editButton.enabled = NO;
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"backgroundImage.png"]];
     self.backGroundimage.backgroundColor = [UIColor clearColor];
@@ -55,7 +56,7 @@
 {
     if (self.alarmEngine.alarms.count == 0) {
         self.editButton.enabled = NO;
-    }else{
+    } else {
         self.editButton.enabled = YES;
     }
     return self.alarmEngine.alarms.count;
