@@ -22,7 +22,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *snoozeTimeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *snoozeMockLabel;
 @property float sliderVal;
-@property (strong, nonatomic) IBOutlet UIImageView *backGroundimage;
 
 
 @property (nonatomic) MPMediaItem *alarmSong;
@@ -37,18 +36,19 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
+    self.daysChecked = [NSArray new];
+    
     self.automaticallyAdjustsScrollViewInsets = NO;
     
     self.datePicker.date = [NSDate date];
 
     self.tableView.scrollEnabled = NO;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    self.tableView.backgroundColor = [UIColor clearColor];
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"backgroundImage.png"]];
-    self.backGroundimage.backgroundColor = [UIColor clearColor];
-
+//    self.view.backgroundColor = [UIColor clearColor];
     self.slider.hidden = YES;
-
 }
 
 #pragma mark - UITableViewDelegate/DataSource
@@ -70,6 +70,8 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SettingsCell"];
     NSArray *settings = [[NSArray alloc] initWithObjects:@"Repeat", @"Sound", @"Snooze", nil];
     cell.textLabel.text = [settings objectAtIndex:indexPath.row];
+    cell.textLabel.textColor = [UIColor whiteColor];
+    cell.backgroundColor = [UIColor clearColor];
 
 
     UISwitch *switcheroo = [[UISwitch alloc] initWithFrame:CGRectZero];
@@ -99,7 +101,6 @@
         mediaPicker.allowsPickingMultipleItems = NO;
         mediaPicker.prompt = @"What would you like stuck in your head?";
         [self presentViewController:mediaPicker animated:YES completion:nil];
-
     }
 }
 
@@ -137,13 +138,19 @@
 {
     self.alarm = [[Alarm alloc] initWithJokeCollection:self.alarmEngine.jokeCollection];
     self.alarm.fireDate = [NSDate dateWithTimeIntervalSinceNow:4];
+    //[self.alarm getDateOfSpecificDay:self.alarm.daysChecked.count];
     //self.alarm.fireDate = self.datePicker.date;
     //notification fires in 4 seconds while testing
     self.alarm.snoozeInterval = self.sliderVal * 60;
     self.alarm.alarmSong = self.alarmSong;
 
     [self.alarmEngine addAlarm:self.alarm];
-
+    
+    for (NSString *dayChecked in self.daysChecked) {
+        NSInteger dayCheckedIntVal = dayChecked.integerValue;
+        [self.alarm getDateOfSpecificDay:dayCheckedIntVal];
+    }
+    
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
@@ -171,6 +178,71 @@
 - (IBAction)unwindToAddAlarmViewController:(UIStoryboardSegue *)unwindSegue
 {
     
+}
+
+@end
+#import <objc/runtime.h>
+
+@implementation UILabel (WhiteUIDatePickerLabels)
+
++ (void)load {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        [self swizzleInstanceSelector:@selector(setTextColor:)
+                      withNewSelector:@selector(swizzledSetTextColor:)];
+        [self swizzleInstanceSelector:@selector(willMoveToSuperview::)
+                      withNewSelector:@selector(swizzledWillMoveToSuperview:)];
+    });
+}
+
+// Forces the text colour of the label to be white only for UIDatePicker and its components
+-(void) swizzledSetTextColor:(UIColor *)textColor {
+    if([self view:self hasSuperviewOfClass:[UIDatePicker class]] ||
+       [self view:self hasSuperviewOfClass:NSClassFromString(@"UIDatePickerWeekMonthDayView")] ||
+       [self view:self hasSuperviewOfClass:NSClassFromString(@"UIDatePickerContentView")]){
+        [self swizzledSetTextColor:[UIColor whiteColor]];
+    } else {
+        //Carry on with the default
+        [self swizzledSetTextColor:textColor];
+    }
+}
+
+// Some of the UILabels haven't been added to a superview yet so listen for when they do.
+- (void) swizzledWillMoveToSuperview:(UIView *)newSuperview {
+    [self swizzledSetTextColor:self.textColor];
+    [self swizzledWillMoveToSuperview:newSuperview];
+}
+
+// -- helpers --
+- (BOOL) view:(UIView *) view hasSuperviewOfClass:(Class) class {
+    if(view.superview){
+        if ([view.superview isKindOfClass:class]){
+            return true;
+        }
+        return [self view:view.superview hasSuperviewOfClass:class];
+    }
+    return false;
+}
+
++ (void) swizzleInstanceSelector:(SEL)originalSelector
+                 withNewSelector:(SEL)newSelector
+{
+    Method originalMethod = class_getInstanceMethod(self, originalSelector);
+    Method newMethod = class_getInstanceMethod(self, newSelector);
+
+    BOOL methodAdded = class_addMethod([self class],
+                                       originalSelector,
+                                       method_getImplementation(newMethod),
+                                       method_getTypeEncoding(newMethod));
+
+    if (methodAdded) {
+        class_replaceMethod([self class],
+                            newSelector,
+                            method_getImplementation(originalMethod),
+                            method_getTypeEncoding(originalMethod));
+    } else {
+        method_exchangeImplementations(originalMethod, newMethod);
+    }
 }
 
 @end

@@ -42,6 +42,7 @@
 
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"backgroundImage.png"]];
     self.backGroundimage.backgroundColor = [UIColor clearColor];
+    self.tableView.backgroundColor = [UIColor clearColor];
 
 }
 
@@ -81,8 +82,10 @@
     AlarMockTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     
     cell.accessoryType = UITableViewCellAccessoryNone;
-    cell.textLabel.font  = [UIFont systemFontOfSize:35.0];
-    
+    cell.textLabel.font  = [UIFont systemFontOfSize:22.0];
+//    fontWithName:@"Futura" size:22.0
+    cell.textLabel.textColor = [UIColor whiteColor];
+    cell.backgroundColor = [UIColor clearColor];
     [cell setSwitchState:YES];
     //subclass nsobject and compose of 2 properties localnotification and isOn
     cell.delegate = self;
@@ -132,6 +135,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"editAlarm"]) {
+        //TODO: edit current alarm
         ((AddAlarmViewController *)[segue destinationViewController]).title = @"Edit Alarm";
     } else if ([segue.identifier isEqualToString:@"addAlarm"]) {
         ((AddAlarmViewController *)[segue destinationViewController]).alarmEngine = self.alarmEngine;

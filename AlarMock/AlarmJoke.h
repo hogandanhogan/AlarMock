@@ -9,7 +9,6 @@
 #import <Parse/Parse.h>
 #import <Parse/PFObject+Subclass.h>
 
-// TODO: Add keyed archiver stuff
 @interface AlarmJoke : PFObject<PFSubclassing>
 
 @property (nonatomic) NSString *joke;

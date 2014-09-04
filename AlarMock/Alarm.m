@@ -68,26 +68,20 @@
 #pragma mark - Repeat
 
 //TODO: Finish this code to get the days repeat to work
-//-(NSDate *) getDateOfSpecificDay:(NSInteger ) day /// here day will be 1 or 2.. or 7
-//{
-//    for (NSString *dayChecked in self.daysChecked) {
-//        for (int i = 0; i < self.daysChecked.count; i++) {
-//            NSInteger day = self.daysChecked[i];
-//            
-//            NSInteger desiredWeekday = day;
-//            NSRange weekDateRange = [[NSCalendar currentCalendar] maximumRangeOfUnit:NSWeekdayCalendarUnit];
-//            NSInteger daysInWeek = weekDateRange.length - weekDateRange.location + 1;
-//            
-//            NSDateComponents *dateComponents = [[NSCalendar currentCalendar] components:NSWeekdayCalendarUnit fromDate:[NSDate date]];
-//            NSInteger currentWeekday = dateComponents.weekday;
-//            NSInteger differenceDays = (desiredWeekday - currentWeekday + daysInWeek) % daysInWeek;
-//            NSDateComponents *daysComponents = [[NSDateComponents alloc] init];
-//            daysComponents.day = differenceDays;
-//            NSDate *resultDate = [[NSCalendar currentCalendar] dateByAddingComponents:daysComponents toDate:[NSDate date] options:0];
-//            return resultDate;
-//        }
-//    }
-//}
+- (NSDate *)getDateOfSpecificDay:(NSInteger)day
+{
+    NSInteger desiredWeekday = day;
+    NSRange weekDateRange = [[NSCalendar currentCalendar] maximumRangeOfUnit:NSWeekdayCalendarUnit];
+    NSInteger daysInWeek = weekDateRange.length - weekDateRange.location + 1;
+    
+    NSDateComponents *dateComponents = [[NSCalendar currentCalendar] components:NSWeekdayCalendarUnit fromDate:[NSDate date]];
+    NSInteger currentWeekday = dateComponents.weekday;
+    NSInteger differenceDays = (desiredWeekday - currentWeekday + daysInWeek) % daysInWeek;
+    NSDateComponents *daysComponents = [[NSDateComponents alloc] init];
+    daysComponents.day = differenceDays;
+    NSDate *resultDate = [[NSCalendar currentCalendar] dateByAddingComponents:daysComponents toDate:[NSDate date] options:0];
+    return resultDate;
+}
 
 #pragma mark - Snooze
 
