@@ -110,7 +110,11 @@
 {
     [self dismissViewControllerAnimated:YES completion:^{
         self.alarmSong =[mediaItemCollection.items objectAtIndex:0];
-        
+        [[[UIAlertView alloc] initWithTitle:@"In order to use music as the alarm sound, the phone must be locked with the app open."
+                                    message:nil
+                                   delegate:self
+                          cancelButtonTitle:nil
+                          otherButtonTitles:@"Dismiss",nil] show];
     }];
 }
 
@@ -182,6 +186,7 @@
 }
 
 @end
+
 #import <objc/runtime.h>
 
 @implementation UILabel (WhiteUIDatePickerLabels)
@@ -191,7 +196,7 @@
     dispatch_once(&onceToken, ^{
         [self swizzleInstanceSelector:@selector(setTextColor:)
                       withNewSelector:@selector(swizzledSetTextColor:)];
-        [self swizzleInstanceSelector:@selector(willMoveToSuperview::)
+        [self swizzleInstanceSelector:@selector(willMoveToSuperview:)
                       withNewSelector:@selector(swizzledWillMoveToSuperview:)];
     });
 }

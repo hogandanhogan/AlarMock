@@ -617,7 +617,7 @@
 				GCC_PREFIX_HEADER = "AlarMock/AlarMock-Prefix.pch";
 				INFOPLIST_FILE = "AlarMock/AlarMock-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "f5d6d0f8-f8cd-472d-930d-8a4785fc0611";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -638,7 +638,7 @@
 				GCC_PREFIX_HEADER = "AlarMock/AlarMock-Prefix.pch";
 				INFOPLIST_FILE = "AlarMock/AlarMock-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "f5d6d0f8-f8cd-472d-930d-8a4785fc0611";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
