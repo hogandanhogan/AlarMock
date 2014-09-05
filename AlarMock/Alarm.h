@@ -18,11 +18,14 @@
 @property (nonatomic) BOOL on;
 @property (nonatomic) NSDate *fireDate;
 @property (nonatomic) NSMutableArray *daysRepeated;
+@property (nonatomic) NSArray *daysChecked;
 
 - (id)initWithJokeCollection:(JokeCollection *)jokeCollection;
 -(NSDate *) getDateOfSpecificDay:(NSInteger ) day;
+
+- (void)alarmWillFire;
+- (void)alarmWillNotFire;
 - (void)snooze;
 - (void)stop;
-
 
 @end

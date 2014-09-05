@@ -14,6 +14,7 @@
 		71623D2519B2B6EC0025AE4B /* JokeCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 71623D2419B2B6EC0025AE4B /* JokeCollection.m */; };
 		71A3AE9319B4D23B00D1001C /* NSArray+AMRandomElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 71A3AE9219B4D23B00D1001C /* NSArray+AMRandomElement.m */; };
 		71E6BCEB19B2CD0A00FC94F3 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 71E6BCEA19B2CD0A00FC94F3 /* Default-568h@2x.png */; };
+		7908639419B7C05600EDD19B /* SoundViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7908639319B7C05600EDD19B /* SoundViewController.m */; };
 		792A791619ABF4C80099A32F /* AlarMockTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 792A791519ABF4C80099A32F /* AlarMockTableViewCell.m */; };
 		79318CCF19A8E7F70021D655 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79318CCE19A8E7F70021D655 /* CoreData.framework */; };
 		79350E2619B4EFD4009E47E6 /* groudhog.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 79350E2519B4EFD4009E47E6 /* groudhog.mp3 */; };
@@ -69,6 +70,8 @@
 		71A3AE9119B4D23B00D1001C /* NSArray+AMRandomElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+AMRandomElement.h"; sourceTree = "<group>"; };
 		71A3AE9219B4D23B00D1001C /* NSArray+AMRandomElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+AMRandomElement.m"; sourceTree = "<group>"; };
 		71E6BCEA19B2CD0A00FC94F3 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = SOURCE_ROOT; };
+		7908639219B7C05600EDD19B /* SoundViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SoundViewController.h; path = ../SoundViewController.h; sourceTree = "<group>"; };
+		7908639319B7C05600EDD19B /* SoundViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SoundViewController.m; path = ../SoundViewController.m; sourceTree = "<group>"; };
 		792A791419ABF4C80099A32F /* AlarMockTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarMockTableViewCell.h; sourceTree = "<group>"; };
 		792A791519ABF4C80099A32F /* AlarMockTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarMockTableViewCell.m; sourceTree = "<group>"; };
 		79318CCE19A8E7F70021D655 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -183,6 +186,7 @@
 				71E6BCE419B2CC0200FC94F3 /* AddAlarmViewController */,
 				71E6BCE219B2CBE400FC94F3 /* AlarMockViewController */,
 				71E6BCE319B2CBF500FC94F3 /* RepeatViewController */,
+				7908639519B7C0D500EDD19B /* SoundViewController */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -231,6 +235,15 @@
 				71E6BCEA19B2CD0A00FC94F3 /* Default-568h@2x.png */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		7908639519B7C0D500EDD19B /* SoundViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7908639219B7C05600EDD19B /* SoundViewController.h */,
+				7908639319B7C05600EDD19B /* SoundViewController.m */,
+			);
+			name = SoundViewController;
 			sourceTree = "<group>";
 		};
 		98962DB019A7C0E700DEE9B5 = {
@@ -476,6 +489,7 @@
 				1F6CACA519A7C5070025CB67 /* AddAlarmViewController.m in Sources */,
 				71623D2519B2B6EC0025AE4B /* JokeCollection.m in Sources */,
 				71A3AE9319B4D23B00D1001C /* NSArray+AMRandomElement.m in Sources */,
+				7908639419B7C05600EDD19B /* SoundViewController.m in Sources */,
 				98962DCD19A7C0E700DEE9B5 /* AppDelegate.m in Sources */,
 				797DF3DC19A962FE00FDD94B /* RepeatViewController.m in Sources */,
 				98962DC919A7C0E700DEE9B5 /* main.m in Sources */,

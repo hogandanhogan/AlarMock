@@ -11,10 +11,9 @@
 #import "RepeatViewController.h"
 #import "AlarmJoke.h"
 #import "AlarmEngine.h"
-#import "Alarm.h"
-#import <MediaPlayer/MediaPlayer.h>
+#import "SoundViewController.h"
 
-@interface AddAlarmViewController () <UITableViewDataSource, UITableViewDelegate, MPMediaPickerControllerDelegate>
+@interface AddAlarmViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) IBOutlet UIDatePicker *datePicker;
@@ -22,9 +21,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *snoozeTimeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *snoozeMockLabel;
 @property float sliderVal;
-
-
-@property (nonatomic) MPMediaItem *alarmSong;
 @property (nonatomic) Alarm *alarm;
 
 @end
@@ -36,8 +32,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-
 
     self.automaticallyAdjustsScrollViewInsets = NO;
     
@@ -96,31 +90,9 @@
         [self.navigationController pushViewController:dvc animated:YES];
     }
     if (indexPath.row == 1) {
-        MPMediaPickerController *mediaPicker = [[MPMediaPickerController alloc] initWithMediaTypes:MPMediaTypeAnyAudio];
-        mediaPicker.delegate = self;
-        mediaPicker.allowsPickingMultipleItems = NO;
-        mediaPicker.prompt = @"What would you like stuck in your head?";
-        [self presentViewController:mediaPicker animated:YES completion:nil];
+        SoundViewController *svc = [self.storyboard instantiateViewControllerWithIdentifier:@"soundVC"];
+        [self.navigationController pushViewController:svc animated:YES];
     }
-}
-
-#pragma mark - MPMediaPickerControllerDelegate
-//TODO: need a new vc where user can choose between sounds or the media picker (against Ben's wishes!)
-- (void)mediaPicker:(MPMediaPickerController *)mediaPicker didPickMediaItems:(MPMediaItemCollection *)mediaItemCollection
-{
-    [self dismissViewControllerAnimated:YES completion:^{
-        self.alarmSong =[mediaItemCollection.items objectAtIndex:0];
-        [[[UIAlertView alloc] initWithTitle:@"In order to use music as the alarm sound, the phone must be locked with the app open."
-                                    message:nil
-                                   delegate:self
-                          cancelButtonTitle:nil
-                          otherButtonTitles:@"Dismiss",nil] show];
-    }];
-}
-
--(void)mediaPickerDidCancel:(MPMediaPickerController *)mediaPicker
-{
-    [self dismissViewControllerAnimated:YES completion:^{}];
 }
 
 #pragma mark - Action handlers
@@ -140,16 +112,20 @@
 
 - (IBAction)onSavePressed:(id)sender
 {
+    if ([self.title isEqualToString:@"Edit Alarm"]) {
+        //TODO:bug, alarm fires but not saved in persistence layer. Figure out why
+        [self.alarmEngine removeAlarm:self.currentAlarm];
+    }
+    
     self.alarm = [[Alarm alloc] initWithJokeCollection:self.alarmEngine.jokeCollection];
-    self.alarm.fireDate = [NSDate dateWithTimeIntervalSinceNow:4];
+    self.alarm.fireDate = [NSDate dateWithTimeIntervalSinceNow:10];
     //[self.alarm getDateOfSpecificDay:self.alarm.daysChecked.count];
 //    self.alarm.fireDate = self.datePicker.date;
     //notification fires in 4 seconds while testing
     self.alarm.snoozeInterval = self.sliderVal * 60;
     self.alarm.alarmSong = self.alarmSong;
-
+    
     [self.alarmEngine addAlarm:self.alarm];
-
 
     for (NSString *dayChecked in self.daysChecked) {
         NSInteger dayCheckedIntVal = dayChecked.integerValue;

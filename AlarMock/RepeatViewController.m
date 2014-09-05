@@ -1,3 +1,4 @@
+
 //
 //  DaysViewController.m
 //  AlarMock
@@ -12,7 +13,6 @@
 
 @interface RepeatViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property AddAlarmViewController *addAlarmViewController;
 @property (nonatomic) NSMutableArray *daysChecked;
 
 @end
@@ -23,9 +23,8 @@
 {
     [super viewDidLoad];
 
-//    self.addAlarmViewController = [AddAlarmViewController new];
-//
-    self.daysChecked = [NSMutableArray array];
+    
+    self.daysChecked = [NSMutableArray new];
     
     self.tableView.scrollEnabled = NO;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];

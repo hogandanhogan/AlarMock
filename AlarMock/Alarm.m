@@ -38,7 +38,6 @@
 
 - (id)initWithCoder:(NSCoder *)decoder
 {
-    //Encode Jokes at some point
     self = [super init];
     
     if (self) {
@@ -48,6 +47,7 @@
         _on = [[decoder decodeObjectForKey:@"on"] boolValue];
         _snoozed = [[decoder decodeObjectForKey:@"hasSnoozed"] boolValue];
         _fireDate = [decoder decodeObjectForKey:@"fireDate"];
+        _daysChecked = [decoder decodeObjectForKey:@"daysChecked"];
         _jokeCollection = [decoder decodeObjectForKey:@"jokeCollection"];
         _daysRepeated = [decoder decodeObjectForKey:@"daysRepeated"];
     }
@@ -63,6 +63,7 @@
     [encoder encodeObject:@(_on) forKey:@"on"];
     [encoder encodeObject:@(_snoozed) forKey:@"hasSnoozed"];
     [encoder encodeObject:_fireDate forKey:@"fireDate"];
+    [encoder encodeObject:_daysChecked forKey:@"daysChecked"];
     [encoder encodeObject:_jokeCollection forKey:@"jokeCollection"];
     [encoder encodeObject:_daysRepeated forKey:@"daysRepeated"];
 }
@@ -125,12 +126,27 @@
     [self updateAlertBody];
 }
 
+- (void)setDaysChecked:(NSArray *)daysChecked
+{
+    _daysChecked = daysChecked;
+}
+
 - (void)setFireDate:(NSDate *)fireDate
 {
     _fireDate = fireDate;
     self.notification.fireDate = fireDate;
     
     [[UIApplication sharedApplication] scheduleLocalNotification:self.notification];
+}
+
+- (void)alarmWillFire
+{
+    [[UIApplication sharedApplication] scheduleLocalNotification:self.notification];
+}
+
+- (void)alarmWillNotFire
+{
+    [[UIApplication sharedApplication] cancelLocalNotification:self.notification];
 }
 
 - (void)setJokeCollection:(JokeCollection *)jokeCollection
