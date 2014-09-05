@@ -234,7 +234,6 @@
                                        originalSelector,
                                        method_getImplementation(newMethod),
                                        method_getTypeEncoding(newMethod));
-
     if (methodAdded) {
         class_replaceMethod([self class],
                             newSelector,
