@@ -89,7 +89,11 @@
 {
     [self dismissViewControllerAnimated:YES completion:^{
         self.alarmSong = [mediaItemCollection.items objectAtIndex:0];
-        
+        [[[UIAlertView alloc] initWithTitle:@"If you choose a song as your alarm tone, the phone must be locked with Alarm Mock open in the background"
+                                    message:nil
+                                   delegate:self
+                          cancelButtonTitle:nil
+                          otherButtonTitles:@"Ok",nil] show];
     }];
 }
 
