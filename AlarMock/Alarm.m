@@ -49,7 +49,7 @@
         _fireDate = [decoder decodeObjectForKey:@"fireDate"];
         _daysChecked = [decoder decodeObjectForKey:@"daysChecked"];
         _jokeCollection = [decoder decodeObjectForKey:@"jokeCollection"];
-        _daysRepeated = [decoder decodeObjectForKey:@"daysRepeated"];
+        //_daysRepeated = [decoder decodeObjectForKey:@"daysRepeated"];
     }
     
     return self;
@@ -65,36 +65,36 @@
     [encoder encodeObject:_fireDate forKey:@"fireDate"];
     [encoder encodeObject:_daysChecked forKey:@"daysChecked"];
     [encoder encodeObject:_jokeCollection forKey:@"jokeCollection"];
-    [encoder encodeObject:_daysRepeated forKey:@"daysRepeated"];
+    //[encoder encodeObject:_daysRepeated forKey:@"daysRepeated"];
 }
 
-#pragma mark - Repeat
+//#pragma mark - Repeat
 
 //TODO: Finish this code to get the days repeat to work
-- (NSDate *)getDateOfSpecificDay:(NSInteger)day
-{
-    NSInteger desiredWeekday = day + 1;
-    NSRange weekDateRange = [[NSCalendar currentCalendar] maximumRangeOfUnit:NSWeekdayCalendarUnit];
-    NSInteger daysInWeek = weekDateRange.length - weekDateRange.location + 1;
-    
-    NSDateComponents *dateComponents = [[NSCalendar currentCalendar] components:NSWeekdayCalendarUnit fromDate:[NSDate date]];
-    NSInteger currentWeekday = dateComponents.weekday;
-    NSInteger differenceDays = (desiredWeekday - currentWeekday + daysInWeek) % daysInWeek;
-    NSDateComponents *daysComponents = [[NSDateComponents alloc] init];
-    daysComponents.day = differenceDays;
-    NSDate *resultDate = [[NSCalendar currentCalendar] dateByAddingComponents:daysComponents toDate:[NSDate date] options:0];
-    [self.daysRepeated addObject:resultDate];
-    
-    return resultDate;
-}
+//- (NSDate *)getDateOfSpecificDay:(NSInteger)day
+//{
+//    NSInteger desiredWeekday = day + 1;
+//    NSRange weekDateRange = [[NSCalendar currentCalendar] maximumRangeOfUnit:NSWeekdayCalendarUnit];
+//    NSInteger daysInWeek = weekDateRange.length - weekDateRange.location + 1;
+//    
+//    NSDateComponents *dateComponents = [[NSCalendar currentCalendar] components:NSWeekdayCalendarUnit fromDate:[NSDate date]];
+//    NSInteger currentWeekday = dateComponents.weekday;
+//    NSInteger differenceDays = (desiredWeekday - currentWeekday + daysInWeek) % daysInWeek;
+//    NSDateComponents *daysComponents = [[NSDateComponents alloc] init];
+//    daysComponents.day = differenceDays;
+//    NSDate *resultDate = [[NSCalendar currentCalendar] dateByAddingComponents:daysComponents toDate:[NSDate date] options:0];
+//    [self.daysRepeated addObject:resultDate];
+//    
+//    return resultDate;
+//}
 
 #pragma mark - Snooze
 
 - (void)snooze
 {
     self.snoozed = YES;
-    //[self setFireDate:[NSDate dateWithTimeInterval:self.snoozeInterval sinceDate:[NSDate date]]];
-    [self setFireDate:[NSDate dateWithTimeIntervalSinceNow:4]];
+    [self setFireDate:[NSDate dateWithTimeInterval:self.snoozeInterval sinceDate:[NSDate date]]];
+    //[self setFireDate:[NSDate dateWithTimeIntervalSinceNow:4]];
 }
 
 - (void)stop
@@ -141,7 +141,6 @@
 
 - (void)alarmWillFire
 {
-    [[UIApplication sharedApplication] scheduleLocalNotification:self.notification];
 }
 
 - (void)alarmWillNotFire

@@ -22,7 +22,6 @@
 {
     [super viewDidLoad];
     
-    self.tableView.scrollEnabled = NO;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     self.tableView.backgroundColor = [UIColor clearColor];
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"backgroundImage.png"]];
@@ -57,6 +56,17 @@
     return 2;
 }
 
+-  (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIView  *view  = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 15)];
+    UILabel  *label = [[UILabel alloc] initWithFrame:view.frame];
+    label.textColor = [UIColor whiteColor];
+
+    [view addSubview:label];
+    view.backgroundColor = [UIColor clearColor];
+    return view;
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -75,6 +85,7 @@
                      @"Alert 2",
                      @"Alert 3",
                      @"Alert 4", nil];
+    cell.textLabel.textColor = [UIColor whiteColor];
     if (indexPath.section == 0) {
         cell.textLabel.text = [sounds objectAtIndex:indexPath.row];
     } else {

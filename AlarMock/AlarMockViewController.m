@@ -122,11 +122,11 @@
     Alarm *alarm = self.alarmEngine.alarms[indexPath.row];
     alarm.on = switcheroo.isEnabled;
     
-    if (alarm.on) {
-        [alarm alarmWillFire];
-    } else {
-        [alarm alarmWillNotFire];
-    }
+//    if (alarm.on) {
+//        [alarm alarmWillFire];
+//    } else {
+//        [alarm alarmWillNotFire];
+//    }
 }
 
 #pragma mark - Segues

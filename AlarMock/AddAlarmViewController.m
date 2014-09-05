@@ -7,7 +7,7 @@
 //
 
 #import "AddAlarmViewController.h"
-#import "AlarMockViewController.h"
+//#import "AlarMockViewController.h"
 #import "RepeatViewController.h"
 #import "AlarmJoke.h"
 #import "AlarmEngine.h"
@@ -49,7 +49,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 3;
+    return 2;
 }
 - (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -62,7 +62,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SettingsCell"];
-    NSArray *settings = [[NSArray alloc] initWithObjects:@"Repeat", @"Sound", @"Snooze", nil];
+    NSArray *settings = [[NSArray alloc] initWithObjects:@"Sound", @"Snooze", nil];
     cell.textLabel.text = [settings objectAtIndex:indexPath.row];
     cell.textLabel.textColor = [UIColor whiteColor];
     cell.backgroundColor = [UIColor clearColor];
@@ -85,11 +85,11 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
+//    if (indexPath.row == 0) {
+//        RepeatViewController *dvc = [self.storyboard instantiateViewControllerWithIdentifier:@"daysVC"];
+//        [self.navigationController pushViewController:dvc animated:YES];
+//    }
     if (indexPath.row == 0) {
-        RepeatViewController *dvc = [self.storyboard instantiateViewControllerWithIdentifier:@"daysVC"];
-        [self.navigationController pushViewController:dvc animated:YES];
-    }
-    if (indexPath.row == 1) {
         SoundViewController *svc = [self.storyboard instantiateViewControllerWithIdentifier:@"soundVC"];
         [self.navigationController pushViewController:svc animated:YES];
     }
@@ -118,9 +118,9 @@
     }
     
     self.alarm = [[Alarm alloc] initWithJokeCollection:self.alarmEngine.jokeCollection];
-    self.alarm.fireDate = [NSDate dateWithTimeIntervalSinceNow:10];
+    //self.alarm.fireDate = [NSDate dateWithTimeIntervalSinceNow:10];
     //[self.alarm getDateOfSpecificDay:self.alarm.daysChecked.count];
-//    self.alarm.fireDate = self.datePicker.date;
+    self.alarm.fireDate = self.datePicker.date;
     //notification fires in 4 seconds while testing
     self.alarm.snoozeInterval = self.sliderVal * 60;
     self.alarm.alarmSong = self.alarmSong;

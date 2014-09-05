@@ -17,7 +17,7 @@
 @property (nonatomic) MPMediaItem *alarmSong;
 @property (nonatomic) BOOL on;
 @property (nonatomic) NSDate *fireDate;
-@property (nonatomic) NSMutableArray *daysRepeated;
+//@property (nonatomic) NSMutableArray *daysRepeated;
 @property (nonatomic) NSArray *daysChecked;
 
 - (id)initWithJokeCollection:(JokeCollection *)jokeCollection;
