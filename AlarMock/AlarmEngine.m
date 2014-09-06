@@ -8,8 +8,9 @@
 
 #import "AlarmEngine.h"
 
-#import "JokeCollection.h"
+#import "Alarm.h"
 #import "AlarmJoke.h"
+#import "JokeCollection.h"
 #import "SnoozeJoke.h"
 
 static NSString * const kAlarmEngineDefaultsKey = @"AlarmEngineDefaultsKey";
@@ -41,12 +42,18 @@ static NSString * const kAlarmEngineDefaultsKey = @"AlarmEngineDefaultsKey";
 
 #pragma mark - NSCoding
 
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 - (id)initWithCoder:(NSCoder *)decoder
 {
     self = [self init];
     
     if (self) {
         _alarms = [[decoder decodeObjectForKey:@"alarms"] mutableCopy] ?: [NSMutableArray array];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleAlarmValueChanged:) name:kAlarmValueChangedNotification object:nil];
     }
     
     return self;
@@ -57,16 +64,23 @@ static NSString * const kAlarmEngineDefaultsKey = @"AlarmEngineDefaultsKey";
     [encoder encodeObject:_alarms forKey:@"alarms"];
 }
 
+#pragma mark - KVO
+
+- (void)handleAlarmValueChanged:(Alarm *)alarm
+{
+    [self save];
+}
+
 #pragma mark - Collection
 
 - (void)addAlarm:(Alarm *)alarm
 {
-    //TODO:This is a possible source of not being able to edit alarm
     if ([_alarms containsObject:alarm]) {
         return;
     }
 
-    [_alarms addObject:alarm];    
+    [_alarms addObject:alarm];
+    [self addAlarm:alarm];
     [self save];
 }
 

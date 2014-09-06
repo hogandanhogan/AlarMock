@@ -125,7 +125,7 @@
     //        [self.alarm getDateOfSpecificDay:dayCheckedIntVal];
     //    }
     
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - Action handlers

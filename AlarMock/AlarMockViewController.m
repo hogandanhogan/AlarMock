@@ -81,11 +81,9 @@
 {
     Alarm *alarm = self.alarmEngine.alarms[indexPath.row];
     AlarMockTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
-    
-    [cell setSwitchState:YES];
-    //subclass nsobject and compose of 2 properties localnotification and isOn
+    cell.switchState = alarm.on;
     cell.delegate = self;
-        
+    
     NSDateFormatter *dateFormatter = [NSDateFormatter new];
     dateFormatter.timeStyle = NSDateFormatterShortStyle;
     [dateFormatter setDateFormat:@"h:mm a"];
@@ -121,24 +119,14 @@
 {
     NSIndexPath *indexPath = [self.alarMockView.tableView indexPathForCell:tableViewCell];
     Alarm *alarm = self.alarmEngine.alarms[indexPath.row];
-    alarm.on = switcheroo.isEnabled;
-    
-//    if (alarm.on) {
-//        [alarm alarmWillFire];
-//    } else {
-//        [alarm alarmWillNotFire];
-//    }
+    alarm.on = switcheroo.isOn;
 }
 
 #pragma mark - Segues
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.identifier isEqualToString:@"editAlarm"]) {
-        //TODO: edit current alarm
-        ((AddAlarmViewController *)[segue destinationViewController]).title = @"Edit Alarm";
-        ((AddAlarmViewController *)[segue destinationViewController]).currentAlarm = self.currentAlarm;
-    } else if ([segue.identifier isEqualToString:@"addAlarm"]) {
+    if ([segue.identifier isEqualToString:@"addAlarm"]) {
         ((AddAlarmViewController *)[segue destinationViewController]).alarmEngine = self.alarmEngine;
     }
 }

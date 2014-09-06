@@ -11,21 +11,20 @@
 
 @class JokeCollection;
 
+FOUNDATION_EXTERN NSString * const kAlarmValueChangedNotification;
+
 @interface Alarm : NSObject <NSCoding>
 
 @property (nonatomic) NSTimeInterval snoozeInterval;
 @property (nonatomic) MPMediaItem *alarmSong;
 @property (nonatomic) BOOL on;
 @property (nonatomic) NSDate *fireDate;
-@property (strong, nonatomic) NSString *notificationSound;
-//@property (nonatomic) NSMutableArray *daysRepeated;
+@property (nonatomic) NSString *notificationSound;
 @property (nonatomic) NSArray *daysChecked;
+@property (nonatomic, readonly) NSString *joke;
 
 - (id)initWithJokeCollection:(JokeCollection *)jokeCollection;
-//-(NSDate *) getDateOfSpecificDay:(NSInteger ) day;
 
-- (void)alarmWillFire;
-- (void)alarmWillNotFire;
 - (void)snooze;
 - (void)stop;
 

@@ -10,6 +10,8 @@
 
 #import "JokeCollection.h"
 
+NSString * const kAlarmValueChangedNotification = @"AlarmValueChangedNotification";
+
 @interface Alarm ()
 
 @property (nonatomic) JokeCollection *jokeCollection;
@@ -50,7 +52,6 @@
         _daysChecked = [decoder decodeObjectForKey:@"daysChecked"];
         _jokeCollection = [decoder decodeObjectForKey:@"jokeCollection"];
         _notificationSound = [decoder decodeObjectForKey:@"notificationSound"];
-        //_daysRepeated = [decoder decodeObjectForKey:@"daysRepeated"];
     }
     
     return self;
@@ -67,28 +68,7 @@
     [encoder encodeObject:_daysChecked forKey:@"daysChecked"];
     [encoder encodeObject:_jokeCollection forKey:@"jokeCollection"];
     [encoder encodeObject:_notificationSound forKey:@"notificationSound"];
-    //[encoder encodeObject:_daysRepeated forKey:@"daysRepeated"];
 }
-
-//#pragma mark - Repeat
-
-//TODO: Finish this code to get the days repeat to work
-//- (NSDate *)getDateOfSpecificDay:(NSInteger)day
-//{
-//    NSInteger desiredWeekday = day + 1;
-//    NSRange weekDateRange = [[NSCalendar currentCalendar] maximumRangeOfUnit:NSWeekdayCalendarUnit];
-//    NSInteger daysInWeek = weekDateRange.length - weekDateRange.location + 1;
-//    
-//    NSDateComponents *dateComponents = [[NSCalendar currentCalendar] components:NSWeekdayCalendarUnit fromDate:[NSDate date]];
-//    NSInteger currentWeekday = dateComponents.weekday;
-//    NSInteger differenceDays = (desiredWeekday - currentWeekday + daysInWeek) % daysInWeek;
-//    NSDateComponents *daysComponents = [[NSDateComponents alloc] init];
-//    daysComponents.day = differenceDays;
-//    NSDate *resultDate = [[NSCalendar currentCalendar] dateByAddingComponents:daysComponents toDate:[NSDate date] options:0];
-//    [self.daysRepeated addObject:resultDate];
-//    
-//    return resultDate;
-//}
 
 #pragma mark - Snooze
 
@@ -96,13 +76,11 @@
 {
     self.snoozed = YES;
     [self setFireDate:[NSDate dateWithTimeInterval:self.snoozeInterval sinceDate:[NSDate date]]];
-    //[self setFireDate:[NSDate dateWithTimeIntervalSinceNow:4]];
 }
 
 - (void)stop
 {
     self.snoozed = NO;
-    // Schedule this for next requested run day
 }
 
 #pragma mark - Jokes
@@ -118,20 +96,24 @@
 
 #pragma mark - Accesors
 
-- (void)setSnoozed:(BOOL)snoozed
+- (void)setOn:(BOOL)on
 {
-    if (self.snoozed == snoozed) {
-        return;
+    _on = on;
+    
+    if (on) {
+        [[UIApplication sharedApplication] scheduleLocalNotification:self.notification];
+    } else {
+        [[UIApplication sharedApplication] cancelLocalNotification:self.notification];
     }
     
+    [[NSNotificationCenter defaultCenter] postNotificationName:kAlarmValueChangedNotification object:self];
+}
+
+- (void)setSnoozed:(BOOL)snoozed
+{    
     _snoozed = snoozed;
     [self updateAlertBody];
 }
-
-//- (void)setDaysChecked:(NSArray *)daysChecked
-//{
-//    _daysChecked = daysChecked;
-//}
 
 - (void)setFireDate:(NSDate *)fireDate
 {
@@ -139,16 +121,6 @@
     self.notification.fireDate = fireDate;
     
     [[UIApplication sharedApplication] scheduleLocalNotification:self.notification];
-}
-
-- (void)alarmWillFire
-{
-    [[UIApplication sharedApplication] scheduleLocalNotification:self.notification];
-}
-
-- (void)alarmWillNotFire
-{
-    [[UIApplication sharedApplication] cancelLocalNotification:self.notification];
 }
 
 - (void)setJokeCollection:(JokeCollection *)jokeCollection
@@ -159,24 +131,33 @@
 
 - (UILocalNotification *)notification
 {
-    //TODO: what the fuck is going on here
     if (!_notification) {
         self.notification = [UILocalNotification new];
         _notification.timeZone = [NSTimeZone defaultTimeZone];
-        if (!_notificationSound) {
-            _notification.soundName = @"alarm.wav";
-        } else if ([_notificationSound isEqualToString:@"0"]) {
-            _notification.soundName = @"";
-        } else if ([_notificationSound isEqualToString:@"1"]) {
-            _notification.soundName = @"";
-        } else if ([_notificationSound isEqualToString:@"2"]) {
-            _notification.soundName = @"";
-        } else if ([_notificationSound isEqualToString:@"3"]) {
-            _notification.soundName = @"";
-        }
+        self.notificationSound = _notificationSound;
     }
     
     return _notification;
+}
+
+- (void)setNotificationSound:(NSString *)notificationSound
+{
+    _notificationSound = notificationSound;
+    self.notification.soundName = [self soundNameForNotificationSound:notificationSound];
+}
+
+- (NSString *)soundNameForNotificationSound:(NSString *)notificationSound
+{
+    if (!notificationSound) {
+        return @"alarm.wav";
+    }
+    
+    return [@{
+              @"0" : @"",
+              @"1" : @"",
+              @"2" : @"",
+              @"3" : @""
+              } valueForKey:notificationSound];
 }
 
 #pragma mark - Description
@@ -184,6 +165,11 @@
 - (NSString *)description
 {
     return [NSString stringWithFormat:@"%@ - Fire Date: %@", [super description], self.fireDate];
+}
+
+- (NSString *)joke
+{
+    return self.notification.alertBody;
 }
 
 @end

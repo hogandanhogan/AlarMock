@@ -59,34 +59,15 @@
 - (void)updateAlarmQueue
 {
     Alarm *firstFiredAlarm = self.alarmQueue.firstObject;
-    if (firstFiredAlarm) {
-        [[[UIAlertView alloc] initWithTitle:self.alarmEngine.randomAlarmJoke
-                                    message:nil
-                                   delegate:self
-                          cancelButtonTitle:nil
-                          otherButtonTitles:@"Snooze", @"Dismiss",nil] show];
-        NSURL *songUrl = [firstFiredAlarm.alarmSong valueForProperty:MPMediaItemPropertyAssetURL];
-        
-        //MPMusicPlayerController *mPMusicPlayerController = [MPMusicPlayerController new];
-        //TODO:This might be a bad idea. There is no way to do this anymore. The other alarms do it though
-        //mPMusicPlayerController.volume = 1.0f;
-        
-        self.aVPlayer = [[AVPlayer alloc] initWithURL:songUrl];
-        [self.aVPlayer play];
-        
-    } else {
-        [[[UIAlertView alloc] initWithTitle:self.alarmEngine.randomSnoozeJoke
-                                    message:nil
-                                   delegate:self
-                          cancelButtonTitle:nil
-                          otherButtonTitles:@"Snooze", @"Dismiss",nil] show];
-        NSURL *songUrl = [firstFiredAlarm.alarmSong valueForProperty:MPMediaItemPropertyAssetURL];
-
-        
-        self.aVPlayer = [[AVPlayer alloc] initWithURL:songUrl];
-        [self.aVPlayer play];
-        
-    }
+    [[[UIAlertView alloc] initWithTitle:firstFiredAlarm.joke
+                                message:nil
+                               delegate:self
+                      cancelButtonTitle:nil
+                      otherButtonTitles:@"Snooze", @"Dismiss",nil] show];
+    NSURL *songUrl = [firstFiredAlarm.alarmSong valueForProperty:MPMediaItemPropertyAssetURL];
+    
+    self.aVPlayer = [[AVPlayer alloc] initWithURL:songUrl];
+    [self.aVPlayer play];
 }
 
 #pragma mark - UIAlertViewDelegate
@@ -96,14 +77,12 @@
     Alarm *firstFiredAlarm = self.alarmQueue.firstObject;
     if (buttonIndex == 0) {
         [firstFiredAlarm snooze];
-        [self.alarmQueue addObject:firstFiredAlarm];
         [self.aVPlayer pause];
     } else {
         [firstFiredAlarm stop];
         [self.alarmQueue removeObject:firstFiredAlarm];
         [self.aVPlayer pause];
     }
-    
 }
 
 #pragma mark - Accessors
