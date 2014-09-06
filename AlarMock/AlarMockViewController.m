@@ -12,15 +12,15 @@
 #import "AddAlarmViewController.h"
 #import "Alarm.h"
 #import "AlarmEngine.h"
+#import "AlarMockView.h"
 
 @interface AlarMockViewController() <UITableViewDelegate, UITableViewDataSource, TableViewCellDelegate>
 
-@property (strong, nonatomic) IBOutlet UITableView *tableView;
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *editButton;
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *addButton;
-@property (weak, nonatomic) IBOutlet UITextField *textField;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *headerViewTopToSuperviewConstraint;
+
+@property (weak, nonatomic) IBOutlet UIView *headerView;
+@property (nonatomic) AlarMockView *alarMockView;
 @property (nonatomic) Alarm *currentAlarm;
-@property (strong, nonatomic) IBOutlet UIImageView *backGroundimage;
 
 @end
 
@@ -28,26 +28,19 @@
 
 #pragma mark - View lifecycle
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    
-    self.tableView.allowsSelection = NO;
-    self.tableView.allowsSelectionDuringEditing = YES;
-    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-    self.tableView.tableHeaderView = nil;
-    self.editButton.enabled = NO;
-    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"backgroundImage.png"]];
-    self.backGroundimage.backgroundColor = [UIColor clearColor];
-    self.tableView.backgroundColor = [UIColor clearColor];
-
-}
-
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
-    [self.tableView reloadData];
+    [self.alarMockView.tableView reloadData];
+}
+
+#pragma mark - UIScrollViewDelegate
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    CGFloat guess = (scrollView.contentOffset.y + scrollView.contentInset.top)/scrollView.contentInset.top;
+    self.headerView.alpha = MAX(0.0f, MIN(1.0f, guess));
+    self.headerViewTopToSuperviewConstraint.constant = MIN(44.0f, MAX(0.0f, scrollView.contentInset.top + scrollView.contentOffset.y));
 }
 
 #pragma mark - UITableViewDelegate/Datasource
@@ -55,12 +48,11 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (self.alarmEngine.alarms.count == 0) {
-        self.editButton.enabled = NO;
+        self.alarMockView.editButton.enabled = NO;
     } else {
-        self.editButton.enabled = YES;
+        self.alarMockView.editButton.enabled = YES;
     }
     return self.alarmEngine.alarms.count;
-
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -78,11 +70,6 @@
     Alarm *alarm = self.alarmEngine.alarms[indexPath.row];
     AlarMockTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     
-    cell.accessoryType = UITableViewCellAccessoryNone;
-    cell.textLabel.font  = [UIFont systemFontOfSize:22.0];
-//    fontWithName:@"Futura" size:22.0
-    cell.textLabel.textColor = [UIColor whiteColor];
-    cell.backgroundColor = [UIColor clearColor];
     [cell setSwitchState:YES];
     //subclass nsobject and compose of 2 properties localnotification and isOn
     cell.delegate = self;
@@ -101,7 +88,7 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [self.alarmEngine removeAlarm:self.alarmEngine.alarms[indexPath.row]];
-    [self.tableView reloadData];
+    [self.alarMockView.tableView reloadData];
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
@@ -111,14 +98,14 @@
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
+    [self.alarMockView.tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
 #pragma mark - Table View Cell Delegate Method
 
 - (void)alarMockTableViewCell:(AlarMockTableViewCell *)tableViewCell switchDidChangeValue:(UISwitch *)switcheroo
 {
-    NSIndexPath *indexPath = [self.tableView indexPathForCell:tableViewCell];
+    NSIndexPath *indexPath = [self.alarMockView.tableView indexPathForCell:tableViewCell];
     Alarm *alarm = self.alarmEngine.alarms[indexPath.row];
     alarm.on = switcheroo.isEnabled;
     
@@ -144,35 +131,23 @@
 
 #pragma mark - Action Handlers
 
-- (IBAction)enterEditMode:(id)sender
+- (IBAction)leftNavigationButtonClicked:(id)sender
 {
-    if ([self.tableView isEditing]) {
-        [self.tableView setEditing:NO animated:YES];
+    if ([self.alarMockView.tableView isEditing]) {
+        [self.alarMockView.tableView setEditing:NO animated:YES];
         
-        [self.editButton setTitle:@"Edit"];
-        self.addButton.enabled = YES;
-
+        [self.alarMockView.editButton setTitle:@"Edit"];
+        self.alarMockView.addButton.enabled = YES;
     }
     else {
-        [self.editButton setTitle:@"Done"];
-        self.editButton.enabled = NO;
-        
-        [self.tableView setEditing:YES animated:YES];
+        [self.alarMockView.editButton setTitle:@"Done"];
+        [self.alarMockView.tableView setEditing:YES animated:YES];
     }
 }
 
 - (IBAction)unwindToAlarmMockViewController:(UIStoryboardSegue *)unwindSegue
 {
 
-}
-
-- (IBAction)onSubmitJoke:(id)sender
-{
-    PFObject *joke = [PFObject objectWithClassName:@"UserJokes"];
-    joke[@"joke"] = self.textField.text;
-    [joke saveInBackground];
-    self.textField.text = @"";
-    self.textField.placeholder = self.textField.placeholder;
 }
 
 @end

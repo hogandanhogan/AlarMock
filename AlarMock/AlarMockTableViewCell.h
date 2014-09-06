@@ -18,7 +18,8 @@
 
 @interface AlarMockTableViewCell : UITableViewCell
 
-@property (nonatomic, weak) id<TableViewCellDelegate> delegate;
+@property (weak, nonatomic) IBOutlet UILabel *textLabel;
+@property (weak, nonatomic) id<TableViewCellDelegate> delegate;
 
 - (void)setSwitchState:(BOOL)on;
 

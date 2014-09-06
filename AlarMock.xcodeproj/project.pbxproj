@@ -11,8 +11,15 @@
 		1FDC25F719B666F60009ED53 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FDC25F619B666F60009ED53 /* Images.xcassets */; };
 		410D4096FBC94DA38C5FBA9E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 60DF75B9A60E451FB11298AB /* libPods.a */; };
 		71623D2519B2B6EC0025AE4B /* JokeCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 71623D2419B2B6EC0025AE4B /* JokeCollection.m */; };
+		7172A2F919BB7B6F0087DEB0 /* AlarMockView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7172A2F819BB7B6F0087DEB0 /* AlarMockView.m */; };
+		7172A2FC19BB7CEA0087DEB0 /* UIScreen+AMScale.m in Sources */ = {isa = PBXBuildFile; fileRef = 7172A2FB19BB7CEA0087DEB0 /* UIScreen+AMScale.m */; };
+		7172A2FF19BB7EED0087DEB0 /* AMRadialGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7172A2FE19BB7EED0087DEB0 /* AMRadialGradientLayer.m */; };
+		7172A30319BB87F80087DEB0 /* ClanOT-NarrMedium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7172A30119BB87E00087DEB0 /* ClanOT-NarrMedium.otf */; };
+		7172A30419BB87FA0087DEB0 /* ClanOT-Book.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7172A30219BB87E00087DEB0 /* ClanOT-Book.otf */; };
+		7172A30719BB89840087DEB0 /* UIFont+AMTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 7172A30619BB89840087DEB0 /* UIFont+AMTheme.m */; };
+		7172A30A19BB8C0D0087DEB0 /* UIColor+AMTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 7172A30919BB8C0D0087DEB0 /* UIColor+AMTheme.m */; };
+		7172A31319BB8DD10087DEB0 /* AlarMockHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7172A31219BB8DD10087DEB0 /* AlarMockHeaderView.m */; };
 		71A3AE9319B4D23B00D1001C /* NSArray+AMRandomElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 71A3AE9219B4D23B00D1001C /* NSArray+AMRandomElement.m */; };
-		71E6BCEB19B2CD0A00FC94F3 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 71E6BCEA19B2CD0A00FC94F3 /* Default-568h@2x.png */; };
 		7908639419B7C05600EDD19B /* SoundViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7908639319B7C05600EDD19B /* SoundViewController.m */; };
 		7917CD4C19BB4EAE005BB390 /* alarm.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7917CD4B19BB4EAE005BB390 /* alarm.wav */; };
 		792A791619ABF4C80099A32F /* AlarMockTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 792A791519ABF4C80099A32F /* AlarMockTableViewCell.m */; };
@@ -22,9 +29,6 @@
 		79A2518F19AE2E7F009174C8 /* AlarmEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 79A2518E19AE2E7F009174C8 /* AlarmEngine.m */; };
 		79A2519119AF8366009174C8 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79A2519019AF8365009174C8 /* AVFoundation.framework */; };
 		79A2A95B19B0C5EC005BB9AC /* Alarm.m in Sources */ = {isa = PBXBuildFile; fileRef = 79A2A95A19B0C5EC005BB9AC /* Alarm.m */; };
-		79C53AAA19BA443800351D48 /* 120x120_flt.png in Resources */ = {isa = PBXBuildFile; fileRef = 79C53AA919BA443800351D48 /* 120x120_flt.png */; };
-		79C53AAC19BA455400351D48 /* titleScreen_flat.png in Resources */ = {isa = PBXBuildFile; fileRef = 79C53AAB19BA455400351D48 /* titleScreen_flat.png */; };
-		79C53AAE19BA466F00351D48 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 79C53AAD19BA466F00351D48 /* background.png */; };
 		98315B0119ABD40300D717F0 /* AlarmJoke.m in Sources */ = {isa = PBXBuildFile; fileRef = 98315B0019ABD40300D717F0 /* AlarmJoke.m */; };
 		98315B0419ABD4E700D717F0 /* SnoozeJoke.m in Sources */ = {isa = PBXBuildFile; fileRef = 98315B0319ABD4E700D717F0 /* SnoozeJoke.m */; };
 		98962DBD19A7C0E700DEE9B5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98962DBC19A7C0E700DEE9B5 /* Foundation.framework */; };
@@ -68,12 +72,25 @@
 		60DF75B9A60E451FB11298AB /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		71623D2319B2B6EC0025AE4B /* JokeCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JokeCollection.h; sourceTree = "<group>"; };
 		71623D2419B2B6EC0025AE4B /* JokeCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JokeCollection.m; sourceTree = "<group>"; };
+		7172A2F719BB7B6F0087DEB0 /* AlarMockView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarMockView.h; sourceTree = "<group>"; };
+		7172A2F819BB7B6F0087DEB0 /* AlarMockView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarMockView.m; sourceTree = "<group>"; };
+		7172A2FA19BB7CEA0087DEB0 /* UIScreen+AMScale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScreen+AMScale.h"; sourceTree = "<group>"; };
+		7172A2FB19BB7CEA0087DEB0 /* UIScreen+AMScale.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScreen+AMScale.m"; sourceTree = "<group>"; };
+		7172A2FD19BB7EED0087DEB0 /* AMRadialGradientLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMRadialGradientLayer.h; sourceTree = "<group>"; };
+		7172A2FE19BB7EED0087DEB0 /* AMRadialGradientLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMRadialGradientLayer.m; sourceTree = "<group>"; };
+		7172A30119BB87E00087DEB0 /* ClanOT-NarrMedium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ClanOT-NarrMedium.otf"; sourceTree = "<group>"; };
+		7172A30219BB87E00087DEB0 /* ClanOT-Book.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ClanOT-Book.otf"; sourceTree = "<group>"; };
+		7172A30519BB89840087DEB0 /* UIFont+AMTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+AMTheme.h"; sourceTree = "<group>"; };
+		7172A30619BB89840087DEB0 /* UIFont+AMTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+AMTheme.m"; sourceTree = "<group>"; };
+		7172A30819BB8C0D0087DEB0 /* UIColor+AMTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+AMTheme.h"; sourceTree = "<group>"; };
+		7172A30919BB8C0D0087DEB0 /* UIColor+AMTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+AMTheme.m"; sourceTree = "<group>"; };
+		7172A31119BB8DD10087DEB0 /* AlarMockHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarMockHeaderView.h; sourceTree = "<group>"; };
+		7172A31219BB8DD10087DEB0 /* AlarMockHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarMockHeaderView.m; sourceTree = "<group>"; };
 		71A3AE9119B4D23B00D1001C /* NSArray+AMRandomElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+AMRandomElement.h"; sourceTree = "<group>"; };
 		71A3AE9219B4D23B00D1001C /* NSArray+AMRandomElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+AMRandomElement.m"; sourceTree = "<group>"; };
-		71E6BCEA19B2CD0A00FC94F3 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = SOURCE_ROOT; };
 		7908639219B7C05600EDD19B /* SoundViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SoundViewController.h; path = ../SoundViewController.h; sourceTree = "<group>"; };
 		7908639319B7C05600EDD19B /* SoundViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SoundViewController.m; path = ../SoundViewController.m; sourceTree = "<group>"; };
-		7917CD4B19BB4EAE005BB390 /* alarm.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = alarm.wav; sourceTree = "<group>"; };
+		7917CD4B19BB4EAE005BB390 /* alarm.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = alarm.wav; path = ../alarm.wav; sourceTree = "<group>"; };
 		792A791419ABF4C80099A32F /* AlarMockTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarMockTableViewCell.h; sourceTree = "<group>"; };
 		792A791519ABF4C80099A32F /* AlarMockTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarMockTableViewCell.m; sourceTree = "<group>"; };
 		79318CCE19A8E7F70021D655 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -85,9 +102,6 @@
 		79A2519019AF8365009174C8 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		79A2A95919B0C5EC005BB9AC /* Alarm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Alarm.h; sourceTree = "<group>"; };
 		79A2A95A19B0C5EC005BB9AC /* Alarm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Alarm.m; sourceTree = "<group>"; };
-		79C53AA919BA443800351D48 /* 120x120_flt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 120x120_flt.png; sourceTree = "<group>"; };
-		79C53AAB19BA455400351D48 /* titleScreen_flat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = titleScreen_flat.png; sourceTree = "<group>"; };
-		79C53AAD19BA466F00351D48 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		98315AFF19ABD40300D717F0 /* AlarmJoke.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmJoke.h; sourceTree = "<group>"; };
 		98315B0019ABD40300D717F0 /* AlarmJoke.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmJoke.m; sourceTree = "<group>"; };
 		98315B0219ABD4E700D717F0 /* SnoozeJoke.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnoozeJoke.h; sourceTree = "<group>"; };
@@ -158,11 +172,76 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		71A3AE9019B4D21E00D1001C /* Utilities */ = {
+		7172A2F319BB77910087DEB0 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				7917CD4B19BB4EAE005BB390 /* alarm.wav */,
+			);
+			name = Sounds;
+			sourceTree = "<group>";
+		};
+		7172A30019BB87D50087DEB0 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				7172A30219BB87E00087DEB0 /* ClanOT-Book.otf */,
+				7172A30119BB87E00087DEB0 /* ClanOT-NarrMedium.otf */,
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
+		7172A30B19BB8C110087DEB0 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				7172A30519BB89840087DEB0 /* UIFont+AMTheme.h */,
+				7172A30619BB89840087DEB0 /* UIFont+AMTheme.m */,
+				7172A30819BB8C0D0087DEB0 /* UIColor+AMTheme.h */,
+				7172A30919BB8C0D0087DEB0 /* UIColor+AMTheme.m */,
+			);
+			name = Theme;
+			sourceTree = "<group>";
+		};
+		7172A30C19BB8C1C0087DEB0 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				7172A30D19BB8C2A0087DEB0 /* Array */,
+				7172A30F19BB8C450087DEB0 /* Gradient */,
+				7172A30E19BB8C3B0087DEB0 /* Screen */,
+				7172A30B19BB8C110087DEB0 /* Theme */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
+		7172A30D19BB8C2A0087DEB0 /* Array */ = {
 			isa = PBXGroup;
 			children = (
 				71A3AE9119B4D23B00D1001C /* NSArray+AMRandomElement.h */,
 				71A3AE9219B4D23B00D1001C /* NSArray+AMRandomElement.m */,
+			);
+			name = Array;
+			sourceTree = "<group>";
+		};
+		7172A30E19BB8C3B0087DEB0 /* Screen */ = {
+			isa = PBXGroup;
+			children = (
+				7172A2FA19BB7CEA0087DEB0 /* UIScreen+AMScale.h */,
+				7172A2FB19BB7CEA0087DEB0 /* UIScreen+AMScale.m */,
+			);
+			name = Screen;
+			sourceTree = "<group>";
+		};
+		7172A30F19BB8C450087DEB0 /* Gradient */ = {
+			isa = PBXGroup;
+			children = (
+				7172A2FD19BB7EED0087DEB0 /* AMRadialGradientLayer.h */,
+				7172A2FE19BB7EED0087DEB0 /* AMRadialGradientLayer.m */,
+			);
+			name = Gradient;
+			sourceTree = "<group>";
+		};
+		71A3AE9019B4D21E00D1001C /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				7172A30C19BB8C1C0087DEB0 /* Categories */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -211,6 +290,10 @@
 				98962DD219A7C0E700DEE9B5 /* AlarMockViewController.m */,
 				792A791419ABF4C80099A32F /* AlarMockTableViewCell.h */,
 				792A791519ABF4C80099A32F /* AlarMockTableViewCell.m */,
+				7172A31119BB8DD10087DEB0 /* AlarMockHeaderView.h */,
+				7172A31219BB8DD10087DEB0 /* AlarMockHeaderView.m */,
+				7172A2F719BB7B6F0087DEB0 /* AlarMockView.h */,
+				7172A2F819BB7B6F0087DEB0 /* AlarMockView.m */,
 			);
 			name = AlarMockViewController;
 			sourceTree = "<group>";
@@ -236,7 +319,9 @@
 		71E6BCE919B2CC9800FC94F3 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				71E6BCEA19B2CD0A00FC94F3 /* Default-568h@2x.png */,
+				7172A30019BB87D50087DEB0 /* Fonts */,
+				1FDC25F619B666F60009ED53 /* Images.xcassets */,
+				7172A2F319BB77910087DEB0 /* Sounds */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -254,10 +339,6 @@
 			isa = PBXGroup;
 			children = (
 				98962DCE19A7C0E700DEE9B5 /* Main.storyboard */,
-				7917CD4B19BB4EAE005BB390 /* alarm.wav */,
-				79C53AAD19BA466F00351D48 /* background.png */,
-				79C53AA919BA443800351D48 /* 120x120_flt.png */,
-				79C53AAB19BA455400351D48 /* titleScreen_flat.png */,
 				98962DC219A7C0E700DEE9B5 /* AlarMock */,
 				98962DE119A7C0E800DEE9B5 /* AlarMockTests */,
 				98962DBB19A7C0E700DEE9B5 /* Frameworks */,
@@ -306,7 +387,6 @@
 				71E6BCDE19B2CAF400FC94F3 /* Model */,
 				71A3AE9019B4D21E00D1001C /* Utilities */,
 				71E6BCE919B2CC9800FC94F3 /* Resources */,
-				1FDC25F619B666F60009ED53 /* Images.xcassets */,
 				98962DC319A7C0E700DEE9B5 /* Supporting Files */,
 			);
 			path = AlarMock;
@@ -428,15 +508,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7172A30419BB87FA0087DEB0 /* ClanOT-Book.otf in Resources */,
+				7172A30319BB87F80087DEB0 /* ClanOT-NarrMedium.otf in Resources */,
 				98962DC719A7C0E700DEE9B5 /* InfoPlist.strings in Resources */,
-				79C53AAE19BA466F00351D48 /* background.png in Resources */,
 				7917CD4C19BB4EAE005BB390 /* alarm.wav in Resources */,
 				1FDC25F719B666F60009ED53 /* Images.xcassets in Resources */,
-				79C53AAC19BA455400351D48 /* titleScreen_flat.png in Resources */,
 				79350E2619B4EFD4009E47E6 /* groudhog.mp3 in Resources */,
-				71E6BCEB19B2CD0A00FC94F3 /* Default-568h@2x.png in Resources */,
 				98962DD019A7C0E700DEE9B5 /* Main.storyboard in Resources */,
-				79C53AAA19BA443800351D48 /* 120x120_flt.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -488,11 +566,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7172A2F919BB7B6F0087DEB0 /* AlarMockView.m in Sources */,
+				7172A2FF19BB7EED0087DEB0 /* AMRadialGradientLayer.m in Sources */,
 				98315B0119ABD40300D717F0 /* AlarmJoke.m in Sources */,
+				7172A31319BB8DD10087DEB0 /* AlarMockHeaderView.m in Sources */,
 				79A2A95B19B0C5EC005BB9AC /* Alarm.m in Sources */,
+				7172A2FC19BB7CEA0087DEB0 /* UIScreen+AMScale.m in Sources */,
 				98315B0419ABD4E700D717F0 /* SnoozeJoke.m in Sources */,
 				98962DD319A7C0E700DEE9B5 /* AlarMockViewController.m in Sources */,
+				7172A30719BB89840087DEB0 /* UIFont+AMTheme.m in Sources */,
 				79A2518F19AE2E7F009174C8 /* AlarmEngine.m in Sources */,
+				7172A30A19BB8C0D0087DEB0 /* UIColor+AMTheme.m in Sources */,
 				792A791619ABF4C80099A32F /* AlarMockTableViewCell.m in Sources */,
 				1F6CACA519A7C5070025CB67 /* AddAlarmViewController.m in Sources */,
 				71623D2519B2B6EC0025AE4B /* JokeCollection.m in Sources */,

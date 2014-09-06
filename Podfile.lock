@@ -2,6 +2,7 @@ PODS:
   - Bolts (1.1.2)
   - Facebook-iOS-SDK (3.17.0):
     - Bolts
+  - FXBlurView (1.6.2)
   - Parse (1.2.21):
     - Facebook-iOS-SDK (~> 3.17)
   - Parse+NSCoding (0.1.4):
@@ -11,12 +12,14 @@ PODS:
     - Facebook-iOS-SDK (~> 3.7)
 
 DEPENDENCIES:
+  - FXBlurView (~> 1.6.2)
   - Parse (~> 1.2.21)
   - Parse+NSCoding (~> 0.1.4)
 
 SPEC CHECKSUMS:
   Bolts: 2635e8698a630774689441047f3465d78c48d485
   Facebook-iOS-SDK: f20274d809f112ba540842e2b6cbe50128d51b7b
+  FXBlurView: 47496afc9160097fa34af35fc4b310bd85d65dca
   Parse: 4be4e9fe2ee6dae16010e7622a5641a7c89154b7
   Parse+NSCoding: 2d7fd08777c8df10aaa667c02382878c98128a88
   Parse-iOS-SDK: 3781eeb56fa6b30d4feee97ee0d22595c07d6c70
