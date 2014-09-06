@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AlarMockView"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xok-6e-XRF" userLabel="AlarMock Header View" customClass="AlarMockHeaderView">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aKr-fF-cNN">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <items>
+                        <barButtonItem title="Edit" id="wmi-UB-tW9">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="leftBarButtonClicked:" destination="-1" id="g6v-Z7-6gW"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem systemItem="flexibleSpace" id="cHN-RC-FQr"/>
+                        <barButtonItem systemItem="add" id="Vfo-O2-ny9">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="addBarButtonClicked:" destination="-1" id="zLw-8F-kHF"/>
+                            </connections>
+                        </barButtonItem>
+                    </items>
+                    <color key="barTintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </toolbar>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="height" constant="44" id="1D0-NM-GoC"/>
+                <constraint firstAttribute="trailing" secondItem="aKr-fF-cNN" secondAttribute="trailing" id="KkG-du-e4d"/>
+                <constraint firstAttribute="bottom" secondItem="aKr-fF-cNN" secondAttribute="bottom" id="OoB-iM-Wr5"/>
+                <constraint firstItem="aKr-fF-cNN" firstAttribute="top" secondItem="xok-6e-XRF" secondAttribute="top" id="rif-Pi-93S"/>
+                <constraint firstItem="aKr-fF-cNN" firstAttribute="leading" secondItem="xok-6e-XRF" secondAttribute="leading" id="zvn-Tc-Dfg"/>
+            </constraints>
+            <connections>
+                <outlet property="addBarButtonItem" destination="Vfo-O2-ny9" id="5K9-hk-PcJ"/>
+                <outlet property="leftBarButtonItem" destination="wmi-UB-tW9" id="RTn-M4-ibP"/>
+            </connections>
+        </view>
+    </objects>
+</document>

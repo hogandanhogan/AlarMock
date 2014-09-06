@@ -6,8 +6,9 @@
 //  Copyright (c) 2014 AlarMock Industries. All rights reserved.
 //
 
-#import <FXBlurView.h>
+@interface AlarMockHeaderView : UIView
 
-@interface AlarMockHeaderView : FXBlurView
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *leftBarButtonItem;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *addBarButtonItem;
 
 @end

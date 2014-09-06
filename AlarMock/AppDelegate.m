@@ -39,7 +39,7 @@
     self.rootViewController.alarmEngine = self.alarmEngine;
 
     [[UIApplication sharedApplication] setStatusBarHidden:YES];
-    
+        
     return YES;
 }
 

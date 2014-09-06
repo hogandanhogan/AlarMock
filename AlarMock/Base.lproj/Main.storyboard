@@ -67,29 +67,26 @@
                                             <outlet property="delegate" destination="vXZ-lx-hvc" id="Lcx-tp-9HQ"/>
                                         </connections>
                                     </tableView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tvj-u7-uqS" userLabel="AlarMock Header View" customClass="AlarMockHeaderView">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tvj-u7-uqS" userLabel="AlarMock Header Container View" customClass="FXBlurView">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EpL-fj-Ux0" userLabel="Separator View">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tvT-eE-emb" userLabel="Separator View">
                                                 <rect key="frame" x="0.0" y="43" width="320" height="1"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <color key="backgroundColor" red="0.78431372549019607" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="1" id="hgc-ll-OpV"/>
+                                                    <constraint firstAttribute="height" constant="1" id="t4y-ZC-Ta9"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="EpL-fj-Ux0" secondAttribute="trailing" id="I8N-3u-4Md"/>
                                             <constraint firstAttribute="height" constant="44" id="PoA-Qk-PZR"/>
-                                            <constraint firstItem="EpL-fj-Ux0" firstAttribute="leading" secondItem="tvj-u7-uqS" secondAttribute="leading" id="aWw-LR-bci"/>
-                                            <constraint firstAttribute="bottom" secondItem="EpL-fj-Ux0" secondAttribute="bottom" id="lTt-Kr-Vzg"/>
+                                            <constraint firstAttribute="trailing" secondItem="tvT-eE-emb" secondAttribute="trailing" id="TrX-rh-UTj"/>
+                                            <constraint firstAttribute="bottom" secondItem="tvT-eE-emb" secondAttribute="bottom" id="WTW-86-J1W"/>
+                                            <constraint firstItem="tvT-eE-emb" firstAttribute="leading" secondItem="tvj-u7-uqS" secondAttribute="leading" id="ZXV-5U-U30"/>
                                         </constraints>
-                                        <connections>
-                                            <outlet property="separatorHeightConstraint" destination="hgc-ll-OpV" id="IsY-yl-T0K"/>
-                                        </connections>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -103,7 +100,9 @@
                                     <constraint firstItem="cKX-XF-MJ6" firstAttribute="top" secondItem="DA6-Q5-sed" secondAttribute="top" constant="44" id="mEq-xM-TPL"/>
                                 </constraints>
                                 <connections>
-                                    <outlet property="headerView" destination="tvj-u7-uqS" id="Fqo-fj-vGK"/>
+                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="4XC-OY-C5n"/>
+                                    <outlet property="scrolledHeaderContainerView" destination="tvj-u7-uqS" id="73V-8D-Lrg"/>
+                                    <outlet property="scrolledHeaderContainerViewSeparatorHeightConstraint" destination="t4y-ZC-Ta9" id="oN1-1w-Qx2"/>
                                     <outlet property="tableView" destination="cKX-XF-MJ6" id="ezg-B2-heq"/>
                                 </connections>
                             </view>
@@ -129,8 +128,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="headerView" destination="tvj-u7-uqS" id="qEh-ca-Nsq"/>
+                        <outlet property="alarMockView" destination="DA6-Q5-sed" id="BU0-bq-eF9"/>
                         <outlet property="headerViewTopToSuperviewConstraint" destination="EAw-pL-d4W" id="Nwx-C9-8Zx"/>
+                        <outlet property="scrolledHeaderContainerView" destination="tvj-u7-uqS" id="DGL-Tz-XcJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>

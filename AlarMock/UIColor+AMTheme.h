@@ -15,4 +15,7 @@
 + (instancetype)am_switchOnTintColor;
 + (instancetype)am_switchTintColor;
 
++ (instancetype)am_lightBlue;
++ (instancetype)am_darkBlue;
+
 @end

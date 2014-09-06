@@ -10,20 +10,35 @@
 
 @implementation UIColor (AMTheme)
 
+#pragma mark - Background
+
 + (NSArray *)am_backgroundGradientColors
 {
-    return @[(id)[[UIColor colorWithRed:0.0f/255.0f green:152.0f/255.0f blue:202.0f/255.0f alpha:1.0f] CGColor],
-             (id)[[UIColor colorWithRed:43.0f/255.0f green:33.0f/255.0f blue:83.0f/255.0f alpha:1.0f] CGColor]];
+    return @[(id)[[UIColor am_darkBlue] CGColor], (id)[[UIColor am_lightBlue] CGColor]];
 }
+
+#pragma mark - Switch
 
 + (instancetype)am_switchOnTintColor
 {
-    return [UIColor colorWithRed:43.0f/255.0f green:33.0f/255.0f blue:83.0f/255.0f alpha:1.0f];
+    return [UIColor am_lightBlue];
 }
 
 + (instancetype)am_switchTintColor
 {
-    return [UIColor colorWithRed:0.0f/255.0f green:152.0f/255.0f blue:202.0f/255.0f alpha:1.0f];
+    return [UIColor am_darkBlue];
+}
+
+#pragma mark -
+
++ (instancetype)am_lightBlue
+{
+    return [UIColor colorWithRed:38.0f/255.0f green:33.0f/255.0f blue:73.0f/255.0f alpha:1.0f];
+}
+
++ (instancetype)am_darkBlue
+{
+    return [UIColor colorWithRed:0.0f/255.0f green:110.0f/255.0f blue:155.0f/255.0f alpha:1.0f];
 }
 
 @end

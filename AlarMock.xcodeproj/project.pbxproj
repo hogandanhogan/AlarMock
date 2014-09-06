@@ -19,6 +19,7 @@
 		7172A30719BB89840087DEB0 /* UIFont+AMTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 7172A30619BB89840087DEB0 /* UIFont+AMTheme.m */; };
 		7172A30A19BB8C0D0087DEB0 /* UIColor+AMTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 7172A30919BB8C0D0087DEB0 /* UIColor+AMTheme.m */; };
 		7172A31319BB8DD10087DEB0 /* AlarMockHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7172A31219BB8DD10087DEB0 /* AlarMockHeaderView.m */; };
+		7172A31519BBA0000087DEB0 /* AlarMockHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7172A31419BBA0000087DEB0 /* AlarMockHeaderView.xib */; };
 		71A3AE9319B4D23B00D1001C /* NSArray+AMRandomElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 71A3AE9219B4D23B00D1001C /* NSArray+AMRandomElement.m */; };
 		7908639419B7C05600EDD19B /* SoundViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7908639319B7C05600EDD19B /* SoundViewController.m */; };
 		7917CD4C19BB4EAE005BB390 /* alarm.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7917CD4B19BB4EAE005BB390 /* alarm.wav */; };
@@ -86,6 +87,7 @@
 		7172A30919BB8C0D0087DEB0 /* UIColor+AMTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+AMTheme.m"; sourceTree = "<group>"; };
 		7172A31119BB8DD10087DEB0 /* AlarMockHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarMockHeaderView.h; sourceTree = "<group>"; };
 		7172A31219BB8DD10087DEB0 /* AlarMockHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarMockHeaderView.m; sourceTree = "<group>"; };
+		7172A31419BBA0000087DEB0 /* AlarMockHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlarMockHeaderView.xib; sourceTree = "<group>"; };
 		71A3AE9119B4D23B00D1001C /* NSArray+AMRandomElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+AMRandomElement.h"; sourceTree = "<group>"; };
 		71A3AE9219B4D23B00D1001C /* NSArray+AMRandomElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+AMRandomElement.m"; sourceTree = "<group>"; };
 		7908639219B7C05600EDD19B /* SoundViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SoundViewController.h; path = ../SoundViewController.h; sourceTree = "<group>"; };
@@ -292,6 +294,7 @@
 				792A791519ABF4C80099A32F /* AlarMockTableViewCell.m */,
 				7172A31119BB8DD10087DEB0 /* AlarMockHeaderView.h */,
 				7172A31219BB8DD10087DEB0 /* AlarMockHeaderView.m */,
+				7172A31419BBA0000087DEB0 /* AlarMockHeaderView.xib */,
 				7172A2F719BB7B6F0087DEB0 /* AlarMockView.h */,
 				7172A2F819BB7B6F0087DEB0 /* AlarMockView.m */,
 			);
@@ -513,6 +516,7 @@
 				98962DC719A7C0E700DEE9B5 /* InfoPlist.strings in Resources */,
 				7917CD4C19BB4EAE005BB390 /* alarm.wav in Resources */,
 				1FDC25F719B666F60009ED53 /* Images.xcassets in Resources */,
+				7172A31519BBA0000087DEB0 /* AlarMockHeaderView.xib in Resources */,
 				79350E2619B4EFD4009E47E6 /* groudhog.mp3 in Resources */,
 				98962DD019A7C0E700DEE9B5 /* Main.storyboard in Resources */,
 			);

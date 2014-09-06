@@ -14,12 +14,12 @@
 #import "AlarmEngine.h"
 #import "AlarMockView.h"
 
-@interface AlarMockViewController() <UITableViewDelegate, UITableViewDataSource, TableViewCellDelegate>
+@interface AlarMockViewController() <AlarMockViewDelegate, UITableViewDelegate, UITableViewDataSource, TableViewCellDelegate>
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *headerViewTopToSuperviewConstraint;
 
-@property (weak, nonatomic) IBOutlet UIView *headerView;
-@property (nonatomic) AlarMockView *alarMockView;
+@property (weak, nonatomic) IBOutlet UIView *scrolledHeaderContainerView;
+@property (weak, nonatomic) IBOutlet AlarMockView *alarMockView;
 @property (nonatomic) Alarm *currentAlarm;
 
 @end
@@ -38,8 +38,9 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    CGFloat guess = (scrollView.contentOffset.y + scrollView.contentInset.top)/scrollView.contentInset.top;
-    self.headerView.alpha = MAX(0.0f, MIN(1.0f, guess));
+    CGFloat scrollPercent = MAX(0.0f, MIN(1.0f, (scrollView.contentOffset.y + scrollView.contentInset.top)/scrollView.contentInset.top));
+    self.scrolledHeaderContainerView.alpha = scrollPercent;
+    self.alarMockView.unScrolledHeaderView.alpha = 1.0f - MIN(1.0f, 2.0f *scrollPercent);
     self.headerViewTopToSuperviewConstraint.constant = MIN(44.0f, MAX(0.0f, scrollView.contentInset.top + scrollView.contentOffset.y));
 }
 
@@ -48,9 +49,9 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (self.alarmEngine.alarms.count == 0) {
-        self.alarMockView.editButton.enabled = NO;
+        [self.alarMockView setLeftBarButtonEnabled:NO];
     } else {
-        self.alarMockView.editButton.enabled = YES;
+        [self.alarMockView setLeftBarButtonEnabled:YES];
     }
     return self.alarmEngine.alarms.count;
 }
@@ -131,23 +132,22 @@
 
 #pragma mark - Action Handlers
 
-- (IBAction)leftNavigationButtonClicked:(id)sender
+- (void)alarMockView:(AlarMockView *)alarMockView clickedLeftBarButtonItem:(UIBarButtonItem *)barButtonItem
 {
     if ([self.alarMockView.tableView isEditing]) {
         [self.alarMockView.tableView setEditing:NO animated:YES];
         
-        [self.alarMockView.editButton setTitle:@"Edit"];
-        self.alarMockView.addButton.enabled = YES;
-    }
-    else {
-        [self.alarMockView.editButton setTitle:@"Done"];
+        [self.alarMockView setLeftBarButtonTitle:@"Edit"];
+        [self.alarMockView setLeftBarButtonEnabled:YES];
+    } else {
+        [self.alarMockView setLeftBarButtonTitle:@"Done"];
         [self.alarMockView.tableView setEditing:YES animated:YES];
     }
 }
 
-- (IBAction)unwindToAlarmMockViewController:(UIStoryboardSegue *)unwindSegue
+- (void)alarMockView:(AlarMockView *)alarMockView clickedAddBarButtonItem:(UIBarButtonItem *)barButtonItem
 {
-
+    [self performSegueWithIdentifier:@"addAlarm" sender:barButtonItem];
 }
 
 @end
