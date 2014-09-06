@@ -14,11 +14,4 @@
 
 @implementation AlarMockHeaderView
 
-#pragma mark - View setup
-
-- (void)awakeFromNib
-{
-    [super awakeFromNib];
-}
-
 @end

@@ -110,9 +110,9 @@
     [self.delegate alarMockView:self clickedLeftBarButtonItem:sender];
 }
 
-- (IBAction)addBarButtonClicked:(id)sender
+- (IBAction)rightBarButtonClicked:(id)sender
 {
-    [self.delegate alarMockView:self clickedAddBarButtonItem:sender];
+    [self.delegate alarMockView:self clickedRightBarButtonItem:sender];
 }
 
 #pragma mark - Accessors

@@ -19,14 +19,9 @@
 
 #pragma mark - Switch
 
-+ (instancetype)am_switchOnTintColor
-{
-    return [UIColor am_lightBlue];
-}
-
 + (instancetype)am_switchTintColor
 {
-    return [UIColor am_darkBlue];
+    return [UIColor colorWithRed:0.5f green:0.5f blue:0.65f alpha:1.0f];
 }
 
 #pragma mark -

@@ -20,6 +20,8 @@
 		7172A30A19BB8C0D0087DEB0 /* UIColor+AMTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 7172A30919BB8C0D0087DEB0 /* UIColor+AMTheme.m */; };
 		7172A31319BB8DD10087DEB0 /* AlarMockHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7172A31219BB8DD10087DEB0 /* AlarMockHeaderView.m */; };
 		7172A31519BBA0000087DEB0 /* AlarMockHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7172A31419BBA0000087DEB0 /* AlarMockHeaderView.xib */; };
+		7172A31819BBB5E90087DEB0 /* AddAlarmView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7172A31719BBB5E90087DEB0 /* AddAlarmView.m */; };
+		7172A31D19BBB9B80087DEB0 /* AddAlarmHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7172A31B19BBB9B80087DEB0 /* AddAlarmHeaderView.xib */; };
 		71A3AE9319B4D23B00D1001C /* NSArray+AMRandomElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 71A3AE9219B4D23B00D1001C /* NSArray+AMRandomElement.m */; };
 		7908639419B7C05600EDD19B /* SoundViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7908639319B7C05600EDD19B /* SoundViewController.m */; };
 		7917CD4C19BB4EAE005BB390 /* alarm.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7917CD4B19BB4EAE005BB390 /* alarm.wav */; };
@@ -88,6 +90,9 @@
 		7172A31119BB8DD10087DEB0 /* AlarMockHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarMockHeaderView.h; sourceTree = "<group>"; };
 		7172A31219BB8DD10087DEB0 /* AlarMockHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarMockHeaderView.m; sourceTree = "<group>"; };
 		7172A31419BBA0000087DEB0 /* AlarMockHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlarMockHeaderView.xib; sourceTree = "<group>"; };
+		7172A31619BBB5E90087DEB0 /* AddAlarmView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddAlarmView.h; sourceTree = "<group>"; };
+		7172A31719BBB5E90087DEB0 /* AddAlarmView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddAlarmView.m; sourceTree = "<group>"; };
+		7172A31B19BBB9B80087DEB0 /* AddAlarmHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddAlarmHeaderView.xib; sourceTree = "<group>"; };
 		71A3AE9119B4D23B00D1001C /* NSArray+AMRandomElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+AMRandomElement.h"; sourceTree = "<group>"; };
 		71A3AE9219B4D23B00D1001C /* NSArray+AMRandomElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+AMRandomElement.m"; sourceTree = "<group>"; };
 		7908639219B7C05600EDD19B /* SoundViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SoundViewController.h; path = ../SoundViewController.h; sourceTree = "<group>"; };
@@ -315,6 +320,9 @@
 			children = (
 				1F6CACA319A7C5070025CB67 /* AddAlarmViewController.h */,
 				1F6CACA419A7C5070025CB67 /* AddAlarmViewController.m */,
+				7172A31619BBB5E90087DEB0 /* AddAlarmView.h */,
+				7172A31719BBB5E90087DEB0 /* AddAlarmView.m */,
+				7172A31B19BBB9B80087DEB0 /* AddAlarmHeaderView.xib */,
 			);
 			name = AddAlarmViewController;
 			sourceTree = "<group>";
@@ -511,6 +519,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7172A31D19BBB9B80087DEB0 /* AddAlarmHeaderView.xib in Resources */,
 				7172A30419BB87FA0087DEB0 /* ClanOT-Book.otf in Resources */,
 				7172A30319BB87F80087DEB0 /* ClanOT-NarrMedium.otf in Resources */,
 				98962DC719A7C0E700DEE9B5 /* InfoPlist.strings in Resources */,
@@ -572,6 +581,7 @@
 			files = (
 				7172A2F919BB7B6F0087DEB0 /* AlarMockView.m in Sources */,
 				7172A2FF19BB7EED0087DEB0 /* AMRadialGradientLayer.m in Sources */,
+				7172A31819BBB5E90087DEB0 /* AddAlarmView.m in Sources */,
 				98315B0119ABD40300D717F0 /* AlarmJoke.m in Sources */,
 				7172A31319BB8DD10087DEB0 /* AlarMockHeaderView.m in Sources */,
 				79A2A95B19B0C5EC005BB9AC /* Alarm.m in Sources */,

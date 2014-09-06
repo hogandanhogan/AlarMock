@@ -27,7 +27,7 @@
     }
 }
 
-- (id)actionForKey:(NSString *) key
+- (id)actionForKey:(NSString *)key
 {
     if ([key isEqualToString:@"gradientOrigin"] ||
         [key isEqualToString:@"gradientRadius"] ||

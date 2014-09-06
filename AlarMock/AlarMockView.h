@@ -25,6 +25,6 @@
 @protocol AlarMockViewDelegate
 
 - (void)alarMockView:(AlarMockView *)alarMockView clickedLeftBarButtonItem:(UIBarButtonItem *)barButtonItem;
-- (void)alarMockView:(AlarMockView *)alarMockView clickedAddBarButtonItem:(UIBarButtonItem *)barButtonItem;
+- (void)alarMockView:(AlarMockView *)alarMockView clickedRightBarButtonItem:(UIBarButtonItem *)barButtonItem;
 
 @end

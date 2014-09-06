@@ -28,6 +28,16 @@
 
 #pragma mark - View lifecycle
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    [self.alarMockView.tableView setEditing:NO animated:YES];
+    
+    [self.alarMockView setLeftBarButtonTitle:@"Edit"];
+    [self.alarMockView setLeftBarButtonEnabled:YES];
+}
+
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -50,6 +60,7 @@
 {
     if (self.alarmEngine.alarms.count == 0) {
         [self.alarMockView setLeftBarButtonEnabled:NO];
+        [self.alarMockView setLeftBarButtonTitle:@"Edit"];
     } else {
         [self.alarMockView setLeftBarButtonEnabled:YES];
     }
@@ -88,8 +99,10 @@
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [self.alarMockView.tableView beginUpdates];
     [self.alarmEngine removeAlarm:self.alarmEngine.alarms[indexPath.row]];
-    [self.alarMockView.tableView reloadData];
+    [self.alarMockView.tableView deleteRowsAtIndexPaths:@[ indexPath ] withRowAnimation:UITableViewRowAnimationAutomatic];
+    [self.alarMockView.tableView endUpdates];
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
@@ -145,7 +158,7 @@
     }
 }
 
-- (void)alarMockView:(AlarMockView *)alarMockView clickedAddBarButtonItem:(UIBarButtonItem *)barButtonItem
+- (void)alarMockView:(AlarMockView *)alarMockView clickedRightBarButtonItem:(UIBarButtonItem *)barButtonItem
 {
     [self performSegueWithIdentifier:@"addAlarm" sender:barButtonItem];
 }

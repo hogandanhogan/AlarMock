@@ -12,7 +12,6 @@
 
 + (NSArray *)am_backgroundGradientColors;
 
-+ (instancetype)am_switchOnTintColor;
 + (instancetype)am_switchTintColor;
 
 + (instancetype)am_lightBlue;

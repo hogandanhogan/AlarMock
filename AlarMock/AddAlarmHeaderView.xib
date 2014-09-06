@@ -4,9 +4,9 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AlarMockView"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddAlarmView"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xok-6e-XRF" userLabel="AlarMock Header View" customClass="AlarMockHeaderView">
+        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xok-6e-XRF" customClass="AlarMockHeaderView">
             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
@@ -14,17 +14,17 @@
                     <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <items>
-                        <barButtonItem title="Edit" id="wmi-UB-tW9">
+                        <barButtonItem title="Back" id="wmi-UB-tW9">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="leftBarButtonClicked:" destination="-1" id="g6v-Z7-6gW"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem systemItem="flexibleSpace" id="cHN-RC-FQr"/>
-                        <barButtonItem systemItem="add" id="Vfo-O2-ny9">
+                        <barButtonItem systemItem="save" id="Vfo-O2-ny9">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <action selector="rightBarButtonClicked:" destination="-1" id="T9r-iu-7Or"/>
+                                <action selector="rightBarButtonClicked:" destination="-1" id="8Dz-kE-Unh"/>
                             </connections>
                         </barButtonItem>
                     </items>
@@ -41,7 +41,7 @@
             </constraints>
             <connections>
                 <outlet property="leftBarButtonItem" destination="wmi-UB-tW9" id="RTn-M4-ibP"/>
-                <outlet property="rightBarButtonItem" destination="Vfo-O2-ny9" id="uyb-10-5Dx"/>
+                <outlet property="rightBarButtonItem" destination="Vfo-O2-ny9" id="9i1-91-GqV"/>
             </connections>
         </view>
     </objects>

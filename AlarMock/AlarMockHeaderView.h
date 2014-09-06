@@ -9,6 +9,6 @@
 @interface AlarMockHeaderView : UIView
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *leftBarButtonItem;
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *addBarButtonItem;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *rightBarButtonItem;
 
 @end
