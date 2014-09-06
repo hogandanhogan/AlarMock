@@ -12,8 +12,9 @@
 #import "AlarmJoke.h"
 #import "AlarmEngine.h"
 #import "SoundViewController.h"
+#import "AddAlarmView.h"
 
-@interface AddAlarmViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface AddAlarmViewController () <AddAlarmViewDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) IBOutlet UIDatePicker *datePicker;
@@ -32,7 +33,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
     self.automaticallyAdjustsScrollViewInsets = NO;
     
     self.datePicker.date = [NSDate date];
@@ -40,9 +41,13 @@
     self.tableView.scrollEnabled = NO;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     self.tableView.backgroundColor = [UIColor clearColor];
-    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"backgroundImage.png"]];
-//    self.view.backgroundColor = [UIColor clearColor];
+
     self.slider.hidden = YES;
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
 }
 
 #pragma mark - UITableViewDelegate/DataSource
@@ -62,21 +67,21 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SettingsCell"];
-    NSArray *settings = [[NSArray alloc] initWithObjects:@"Sound", @"Snooze", nil];
+    NSArray *settings = @[@"Sound", @"Snooze"];
     cell.textLabel.text = [settings objectAtIndex:indexPath.row];
     cell.textLabel.textColor = [UIColor whiteColor];
     cell.backgroundColor = [UIColor clearColor];
 
 
-    UISwitch *switcheroo = [[UISwitch alloc] initWithFrame:CGRectZero];
-    [switcheroo addTarget:self
-                   action:@selector(changeSnoozeSwitch:)
-         forControlEvents:UIControlEventValueChanged];
-    
-    [self.view addSubview:switcheroo];
-    if ([cell.textLabel.text isEqualToString:@"Snooze"]) {
-        cell.accessoryView  = switcheroo;
-    }
+//    UISwitch *switcheroo = [[UISwitch alloc] initWithFrame:CGRectZero];
+//    [switcheroo addTarget:self
+//                   action:@selector(changeSnoozeSwitch:)
+//         forControlEvents:UIControlEventValueChanged];
+//    
+//    [self.view addSubview:switcheroo];
+//    if ([cell.textLabel.text isEqualToString:@"Snooze"]) {
+//        cell.accessoryView  = switcheroo;
+//    }
 
     return cell;
 }
@@ -95,6 +100,34 @@
     }
 }
 
+#pragma mark - AddAlarmViewDelegate
+
+- (void)addAlarmView:(AddAlarmView *)alarMockView clickedLeftBarButtonItem:(UIBarButtonItem *)barButtonItem
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+-(void)addAlarmView:(AddAlarmView *)alarMockView clickedRightBarButtonItem:(UIBarButtonItem *)barButtonItem
+{
+    self.alarm = [[Alarm alloc] initWithJokeCollection:self.alarmEngine.jokeCollection];
+    //self.alarm.fireDate = [NSDate dateWithTimeIntervalSinceNow:10];
+    //[self.alarm getDateOfSpecificDay:self.alarm.daysChecked.count];
+    self.alarm.fireDate = self.datePicker.date;
+    //notification fires in 4 seconds while testing
+    self.alarm.snoozeInterval = self.sliderVal * 60;
+    self.alarm.alarmSong = self.alarmSong;
+    self.alarm.notificationSound = self.notificationSound;
+    
+    [self.alarmEngine addAlarm:self.alarm];
+    
+    //    for (NSString *dayChecked in self.daysChecked) {
+    //        NSInteger dayCheckedIntVal = dayChecked.integerValue;
+    //        [self.alarm getDateOfSpecificDay:dayCheckedIntVal];
+    //    }
+    
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 #pragma mark - Action handlers
 
 - (void)changeSnoozeSwitch:(id)sender
@@ -108,32 +141,6 @@
         self.snoozeTimeLabel.hidden = YES;
         self.snoozeMockLabel.hidden = YES;
     }
-}
-
-- (IBAction)onSavePressed:(id)sender
-{
-    if ([self.title isEqualToString:@"Edit Alarm"]) {
-        //TODO:bug, alarm fires but not saved in persistence layer. Figure out why
-        [self.alarmEngine removeAlarm:self.currentAlarm];
-    }
-    
-    self.alarm = [[Alarm alloc] initWithJokeCollection:self.alarmEngine.jokeCollection];
-    //self.alarm.fireDate = [NSDate dateWithTimeIntervalSinceNow:10];
-    //[self.alarm getDateOfSpecificDay:self.alarm.daysChecked.count];
-    self.alarm.fireDate = self.datePicker.date;
-    //notification fires in 4 seconds while testing
-    self.alarm.snoozeInterval = self.sliderVal * 60;
-    self.alarm.alarmSong = self.alarmSong;
-    self.alarm.notificationSound = self.notificationSound;
-    
-    [self.alarmEngine addAlarm:self.alarm];
-
-//    for (NSString *dayChecked in self.daysChecked) {
-//        NSInteger dayCheckedIntVal = dayChecked.integerValue;
-//        [self.alarm getDateOfSpecificDay:dayCheckedIntVal];
-//    }
-    
-    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 - (IBAction)onMoveSlider:(id)sender

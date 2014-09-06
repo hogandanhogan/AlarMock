@@ -79,6 +79,7 @@
         [self presentViewController:mediaPicker animated:YES completion:nil];
     } else {
         self.notificationSound = [NSString stringWithFormat:@"%ld", (long)indexPath.row];
+        [self.navigationController popViewControllerAnimated:YES];
     }
 }
 
@@ -86,10 +87,7 @@
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SoundCell"];
  
-    NSArray *sounds = [[NSArray alloc] initWithObjects:@"Alert 1",
-                     @"Alert 2",
-                     @"Alert 3",
-                     @"Alert 4", nil];
+    NSArray *sounds = @[@"Alert 1", @"Alert 2", @"Alert 3", @"Alert 4"];
     cell.textLabel.textColor = [UIColor whiteColor];
     if (indexPath.section == 0) {
         cell.textLabel.text = [sounds objectAtIndex:indexPath.row];
