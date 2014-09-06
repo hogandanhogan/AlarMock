@@ -13,6 +13,7 @@
 @interface SoundViewController () <UITableViewDataSource, UITableViewDelegate, MPMediaPickerControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic) MPMediaItem *alarmSong;
+@property (nonatomic) NSString *notificationSound;
 
 @end
 
@@ -58,8 +59,8 @@
 
 -  (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    UIView  *view  = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 15)];
-    UILabel  *label = [[UILabel alloc] initWithFrame:view.frame];
+    UIView *view  = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 15)];
+    UILabel *label = [[UILabel alloc] initWithFrame:view.frame];
     label.textColor = [UIColor whiteColor];
 
     [view addSubview:label];
@@ -70,11 +71,15 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if (indexPath.section == 1) {
         MPMediaPickerController *mediaPicker = [[MPMediaPickerController alloc] initWithMediaTypes:MPMediaTypeAnyAudio];
         mediaPicker.delegate = self;
         mediaPicker.allowsPickingMultipleItems = NO;
         mediaPicker.prompt = @"What would you like stuck in your head?";
         [self presentViewController:mediaPicker animated:YES completion:nil];
+    } else {
+        self.notificationSound = [NSString stringWithFormat:@"%ld", (long)indexPath.row];
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -115,8 +120,10 @@
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    AddAlarmViewController *aavc = [AddAlarmViewController new];
-    aavc.alarmSong = self.alarmSong;
+    if ([segue.destinationViewController isKindOfClass:[AddAlarmViewController class]]) {
+        ((AddAlarmViewController *)[segue destinationViewController]).alarmSong = self.alarmSong;
+        ((AddAlarmViewController *)[segue destinationViewController]).notificationSound = self.notificationSound;
+    }
 }
 
 @end

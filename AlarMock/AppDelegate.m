@@ -71,6 +71,19 @@
         
         self.aVPlayer = [[AVPlayer alloc] initWithURL:songUrl];
         [self.aVPlayer play];
+        
+    } else {
+        [[[UIAlertView alloc] initWithTitle:self.alarmEngine.randomSnoozeJoke
+                                    message:nil
+                                   delegate:self
+                          cancelButtonTitle:nil
+                          otherButtonTitles:@"Snooze", @"Dismiss",nil] show];
+        NSURL *songUrl = [firstFiredAlarm.alarmSong valueForProperty:MPMediaItemPropertyAssetURL];
+
+        
+        self.aVPlayer = [[AVPlayer alloc] initWithURL:songUrl];
+        [self.aVPlayer play];
+        
     }
 }
 
@@ -81,6 +94,7 @@
     Alarm *firstFiredAlarm = self.alarmQueue.firstObject;
     if (buttonIndex == 0) {
         [firstFiredAlarm snooze];
+        [self.alarmQueue addObject:firstFiredAlarm];
         [self.aVPlayer pause];
     } else {
         [firstFiredAlarm stop];

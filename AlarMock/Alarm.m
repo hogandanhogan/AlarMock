@@ -49,6 +49,7 @@
         _fireDate = [decoder decodeObjectForKey:@"fireDate"];
         _daysChecked = [decoder decodeObjectForKey:@"daysChecked"];
         _jokeCollection = [decoder decodeObjectForKey:@"jokeCollection"];
+        _notificationSound = [decoder decodeObjectForKey:@"notificationSound"];
         //_daysRepeated = [decoder decodeObjectForKey:@"daysRepeated"];
     }
     
@@ -65,6 +66,7 @@
     [encoder encodeObject:_fireDate forKey:@"fireDate"];
     [encoder encodeObject:_daysChecked forKey:@"daysChecked"];
     [encoder encodeObject:_jokeCollection forKey:@"jokeCollection"];
+    [encoder encodeObject:_notificationSound forKey:@"notificationSound"];
     //[encoder encodeObject:_daysRepeated forKey:@"daysRepeated"];
 }
 
@@ -126,10 +128,10 @@
     [self updateAlertBody];
 }
 
-- (void)setDaysChecked:(NSArray *)daysChecked
-{
-    _daysChecked = daysChecked;
-}
+//- (void)setDaysChecked:(NSArray *)daysChecked
+//{
+//    _daysChecked = daysChecked;
+//}
 
 - (void)setFireDate:(NSDate *)fireDate
 {
@@ -141,6 +143,7 @@
 
 - (void)alarmWillFire
 {
+    [[UIApplication sharedApplication] scheduleLocalNotification:self.notification];
 }
 
 - (void)alarmWillNotFire
@@ -156,9 +159,21 @@
 
 - (UILocalNotification *)notification
 {
+    //TODO: what the fuck is going on here
     if (!_notification) {
         self.notification = [UILocalNotification new];
         _notification.timeZone = [NSTimeZone defaultTimeZone];
+        if (!_notificationSound) {
+            _notification.soundName = @"alarm.wav";
+        } else if ([_notificationSound isEqualToString:@"0"]) {
+            _notification.soundName = @"";
+        } else if ([_notificationSound isEqualToString:@"1"]) {
+            _notification.soundName = @"";
+        } else if ([_notificationSound isEqualToString:@"2"]) {
+            _notification.soundName = @"";
+        } else if ([_notificationSound isEqualToString:@"3"]) {
+            _notification.soundName = @"";
+        }
     }
     
     return _notification;

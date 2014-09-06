@@ -17,11 +17,12 @@
 @property (nonatomic) MPMediaItem *alarmSong;
 @property (nonatomic) BOOL on;
 @property (nonatomic) NSDate *fireDate;
+@property (strong, nonatomic) NSString *notificationSound;
 //@property (nonatomic) NSMutableArray *daysRepeated;
 @property (nonatomic) NSArray *daysChecked;
 
 - (id)initWithJokeCollection:(JokeCollection *)jokeCollection;
--(NSDate *) getDateOfSpecificDay:(NSInteger ) day;
+//-(NSDate *) getDateOfSpecificDay:(NSInteger ) day;
 
 - (void)alarmWillFire;
 - (void)alarmWillNotFire;

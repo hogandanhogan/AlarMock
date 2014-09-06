@@ -53,7 +53,7 @@
 }
 - (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == 2) {
+    if (indexPath.row == 1) {
         return NO;
     } else {
         return YES;
@@ -124,13 +124,14 @@
     //notification fires in 4 seconds while testing
     self.alarm.snoozeInterval = self.sliderVal * 60;
     self.alarm.alarmSong = self.alarmSong;
+    self.alarm.notificationSound = self.notificationSound;
     
     [self.alarmEngine addAlarm:self.alarm];
 
-    for (NSString *dayChecked in self.daysChecked) {
-        NSInteger dayCheckedIntVal = dayChecked.integerValue;
-        [self.alarm getDateOfSpecificDay:dayCheckedIntVal];
-    }
+//    for (NSString *dayChecked in self.daysChecked) {
+//        NSInteger dayCheckedIntVal = dayChecked.integerValue;
+//        [self.alarm getDateOfSpecificDay:dayCheckedIntVal];
+//    }
     
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
