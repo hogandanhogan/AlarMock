@@ -7,11 +7,12 @@
 //
 
 #import <MediaPlayer/MediaPlayer.h>
+#import "AMViewController.h"
 
 @class AlarmEngine;
 @class Alarm;
 
-@interface AddAlarmViewController : UIViewController
+@interface AddAlarmViewController : AMViewController
 
 @property (nonatomic) AlarmEngine *alarmEngine;
 
