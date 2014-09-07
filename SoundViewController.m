@@ -6,20 +6,24 @@
 //  Copyright (c) 2014 AlarMock Industries. All rights reserved.
 //
 
+#import <MediaPlayer/MediaPlayer.h>
+
 #import "SoundViewController.h"
+
 #import "AddAlarmViewController.h"
 #import "AMRadialGradientLayer.h"
 #import "UIColor+AMTheme.h"
 #import "UIScreen+AMScale.h"
-#import <MediaPlayer/MediaPlayer.h>
-#import <Masonry.h>
+#import "UIColor+AMTheme.h"
 
 @interface SoundViewController () <UITableViewDataSource, UITableViewDelegate, MPMediaPickerControllerDelegate>
+
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic) MPMediaItem *alarmSong;
 @property (nonatomic) NSString *notificationSound;
 @property (nonatomic) AMRadialGradientLayer *gradientLayer;
 @property (nonatomic) NSArray *sounds;
+
 @end
 
 @implementation SoundViewController
@@ -81,7 +85,7 @@
 {
     UIView *view  = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 15)];
     UILabel *label = [[UILabel alloc] initWithFrame:view.frame];
-    label.textColor = [UIColor whiteColor];
+    label.textColor = [UIColor am_whiteColor];
 
     [view addSubview:label];
     view.backgroundColor = [UIColor clearColor];
@@ -108,9 +112,11 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSArray *sounds = @[@"Alert 1", @"Alert 2", @"Alert 3", @"Alert 4"];
+
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SoundCell"];
- 
-    cell.textLabel.textColor = [UIColor whiteColor];
+    cell.textLabel.textColor = [UIColor am_whiteColor];
+    
     if (indexPath.section == 0) {
         cell.textLabel.text = [self.sounds objectAtIndex:indexPath.row];
     } else {

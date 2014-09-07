@@ -15,19 +15,39 @@ static NSString * const kFontClanNarrowMedium = @"ClanOT-NarrMedium";
 
 #pragma mark - Book
 
-+ (instancetype)book22
++ (instancetype)am_book14
 {
-    return [self bookWithSize:22.0f];
+    return [self am_bookWithSize:14.0f];
 }
 
-+ (instancetype)bookWithSize:(CGFloat)size
++ (instancetype)am_book16
+{
+    return [self am_bookWithSize:16.0f];
+}
+
++ (instancetype)am_book22
+{
+    return [self am_bookWithSize:22.0f];
+}
+
++ (instancetype)am_book48
+{
+    return [self am_bookWithSize:48.0f];
+}
+
++ (instancetype)am_bookWithSize:(CGFloat)size
 {
     return [self fontWithName:kFontClanOTBook size:size];
 }
 
 #pragma mark - Narrow Medium
 
-+ (instancetype)narrowMediumWithSize:(CGFloat)size
++ (instancetype)am_narrowMedium14
+{
+    return [self am_narrowMediumWithSize:14.0f];
+}
+
++ (instancetype)am_narrowMediumWithSize:(CGFloat)size
 {
     return [self fontWithName:kFontClanNarrowMedium size:size];
 }

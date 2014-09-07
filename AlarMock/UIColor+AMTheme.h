@@ -15,9 +15,10 @@
 + (instancetype)am_switchTintColor;
 + (instancetype)am_switchThumbColor;
 
-+ (instancetype)am_lightBlue;
-+ (instancetype)am_darkBlue;
-+ (instancetype)am_lightGray;
-+ (instancetype)am_black;
++ (instancetype)am_lightBlueColor;
++ (instancetype)am_darkBlueColor;
++ (instancetype)am_lightGrayColor;
++ (instancetype)am_whiteColor;
++ (instancetype)am_blackColor;
 
 @end

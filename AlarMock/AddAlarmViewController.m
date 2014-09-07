@@ -7,22 +7,26 @@
 //
 
 #import "AddAlarmViewController.h"
-#import "RepeatViewController.h"
-#import "AlarmJoke.h"
-#import "AlarmEngine.h"
-#import "SoundViewController.h"
+
 #import "AddAlarmView.h"
-#import "AddAlarmTableViewCell.h"
+#import "AlarmEngine.h"
+#import "AlarmJoke.h"
+#import "AlarMockTableViewCell.h"
+#import "RepeatViewController.h"
+#import "SoundViewController.h"
+#import "UIColor+AMTheme.h"
+#import "UIFont+AMTheme.h"
 
-@interface AddAlarmViewController () <AddAlarmViewDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface AddAlarmViewController () <UITableViewDataSource, UITableViewDelegate>
 
-@property (strong, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) IBOutlet UIDatePicker *datePicker;
+@property (nonatomic) Alarm *alarm;
+@property (nonatomic) CGFloat sliderVal;
+
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
 @property (weak, nonatomic) IBOutlet UISlider *slider;
 @property (weak, nonatomic) IBOutlet UILabel *snoozeTimeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *snoozeMockLabel;
-@property float sliderVal;
-@property (nonatomic) Alarm *alarm;
 
 @end
 
@@ -42,7 +46,7 @@
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     self.tableView.backgroundColor = [UIColor clearColor];
 
-    self.slider.hidden = YES;
+    self.slider.hidden = YES;    
 }
 
 #pragma mark - UITableViewDelegate/DataSource
@@ -61,22 +65,10 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    AddAlarmTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SettingsCell"];
     NSArray *settings = @[@"Sound", @"Snooze"];
-    cell.textLabel.text = [settings objectAtIndex:indexPath.row];
-    cell.textLabel.textColor = [UIColor whiteColor];
-    cell.backgroundColor = [UIColor clearColor];
-
-
-//    UISwitch *switcheroo = [[UISwitch alloc] initWithFrame:CGRectZero];
-//    [switcheroo addTarget:self
-//                   action:@selector(changeSnoozeSwitch:)
-//         forControlEvents:UIControlEventValueChanged];
-//    
-//    [self.view addSubview:switcheroo];
-//    if ([cell.textLabel.text isEqualToString:@"Snooze"]) {
-//        cell.accessoryView  = switcheroo;
-//    }
+    
+    AlarMockTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SettingsCell"];
+    cell.text = [settings objectAtIndex:indexPath.row];
 
     return cell;
 }
@@ -85,45 +77,10 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-//    if (indexPath.row == 0) {
-//        RepeatViewController *dvc = [self.storyboard instantiateViewControllerWithIdentifier:@"daysVC"];
-//        [self.navigationController pushViewController:dvc animated:YES];
-//    }
     if (indexPath.row == 0) {
         SoundViewController *svc = [self.storyboard instantiateViewControllerWithIdentifier:@"soundVC"];
         [self.navigationController pushViewController:svc animated:YES];
     }
-}
-
-#pragma mark - Table view delegate methods
-
-
-#pragma mark - AddAlarmViewDelegate
-
-- (void)addAlarmView:(AddAlarmView *)alarMockView clickedLeftBarButtonItem:(UIBarButtonItem *)barButtonItem
-{
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
--(void)addAlarmView:(AddAlarmView *)alarMockView clickedRightBarButtonItem:(UIBarButtonItem *)barButtonItem
-{
-    self.alarm = [[Alarm alloc] initWithJokeCollection:self.alarmEngine.jokeCollection];
-    //self.alarm.fireDate = [NSDate dateWithTimeIntervalSinceNow:10];
-    //[self.alarm getDateOfSpecificDay:self.alarm.daysChecked.count];
-    self.alarm.fireDate = self.datePicker.date;
-    //notification fires in 4 seconds while testing
-    self.alarm.snoozeInterval = self.sliderVal * 60;
-    self.alarm.alarmSong = self.alarmSong;
-    self.alarm.notificationSound = self.notificationSound;
-    
-    [self.alarmEngine addAlarm:self.alarm];
-    
-    //    for (NSString *dayChecked in self.daysChecked) {
-    //        NSInteger dayCheckedIntVal = dayChecked.integerValue;
-    //        [self.alarm getDateOfSpecificDay:dayCheckedIntVal];
-    //    }
-    
-    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - Action handlers
@@ -162,7 +119,27 @@
     }
 }
 
-- (IBAction)unwindToAddAlarmViewController:(UIStoryboardSegue *)unwindSegue
+#pragma mark - Action Handlers
+
+- (IBAction)leftButtonClicked:(id)sender
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (IBAction)rightButtonClicked:(id)sender
+{
+    self.alarm = [[Alarm alloc] initWithJokeCollection:self.alarmEngine.jokeCollection];
+    self.alarm.fireDate = self.datePicker.date;
+    self.alarm.snoozeInterval = self.sliderVal * 60;
+    self.alarm.alarmSong = self.alarmSong;
+    self.alarm.notificationSound = self.notificationSound;
+    
+    [self.alarmEngine addAlarm:self.alarm];
+    
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (IBAction)switchDidChangeValue:(UISwitch *)aSwitch
 {
     
 }
@@ -173,32 +150,50 @@
 
 @implementation UILabel (WhiteUIDatePickerLabels)
 
-+ (void)load {
++ (void)load
+{
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         [self swizzleInstanceSelector:@selector(setTextColor:)
                       withNewSelector:@selector(swizzledSetTextColor:)];
+        [self swizzleInstanceSelector:@selector(setFont:)
+                      withNewSelector:@selector(swizzledSetFont:)];
         [self swizzleInstanceSelector:@selector(willMoveToSuperview:)
                       withNewSelector:@selector(swizzledWillMoveToSuperview:)];
     });
 }
 
--(void) swizzledSetTextColor:(UIColor *)textColor {
+- (void)swizzledSetTextColor:(UIColor *)textColor
+{
     if([self view:self hasSuperviewOfClass:[UIDatePicker class]] ||
        [self view:self hasSuperviewOfClass:NSClassFromString(@"UIDatePickerWeekMonthDayView")] ||
        [self view:self hasSuperviewOfClass:NSClassFromString(@"UIDatePickerContentView")]){
-        [self swizzledSetTextColor:[UIColor whiteColor]];
+        [self swizzledSetTextColor:[UIColor am_whiteColor]];
     } else {
         [self swizzledSetTextColor:textColor];
     }
 }
 
-- (void) swizzledWillMoveToSuperview:(UIView *)newSuperview {
+- (void)swizzledSetFont:(UIFont *)font
+{
+    if([self view:self hasSuperviewOfClass:[UIDatePicker class]] ||
+       [self view:self hasSuperviewOfClass:NSClassFromString(@"UIDatePickerWeekMonthDayView")] ||
+       [self view:self hasSuperviewOfClass:NSClassFromString(@"UIDatePickerContentView")]){
+        [self swizzledSetFont:[UIFont am_book22]];
+    } else {
+        [self swizzledSetFont:font];
+    }
+}
+
+- (void)swizzledWillMoveToSuperview:(UIView *)newSuperview
+{
     [self swizzledSetTextColor:self.textColor];
+    [self swizzledSetFont:self.font];
     [self swizzledWillMoveToSuperview:newSuperview];
 }
 
-- (BOOL) view:(UIView *) view hasSuperviewOfClass:(Class) class {
+- (BOOL)view:(UIView *) view hasSuperviewOfClass:(Class) class
+{
     if(view.superview){
         if ([view.superview isKindOfClass:class]){
             return true;
@@ -208,17 +203,17 @@
     return false;
 }
 
-+ (void) swizzleInstanceSelector:(SEL)originalSelector
-                 withNewSelector:(SEL)newSelector
++ (void)swizzleInstanceSelector:(SEL)originalSelector
+                withNewSelector:(SEL)newSelector
 {
     Method originalMethod = class_getInstanceMethod(self, originalSelector);
     Method newMethod = class_getInstanceMethod(self, newSelector);
-
+    
     BOOL methodAdded = class_addMethod([self class],
                                        originalSelector,
                                        method_getImplementation(newMethod),
                                        method_getTypeEncoding(newMethod));
-
+    
     if (methodAdded) {
         class_replaceMethod([self class],
                             newSelector,

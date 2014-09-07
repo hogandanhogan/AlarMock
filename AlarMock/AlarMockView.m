@@ -17,7 +17,6 @@
 
 @interface AlarMockView ()
 
-@property (nonatomic, getter = hasLayedOutSubviews) BOOL layedOutSubviews;
 @property (nonatomic) AMRadialGradientLayer *gradientLayer;
 
 @end
@@ -65,37 +64,6 @@
     self.gradientLayer.frame = (CGRect) { CGPointZero, self.frame.size };
     self.gradientLayer.gradientOrigin = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMaxY(self.frame));
     self.gradientLayer.gradientRadius = CGRectGetMaxY(self.frame) * 0.9f;
-    self.tableView.contentInset = UIEdgeInsetsMake(self.headerView.frame.size.height, 0.0f, 0.0f, 0.0f);
-    
-    if (!self.hasLayedOutSubviews) {
-        [self.tableView scrollRectToVisible:CGRectMake(0, 0, self.tableView.frame.size.width, 1) animated:NO];
-    }
-    
-    self.layedOutSubviews = YES;
-}
-
-#pragma mark - Action handlers
-
-- (IBAction)leftBarButtonClicked:(id)sender
-{
-    [self.delegate alarMockView:self clickedLeftBarButtonItem:sender];
-}
-
-- (IBAction)rightBarButtonClicked:(id)sender
-{
-    [self.delegate alarMockView:self clickedRightBarButtonItem:sender];
-}
-
-#pragma mark - Accessors
-
-- (void)setLeftBarButtonEnabled:(BOOL)enabled
-{
-    self.headerView.leftBarButtonItem.enabled = enabled;
-}
-
-- (void)setLeftBarButtonTitle:(NSString *)title
-{
-    self.headerView.leftBarButtonItem.title = title;
 }
 
 @end

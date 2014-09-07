@@ -10,9 +10,13 @@
 
 @interface UIFont (AMTheme)
 
-+ (instancetype)book22;
-+ (instancetype)bookWithSize:(CGFloat)size;
++ (instancetype)am_book14;
++ (instancetype)am_book16;
++ (instancetype)am_book22;
++ (instancetype)am_book48;
++ (instancetype)am_bookWithSize:(CGFloat)size;
 
-+ (instancetype)narrowMediumWithSize:(CGFloat)size;
++ (instancetype)am_narrowMedium14;
++ (instancetype)am_narrowMediumWithSize:(CGFloat)size;
 
 @end

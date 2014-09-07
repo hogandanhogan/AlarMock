@@ -8,7 +8,6 @@
 
 #import "AddAlarmView.h"
 
-#import "AlarMockHeaderView.h"
 #import "AMRadialGradientLayer.h"
 #import "UIColor+AMTheme.h"
 
@@ -16,7 +15,6 @@
 
 @interface AddAlarmView ()
 
-@property (weak, nonatomic) IBOutlet AlarMockHeaderView *headerView;
 @property (nonatomic) AMRadialGradientLayer *gradientLayer;
 
 @end
@@ -53,18 +51,6 @@
     self.gradientLayer.frame = (CGRect) { CGPointZero, self.frame.size };
     self.gradientLayer.gradientOrigin = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMaxY(self.frame));
     self.gradientLayer.gradientRadius = CGRectGetMaxY(self.frame) * 0.9f;
-}
-
-#pragma mark - Action handlers
-
-- (IBAction)leftBarButtonClicked:(id)sender
-{
-    [self.delegate addAlarmView:self clickedLeftBarButtonItem:sender];
-}
-
-- (IBAction)rightBarButtonClicked:(id)sender
-{
-    [self.delegate addAlarmView:self clickedRightBarButtonItem:sender];
 }
 
 @end

@@ -9,18 +9,11 @@
 #import <UIKit/UIKit.h>
 @class AlarMockTableViewCell;
 
-@protocol TableViewCellDelegate
-
-- (void)alarMockTableViewCell:(AlarMockTableViewCell *)alarMockTableViewCell switchDidChangeValue:(UISwitch *)switcheroo;
-
-@end
-
-
 @interface AlarMockTableViewCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UILabel *textLabel;
-@property (weak, nonatomic) id<TableViewCellDelegate> delegate;
+@property (nonatomic) NSString *text;
+@property (nonatomic, weak) IBOutlet UISwitch *cellSwitch;
 
-- (void)setSwitchState:(BOOL)on;
+- (void)setText:(NSString *)text timeFormatted:(BOOL)timeFormatted;
 
 @end

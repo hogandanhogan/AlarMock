@@ -7,14 +7,18 @@
 //
 
 #import <AVFoundation/AVFoundation.h>
-#import "AppDelegate.h"
 #import <Parse/Parse.h>
-#import "AlarmJoke.h"
-#import "SnoozeJoke.h"
-#import "AlarMockViewController.h"
+
+#import "AppDelegate.h"
+
 #import "AddAlarmViewController.h"
 #import "Alarm.h"
 #import "AlarmEngine.h"
+#import "AlarmJoke.h"
+#import "AlarMockViewController.h"
+#import "SnoozeJoke.h"
+#import "UIColor+AMTheme.h"
+#import "UIFont+AMTheme.h"
 
 @interface AppDelegate ()
 
@@ -35,11 +39,12 @@
     [Parse setApplicationId:@"I62Vun47l0d1KLv218eijHMxPG9dK6nxy54DtqQl" clientKey:@"rLVtvCOQVMqLrb5qijsmuC2y0MZAHVyZubSrFYqC"];
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
 
+    [[UINavigationBar appearance] setTitleTextAttributes: @{ NSFontAttributeName : [UIFont am_narrowMedium14], NSForegroundColorAttributeName: [UIColor am_whiteColor] }];
+    [[UIBarButtonItem appearance] setTitleTextAttributes: @{ NSFontAttributeName : [UIFont am_book14], NSForegroundColorAttributeName: [UIColor am_whiteColor] } forState:UIControlStateNormal];
+
     self.alarmEngine = [AlarmEngine loadFromSavedData];
     self.rootViewController.alarmEngine = self.alarmEngine;
-
-    [[UIApplication sharedApplication] setStatusBarHidden:YES];
-        
+    
     return YES;
 }
 
