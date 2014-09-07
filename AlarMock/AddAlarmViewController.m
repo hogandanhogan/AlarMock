@@ -9,9 +9,16 @@
 #import "AddAlarmViewController.h"
 
 #import "AddAlarmView.h"
+<<<<<<< HEAD
 #import "AlarmJoke.h"
 #import "AlarmEngine.h"
 #import "AlarMockTableViewCell.h"
+=======
+#import "AlarmEngine.h"
+#import "AlarmJoke.h"
+#import "AlarMockTableViewCell.h"
+#import "RepeatViewController.h"
+>>>>>>> Converted header bar to a navigation bar, changed font for the date picker, and added switches to the cells.
 #import "SoundViewController.h"
 #import "UIColor+AMTheme.h"
 #import "UIFont+AMTheme.h"
@@ -26,7 +33,10 @@
 @property (weak, nonatomic) IBOutlet UISlider *slider;
 @property (weak, nonatomic) IBOutlet UILabel *snoozeTimeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *snoozeMockLabel;
+<<<<<<< HEAD
 @property (nonatomic) NSArray *settings;
+=======
+>>>>>>> Converted header bar to a navigation bar, changed font for the date picker, and added switches to the cells.
 
 @end
 
@@ -69,8 +79,15 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+<<<<<<< HEAD
     AlarMockTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SettingsCell"];
     cell.text = [self.settings objectAtIndex:indexPath.row];
+=======
+    NSArray *settings = @[@"Sound", @"Snooze"];
+    
+    AlarMockTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SettingsCell"];
+    cell.text = [settings objectAtIndex:indexPath.row];
+>>>>>>> Converted header bar to a navigation bar, changed font for the date picker, and added switches to the cells.
 
     return cell;
 }

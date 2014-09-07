@@ -11,9 +11,12 @@
 #import "SoundViewController.h"
 
 #import "AddAlarmViewController.h"
+<<<<<<< HEAD
 #import "AMRadialGradientLayer.h"
 #import "UIColor+AMTheme.h"
 #import "UIScreen+AMScale.h"
+=======
+>>>>>>> Converted header bar to a navigation bar, changed font for the date picker, and added switches to the cells.
 #import "UIColor+AMTheme.h"
 
 @interface SoundViewController () <UITableViewDataSource, UITableViewDelegate, MPMediaPickerControllerDelegate>
@@ -33,8 +36,13 @@
     [super viewDidLoad];
     
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+<<<<<<< HEAD
     
     self.sounds = @[@"Alert 1", @"Alert 2", @"Alert 3", @"Alert 4"];
+=======
+    self.tableView.backgroundColor = [UIColor clearColor];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"backgroundImage.png"]];
+>>>>>>> Converted header bar to a navigation bar, changed font for the date picker, and added switches to the cells.
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -97,10 +105,16 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SoundCell"];
+<<<<<<< HEAD
 
     cell.textLabel.textColor = [UIColor am_whiteColor];
     cell.textLabel.textColor = [UIColor am_whiteColor];
     
+=======
+ 
+    NSArray *sounds = @[@"Alert 1", @"Alert 2", @"Alert 3", @"Alert 4"];
+    cell.textLabel.textColor = [UIColor am_whiteColor];
+>>>>>>> Converted header bar to a navigation bar, changed font for the date picker, and added switches to the cells.
     if (indexPath.section == 0) {
         cell.textLabel.text = [self.sounds objectAtIndex:indexPath.row];
     } else {
