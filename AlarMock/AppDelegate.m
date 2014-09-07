@@ -41,7 +41,8 @@
 
     [[UINavigationBar appearance] setTitleTextAttributes: @{ NSFontAttributeName : [UIFont am_narrowMedium14], NSForegroundColorAttributeName: [UIColor am_whiteColor] }];
     [[UIBarButtonItem appearance] setTitleTextAttributes: @{ NSFontAttributeName : [UIFont am_book14], NSForegroundColorAttributeName: [UIColor am_whiteColor] } forState:UIControlStateNormal];
-
+    [[UITableViewCell appearance] setTintColor:[UIColor am_whiteColor]];
+    
     self.alarmEngine = [AlarmEngine loadFromSavedData];
     self.rootViewController.alarmEngine = self.alarmEngine;
     

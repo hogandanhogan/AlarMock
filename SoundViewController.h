@@ -7,7 +7,21 @@
 //
 
 #import "AMViewController.h"
+#import <UIKit/UIKit.h>
 
-@interface SoundViewController : AMViewController
+@protocol SoundViewControllerDelegate;
+
+@interface SoundViewController : UIViewController
+
+@property (nonatomic, weak) id<SoundViewControllerDelegate> delegate;
 
 @end
+
+@protocol SoundViewControllerDelegate <NSObject>
+
+- (void)soundViewController:(SoundViewController*)viewController
+ didChooseNotificationSound:(NSString *)sound
+              didChooseSong:(MPMediaItem *)alarmSong;
+
+@end
+

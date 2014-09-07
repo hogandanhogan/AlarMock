@@ -17,8 +17,6 @@
 @property (nonatomic) AlarmEngine *alarmEngine;
 
 @property (strong, nonatomic) Alarm *currentAlarm;
-@property (strong, nonatomic) NSArray *daysChecked;
-@property (strong, nonatomic) MPMediaItem *alarmSong;
 @property NSString *notificationSound;
 
 @end

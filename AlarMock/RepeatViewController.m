@@ -66,16 +66,4 @@
     return cell;
 }
 
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    ((AddAlarmViewController *)[segue destinationViewController]).daysChecked = [[NSArray alloc] initWithArray:self.daysChecked];
-}
-//- (void)viewWillDisappear:(BOOL)animated {
-//    [super viewWillDisappear:animated];
-//
-//    if (self.isMovingFromParentViewController || self.isBeingDismissed) {
-//        self.addAlarmViewController.daysChecked = self.daysChecked;
-//    }
-//}
-
 @end

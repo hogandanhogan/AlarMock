@@ -16,7 +16,7 @@
 #import "UIColor+AMTheme.h"
 #import "UIFont+AMTheme.h"
 
-@interface AddAlarmViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface AddAlarmViewController () <UITableViewDataSource, UITableViewDelegate, SoundViewControllerDelegate>
 
 @property (nonatomic) Alarm *alarm;
 @property (nonatomic) CGFloat sliderVal;
@@ -27,6 +27,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *snoozeTimeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *snoozeMockLabel;
 @property (nonatomic) NSArray *settings;
+@property (strong, nonatomic) NSArray *daysChecked;
+@property (strong, nonatomic) MPMediaItem *alarmSong;
 
 @end
 
@@ -88,8 +90,16 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     if (indexPath.row == 0) {
-        SoundViewController *svc = [self.storyboard instantiateViewControllerWithIdentifier:@"soundVC"];
-        [self.navigationController pushViewController:svc animated:YES];
+        [self performSegueWithIdentifier:@"soundVC" sender:self];
+    }
+}
+
+#pragma mark - Segues
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.destinationViewController isKindOfClass:[SoundViewController class]]) {
+        ((SoundViewController *)[segue destinationViewController]).delegate = self;
     }
 }
 
@@ -129,8 +139,6 @@
     }
 }
 
-#pragma mark - Action Handlers
-
 - (IBAction)leftButtonClicked:(id)sender
 {
     [self.navigationController popViewControllerAnimated:YES];
@@ -160,6 +168,14 @@
         self.snoozeTimeLabel.hidden = YES;
         self.snoozeMockLabel.hidden = YES;
     }
+}
+
+#pragma mark - SoundViewControllerDelegate
+
+- (void)soundViewController:(SoundViewController*)viewController didChooseNotificationSound:(NSString *)sound didChooseSong:(MPMediaItem *)alarmSong
+{
+    self.alarmSong = alarmSong;
+    self.notificationSound = sound;
 }
 
 @end

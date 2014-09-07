@@ -49,14 +49,6 @@
     return 30;
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
-    if (section == 0) {
-        return @"Alarm Sounds";
-    } else {
-        return @"Music";
-    }
-}
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -72,7 +64,6 @@
 {
     UIView *view  = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 15)];
     UILabel *label = [[UILabel alloc] initWithFrame:view.frame];
-    label.textColor = [UIColor am_whiteColor];
 
     [view addSubview:label];
     view.backgroundColor = [UIColor clearColor];
@@ -91,8 +82,6 @@
     } else {
         self.notificationSound = [NSString stringWithFormat:@"%ld", (long)indexPath.row];
         [self.tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
-        
-        //[self.navigationController popViewControllerAnimated:YES];
     }
 }
 
@@ -112,6 +101,14 @@
     return cell;
 }
 
+#pragma mark - Action Handlers
+
+- (IBAction)handleBackButton:(id)sender
+{
+    [self.delegate soundViewController:self didChooseNotificationSound:self.notificationSound didChooseSong:self.alarmSong];
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 #pragma mark - MPMediaPickerControllerDelegate
 
 - (void)mediaPicker:(MPMediaPickerController *)mediaPicker didPickMediaItems:(MPMediaItemCollection *)mediaItemCollection
@@ -129,14 +126,6 @@
 -(void)mediaPickerDidCancel:(MPMediaPickerController *)mediaPicker
 {
     [self dismissViewControllerAnimated:YES completion:^{}];
-}
-
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if ([segue.destinationViewController isKindOfClass:[AddAlarmViewController class]]) {
-        ((AddAlarmViewController *)[segue destinationViewController]).alarmSong = self.alarmSong;
-        ((AddAlarmViewController *)[segue destinationViewController]).notificationSound = self.notificationSound;
-    }
 }
 
 @end
