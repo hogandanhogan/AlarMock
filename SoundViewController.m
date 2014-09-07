@@ -8,13 +8,18 @@
 
 #import "SoundViewController.h"
 #import "AddAlarmViewController.h"
+#import "AMRadialGradientLayer.h"
+#import "UIColor+AMTheme.h"
+#import "UIScreen+AMScale.h"
 #import <MediaPlayer/MediaPlayer.h>
+#import <Masonry.h>
 
 @interface SoundViewController () <UITableViewDataSource, UITableViewDelegate, MPMediaPickerControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic) MPMediaItem *alarmSong;
 @property (nonatomic) NSString *notificationSound;
-
+@property (nonatomic) AMRadialGradientLayer *gradientLayer;
+@property (nonatomic) NSArray *sounds;
 @end
 
 @implementation SoundViewController
@@ -23,10 +28,25 @@
 {
     [super viewDidLoad];
     
+    self.sounds = @[@"Alert 1", @"Alert 2", @"Alert 3", @"Alert 4"];
+    
+    self.gradientLayer = ({
+        AMRadialGradientLayer *gradientLayer = [AMRadialGradientLayer layer];
+        
+        gradientLayer.colors = [UIColor am_backgroundGradientColors];
+        
+        gradientLayer.locations = @[@0.0f, @1.0f];
+        
+        [gradientLayer setStartPoint:CGPointMake(0.0f, 0.0f)];
+        [gradientLayer setEndPoint:CGPointMake(0.0f, 1.0f)];
+        
+        gradientLayer;
+    });
+    
+    [self.view.layer insertSublayer:self.gradientLayer atIndex:0];
+
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     self.tableView.backgroundColor = [UIColor clearColor];
-    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"backgroundImage.png"]];
-    //    self.view.backgroundColor = [UIColor clearColor];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -79,6 +99,9 @@
         [self presentViewController:mediaPicker animated:YES completion:nil];
     } else {
         self.notificationSound = [NSString stringWithFormat:@"%ld", (long)indexPath.row];
+        
+        [self.tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
+        
         [self.navigationController popViewControllerAnimated:YES];
     }
 }
@@ -87,10 +110,9 @@
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SoundCell"];
  
-    NSArray *sounds = @[@"Alert 1", @"Alert 2", @"Alert 3", @"Alert 4"];
     cell.textLabel.textColor = [UIColor whiteColor];
     if (indexPath.section == 0) {
-        cell.textLabel.text = [sounds objectAtIndex:indexPath.row];
+        cell.textLabel.text = [self.sounds objectAtIndex:indexPath.row];
     } else {
         cell.textLabel.text = @"Choose a song from your Library";
     }

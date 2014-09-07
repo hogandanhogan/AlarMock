@@ -7,12 +7,12 @@
 //
 
 #import "AddAlarmViewController.h"
-//#import "AlarMockViewController.h"
 #import "RepeatViewController.h"
 #import "AlarmJoke.h"
 #import "AlarmEngine.h"
 #import "SoundViewController.h"
 #import "AddAlarmView.h"
+#import "AddAlarmTableViewCell.h"
 
 @interface AddAlarmViewController () <AddAlarmViewDelegate, UITableViewDataSource, UITableViewDelegate>
 
@@ -61,7 +61,7 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SettingsCell"];
+    AddAlarmTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SettingsCell"];
     NSArray *settings = @[@"Sound", @"Snooze"];
     cell.textLabel.text = [settings objectAtIndex:indexPath.row];
     cell.textLabel.textColor = [UIColor whiteColor];
@@ -94,6 +94,9 @@
         [self.navigationController pushViewController:svc animated:YES];
     }
 }
+
+#pragma mark - Table view delegate methods
+
 
 #pragma mark - AddAlarmViewDelegate
 

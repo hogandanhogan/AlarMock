@@ -23,6 +23,7 @@
 		71A3AE9319B4D23B00D1001C /* NSArray+AMRandomElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 71A3AE9219B4D23B00D1001C /* NSArray+AMRandomElement.m */; };
 		7908639419B7C05600EDD19B /* SoundViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7908639319B7C05600EDD19B /* SoundViewController.m */; };
 		7917CD4C19BB4EAE005BB390 /* alarm.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7917CD4B19BB4EAE005BB390 /* alarm.wav */; };
+		7917CD4F19BC9FF1005BB390 /* AddAlarmTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7917CD4E19BC9FF1005BB390 /* AddAlarmTableViewCell.m */; };
 		792A791619ABF4C80099A32F /* AlarMockTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 792A791519ABF4C80099A32F /* AlarMockTableViewCell.m */; };
 		79318CCF19A8E7F70021D655 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79318CCE19A8E7F70021D655 /* CoreData.framework */; };
 		79350E2619B4EFD4009E47E6 /* groudhog.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 79350E2519B4EFD4009E47E6 /* groudhog.mp3 */; };
@@ -94,6 +95,8 @@
 		7908639219B7C05600EDD19B /* SoundViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SoundViewController.h; path = ../SoundViewController.h; sourceTree = "<group>"; };
 		7908639319B7C05600EDD19B /* SoundViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SoundViewController.m; path = ../SoundViewController.m; sourceTree = "<group>"; };
 		7917CD4B19BB4EAE005BB390 /* alarm.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = alarm.wav; path = ../alarm.wav; sourceTree = "<group>"; };
+		7917CD4D19BC9FF1005BB390 /* AddAlarmTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddAlarmTableViewCell.h; sourceTree = "<group>"; };
+		7917CD4E19BC9FF1005BB390 /* AddAlarmTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddAlarmTableViewCell.m; sourceTree = "<group>"; };
 		792A791419ABF4C80099A32F /* AlarMockTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarMockTableViewCell.h; sourceTree = "<group>"; };
 		792A791519ABF4C80099A32F /* AlarMockTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarMockTableViewCell.m; sourceTree = "<group>"; };
 		79318CCE19A8E7F70021D655 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -315,6 +318,8 @@
 				1F6CACA419A7C5070025CB67 /* AddAlarmViewController.m */,
 				7172A31619BBB5E90087DEB0 /* AddAlarmView.h */,
 				7172A31719BBB5E90087DEB0 /* AddAlarmView.m */,
+				7917CD4D19BC9FF1005BB390 /* AddAlarmTableViewCell.h */,
+				7917CD4E19BC9FF1005BB390 /* AddAlarmTableViewCell.m */,
 			);
 			name = AddAlarmViewController;
 			sourceTree = "<group>";
@@ -606,6 +611,7 @@
 				7908639419B7C05600EDD19B /* SoundViewController.m in Sources */,
 				98962DCD19A7C0E700DEE9B5 /* AppDelegate.m in Sources */,
 				797DF3DC19A962FE00FDD94B /* RepeatViewController.m in Sources */,
+				7917CD4F19BC9FF1005BB390 /* AddAlarmTableViewCell.m in Sources */,
 				98962DC919A7C0E700DEE9B5 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
