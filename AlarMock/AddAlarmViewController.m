@@ -15,7 +15,6 @@
 #import "SoundViewController.h"
 #import "UIColor+AMTheme.h"
 #import "UIFont+AMTheme.h"
-#import "AddAlarmTableViewCell.h"
 
 @interface AddAlarmViewController () <UITableViewDataSource, UITableViewDelegate>
 

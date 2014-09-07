@@ -368,7 +368,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <viewControllerLayoutGuide type="top" id="sff-7e-Lrg"/>
                         <viewControllerLayoutGuide type="bottom" id="ZgY-G7-a96"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="2SO-zF-xcl">
+                    <view key="view" contentMode="scaleToFill" id="2SO-zF-xcl" customClass="SoundView">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>

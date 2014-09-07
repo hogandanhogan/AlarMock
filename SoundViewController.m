@@ -32,27 +32,9 @@
 {
     [super viewDidLoad];
     
-    self.sounds = @[@"Alert 1", @"Alert 2", @"Alert 3", @"Alert 4"];
-    
-    self.gradientLayer = ({
-        AMRadialGradientLayer *gradientLayer = [AMRadialGradientLayer layer];
-        
-        gradientLayer.colors = [UIColor am_backgroundGradientColors];
-        
-        gradientLayer.locations = @[@0.0f, @1.0f];
-        
-        [gradientLayer setStartPoint:CGPointMake(0.0f, 0.0f)];
-        [gradientLayer setEndPoint:CGPointMake(0.0f, 1.0f)];
-        
-        gradientLayer;
-    });
-    
-    [self.view.layer insertSublayer:self.gradientLayer atIndex:0];
-
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-    self.tableView.backgroundColor = [UIColor clearColor];
-    //self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"backgroundImage.png"]];
-
+    
+    self.sounds = @[@"Alert 1", @"Alert 2", @"Alert 3", @"Alert 4"];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -108,15 +90,14 @@
         
         [self.tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
         
-        [self.navigationController popViewControllerAnimated:YES];
+        //[self.navigationController popViewControllerAnimated:YES];
     }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SoundCell"];
- 
-    self.sounds = @[@"Alert 1", @"Alert 2", @"Alert 3", @"Alert 4"];
+
     cell.textLabel.textColor = [UIColor am_whiteColor];
     cell.textLabel.textColor = [UIColor am_whiteColor];
     
