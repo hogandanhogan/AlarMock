@@ -34,6 +34,7 @@
     
     self.switcheroo.onTintColor = [UIColor am_switchTintColor];
     self.switcheroo.tintColor = [UIColor am_switchTintColor];
+    self.switcheroo.thumbTintColor = [UIColor am_switchThumbColor];
 }
 
 #pragma mark - Action Handlers

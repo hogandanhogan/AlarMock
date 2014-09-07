@@ -24,6 +24,11 @@
     return [UIColor colorWithRed:0.5f green:0.5f blue:0.65f alpha:1.0f];
 }
 
++ (instancetype)am_switchThumbColor
+{
+    return [UIColor colorWithWhite:0.7f alpha:1.0f];
+}
+
 #pragma mark -
 
 + (instancetype)am_lightBlue
