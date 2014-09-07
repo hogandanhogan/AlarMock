@@ -10,7 +10,6 @@
 
 #import "AddAlarmViewController.h"
 #import "Alarm.h"
-#import "AlarMockHeaderView.h"
 #import "AlarmEngine.h"
 #import "AlarMockTableViewCell.h"
 #import "AlarMockView.h"
@@ -18,13 +17,12 @@
 #import "UIColor+AMTheme.h"
 #import "UIFont+AMTheme.h"
 
-@interface AlarMockViewController() <AlarMockViewDelegate, UITableViewDelegate, UITableViewDataSource, TableViewCellDelegate>
+@interface AlarMockViewController() <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic) Alarm *currentAlarm;
 
 @property (nonatomic) AlarMockView *view;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (weak, nonatomic) IBOutlet AlarMockHeaderView *headerView;
 
 @end
 
@@ -44,8 +42,8 @@
     
     [self.tableView setEditing:NO animated:YES];
     
-    [self.view setLeftBarButtonTitle:@"Edit"];
-    [self.view setLeftBarButtonEnabled:YES];
+    [self.navigationItem.leftBarButtonItem setTitle:@"Edit"];
+    self.navigationItem.leftBarButtonItem.enabled = YES;
 }
 
 #pragma mark - UITableViewDelegate/Datasource
@@ -53,10 +51,10 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (self.alarmEngine.alarms.count == 0) {
-        [self.view setLeftBarButtonEnabled:NO];
-        [self.view setLeftBarButtonTitle:@"Edit"];
+        self.navigationItem.leftBarButtonItem.enabled = NO;
+        [self.navigationItem.leftBarButtonItem setTitle:@"Edit"];
     } else {
-        [self.view setLeftBarButtonEnabled:YES];
+        self.navigationItem.leftBarButtonItem.enabled = YES;
     }
     return self.alarmEngine.alarms.count;
 }
@@ -75,14 +73,14 @@
 {
     Alarm *alarm = self.alarmEngine.alarms[indexPath.row];
     AlarMockTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
-    cell.switchState = alarm.on;
-    cell.delegate = self;
+    cell.cellSwitch.on = alarm.on;
+    cell.cellSwitch.tag = indexPath.row;
     
     NSDateFormatter *dateFormatter = [NSDateFormatter new];
     dateFormatter.timeStyle = NSDateFormatterShortStyle;
     [dateFormatter setDateFormat:@"h:mm a"];
     NSString *timeString = [dateFormatter stringFromDate:alarm.fireDate];
-    cell.textLabel.text = timeString;
+    [cell setText:timeString timeFormatted:YES];
     self.currentAlarm = self.alarmEngine.alarms[indexPath.row];
 
     return cell;
@@ -106,15 +104,6 @@
     [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
-#pragma mark - Table View Cell Delegate Method
-
-- (void)alarMockTableViewCell:(AlarMockTableViewCell *)tableViewCell switchDidChangeValue:(UISwitch *)switcheroo
-{
-    NSIndexPath *indexPath = [self.tableView indexPathForCell:tableViewCell];
-    Alarm *alarm = self.alarmEngine.alarms[indexPath.row];
-    alarm.on = switcheroo.isOn;
-}
-
 #pragma mark - Segues
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -126,22 +115,28 @@
 
 #pragma mark - Action Handlers
 
-- (void)alarMockView:(AlarMockView *)alarMockView clickedLeftBarButtonItem:(UIBarButtonItem *)barButtonItem
+- (IBAction)leftButtonClicked:(id)sender
 {
     if ([self.tableView isEditing]) {
         [self.tableView setEditing:NO animated:YES];
         
-        [self.view setLeftBarButtonTitle:@"Edit"];
-        [self.view setLeftBarButtonEnabled:YES];
+        [self.navigationItem.leftBarButtonItem setTitle:@"Edit"];
     } else {
-        [self.view setLeftBarButtonTitle:@"Done"];
+        [self.navigationItem.leftBarButtonItem setTitle:@"Done"];
         [self.tableView setEditing:YES animated:YES];
     }
 }
 
-- (void)alarMockView:(AlarMockView *)alarMockView clickedRightBarButtonItem:(UIBarButtonItem *)barButtonItem
+- (IBAction)rightButtonClicked:(id)sender
 {
-    [self performSegueWithIdentifier:@"addAlarm" sender:barButtonItem];
+    [self performSegueWithIdentifier:@"addAlarm" sender:sender];
+}
+
+- (IBAction)switchDidChangeValue:(UISwitch *)aSwitch
+{
+    NSIndexPath *indexPath = [NSIndexPath indexPathForItem:aSwitch.tag inSection:0];
+    Alarm *alarm = self.alarmEngine.alarms[indexPath.row];
+    alarm.on = aSwitch.isOn;
 }
 
 @end

@@ -13,7 +13,7 @@
 
 @interface AlarMockTableViewCell ()
 
-@property (nonatomic, weak) IBOutlet UISwitch *switcheroo;
+@property (weak, nonatomic) IBOutlet UILabel *textLabel;
 
 @end
 
@@ -27,27 +27,45 @@
 {
     [super awakeFromNib];
     
-    self.textLabel.font = [UIFont book22];
-    self.textLabel.textColor = [UIColor whiteColor];
+    self.textLabel.textColor = [UIColor am_whiteColor];
     self.backgroundColor = [UIColor clearColor];
     
-    self.switcheroo.onTintColor = [UIColor am_switchTintColor];
-    self.switcheroo.tintColor = [UIColor am_switchTintColor];
-    self.switcheroo.thumbTintColor = [UIColor am_switchThumbColor];
-}
-
-#pragma mark - Action Handlers
-
-- (IBAction)switchDidChangeValue:(UISwitch *)sender
-{
-    [self.delegate alarMockTableViewCell:self switchDidChangeValue:sender];
+    self.cellSwitch.onTintColor = [UIColor am_switchTintColor];
+    self.cellSwitch.tintColor = [UIColor am_switchTintColor];
+    self.cellSwitch.thumbTintColor = [UIColor am_switchThumbColor];
 }
 
 #pragma mark - Accessors
 
 - (void)setSwitchState:(BOOL)on
 {
-    self.switcheroo.on = on;
+    self.cellSwitch.on = on;
+}
+
+- (void)setText:(NSString *)text
+{
+    [self setText:text timeFormatted:NO];
+}
+
+- (void)setText:(NSString *)text timeFormatted:(BOOL)timeFormatted
+{
+    if (!timeFormatted) {
+        self.textLabel.font = [UIFont am_book16];
+
+        self.textLabel.text = text;
+    } else {
+        self.textLabel.font = [UIFont am_book48];
+
+        NSRange range = NSMakeRange(text.length - 2, 2);
+        NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:text];
+        [attributedString addAttribute:NSFontAttributeName value:[UIFont am_book22] range:range];
+        self.textLabel.attributedText = attributedString;
+    }
+}
+
+- (NSString *)text
+{
+    return self.textLabel.text;
 }
 
 @end

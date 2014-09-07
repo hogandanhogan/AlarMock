@@ -6,25 +6,8 @@
 //  Copyright (c) 2014 AlarMock Industries. All rights reserved.
 //
 
-#import "AlarMockHeaderView.h"
-
-@protocol AlarMockViewDelegate;
-
 @interface AlarMockView : UIView
 
-@property (weak, nonatomic) IBOutlet AlarMockHeaderView *headerView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-
-@property (weak, nonatomic) IBOutlet id <AlarMockViewDelegate> delegate;
-
-- (void)setLeftBarButtonEnabled:(BOOL)enabled;
-- (void)setLeftBarButtonTitle:(NSString *)title;
-
-@end
-
-@protocol AlarMockViewDelegate
-
-- (void)alarMockView:(AlarMockView *)alarMockView clickedLeftBarButtonItem:(UIBarButtonItem *)barButtonItem;
-- (void)alarMockView:(AlarMockView *)alarMockView clickedRightBarButtonItem:(UIBarButtonItem *)barButtonItem;
 
 @end

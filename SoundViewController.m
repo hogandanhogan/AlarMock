@@ -6,11 +6,15 @@
 //  Copyright (c) 2014 AlarMock Industries. All rights reserved.
 //
 
-#import "SoundViewController.h"
-#import "AddAlarmViewController.h"
 #import <MediaPlayer/MediaPlayer.h>
 
+#import "SoundViewController.h"
+
+#import "AddAlarmViewController.h"
+#import "UIColor+AMTheme.h"
+
 @interface SoundViewController () <UITableViewDataSource, UITableViewDelegate, MPMediaPickerControllerDelegate>
+
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic) MPMediaItem *alarmSong;
 @property (nonatomic) NSString *notificationSound;
@@ -26,7 +30,6 @@
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     self.tableView.backgroundColor = [UIColor clearColor];
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"backgroundImage.png"]];
-    //    self.view.backgroundColor = [UIColor clearColor];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -61,7 +64,7 @@
 {
     UIView *view  = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 15)];
     UILabel *label = [[UILabel alloc] initWithFrame:view.frame];
-    label.textColor = [UIColor whiteColor];
+    label.textColor = [UIColor am_whiteColor];
 
     [view addSubview:label];
     view.backgroundColor = [UIColor clearColor];
@@ -88,7 +91,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SoundCell"];
  
     NSArray *sounds = @[@"Alert 1", @"Alert 2", @"Alert 3", @"Alert 4"];
-    cell.textLabel.textColor = [UIColor whiteColor];
+    cell.textLabel.textColor = [UIColor am_whiteColor];
     if (indexPath.section == 0) {
         cell.textLabel.text = [sounds objectAtIndex:indexPath.row];
     } else {

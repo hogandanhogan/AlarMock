@@ -14,7 +14,7 @@
 
 + (NSArray *)am_backgroundGradientColors
 {
-    return @[(id)[[UIColor am_darkBlue] CGColor], (id)[[UIColor am_lightBlue] CGColor]];
+    return @[(id)[[UIColor am_darkBlueColor] CGColor], (id)[[UIColor am_lightBlueColor] CGColor]];
 }
 
 #pragma mark - Switch
@@ -26,32 +26,32 @@
 
 + (instancetype)am_switchThumbColor
 {
-    return [UIColor am_white];
+    return [UIColor am_whiteColor];
 }
 
 #pragma mark - 
 
-+ (instancetype)am_lightBlue
++ (instancetype)am_lightBlueColor
 {
     return [UIColor colorWithRed:38.0f/255.0f green:33.0f/255.0f blue:73.0f/255.0f alpha:1.0f];
 }
 
-+ (instancetype)am_darkBlue
++ (instancetype)am_darkBlueColor
 {
     return [UIColor colorWithRed:0.0f/255.0f green:110.0f/255.0f blue:155.0f/255.0f alpha:1.0f];
 }
 
-+ (instancetype)am_lightGray
++ (instancetype)am_lightGrayColor
 {
     return [UIColor colorWithRed:0.78f green:0.78f blue:0.8f alpha:1];
 }
 
-+ (instancetype)am_white
++ (instancetype)am_whiteColor
 {
     return [UIColor colorWithRed:0.95f green:0.95f blue:1.0f alpha:1];
 }
 
-+ (instancetype)am_black
++ (instancetype)am_blackColor
 {
     return [UIColor colorWithWhite:0.2f alpha:1.0f];
 }
