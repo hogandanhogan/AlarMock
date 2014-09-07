@@ -37,16 +37,11 @@
     
     self.sounds = @[@"Alert 1", @"Alert 2", @"Alert 3", @"Alert 4"];
     self.tableView.backgroundColor = [UIColor clearColor];
-    //self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"backgroundImage.png"]];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (section == 0) {
-        return 4;
-    } else {
-        return 1;
-    }
+    if (section == 0) {return 4;} else {return 1;}
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -61,6 +56,11 @@
     } else {
         return @"Music";
     }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 64;
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -101,6 +101,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SoundCell"];
 
     cell.textLabel.textColor = [UIColor am_whiteColor];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     if (indexPath.section == 0) {
         cell.textLabel.font = [UIFont am_book22];
         cell.textLabel.text = [self.sounds objectAtIndex:indexPath.row];

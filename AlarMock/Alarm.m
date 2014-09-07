@@ -117,12 +117,12 @@ NSString * const kAlarmValueChangedNotification = @"AlarmValueChangedNotificatio
 
 - (void)setFireDate:(NSDate *)fireDate
 {
-    //if ([_fireDate timeIntervalSinceNow] <= 0) {
-       //_fireDate = [fireDate dateByAddingTimeInterval:NSCalendarUnitDay];
-    //} else {
+    if ([_fireDate timeIntervalSinceNow] <= 0) {
+       _fireDate = [fireDate dateByAddingTimeInterval:60.0f * 60.0f * 24.0f];
+    } else {
         _fireDate = fireDate;
         self.notification.fireDate = fireDate;
-    //}
+    }
     
     [[UIApplication sharedApplication] scheduleLocalNotification:self.notification];
 }
