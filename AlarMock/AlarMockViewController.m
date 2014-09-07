@@ -15,6 +15,8 @@
 #import "AlarMockTableViewCell.h"
 #import "AlarMockView.h"
 #import "SnoozeJoke.h"
+#import "UIColor+AMTheme.h"
+#import "UIFont+AMTheme.h"
 
 @interface AlarMockViewController() <AlarMockViewDelegate, UITableViewDelegate, UITableViewDataSource, TableViewCellDelegate>
 
