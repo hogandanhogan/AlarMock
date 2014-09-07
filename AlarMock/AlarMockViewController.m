@@ -7,22 +7,22 @@
 //
 
 #import "AlarMockViewController.h"
-#import "AlarMockTableViewCell.h"
-#import "SnoozeJoke.h"
+
 #import "AddAlarmViewController.h"
 #import "Alarm.h"
+#import "AlarMockHeaderView.h"
 #import "AlarmEngine.h"
+#import "AlarMockTableViewCell.h"
 #import "AlarMockView.h"
-#import "UIColor+AMTheme.h"
-#import "UIFont+AMTheme.h"
+#import "SnoozeJoke.h"
 
 @interface AlarMockViewController() <AlarMockViewDelegate, UITableViewDelegate, UITableViewDataSource, TableViewCellDelegate>
 
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *headerViewTopToSuperviewConstraint;
-
-@property (weak, nonatomic) IBOutlet UIView *scrolledHeaderContainerView;
-@property (weak, nonatomic) IBOutlet AlarMockView *alarMockView;
 @property (nonatomic) Alarm *currentAlarm;
+
+@property (nonatomic) AlarMockView *view;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet AlarMockHeaderView *headerView;
 
 @end
 
@@ -30,30 +30,20 @@
 
 #pragma mark - View lifecycle
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.tableView reloadData];    
+}
+
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
     
-    [self.alarMockView.tableView setEditing:NO animated:YES];
+    [self.tableView setEditing:NO animated:YES];
     
-    [self.alarMockView setLeftBarButtonTitle:@"Edit"];
-    [self.alarMockView setLeftBarButtonEnabled:YES];
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    [self.alarMockView.tableView reloadData];
-}
-
-#pragma mark - UIScrollViewDelegate
-
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
-    CGFloat scrollPercent = MAX(0.0f, MIN(1.0f, (scrollView.contentOffset.y + scrollView.contentInset.top)/scrollView.contentInset.top));
-    self.scrolledHeaderContainerView.alpha = scrollPercent;
-    self.alarMockView.unScrolledHeaderView.alpha = 1.0f - MIN(1.0f, 2.0f *scrollPercent);
-    self.headerViewTopToSuperviewConstraint.constant = MIN(44.0f, MAX(0.0f, scrollView.contentInset.top + scrollView.contentOffset.y));
+    [self.view setLeftBarButtonTitle:@"Edit"];
+    [self.view setLeftBarButtonEnabled:YES];
 }
 
 #pragma mark - UITableViewDelegate/Datasource
@@ -61,10 +51,10 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (self.alarmEngine.alarms.count == 0) {
-        [self.alarMockView setLeftBarButtonEnabled:NO];
-        [self.alarMockView setLeftBarButtonTitle:@"Edit"];
+        [self.view setLeftBarButtonEnabled:NO];
+        [self.view setLeftBarButtonTitle:@"Edit"];
     } else {
-        [self.alarMockView setLeftBarButtonEnabled:YES];
+        [self.view setLeftBarButtonEnabled:YES];
     }
     return self.alarmEngine.alarms.count;
 }
@@ -98,10 +88,10 @@
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self.alarMockView.tableView beginUpdates];
+    [self.tableView beginUpdates];
     [self.alarmEngine removeAlarm:self.alarmEngine.alarms[indexPath.row]];
-    [self.alarMockView.tableView deleteRowsAtIndexPaths:@[ indexPath ] withRowAnimation:UITableViewRowAnimationAutomatic];
-    [self.alarMockView.tableView endUpdates];
+    [self.tableView deleteRowsAtIndexPaths:@[ indexPath ] withRowAnimation:UITableViewRowAnimationAutomatic];
+    [self.tableView endUpdates];
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
@@ -111,14 +101,14 @@
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self.alarMockView.tableView deselectRowAtIndexPath:indexPath animated:NO];
+    [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
 #pragma mark - Table View Cell Delegate Method
 
 - (void)alarMockTableViewCell:(AlarMockTableViewCell *)tableViewCell switchDidChangeValue:(UISwitch *)switcheroo
 {
-    NSIndexPath *indexPath = [self.alarMockView.tableView indexPathForCell:tableViewCell];
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:tableViewCell];
     Alarm *alarm = self.alarmEngine.alarms[indexPath.row];
     alarm.on = switcheroo.isOn;
 }
@@ -136,14 +126,14 @@
 
 - (void)alarMockView:(AlarMockView *)alarMockView clickedLeftBarButtonItem:(UIBarButtonItem *)barButtonItem
 {
-    if ([self.alarMockView.tableView isEditing]) {
-        [self.alarMockView.tableView setEditing:NO animated:YES];
+    if ([self.tableView isEditing]) {
+        [self.tableView setEditing:NO animated:YES];
         
-        [self.alarMockView setLeftBarButtonTitle:@"Edit"];
-        [self.alarMockView setLeftBarButtonEnabled:YES];
+        [self.view setLeftBarButtonTitle:@"Edit"];
+        [self.view setLeftBarButtonEnabled:YES];
     } else {
-        [self.alarMockView setLeftBarButtonTitle:@"Done"];
-        [self.alarMockView.tableView setEditing:YES animated:YES];
+        [self.view setLeftBarButtonTitle:@"Done"];
+        [self.tableView setEditing:YES animated:YES];
     }
 }
 

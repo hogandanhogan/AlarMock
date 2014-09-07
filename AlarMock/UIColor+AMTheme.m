@@ -24,7 +24,12 @@
     return [UIColor colorWithRed:0.5f green:0.5f blue:0.65f alpha:1.0f];
 }
 
-#pragma mark -
++ (instancetype)am_switchThumbColor
+{
+    return [UIColor am_white];
+}
+
+#pragma mark - 
 
 + (instancetype)am_lightBlue
 {
@@ -34,6 +39,21 @@
 + (instancetype)am_darkBlue
 {
     return [UIColor colorWithRed:0.0f/255.0f green:110.0f/255.0f blue:155.0f/255.0f alpha:1.0f];
+}
+
++ (instancetype)am_lightGray
+{
+    return [UIColor colorWithRed:0.78f green:0.78f blue:0.8f alpha:1];
+}
+
++ (instancetype)am_white
+{
+    return [UIColor colorWithRed:0.95f green:0.95f blue:1.0f alpha:1];
+}
+
++ (instancetype)am_black
+{
+    return [UIColor colorWithWhite:0.2f alpha:1.0f];
 }
 
 @end
