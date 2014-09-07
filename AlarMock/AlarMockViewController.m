@@ -50,7 +50,7 @@
 {
     CGFloat scrollPercent = MAX(0.0f, MIN(1.0f, (scrollView.contentOffset.y + scrollView.contentInset.top)/scrollView.contentInset.top));
     self.scrolledHeaderContainerView.alpha = scrollPercent;
-    self.alarMockView.unScrolledHeaderView.alpha = 1.0f - MIN(1.0f, 2.0f *scrollPercent);
+    self.alarMockView.headerView.alpha = 1.0f - MIN(1.0f, 2.0f *scrollPercent);
     self.headerViewTopToSuperviewConstraint.constant = MIN(44.0f, MAX(0.0f, scrollView.contentInset.top + scrollView.contentOffset.y));
 }
 

@@ -12,7 +12,7 @@
 
 @interface AlarMockView : UIView
 
-@property (nonatomic) AlarMockHeaderView *unScrolledHeaderView;
+@property (weak, nonatomic) IBOutlet AlarMockHeaderView *headerView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (weak, nonatomic) IBOutlet id <AlarMockViewDelegate> delegate;

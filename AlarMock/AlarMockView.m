@@ -17,10 +17,6 @@
 
 @interface AlarMockView ()
 
-@property (strong, nonatomic) AlarMockHeaderView *scrolledHeaderView;
-@property (weak, nonatomic) IBOutlet FXBlurView *scrolledHeaderContainerView;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *scrolledHeaderContainerViewSeparatorHeightConstraint;
-
 @property (nonatomic) AMRadialGradientLayer *gradientLayer;
 
 @end
@@ -47,39 +43,7 @@
     });
     [self.layer insertSublayer:self.gradientLayer atIndex:0];
     
-    [self setupHeaderView];
     [self setupTableView];
-}
-
-- (void)setupHeaderView
-{
-    self.scrolledHeaderContainerView.blurEnabled = YES;
-    self.scrolledHeaderContainerView.blurRadius = 10.0f;
-    self.scrolledHeaderContainerView.dynamic = YES;
-    self.scrolledHeaderContainerView.tintColor = [UIColor colorWithWhite:0.2f alpha:1.0f];
-    
-    self.scrolledHeaderContainerViewSeparatorHeightConstraint.constant = [[UIScreen mainScreen] am_scaledDimensionWithPixelSize:1.0f];
-
-    self.scrolledHeaderView = [[[NSBundle mainBundle] loadNibNamed:[[AlarMockHeaderView class] description]
-                                                              owner:self
-                                                            options:nil] firstObject];
-    [self.scrolledHeaderContainerView addSubview:self.scrolledHeaderView];
-    
-    [self.scrolledHeaderView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.mas_equalTo(UIEdgeInsetsZero);
-    }];
-
-    self.unScrolledHeaderView = [[[NSBundle mainBundle] loadNibNamed:[[AlarMockHeaderView class] description]
-                                                             owner:self
-                                                           options:nil] firstObject];
-    [self addSubview:self.unScrolledHeaderView];
-    
-    [self.unScrolledHeaderView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.left.and.right.mas_equalTo(UIEdgeInsetsMake(self.scrolledHeaderContainerView.frame.size.height, 0.0f, 0.0f, 0.0f));
-        make.height.equalTo(self.scrolledHeaderView);
-    }];
-
-    self.scrolledHeaderView.leftBarButtonItem.enabled = NO;
 }
 
 - (void)setupTableView
@@ -100,7 +64,7 @@
     self.gradientLayer.frame = (CGRect) { CGPointZero, self.frame.size };
     self.gradientLayer.gradientOrigin = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMaxY(self.frame));
     self.gradientLayer.gradientRadius = CGRectGetMaxY(self.frame) * 0.9f;
-    self.tableView.contentInset = UIEdgeInsetsMake(self.scrolledHeaderView.frame.size.height, 0.0f, 0.0f, 0.0f);
+    self.tableView.contentInset = UIEdgeInsetsMake(self.headerView.frame.size.height, 0.0f, 0.0f, 0.0f);
 }
 
 #pragma mark - Action handlers
@@ -119,14 +83,12 @@
 
 - (void)setLeftBarButtonEnabled:(BOOL)enabled
 {
-    self.unScrolledHeaderView.leftBarButtonItem.enabled = enabled;
-    self.scrolledHeaderView.leftBarButtonItem.enabled = enabled;
+    self.headerView.leftBarButtonItem.enabled = enabled;
 }
 
 - (void)setLeftBarButtonTitle:(NSString *)title
 {
-    self.unScrolledHeaderView.leftBarButtonItem.title = title;
-    self.scrolledHeaderView.leftBarButtonItem.title = title;
+    self.headerView.leftBarButtonItem.title = title;
 }
 
 @end

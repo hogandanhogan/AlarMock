@@ -27,7 +27,7 @@
 {
     [super awakeFromNib];
     
-    self.textLabel.font = [UIFont book22];
+    self.textLabel.font     = [UIFont book22];
     self.textLabel.textColor = [UIColor whiteColor];
     self.backgroundColor = [UIColor clearColor];
     

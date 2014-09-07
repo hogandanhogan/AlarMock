@@ -16,8 +16,7 @@
 
 @interface AddAlarmView ()
 
-@property (strong, nonatomic) AlarMockHeaderView *headerView;
-@property (weak, nonatomic) IBOutlet UIView *headerContainerView;
+@property (weak, nonatomic) IBOutlet AlarMockHeaderView *headerView;
 @property (nonatomic) AMRadialGradientLayer *gradientLayer;
 
 @end
@@ -43,22 +42,6 @@
         gradientLayer;
     });
     [self.layer insertSublayer:self.gradientLayer atIndex:0];
-    
-    [self setupHeaderView];
-}
-
-- (void)setupHeaderView
-{
-    self.headerView = [[[NSBundle mainBundle] loadNibNamed:@"AddAlarmHeaderView"
-                                                     owner:self
-                                                   options:nil] firstObject];
-    [self.headerContainerView addSubview:self.headerView];
-    
-    [self.headerView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.mas_equalTo(UIEdgeInsetsZero);
-    }];
-    
-    self.headerView.leftBarButtonItem.title = @"Back";
 }
 
 #pragma mark - Layout

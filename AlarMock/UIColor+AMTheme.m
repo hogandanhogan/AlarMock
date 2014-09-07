@@ -29,7 +29,7 @@
     return [UIColor colorWithWhite:0.7f alpha:1.0f];
 }
 
-#pragma mark -
+#pragma mark - 
 
 + (instancetype)am_lightBlue
 {
@@ -39,6 +39,16 @@
 + (instancetype)am_darkBlue
 {
     return [UIColor colorWithRed:0.0f/255.0f green:110.0f/255.0f blue:155.0f/255.0f alpha:1.0f];
+}
+
++ (instancetype)am_lightGray
+{
+    return [UIColor colorWithRed:0.78 green:0.78 blue:0.8 alpha:1];
+}
+
++ (instancetype)am_black
+{
+    return [UIColor colorWithWhite:0.2f alpha:1.0f];
 }
 
 @end
