@@ -62,7 +62,7 @@
                      @"Every Saturday",
                      @"Every Sunday", nil];
     cell.textLabel.text = [days objectAtIndex:indexPath.row];
-
+    
     return cell;
 }
 

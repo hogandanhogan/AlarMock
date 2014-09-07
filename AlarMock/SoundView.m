@@ -7,11 +7,10 @@
 //
 
 #import "SoundView.h"
+
 #import "AMRadialGradientLayer.h"
 #import "UIColor+AMTheme.h"
-#import "UIScreen+AMScale.h"
 
-#import <FXBlurView.h>
 #import <Masonry.h>
 
 @interface SoundView ()
@@ -21,6 +20,8 @@
 @end
 
 @implementation SoundView
+
+#pragma mark - View setup
 
 - (void)awakeFromNib
 {
@@ -41,6 +42,8 @@
     [self.layer insertSublayer:self.gradientLayer atIndex:0];
 }
 
+#pragma mark - Layout
+
 - (void)layoutSubviews
 {
     [super layoutSubviews];
@@ -49,5 +52,4 @@
     self.gradientLayer.gradientOrigin = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMaxY(self.frame));
     self.gradientLayer.gradientRadius = CGRectGetMaxY(self.frame) * 0.9f;
 }
-
 @end

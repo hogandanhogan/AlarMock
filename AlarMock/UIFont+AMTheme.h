@@ -13,6 +13,7 @@
 + (instancetype)am_book14;
 + (instancetype)am_book16;
 + (instancetype)am_book22;
++ (instancetype)am_book28;
 + (instancetype)am_book48;
 + (instancetype)am_bookWithSize:(CGFloat)size;
 

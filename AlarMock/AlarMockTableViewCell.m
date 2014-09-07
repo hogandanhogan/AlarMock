@@ -56,10 +56,12 @@
     } else {
         self.textLabel.font = [UIFont am_book48];
 
-        NSRange range = NSMakeRange(text.length - 2, 2);
-        NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:text];
-        [attributedString addAttribute:NSFontAttributeName value:[UIFont am_book22] range:range];
+        NSRange range = NSMakeRange([text stringByReplacingOccurrencesOfString:@" " withString:@""].length - 2, 2);
+        NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:[text stringByReplacingOccurrencesOfString:@" " withString:@""]];
+        [attributedString addAttribute:NSFontAttributeName value:[UIFont am_book28] range:range];
+        [[attributedString string] stringByReplacingOccurrencesOfString:@" " withString:@""];
         self.textLabel.attributedText = attributedString;
+
     }
 }
 

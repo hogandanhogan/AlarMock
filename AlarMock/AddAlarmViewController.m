@@ -9,16 +9,9 @@
 #import "AddAlarmViewController.h"
 
 #import "AddAlarmView.h"
-<<<<<<< HEAD
 #import "AlarmJoke.h"
 #import "AlarmEngine.h"
 #import "AlarMockTableViewCell.h"
-=======
-#import "AlarmEngine.h"
-#import "AlarmJoke.h"
-#import "AlarMockTableViewCell.h"
-#import "RepeatViewController.h"
->>>>>>> Converted header bar to a navigation bar, changed font for the date picker, and added switches to the cells.
 #import "SoundViewController.h"
 #import "UIColor+AMTheme.h"
 #import "UIFont+AMTheme.h"
@@ -33,10 +26,7 @@
 @property (weak, nonatomic) IBOutlet UISlider *slider;
 @property (weak, nonatomic) IBOutlet UILabel *snoozeTimeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *snoozeMockLabel;
-<<<<<<< HEAD
 @property (nonatomic) NSArray *settings;
-=======
->>>>>>> Converted header bar to a navigation bar, changed font for the date picker, and added switches to the cells.
 
 @end
 
@@ -49,6 +39,9 @@
     [super viewDidLoad];
     
     self.settings = @[@"Sound", @"Snooze"];
+    
+    self.snoozeMockLabel.font = [UIFont am_book14];
+    self.snoozeTimeLabel.font = [UIFont am_book14];
     
     self.automaticallyAdjustsScrollViewInsets = NO;
     
@@ -79,16 +72,14 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-<<<<<<< HEAD
     AlarMockTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SettingsCell"];
-    cell.text = [self.settings objectAtIndex:indexPath.row];
-=======
-    NSArray *settings = @[@"Sound", @"Snooze"];
+    cell.textLabel.text = [self.settings objectAtIndex:indexPath.row];
+    cell.textLabel.font = [UIFont am_book22];
+    if (indexPath.row == 0) {
+        cell.cellSwitch.hidden = YES;
+    }
+    [cell.cellSwitch setOn:NO];
     
-    AlarMockTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SettingsCell"];
-    cell.text = [settings objectAtIndex:indexPath.row];
->>>>>>> Converted header bar to a navigation bar, changed font for the date picker, and added switches to the cells.
-
     return cell;
 }
 
@@ -160,7 +151,15 @@
 
 - (IBAction)switchDidChangeValue:(UISwitch *)aSwitch
 {
-    
+    if([aSwitch isOn]) {
+        self.slider.hidden = NO;
+        self.snoozeTimeLabel.hidden = NO;
+        self.snoozeMockLabel.hidden = NO;
+    } else {
+        self.slider.hidden = YES;
+        self.snoozeTimeLabel.hidden = YES;
+        self.snoozeMockLabel.hidden = YES;
+    }
 }
 
 @end
