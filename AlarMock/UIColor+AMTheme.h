@@ -13,8 +13,11 @@
 + (NSArray *)am_backgroundGradientColors;
 
 + (instancetype)am_switchTintColor;
++ (instancetype)am_switchThumbColor;
 
 + (instancetype)am_lightBlue;
 + (instancetype)am_darkBlue;
++ (instancetype)am_lightGray;
++ (instancetype)am_black;
 
 @end

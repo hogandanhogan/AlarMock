@@ -27,13 +27,13 @@
 {
     [super awakeFromNib];
     
-    self.textLabel.font = [UIFont book22];
+    self.textLabel.font     = [UIFont book22];
     self.textLabel.textColor = [UIColor whiteColor];
     self.backgroundColor = [UIColor clearColor];
     
-    
     self.switcheroo.onTintColor = [UIColor am_switchTintColor];
     self.switcheroo.tintColor = [UIColor am_switchTintColor];
+    self.switcheroo.thumbTintColor = [UIColor am_switchThumbColor];
 }
 
 #pragma mark - Action Handlers
