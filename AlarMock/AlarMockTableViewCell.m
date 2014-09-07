@@ -33,14 +33,6 @@
     self.cellSwitch.onTintColor = [UIColor am_switchTintColor];
     self.cellSwitch.tintColor = [UIColor am_switchTintColor];
     self.cellSwitch.thumbTintColor = [UIColor am_switchThumbColor];
-
-//    self.textLabel.font = [UIFont bookWithSize:48];
-//    self.textLabel.textColor = [UIColor whiteColor];
-//    self.backgroundColor = [UIColor clearColor];
-//    
-//    NSRange range = NSMakeRange(self.textLabel.text.length - 2, 2);
-//    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:self.textLabel.text];
-//    [attributedString addAttribute:NSFontAttributeName value:[UIFont book22] range:range];
 }
 
 #pragma mark - Accessors

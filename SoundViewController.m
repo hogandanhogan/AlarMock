@@ -14,8 +14,7 @@
 #import "AMRadialGradientLayer.h"
 #import "UIColor+AMTheme.h"
 #import "UIScreen+AMScale.h"
-#import <MediaPlayer/MediaPlayer.h>
-#import <Masonry.h>
+#import "UIColor+AMTheme.h"
 
 @interface SoundViewController () <UITableViewDataSource, UITableViewDelegate, MPMediaPickerControllerDelegate>
 
@@ -24,6 +23,7 @@
 @property (nonatomic) NSString *notificationSound;
 @property (nonatomic) AMRadialGradientLayer *gradientLayer;
 @property (nonatomic) NSArray *sounds;
+
 @end
 
 @implementation SoundViewController
@@ -118,7 +118,8 @@
  
     self.sounds = @[@"Alert 1", @"Alert 2", @"Alert 3", @"Alert 4"];
     cell.textLabel.textColor = [UIColor am_whiteColor];
-    cell.textLabel.textColor = [UIColor whiteColor];
+    cell.textLabel.textColor = [UIColor am_whiteColor];
+    
     if (indexPath.section == 0) {
         cell.textLabel.text = [self.sounds objectAtIndex:indexPath.row];
     } else {

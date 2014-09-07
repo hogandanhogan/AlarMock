@@ -9,20 +9,15 @@
 #import "AddAlarmViewController.h"
 
 #import "AddAlarmView.h"
-#import "RepeatViewController.h"
 #import "AlarmJoke.h"
 #import "AlarmEngine.h"
-#import "AlarmJoke.h"
 #import "AlarMockTableViewCell.h"
-#import "RepeatViewController.h"
 #import "SoundViewController.h"
 #import "UIColor+AMTheme.h"
 #import "UIFont+AMTheme.h"
-#import "AddAlarmView.h"
 #import "AddAlarmTableViewCell.h"
 
 @interface AddAlarmViewController () <UITableViewDataSource, UITableViewDelegate>
-
 
 @property (nonatomic) Alarm *alarm;
 @property (nonatomic) CGFloat sliderVal;
@@ -33,6 +28,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *snoozeTimeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *snoozeMockLabel;
 @property (nonatomic) NSArray *settings;
+
 @end
 
 @implementation AddAlarmViewController
@@ -88,37 +84,6 @@
         SoundViewController *svc = [self.storyboard instantiateViewControllerWithIdentifier:@"soundVC"];
         [self.navigationController pushViewController:svc animated:YES];
     }
-}
-
-#pragma mark - Table view delegate methods
-
-
-#pragma mark - AddAlarmViewDelegate
-
-- (void)addAlarmView:(AddAlarmView *)alarMockView clickedLeftBarButtonItem:(UIBarButtonItem *)barButtonItem
-{
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
--(void)addAlarmView:(AddAlarmView *)alarMockView clickedRightBarButtonItem:(UIBarButtonItem *)barButtonItem
-{
-    self.alarm = [[Alarm alloc] initWithJokeCollection:self.alarmEngine.jokeCollection];
-    //self.alarm.fireDate = [NSDate dateWithTimeIntervalSinceNow:10];
-    //[self.alarm getDateOfSpecificDay:self.alarm.daysChecked.count];
-    self.alarm.fireDate = self.datePicker.date;
-    //notification fires in 4 seconds while testing
-    self.alarm.snoozeInterval = self.sliderVal * 60;
-    self.alarm.alarmSong = self.alarmSong;
-    self.alarm.notificationSound = self.notificationSound;
-    
-    [self.alarmEngine addAlarm:self.alarm];
-    
-    //    for (NSString *dayChecked in self.daysChecked) {
-    //        NSInteger dayCheckedIntVal = dayChecked.integerValue;
-    //        [self.alarm getDateOfSpecificDay:dayCheckedIntVal];
-    //    }
-    
-    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - Action handlers
