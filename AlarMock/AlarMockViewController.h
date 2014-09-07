@@ -13,5 +13,6 @@
 @interface AlarMockViewController : AMViewController
 
 @property (nonatomic) AlarmEngine *alarmEngine;
+@property (nonatomic) NSString *textLabelText;
 
 @end

@@ -15,6 +15,8 @@
 #import "AlarMockTableViewCell.h"
 #import "AlarMockView.h"
 #import "SnoozeJoke.h"
+#import "UIColor+AMTheme.h"
+#import "UIFont+AMTheme.h"
 
 @interface AlarMockViewController() <AlarMockViewDelegate, UITableViewDelegate, UITableViewDataSource, TableViewCellDelegate>
 
@@ -82,7 +84,6 @@
     NSString *timeString = [dateFormatter stringFromDate:alarm.fireDate];
     cell.textLabel.text = timeString;
     self.currentAlarm = self.alarmEngine.alarms[indexPath.row];
-
 
     return cell;
 }
