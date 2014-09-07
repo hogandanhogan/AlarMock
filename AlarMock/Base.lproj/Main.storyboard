@@ -393,7 +393,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="kjv-DL-RON" firstAttribute="top" secondItem="2SO-zF-xcl" secondAttribute="top" id="LFp-tO-sdv"/>
                             <constraint firstItem="ZgY-G7-a96" firstAttribute="top" secondItem="kjv-DL-RON" secondAttribute="bottom" id="VgX-0c-Fsx"/>
