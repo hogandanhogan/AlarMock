@@ -17,7 +17,7 @@ static NSString * const kFontClanNarrowMedium = @"ClanOT-NarrMedium";
 
 + (instancetype)book22
 {
-    return [self bookWithSize:36.0f];
+    return [self bookWithSize:22.0f];
 }
 
 + (instancetype)bookWithSize:(CGFloat)size
