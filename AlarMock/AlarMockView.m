@@ -17,6 +17,7 @@
 
 @interface AlarMockView ()
 
+@property (nonatomic, getter = hasLayedOutSubviews) BOOL layedOutSubviews;
 @property (nonatomic) AMRadialGradientLayer *gradientLayer;
 
 @end
@@ -65,6 +66,12 @@
     self.gradientLayer.gradientOrigin = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMaxY(self.frame));
     self.gradientLayer.gradientRadius = CGRectGetMaxY(self.frame) * 0.9f;
     self.tableView.contentInset = UIEdgeInsetsMake(self.headerView.frame.size.height, 0.0f, 0.0f, 0.0f);
+    
+    if (!self.hasLayedOutSubviews) {
+        [self.tableView scrollRectToVisible:CGRectMake(0, 0, self.tableView.frame.size.width, 1) animated:NO];
+    }
+    
+    self.layedOutSubviews = YES;
 }
 
 #pragma mark - Action handlers

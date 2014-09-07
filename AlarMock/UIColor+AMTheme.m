@@ -26,7 +26,7 @@
 
 + (instancetype)am_switchThumbColor
 {
-    return [UIColor colorWithWhite:0.7f alpha:1.0f];
+    return [UIColor am_white];
 }
 
 #pragma mark - 
@@ -43,7 +43,12 @@
 
 + (instancetype)am_lightGray
 {
-    return [UIColor colorWithRed:0.78 green:0.78 blue:0.8 alpha:1];
+    return [UIColor colorWithRed:0.78f green:0.78f blue:0.8f alpha:1];
+}
+
++ (instancetype)am_white
+{
+    return [UIColor colorWithRed:0.95f green:0.95f blue:1.0f alpha:1];
 }
 
 + (instancetype)am_black
