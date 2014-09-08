@@ -22,15 +22,15 @@
 		71A3AE9319B4D23B00D1001C /* NSArray+AMRandomElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 71A3AE9219B4D23B00D1001C /* NSArray+AMRandomElement.m */; };
 		71F3E9CF19BBD1F20033503B /* AMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71F3E9CE19BBD1F20033503B /* AMViewController.m */; };
 		7908639419B7C05600EDD19B /* SoundViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7908639319B7C05600EDD19B /* SoundViewController.m */; };
-		7917CD4C19BB4EAE005BB390 /* alarm.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7917CD4B19BB4EAE005BB390 /* alarm.wav */; };
 		792A791619ABF4C80099A32F /* AlarMockTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 792A791519ABF4C80099A32F /* AlarMockTableViewCell.m */; };
 		79318CCF19A8E7F70021D655 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79318CCE19A8E7F70021D655 /* CoreData.framework */; };
-		79350E2619B4EFD4009E47E6 /* groudhog.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 79350E2519B4EFD4009E47E6 /* groudhog.mp3 */; };
 		797DF3DC19A962FE00FDD94B /* RepeatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 797DF3DB19A962FE00FDD94B /* RepeatViewController.m */; };
 		79A2518F19AE2E7F009174C8 /* AlarmEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 79A2518E19AE2E7F009174C8 /* AlarmEngine.m */; };
 		79A2519119AF8366009174C8 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79A2519019AF8365009174C8 /* AVFoundation.framework */; };
 		79A2A95B19B0C5EC005BB9AC /* Alarm.m in Sources */ = {isa = PBXBuildFile; fileRef = 79A2A95A19B0C5EC005BB9AC /* Alarm.m */; };
 		79E2CBEA19BCEA8200352117 /* SoundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 79E2CBE919BCEA8200352117 /* SoundView.m */; };
+		79E2CBEF19BD3A9500352117 /* 0.wav in Resources */ = {isa = PBXBuildFile; fileRef = 79E2CBED19BD3A9500352117 /* 0.wav */; };
+		79E2CBF019BD3A9500352117 /* 1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 79E2CBEE19BD3A9500352117 /* 1.wav */; };
 		98315B0119ABD40300D717F0 /* AlarmJoke.m in Sources */ = {isa = PBXBuildFile; fileRef = 98315B0019ABD40300D717F0 /* AlarmJoke.m */; };
 		98315B0419ABD4E700D717F0 /* SnoozeJoke.m in Sources */ = {isa = PBXBuildFile; fileRef = 98315B0319ABD4E700D717F0 /* SnoozeJoke.m */; };
 		98962DBD19A7C0E700DEE9B5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98962DBC19A7C0E700DEE9B5 /* Foundation.framework */; };
@@ -94,11 +94,9 @@
 		71F3E9CE19BBD1F20033503B /* AMViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMViewController.m; sourceTree = "<group>"; };
 		7908639219B7C05600EDD19B /* SoundViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SoundViewController.h; path = ../SoundViewController.h; sourceTree = "<group>"; };
 		7908639319B7C05600EDD19B /* SoundViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SoundViewController.m; path = ../SoundViewController.m; sourceTree = "<group>"; };
-		7917CD4B19BB4EAE005BB390 /* alarm.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = alarm.wav; path = ../alarm.wav; sourceTree = "<group>"; };
 		792A791419ABF4C80099A32F /* AlarMockTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarMockTableViewCell.h; sourceTree = "<group>"; };
 		792A791519ABF4C80099A32F /* AlarMockTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarMockTableViewCell.m; sourceTree = "<group>"; };
 		79318CCE19A8E7F70021D655 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		79350E2519B4EFD4009E47E6 /* groudhog.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = groudhog.mp3; sourceTree = "<group>"; };
 		797DF3DA19A962FE00FDD94B /* RepeatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepeatViewController.h; sourceTree = "<group>"; };
 		797DF3DB19A962FE00FDD94B /* RepeatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepeatViewController.m; sourceTree = "<group>"; };
 		79A2518D19AE2E7F009174C8 /* AlarmEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmEngine.h; sourceTree = "<group>"; };
@@ -108,6 +106,8 @@
 		79A2A95A19B0C5EC005BB9AC /* Alarm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Alarm.m; sourceTree = "<group>"; };
 		79E2CBE819BCEA8200352117 /* SoundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundView.h; sourceTree = "<group>"; };
 		79E2CBE919BCEA8200352117 /* SoundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundView.m; sourceTree = "<group>"; };
+		79E2CBED19BD3A9500352117 /* 0.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = 0.wav; sourceTree = "<group>"; };
+		79E2CBEE19BD3A9500352117 /* 1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = 1.wav; sourceTree = "<group>"; };
 		98315AFF19ABD40300D717F0 /* AlarmJoke.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmJoke.h; sourceTree = "<group>"; };
 		98315B0019ABD40300D717F0 /* AlarmJoke.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmJoke.m; sourceTree = "<group>"; };
 		98315B0219ABD4E700D717F0 /* SnoozeJoke.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnoozeJoke.h; sourceTree = "<group>"; };
@@ -181,7 +181,8 @@
 		7172A2F319BB77910087DEB0 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
-				7917CD4B19BB4EAE005BB390 /* alarm.wav */,
+				79E2CBED19BD3A9500352117 /* 0.wav */,
+				79E2CBEE19BD3A9500352117 /* 1.wav */,
 			);
 			name = Sounds;
 			sourceTree = "<group>";
@@ -413,7 +414,6 @@
 		98962DC319A7C0E700DEE9B5 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				79350E2519B4EFD4009E47E6 /* groudhog.mp3 */,
 				98962DC419A7C0E700DEE9B5 /* AlarMock-Info.plist */,
 				98962DC519A7C0E700DEE9B5 /* InfoPlist.strings */,
 				98962DC819A7C0E700DEE9B5 /* main.m */,
@@ -527,11 +527,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				7172A30419BB87FA0087DEB0 /* ClanOT-Book.otf in Resources */,
+				79E2CBF019BD3A9500352117 /* 1.wav in Resources */,
 				7172A30319BB87F80087DEB0 /* ClanOT-NarrMedium.otf in Resources */,
 				98962DC719A7C0E700DEE9B5 /* InfoPlist.strings in Resources */,
-				7917CD4C19BB4EAE005BB390 /* alarm.wav in Resources */,
+				79E2CBEF19BD3A9500352117 /* 0.wav in Resources */,
 				1FDC25F719B666F60009ED53 /* Images.xcassets in Resources */,
-				79350E2619B4EFD4009E47E6 /* groudhog.mp3 in Resources */,
 				98962DD019A7C0E700DEE9B5 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

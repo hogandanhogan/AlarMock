@@ -7,6 +7,7 @@
 //
 
 #import <MediaPlayer/MediaPlayer.h>
+#import <AVFoundation/AVFoundation.h>
 
 #import "SoundViewController.h"
 
@@ -77,6 +78,7 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.section == 1) {
+        //TODO: Change media picker prompt text color
         MPMediaPickerController *mediaPicker = [[MPMediaPickerController alloc] initWithMediaTypes:MPMediaTypeAnyAudio];
         mediaPicker.delegate = self;
         mediaPicker.allowsPickingMultipleItems = NO;
@@ -86,6 +88,12 @@
         self.lastIndexPath = indexPath;
         self.notificationSound = [NSString stringWithFormat:@"%ld", (long)indexPath.row];
         
+        //TODO: finish songs play when row selected
+        NSString *soundPath = [[NSBundle mainBundle] pathForResource:@"0" ofType:@".wav"];
+        NSURL *soundURL = [NSURL fileURLWithPath:soundPath];
+        
+        AVPlayer *avp = [[AVPlayer alloc] initWithURL:soundURL];
+        [avp play];
         [tableView reloadData];
     }
 }
