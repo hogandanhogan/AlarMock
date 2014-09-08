@@ -27,6 +27,7 @@
 @property (nonatomic) AMRadialGradientLayer *gradientLayer;
 @property (nonatomic) NSArray *sounds;
 @property (nonatomic) NSIndexPath *lastIndexPath;
+@property (nonatomic) NSString *mediaTitle;
 
 @end
 
@@ -43,9 +44,13 @@
     self.tableView.backgroundColor = [UIColor clearColor];
 }
 
+//Here is the Alert 1-4 View Table
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (section == 0) {return 4;} else {return 1;}
+    NSLog(@"%@", self.sounds);
+
+    return (section == 0) ? 4 : 1;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -73,16 +78,19 @@
     view.backgroundColor = [UIColor clearColor];
     return view;
 }
-
+// This is the tableView where the sound is getting selected
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.section == 1) {
+
         //TODO: Change media picker prompt text color
         MPMediaPickerController *mediaPicker = [[MPMediaPickerController alloc] initWithMediaTypes:MPMediaTypeAnyAudio];
         mediaPicker.delegate = self;
         mediaPicker.allowsPickingMultipleItems = NO;
         mediaPicker.prompt = @"What would you like stuck in your head?";
+// here is the mediapicker
+
         [self presentViewController:mediaPicker animated:YES completion:nil];
     } else {
         self.lastIndexPath = indexPath;
@@ -95,9 +103,11 @@
         AVPlayer *avp = [[AVPlayer alloc] initWithURL:soundURL];
         [avp play];
         [tableView reloadData];
+
+
     }
 }
-
+// end of tableview where the sound is getting chosen
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SoundCell"];
@@ -109,7 +119,15 @@
         cell.textLabel.text = [self.sounds objectAtIndex:indexPath.row];
     } else {
         cell.textLabel.font = [UIFont am_book16];
-        cell.textLabel.text = @"Choose a song from your Library";
+        if (self.mediaTitle != nil)
+        {
+            cell.textLabel.text = self.mediaTitle;
+        }
+        else
+        {
+            cell.textLabel.text = @"Choose a song from your Library";
+        }
+
     }
     
     if(cell == nil )
@@ -124,8 +142,7 @@
         cell.accessoryType = UITableViewCellAccessoryNone;
     }
     return cell;
-    
-    return cell;
+[self.tableView reloadData];
 }
 
 #pragma mark - Action Handlers
@@ -133,6 +150,7 @@
 - (IBAction)handleBackButton:(id)sender
 {
     [self.delegate soundViewController:self didChooseNotificationSound:self.notificationSound didChooseSong:self.alarmSong];
+    NSLog(@"*** %@", self.alarmSong);
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -140,6 +158,8 @@
 
 - (void)mediaPicker:(MPMediaPickerController *)mediaPicker didPickMediaItems:(MPMediaItemCollection *)mediaItemCollection
 {
+    self.mediaTitle = [self.alarmSong valueForProperty:MPMediaItemPropertyTitle];
+    [self.tableView reloadData];
     [self dismissViewControllerAnimated:YES completion:^{
         self.alarmSong = [mediaItemCollection.items objectAtIndex:0];
         [[[UIAlertView alloc] initWithTitle:@"If you choose a song as your alarm tone, the phone must be locked with Alarm Mock open in the background"
@@ -147,6 +167,9 @@
                                    delegate:self
                           cancelButtonTitle:nil
                           otherButtonTitles:@"Ok",nil] show];
+
+
+
     }];
 }
 

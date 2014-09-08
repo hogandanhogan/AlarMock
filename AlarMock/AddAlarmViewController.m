@@ -55,7 +55,9 @@
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     self.tableView.backgroundColor = [UIColor clearColor];
 
-    self.slider.hidden = YES;    
+    self.slider.hidden = YES;
+    //add label for sound here?
+    //========================
 }
 
 #pragma mark - UITableViewDelegate/DataSource
@@ -149,8 +151,15 @@
     self.alarm = [[Alarm alloc] initWithJokeCollection:self.alarmEngine.jokeCollection];
     self.alarm.fireDate = self.datePicker.date;
     self.alarm.snoozeInterval = self.sliderVal * 60;
+//==========================================
     self.alarm.alarmSong = self.alarmSong;
+
+    //hey look here's the alarm song!
+//==========================================
+
     self.alarm.notificationSound = self.notificationSound;
+
+    //hey look here's the alarm sound!
     
     [self.alarmEngine addAlarm:self.alarm];
     

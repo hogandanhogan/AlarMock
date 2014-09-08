@@ -16,6 +16,8 @@
 #import "SnoozeJoke.h"
 #import "UIColor+AMTheme.h"
 #import "UIFont+AMTheme.h"
+#import "SoundViewController.h"
+
 
 @interface AlarMockViewController() <UITableViewDelegate, UITableViewDataSource>
 

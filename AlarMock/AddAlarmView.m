@@ -10,6 +10,7 @@
 
 #import "AMRadialGradientLayer.h"
 #import "UIColor+AMTheme.h"
+#import "SoundViewController.h"
 
 #import <Masonry.h>
 

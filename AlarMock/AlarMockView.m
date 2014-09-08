@@ -37,7 +37,7 @@
         gradientLayer.locations = @[@0.0f, @1.0f];
         
         [gradientLayer setStartPoint:CGPointMake(0.0f, 0.0f)];
-        [gradientLayer setEndPoint:CGPointMake(0.0f, 1.0f)];
+        [gradientLayer setEndPoint:CGPointMake(0.1f, 1.0f)];
         
         gradientLayer;
     });

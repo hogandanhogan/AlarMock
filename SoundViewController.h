@@ -8,6 +8,8 @@
 
 #import "AMViewController.h"
 #import <UIKit/UIKit.h>
+#import <MediaPlayer/MediaPlayer.h>
+
 
 @protocol SoundViewControllerDelegate;
 
