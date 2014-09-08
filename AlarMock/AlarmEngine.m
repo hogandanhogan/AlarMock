@@ -75,7 +75,7 @@ static NSString * const kAlarmEngineDefaultsKey = @"AlarmEngineDefaultsKey";
 
 - (void)addAlarm:(Alarm *)alarm
 {
-    if ([_alarms containsObject:alarm]) {
+    if ([self.alarms containsObject:alarm]) {
         return;
     }
 
@@ -96,12 +96,12 @@ static NSString * const kAlarmEngineDefaultsKey = @"AlarmEngineDefaultsKey";
 
 - (Alarm *)alarmWithFireDate:(NSDate *)fireDate
 {
+    NSLog(@"alarms in AlarmEngine: %@", self.alarms);
     for (Alarm *alarm in _alarms) {
         if ([alarm.fireDate isEqual:fireDate]) {
             return alarm;
         }
     }
-    
     return nil;
 }
 

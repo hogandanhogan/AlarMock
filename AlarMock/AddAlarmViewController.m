@@ -1,4 +1,4 @@
-//
+    //
 //  TimePickerViewController.m
 //  AlarMock
 //
@@ -49,6 +49,7 @@
     
     self.datePicker.date = [NSDate date];
     NSDateComponents *dateComponents = [[NSCalendar currentCalendar] components:NSCalendarUnitSecond fromDate:self.datePicker.date];
+    //-
     self.datePicker.date = [self.datePicker.date dateByAddingTimeInterval:-dateComponents.second];
 
     self.tableView.scrollEnabled = NO;
@@ -153,6 +154,8 @@
     
     [self.alarmEngine addAlarm:self.alarm];
     [self.navigationController popViewControllerAnimated:YES];
+
+    NSLog(@"alarm: %@", self.alarm);
 }
 
 - (IBAction)leftButtonClicked:(id)sender

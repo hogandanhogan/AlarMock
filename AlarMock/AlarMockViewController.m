@@ -69,11 +69,12 @@
     AlarMockTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     cell.cellSwitch.on = alarm.on;
     cell.cellSwitch.tag = indexPath.row;
-    
     NSDateFormatter *dateFormatter = [NSDateFormatter new];
     dateFormatter.timeStyle = NSDateFormatterShortStyle;
     [dateFormatter setDateFormat:@"h:mm a"];
     NSString *timeString = [dateFormatter stringFromDate:alarm.fireDate];
+//    NSPredicate *timepred = [NSPredicate predicateWithFormat:(@"%@"), timeString];
+//    NSArray *predicateArray = [self.alarmEngine.alarms filteredArrayUsingPredicate:timepred];
     [cell setText:timeString timeFormatted:YES];
     self.currentAlarm = self.alarmEngine.alarms[indexPath.row];
 

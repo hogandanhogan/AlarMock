@@ -21,7 +21,7 @@
 #import "UIFont+AMTheme.h"
 
 @interface AppDelegate ()
-
+//added strong?
 @property (nonatomic) AlarmEngine *alarmEngine;
 @property (nonatomic, readonly) AlarMockViewController *rootViewController;
 @property (nonatomic) AVPlayer *aVPlayer;
@@ -45,6 +45,7 @@
     [[UITableViewCell appearance] setTintColor:[UIColor am_whiteColor]];
     
     self.alarmEngine = [AlarmEngine loadFromSavedData];
+//    NSLog(@"%@", self.alarmEngine);
     self.rootViewController.alarmEngine = self.alarmEngine;
     
     return YES;
@@ -53,6 +54,7 @@
 - (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
 {
     Alarm *alarm = [self.alarmEngine alarmWithFireDate:notification.fireDate];
+    NSLog(@"%@", notification.fireDate);
     if (alarm) {
         [self.alarmQueue addObject:alarm];
         [self updateAlarmQueue];
