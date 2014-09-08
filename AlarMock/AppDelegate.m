@@ -72,6 +72,7 @@
                       cancelButtonTitle:nil
                       otherButtonTitles:@"Snooze", @"Dismiss",nil] show];
     NSURL *songUrl = [firstFiredAlarm.alarmSong valueForProperty:MPMediaItemPropertyAssetURL];
+    //TODO:get media to play in background mode
     
     self.aVPlayer = [[AVPlayer alloc] initWithURL:songUrl];
     [self.aVPlayer play];
