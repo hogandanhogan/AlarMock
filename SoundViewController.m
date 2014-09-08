@@ -152,7 +152,7 @@
 
 -(void)mediaPickerDidCancel:(MPMediaPickerController *)mediaPicker
 {
-    [self dismissViewControllerAnimated:YES completion:^{}];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end
