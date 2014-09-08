@@ -47,6 +47,17 @@
     self.alarmEngine = [AlarmEngine loadFromSavedData];
     self.rootViewController.alarmEngine = self.alarmEngine;
     
+    NSError *setCategoryErr = nil;
+    NSError *activationErr  = nil;
+    
+    [[AVAudioSession sharedInstance] setCategory: AVAudioSessionCategoryPlayback
+                                           error:&setCategoryErr];
+    
+    [[AVAudioSession sharedInstance] setActive:YES
+                                         error:&activationErr];
+    
+    return YES;
+    
     return YES;
 }
 
@@ -73,7 +84,7 @@
                       otherButtonTitles:@"Snooze", @"Dismiss",nil] show];
     NSURL *songUrl = [firstFiredAlarm.alarmSong valueForProperty:MPMediaItemPropertyAssetURL];
     //TODO:get media to play in background mode
-    
+    [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:NULL];
     self.aVPlayer = [[AVPlayer alloc] initWithURL:songUrl];
     [self.aVPlayer play];
 }

@@ -117,13 +117,13 @@ NSString * const kAlarmValueChangedNotification = @"AlarmValueChangedNotificatio
 
 - (void)setFireDate:(NSDate *)fireDate
 {
-    if ([_fireDate timeIntervalSinceNow] <= 0) {
-       _fireDate = [fireDate dateByAddingTimeInterval:60.0f * 60.0f * 24.0f];
+    if ([fireDate timeIntervalSinceNow] <= 0) {
+        _fireDate = [fireDate dateByAddingTimeInterval:60.0f * 60.0f * 24.0f];
     } else {
         _fireDate = fireDate;
     }
     
-    self.notification.fireDate = fireDate;
+    self.notification.fireDate = _fireDate;
     
     [[UIApplication sharedApplication] scheduleLocalNotification:self.notification];
 }
@@ -154,15 +154,15 @@ NSString * const kAlarmValueChangedNotification = @"AlarmValueChangedNotificatio
 - (NSString *)soundNameForNotificationSound:(NSString *)notificationSound
 {
     if (!notificationSound) {
-        return @"alarm.wav";
+        return @"0";
     }
     
     //TODO: finish sounds for notification
     return [@{
-              @"0" : @"",
-              @"1" : @"",
-              @"2" : @"",
-              @"3" : @""
+              @"0" : @"0",
+              @"1" : @"1",
+              @"2" : @"2",
+              @"3" : @"3"
               } valueForKey:notificationSound];
 }
 

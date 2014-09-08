@@ -317,7 +317,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <barButtonItem key="rightBarButtonItem" title="Save" id="DDz-ga-WMP">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <action selector="rightButtonClicked:" destination="AjE-70-so0" id="DRh-Wn-oBl"/>
+                                <action selector="rightButtonClicked:" destination="AjE-70-so0" id="bgb-RJ-3jo"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

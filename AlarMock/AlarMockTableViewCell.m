@@ -51,7 +51,6 @@
 {
     if (!timeFormatted) {
         self.textLabel.font = [UIFont am_book16];
-
         self.textLabel.text = text;
     } else {
         self.textLabel.font = [UIFont am_book48];
@@ -61,7 +60,6 @@
         [attributedString addAttribute:NSFontAttributeName value:[UIFont am_book28] range:range];
         [[attributedString string] stringByReplacingOccurrencesOfString:@" " withString:@""];
         self.textLabel.attributedText = attributedString;
-
     }
 }
 

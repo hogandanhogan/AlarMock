@@ -79,17 +79,20 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.section == 1) {
         //TODO: Change media picker prompt text color
-        MPMediaPickerController *mediaPicker = [[MPMediaPickerController alloc] initWithMediaTypes:MPMediaTypeAnyAudio];
+        //MPMediaPickerController *mediaPicker = [[MPMediaPickerController alloc] initWithMediaTypes:MPMediaTypeAnyAudio];
+        MPMediaPickerController *mediaPicker = [[MPMediaPickerController alloc] initWithMediaTypes:MPMediaTypeMusic];
+        
         mediaPicker.delegate = self;
         mediaPicker.allowsPickingMultipleItems = NO;
         mediaPicker.prompt = @"What would you like stuck in your head?";
+        mediaPicker.navigationController.toolbar.barStyle = UIBarStyleBlackOpaque;
         [self presentViewController:mediaPicker animated:YES completion:nil];
     } else {
         self.lastIndexPath = indexPath;
         self.notificationSound = [NSString stringWithFormat:@"%ld", (long)indexPath.row];
         
         //TODO: finish songs play when row selected
-        NSString *soundPath = [[NSBundle mainBundle] pathForResource:@"0" ofType:@".wav"];
+        NSString *soundPath = [[NSBundle mainBundle] pathForResource:@"0" ofType:@"wav"];
         NSURL *soundURL = [NSURL fileURLWithPath:soundPath];
         
         AVPlayer *avp = [[AVPlayer alloc] initWithURL:soundURL];
@@ -123,8 +126,6 @@
     else {
         cell.accessoryType = UITableViewCellAccessoryNone;
     }
-    return cell;
-    
     return cell;
 }
 
