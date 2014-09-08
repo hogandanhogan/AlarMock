@@ -140,6 +140,21 @@
     }
 }
 
+- (IBAction)onSavePressed:(id)sender
+{
+    self.alarm = [[Alarm alloc] initWithJokeCollection:self.alarmEngine.jokeCollection];
+    //self.alarm.fireDate = [NSDate dateWithTimeIntervalSinceNow:10];
+    //[self.alarm getDateOfSpecificDay:self.alarm.daysChecked.count];
+    self.alarm.fireDate = self.datePicker.date;
+    //notification fires in 4 seconds while testing
+    self.alarm.snoozeInterval = self.sliderVal * 60;
+    self.alarm.alarmSong = self.alarmSong;
+    self.alarm.notificationSound = self.notificationSound;
+    
+    [self.alarmEngine addAlarm:self.alarm];
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 - (IBAction)leftButtonClicked:(id)sender
 {
     [self.navigationController popViewControllerAnimated:YES];
