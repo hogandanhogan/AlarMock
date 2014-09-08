@@ -22,8 +22,10 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic) MPMediaItem *alarmSong;
 @property (nonatomic) NSString *notificationSound;
+@property (nonatomic) NSString *checkedSound;
 @property (nonatomic) AMRadialGradientLayer *gradientLayer;
 @property (nonatomic) NSArray *sounds;
+@property (nonatomic) NSIndexPath *lastIndexPath;
 
 @end
 
@@ -33,6 +35,7 @@
 {
     [super viewDidLoad];
     
+    self.notificationSound = [NSString new];
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
     self.sounds = @[@"Alert 1", @"Alert 2", @"Alert 3", @"Alert 4"];
@@ -80,8 +83,10 @@
         mediaPicker.prompt = @"What would you like stuck in your head?";
         [self presentViewController:mediaPicker animated:YES completion:nil];
     } else {
+        self.lastIndexPath = indexPath;
         self.notificationSound = [NSString stringWithFormat:@"%ld", (long)indexPath.row];
-        [self.tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
+        
+        [tableView reloadData];
     }
 }
 
@@ -98,6 +103,20 @@
         cell.textLabel.font = [UIFont am_book16];
         cell.textLabel.text = @"Choose a song from your Library";
     }
+    
+    if(cell == nil )
+    {
+        cell =[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"SoundCell"];
+    }
+    
+    if ([indexPath compare:self.lastIndexPath] == NSOrderedSame) {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    }
+    else {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    }
+    return cell;
+    
     return cell;
 }
 
