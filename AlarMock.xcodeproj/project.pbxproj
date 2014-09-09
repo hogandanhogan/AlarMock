@@ -490,7 +490,7 @@
 				ORGANIZATIONNAME = "AlarMock Industries";
 				TargetAttributes = {
 					98962DB819A7C0E700DEE9B5 = {
-						DevelopmentTeam = ERG78UCJDH;
+						DevelopmentTeam = EN4K8XQC2W;
 						SystemCapabilities = {
 							com.apple.InAppPurchase = {
 								enabled = 0;
