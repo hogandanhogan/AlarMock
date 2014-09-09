@@ -145,7 +145,6 @@ NSString * const kAlarmValueChangedNotification = @"AlarmValueChangedNotificatio
     return _notification;
 }
 
-
 #pragma mark - Description
 
 - (NSString *)description
@@ -156,6 +155,27 @@ NSString * const kAlarmValueChangedNotification = @"AlarmValueChangedNotificatio
 - (NSString *)joke
 {
     return self.notification.alertBody;
+}
+
+- (void)setNotificationSound:(NSString *)notificationSound
+{
+        _notificationSound = notificationSound;
+        self.notification.soundName = [self soundNameForNotificationSound:notificationSound];
+    }
+
+- (NSString *)soundNameForNotificationSound:(NSString *)notificationSound
+{
+    if (!notificationSound && !self.notification.soundName) {
+        return @"0.wav";
+    }
+    
+    //TODO: finish sounds for notification
+    return [@{
+                            @"0" : @"0",
+                                           @"1" : @"1",
+                                           @"2" : @"2",
+                                           @"3" : @"3"
+                                           } valueForKey:notificationSound];
 }
 
 @end
