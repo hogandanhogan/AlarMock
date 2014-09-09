@@ -13,10 +13,10 @@
 
 #import "AddAlarmViewController.h"
 #import "AMRadialGradientLayer.h"
+#import "UIColor+AMTheme.h"
 #import "UIFont+AMTheme.h"
-#import "UIColor+AMTheme.h"
+#import "UINavigationBar+AMTheme.h"
 #import "UIScreen+AMScale.h"
-#import "UIColor+AMTheme.h"
 
 @interface SoundViewController () <UITableViewDataSource, UITableViewDelegate, MPMediaPickerControllerDelegate>
 
@@ -27,7 +27,7 @@
 @property (nonatomic) AMRadialGradientLayer *gradientLayer;
 @property (nonatomic) NSArray *sounds;
 @property (nonatomic) NSIndexPath *lastIndexPath;
-
+@property (nonatomic) AVPlayer *aVPlayer;
 @end
 
 @implementation SoundViewController
@@ -45,7 +45,8 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (section == 0) {return 4;} else {return 1;}
+//    evaluates to b if a is true and evaluates to c if a is false.
+     return (section == 0 ? 4 : 1);
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -78,25 +79,26 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.section == 1) {
-        //TODO: Change media picker prompt text color
-        //MPMediaPickerController *mediaPicker = [[MPMediaPickerController alloc] initWithMediaTypes:MPMediaTypeAnyAudio];
+        
+        [UINavigationBar setAm_AppearanceStyle:AMNavigationBarStyleLight];
+
         MPMediaPickerController *mediaPicker = [[MPMediaPickerController alloc] initWithMediaTypes:MPMediaTypeMusic];
         
         mediaPicker.delegate = self;
         mediaPicker.allowsPickingMultipleItems = NO;
-        mediaPicker.prompt = @"What would you like stuck in your head?";
-        mediaPicker.navigationController.toolbar.barStyle = UIBarStyleBlackOpaque;
+        mediaPicker.prompt = @"What song would you like stuck in your head?";
+        //mediaPicker.navigationController.toolbar.barStyle = UIBarStyleBlackOpaque;
         [self presentViewController:mediaPicker animated:YES completion:nil];
     } else {
         self.lastIndexPath = indexPath;
+        //TODO:Pick notification sounds
         self.notificationSound = [NSString stringWithFormat:@"%ld", (long)indexPath.row];
         
-        //TODO: finish songs play when row selected
-        NSString *soundPath = [[NSBundle mainBundle] pathForResource:@"0" ofType:@"wav"];
+        NSString *soundPath = [[NSBundle mainBundle] pathForResource:self.notificationSound ofType:@".wav"];
         NSURL *soundURL = [NSURL fileURLWithPath:soundPath];
         
-        AVPlayer *avp = [[AVPlayer alloc] initWithURL:soundURL];
-        [avp play];
+        self.aVPlayer = [[AVPlayer alloc] initWithURL:soundURL];
+        [self.aVPlayer play];
         [tableView reloadData];
     }
 }
@@ -117,15 +119,15 @@
     
     if(cell == nil )
     {
-        cell =[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"SoundCell"];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"SoundCell"];
     }
     
     if ([indexPath compare:self.lastIndexPath] == NSOrderedSame) {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
-    }
-    else {
+    } else {
         cell.accessoryType = UITableViewCellAccessoryNone;
     }
+    
     return cell;
 }
 
@@ -141,6 +143,8 @@
 
 - (void)mediaPicker:(MPMediaPickerController *)mediaPicker didPickMediaItems:(MPMediaItemCollection *)mediaItemCollection
 {
+    [UINavigationBar setAm_AppearanceStyle:AMNavigationBarStyleDark];
+
     [self dismissViewControllerAnimated:YES completion:^{
         self.alarmSong = [mediaItemCollection.items objectAtIndex:0];
         [[[UIAlertView alloc] initWithTitle:@"If you choose a song as your alarm tone, the phone must be locked with Alarm Mock open in the background"
@@ -153,6 +157,8 @@
 
 -(void)mediaPickerDidCancel:(MPMediaPickerController *)mediaPicker
 {
+    [UINavigationBar setAm_AppearanceStyle:AMNavigationBarStyleDark];
+
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

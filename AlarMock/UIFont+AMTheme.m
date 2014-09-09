@@ -14,7 +14,7 @@ static NSString * const kFontClanNarrowMedium = @"ClanOT-NarrMedium";
 @implementation UIFont (AMTheme)
 
 #pragma mark - Book
-
+//TODO:split font properties ie. am_snoozeLabelFont, am_barButtonItemFont...., same with colors not a number
 + (instancetype)am_book14
 {
     return [self am_bookWithSize:14.0f];
