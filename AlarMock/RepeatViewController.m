@@ -10,10 +10,12 @@
 #import "RepeatViewController.h"
 #import "AddAlarmViewController.h"
 
-
 @interface RepeatViewController () <UITableViewDataSource, UITableViewDelegate>
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+@property (nonatomic) NSArray *days;
 @property (nonatomic) NSMutableArray *daysChecked;
+
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
@@ -23,6 +25,13 @@
 {
     [super viewDidLoad];
 
+    self.days = @[@"Every Monday",
+                  @"Every Tuesday",
+                  @"Every Wednesday",
+                  @"Every Thursday",
+                  @"Every Friday",
+                  @"Every Saturday",
+                  @"Every Sunday"];
     
     self.daysChecked = [NSMutableArray new];
     
@@ -54,14 +63,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DaysCell"];
-    NSArray *days = [[NSArray alloc] initWithObjects:@"Every Monday",
-                     @"Every Tuesday",
-                     @"Every Wednesday",
-                     @"Every Thursday",
-                     @"Every Friday",
-                     @"Every Saturday",
-                     @"Every Sunday", nil];
-    cell.textLabel.text = [days objectAtIndex:indexPath.row];
+    cell.textLabel.text = [self.days objectAtIndex:indexPath.row];
     
     return cell;
 }
