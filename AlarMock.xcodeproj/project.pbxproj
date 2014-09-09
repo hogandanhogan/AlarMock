@@ -34,6 +34,12 @@
 		79E2CBF019BD3A9500352117 /* 1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 79E2CBEE19BD3A9500352117 /* 1.wav */; };
 		98315B0119ABD40300D717F0 /* AlarmJoke.m in Sources */ = {isa = PBXBuildFile; fileRef = 98315B0019ABD40300D717F0 /* AlarmJoke.m */; };
 		98315B0419ABD4E700D717F0 /* SnoozeJoke.m in Sources */ = {isa = PBXBuildFile; fileRef = 98315B0319ABD4E700D717F0 /* SnoozeJoke.m */; };
+		984E0DEB19BF5A4D00598E02 /* blankScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 984E0DE619BF5A4D00598E02 /* blankScreen.png */; };
+		984E0DEC19BF5A4D00598E02 /* icon_120x120.png in Resources */ = {isa = PBXBuildFile; fileRef = 984E0DE719BF5A4D00598E02 /* icon_120x120.png */; };
+		984E0DED19BF5A4D00598E02 /* icon_80x80.png in Resources */ = {isa = PBXBuildFile; fileRef = 984E0DE819BF5A4D00598E02 /* icon_80x80.png */; };
+		984E0DEE19BF5A4D00598E02 /* icon_60x60.png in Resources */ = {isa = PBXBuildFile; fileRef = 984E0DE919BF5A4D00598E02 /* icon_60x60.png */; };
+		984E0DEF19BF5A4D00598E02 /* splashscreenFlat.png in Resources */ = {isa = PBXBuildFile; fileRef = 984E0DEA19BF5A4D00598E02 /* splashscreenFlat.png */; };
+		984E0DF119BF8F2A00598E02 /* cave.wav in Resources */ = {isa = PBXBuildFile; fileRef = 984E0DF019BF8F2A00598E02 /* cave.wav */; };
 		98962DBD19A7C0E700DEE9B5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98962DBC19A7C0E700DEE9B5 /* Foundation.framework */; };
 		98962DBF19A7C0E700DEE9B5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98962DBE19A7C0E700DEE9B5 /* CoreGraphics.framework */; };
 		98962DC119A7C0E700DEE9B5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98962DC019A7C0E700DEE9B5 /* UIKit.framework */; };
@@ -45,8 +51,6 @@
 		98962DDC19A7C0E700DEE9B5 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98962DDB19A7C0E700DEE9B5 /* XCTest.framework */; };
 		98962DDD19A7C0E700DEE9B5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98962DBC19A7C0E700DEE9B5 /* Foundation.framework */; };
 		98962DDE19A7C0E700DEE9B5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98962DC019A7C0E700DEE9B5 /* UIKit.framework */; };
-		98962DE619A7C0E800DEE9B5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 98962DE419A7C0E800DEE9B5 /* InfoPlist.strings */; };
-		98962DE819A7C0E800DEE9B5 /* AlarMockTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 98962DE719A7C0E800DEE9B5 /* AlarMockTests.m */; };
 		989F4C0B19ACE3150002B543 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 989F4C0A19ACE3150002B543 /* MediaPlayer.framework */; };
 		E7AAF5F819AAAE910055D07B /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7AAF5EF19AAAE910055D07B /* AudioToolbox.framework */; };
 		E7AAF5F919AAAE910055D07B /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7AAF5F019AAAE910055D07B /* CFNetwork.framework */; };
@@ -115,6 +119,12 @@
 		98315B0019ABD40300D717F0 /* AlarmJoke.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmJoke.m; sourceTree = "<group>"; };
 		98315B0219ABD4E700D717F0 /* SnoozeJoke.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnoozeJoke.h; sourceTree = "<group>"; };
 		98315B0319ABD4E700D717F0 /* SnoozeJoke.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnoozeJoke.m; sourceTree = "<group>"; };
+		984E0DE619BF5A4D00598E02 /* blankScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blankScreen.png; sourceTree = "<group>"; };
+		984E0DE719BF5A4D00598E02 /* icon_120x120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_120x120.png; sourceTree = "<group>"; };
+		984E0DE819BF5A4D00598E02 /* icon_80x80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_80x80.png; sourceTree = "<group>"; };
+		984E0DE919BF5A4D00598E02 /* icon_60x60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_60x60.png; sourceTree = "<group>"; };
+		984E0DEA19BF5A4D00598E02 /* splashscreenFlat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splashscreenFlat.png; sourceTree = "<group>"; };
+		984E0DF019BF8F2A00598E02 /* cave.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = cave.wav; sourceTree = "<group>"; };
 		98962DB919A7C0E700DEE9B5 /* AlarMock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AlarMock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		98962DBC19A7C0E700DEE9B5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		98962DBE19A7C0E700DEE9B5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -130,9 +140,6 @@
 		98962DD219A7C0E700DEE9B5 /* AlarMockViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AlarMockViewController.m; sourceTree = "<group>"; };
 		98962DDA19A7C0E700DEE9B5 /* AlarMockTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AlarMockTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		98962DDB19A7C0E700DEE9B5 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		98962DE319A7C0E800DEE9B5 /* AlarMockTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AlarMockTests-Info.plist"; sourceTree = "<group>"; };
-		98962DE519A7C0E800DEE9B5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		98962DE719A7C0E800DEE9B5 /* AlarMockTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AlarMockTests.m; sourceTree = "<group>"; };
 		989F4C0A19ACE3150002B543 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		E7AAF5EF19AAAE910055D07B /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		E7AAF5F019AAAE910055D07B /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -184,6 +191,7 @@
 		7172A2F319BB77910087DEB0 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				984E0DF019BF8F2A00598E02 /* cave.wav */,
 				79E2CBED19BD3A9500352117 /* 0.wav */,
 				79E2CBEE19BD3A9500352117 /* 1.wav */,
 			);
@@ -364,7 +372,6 @@
 			children = (
 				98962DCE19A7C0E700DEE9B5 /* Main.storyboard */,
 				98962DC219A7C0E700DEE9B5 /* AlarMock */,
-				98962DE119A7C0E800DEE9B5 /* AlarMockTests */,
 				98962DBB19A7C0E700DEE9B5 /* Frameworks */,
 				98962DBA19A7C0E700DEE9B5 /* Products */,
 				F4B85EE3794C404785136EE1 /* Pods.xcconfig */,
@@ -419,28 +426,15 @@
 		98962DC319A7C0E700DEE9B5 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				984E0DE619BF5A4D00598E02 /* blankScreen.png */,
+				984E0DE719BF5A4D00598E02 /* icon_120x120.png */,
+				984E0DE819BF5A4D00598E02 /* icon_80x80.png */,
+				984E0DE919BF5A4D00598E02 /* icon_60x60.png */,
+				984E0DEA19BF5A4D00598E02 /* splashscreenFlat.png */,
 				98962DC419A7C0E700DEE9B5 /* AlarMock-Info.plist */,
 				98962DC519A7C0E700DEE9B5 /* InfoPlist.strings */,
 				98962DC819A7C0E700DEE9B5 /* main.m */,
 				98962DCA19A7C0E700DEE9B5 /* AlarMock-Prefix.pch */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		98962DE119A7C0E800DEE9B5 /* AlarMockTests */ = {
-			isa = PBXGroup;
-			children = (
-				98962DE719A7C0E800DEE9B5 /* AlarMockTests.m */,
-				98962DE219A7C0E800DEE9B5 /* Supporting Files */,
-			);
-			path = AlarMockTests;
-			sourceTree = "<group>";
-		};
-		98962DE219A7C0E800DEE9B5 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				98962DE319A7C0E800DEE9B5 /* AlarMockTests-Info.plist */,
-				98962DE419A7C0E800DEE9B5 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -532,11 +526,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				7172A30419BB87FA0087DEB0 /* ClanOT-Book.otf in Resources */,
+				984E0DEF19BF5A4D00598E02 /* splashscreenFlat.png in Resources */,
+				984E0DED19BF5A4D00598E02 /* icon_80x80.png in Resources */,
 				79E2CBF019BD3A9500352117 /* 1.wav in Resources */,
+				984E0DEC19BF5A4D00598E02 /* icon_120x120.png in Resources */,
+				984E0DEE19BF5A4D00598E02 /* icon_60x60.png in Resources */,
+				984E0DEB19BF5A4D00598E02 /* blankScreen.png in Resources */,
 				7172A30319BB87F80087DEB0 /* ClanOT-NarrMedium.otf in Resources */,
 				98962DC719A7C0E700DEE9B5 /* InfoPlist.strings in Resources */,
 				79E2CBEF19BD3A9500352117 /* 0.wav in Resources */,
 				1FDC25F719B666F60009ED53 /* Images.xcassets in Resources */,
+				984E0DF119BF8F2A00598E02 /* cave.wav in Resources */,
 				98962DD019A7C0E700DEE9B5 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -545,7 +545,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				98962DE619A7C0E800DEE9B5 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -618,7 +617,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				98962DE819A7C0E800DEE9B5 /* AlarMockTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -648,14 +646,6 @@
 			);
 			name = Main.storyboard;
 			path = AlarMock;
-			sourceTree = "<group>";
-		};
-		98962DE419A7C0E800DEE9B5 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				98962DE519A7C0E800DEE9B5 /* en */,
-			);
-			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -695,6 +685,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "b9851eda-bea2-49f7-9344-a989d9240bda";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -727,7 +718,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
-				PROVISIONING_PROFILE = "28c6ec7f-aed0-4b96-8ecc-81285579196a";
+				PROVISIONING_PROFILE = "b9851eda-bea2-49f7-9344-a989d9240bda";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
