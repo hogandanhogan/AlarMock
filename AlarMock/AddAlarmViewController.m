@@ -49,7 +49,7 @@
     
     self.datePicker.date = [NSDate date];
     NSDateComponents *dateComponents = [[NSCalendar currentCalendar] components:NSCalendarUnitSecond fromDate:self.datePicker.date];
-    self.datePicker.date = [self.datePicker.date dateByAddingTimeInterval:-dateComponents.second];
+    self.datePicker.date = [self.datePicker.date dateByAddingTimeInterval:60.0f * 60.0f * 24.0f - dateComponents.second];
 
     self.tableView.scrollEnabled = NO;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
