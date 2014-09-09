@@ -56,9 +56,7 @@
     self.tableView.backgroundColor = [UIColor clearColor];
 
     self.slider.hidden = YES;
-    //add label for sound here?
-    //========================
-}
+   }
 
 #pragma mark - UITableViewDelegate/DataSource
 
@@ -74,6 +72,9 @@
         return YES;
     }
 }
+
+//add the sound detail view in here!!!
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     AlarMockTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SettingsCell"];
@@ -86,6 +87,7 @@
     
     return cell;
 }
+//=======================================
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
