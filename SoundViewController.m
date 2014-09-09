@@ -72,6 +72,7 @@
 
     [view addSubview:label];
     view.backgroundColor = [UIColor clearColor];
+    
     return view;
 }
 
@@ -87,7 +88,6 @@
         mediaPicker.delegate = self;
         mediaPicker.allowsPickingMultipleItems = NO;
         mediaPicker.prompt = @"What song would you like stuck in your head?";
-        //mediaPicker.navigationController.toolbar.barStyle = UIBarStyleBlackOpaque;
         [self presentViewController:mediaPicker animated:YES completion:nil];
     } else {
         self.lastIndexPath = indexPath;

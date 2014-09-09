@@ -153,17 +153,12 @@ NSString * const kAlarmValueChangedNotification = @"AlarmValueChangedNotificatio
 
 - (NSString *)soundNameForNotificationSound:(NSString *)notificationSound
 {
-    if (!notificationSound) {
+    if (!_notificationSound) {
         return @"0.wav";
     }
     
     //TODO: finish sounds for notification
-    return [@{
-              @"0" : @"0",
-              @"1" : @"1",
-              @"2" : @"2",
-              @"3" : @"3"
-              } valueForKey:notificationSound];
+    return [self.notificationSound stringByAppendingString:@".wav"];
 }
 
 #pragma mark - Description

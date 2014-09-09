@@ -58,8 +58,14 @@
                                          error:&activationErr];
     
     return YES;
+}
+
+- (void)applicationWillEnterForeground:(UIApplication *)application
+{
+    //Hack to fix iOS7 bug, notification sound does not stop when user responds to notification
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber: 1];
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber: 0];
     
-    return YES;
 }
 
 - (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
@@ -67,7 +73,8 @@
     Alarm *alarm = [self.alarmEngine alarmWithFireDate:notification.fireDate];
     if (alarm) {
         if ([[UIApplication sharedApplication] applicationState] == UIApplicationStateActive ) {
-            NSString *soundPath = [[NSBundle mainBundle] pathForResource:@"0" ofType:@".wav"];
+            //TODO:Local Notification sound will not play if app in foreground
+            NSString *soundPath = notification.soundName;
             NSURL *soundURL = [NSURL fileURLWithPath:soundPath];
             self.aVPlayer = [[AVPlayer alloc] initWithURL:soundURL];
             [self.aVPlayer play];
