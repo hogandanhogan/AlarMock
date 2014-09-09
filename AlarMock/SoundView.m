@@ -8,10 +8,8 @@
 
 #import "SoundView.h"
 
+#import "AMColor.h"
 #import "AMRadialGradientLayer.h"
-#import "UIColor+AMTheme.h"
-
-#import <Masonry.h>
 
 @interface SoundView ()
 
@@ -30,7 +28,7 @@
     self.gradientLayer = ({
         AMRadialGradientLayer *gradientLayer = [AMRadialGradientLayer layer];
         
-        gradientLayer.colors = [UIColor am_backgroundGradientColors];
+        gradientLayer.colors = [AMColor backgroundGradientColors];
         
         gradientLayer.locations = @[@0.0f, @1.0f];
         
@@ -52,4 +50,5 @@
     self.gradientLayer.gradientOrigin = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMaxY(self.frame));
     self.gradientLayer.gradientRadius = CGRectGetMaxY(self.frame) * 0.9f;
 }
+
 @end
