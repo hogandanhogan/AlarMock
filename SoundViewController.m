@@ -22,7 +22,7 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic) MPMediaItem *alarmSong;
-@property (nonatomic) NSString *notificationSound;
+@property (nonatomic) NSString *notificationSoundText;
 @property (nonatomic) NSString *checkedSound;
 @property (nonatomic) AMRadialGradientLayer *gradientLayer;
 @property (nonatomic) NSArray *sounds;
@@ -36,7 +36,7 @@
 {
     [super viewDidLoad];
     
-    self.notificationSound = [NSString new];
+    self.notificationSoundText = [NSString new];
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
     self.sounds = @[@"Alert 1", @"Alert 2", @"Alert 3", @"Alert 4"];
@@ -92,9 +92,9 @@
     } else {
         self.lastIndexPath = indexPath;
         //TODO:Pick notification sounds
-        self.notificationSound = [NSString stringWithFormat:@"%ld", (long)indexPath.row];
+        self.notificationSoundText = [NSString stringWithFormat:@"%ld", (long)indexPath.row];
         
-        NSString *soundPath = [[NSBundle mainBundle] pathForResource:self.notificationSound ofType:@".wav"];
+        NSString *soundPath = [[NSBundle mainBundle] pathForResource:self.notificationSoundText ofType:@".wav"];
         NSURL *soundURL = [NSURL fileURLWithPath:soundPath];
         
         self.aVPlayer = [[AVPlayer alloc] initWithURL:soundURL];
@@ -135,7 +135,7 @@
 
 - (IBAction)handleBackButton:(id)sender
 {
-    [self.delegate soundViewController:self didChooseNotificationSound:self.notificationSound didChooseSong:self.alarmSong];
+    [self.delegate soundViewController:self didChooseNotificationSoundText:self.notificationSoundText didChooseSong:self.alarmSong];
     [self.navigationController popViewControllerAnimated:YES];
 }
 

@@ -19,9 +19,10 @@ FOUNDATION_EXTERN NSString * const kAlarmValueChangedNotification;
 @property (nonatomic) MPMediaItem *alarmSong;
 @property (nonatomic) BOOL on;
 @property (nonatomic) NSDate *fireDate;
-@property (nonatomic) NSString *notificationSound;
+@property (nonatomic, getter = getNotificationSoundText) NSString *notificationSoundText;
 @property (nonatomic) NSArray *daysChecked;
 @property (nonatomic, readonly) NSString *joke;
+@property (nonatomic) UILocalNotification *notification;
 
 - (id)initWithJokeCollection:(JokeCollection *)jokeCollection;
 

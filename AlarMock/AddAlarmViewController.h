@@ -17,6 +17,6 @@
 @property (nonatomic) AlarmEngine *alarmEngine;
 
 @property (strong, nonatomic) Alarm *currentAlarm;
-@property NSString *notificationSound;
+@property (strong, nonatomic) NSString *notificationSoundText;
 
 @end
