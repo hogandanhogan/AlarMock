@@ -72,13 +72,6 @@
 {
     Alarm *alarm = [self.alarmEngine alarmWithFireDate:notification.fireDate];
     if (alarm) {
-        if ([[UIApplication sharedApplication] applicationState] == UIApplicationStateActive ) {
-            //TODO:Local Notification sound will not play if app in foreground
-            NSString *soundPath = notification.soundName;
-            NSURL *soundURL = [NSURL fileURLWithPath:soundPath];
-            self.aVPlayer = [[AVPlayer alloc] initWithURL:soundURL];
-            [self.aVPlayer play];
-        }
         [self.alarmQueue addObject:alarm];
         [self updateAlarmQueue];
     } else {
@@ -96,10 +89,18 @@
                                delegate:self
                       cancelButtonTitle:nil
                       otherButtonTitles:@"Snooze", @"Dismiss",nil] show];
-    NSURL *songUrl = [firstFiredAlarm.alarmSong valueForProperty:MPMediaItemPropertyAssetURL];
-    [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:NULL];
-    self.aVPlayer = [[AVPlayer alloc] initWithURL:songUrl];
-    [self.aVPlayer play];
+    if (firstFiredAlarm.alarmSong) {
+        NSURL *songUrl = [firstFiredAlarm.alarmSong valueForProperty:MPMediaItemPropertyAssetURL];
+        [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:NULL];
+        self.aVPlayer = [[AVPlayer alloc] initWithURL:songUrl];
+        [self.aVPlayer play];
+    }
+//    else {
+//        NSString *soundPath = firstFiredAlarm.notification.soundName;
+//        NSURL *songUrl = [NSURL URLWithString:soundPath];
+//        self.aVPlayer = [[AVPlayer alloc] initWithURL:songUrl];
+//        [self.aVPlayer play];
+//    }
 }
 
 #pragma mark - UIAlertViewDelegate

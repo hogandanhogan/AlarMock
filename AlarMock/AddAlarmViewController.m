@@ -49,7 +49,7 @@
     
     self.datePicker.date = [NSDate date];
     NSDateComponents *dateComponents = [[NSCalendar currentCalendar] components:NSCalendarUnitSecond fromDate:self.datePicker.date];
-    self.datePicker.date = [self.datePicker.date dateByAddingTimeInterval:60.0f * 60.0f * 24.0f - dateComponents.second];
+    self.datePicker.date = [self.datePicker.date dateByAddingTimeInterval:-dateComponents.second];
 
     self.tableView.scrollEnabled = NO;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
@@ -151,7 +151,7 @@
     self.alarm.fireDate = self.datePicker.date;
     self.alarm.snoozeInterval = self.sliderVal * 60;
     self.alarm.alarmSong = self.alarmSong;
-    self.alarm.notificationSound = self.notificationSound;
+    self.alarm.notificationSoundText = self.notificationSoundText;
     self.alarm.on = YES;
     
     [self.alarmEngine addAlarm:self.alarm];
@@ -174,10 +174,11 @@
 
 #pragma mark - SoundViewControllerDelegate
 
-- (void)soundViewController:(SoundViewController*)viewController didChooseNotificationSound:(NSString *)sound didChooseSong:(MPMediaItem *)alarmSong
+- (void)soundViewController:(SoundViewController*)viewController didChooseNotificationSoundText:(NSString *)soundText didChooseSong:(MPMediaItem *)alarmSong
 {
     self.alarmSong = alarmSong;
-    self.notificationSound = sound;
+    self.notificationSoundText = soundText;
+    //self.alarm.notificationSoundText = soundText;
 }
 
 @end

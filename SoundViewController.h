@@ -20,7 +20,7 @@
 @protocol SoundViewControllerDelegate <NSObject>
 
 - (void)soundViewController:(SoundViewController*)viewController
- didChooseNotificationSound:(NSString *)sound
+ didChooseNotificationSoundText:(NSString *)sound
               didChooseSong:(MPMediaItem *)alarmSong;
 
 @end

@@ -16,7 +16,6 @@ NSString * const kAlarmValueChangedNotification = @"AlarmValueChangedNotificatio
 
 @property (nonatomic) JokeCollection *jokeCollection;
 
-@property (nonatomic) UILocalNotification *notification;
 @property (nonatomic, getter = hasSnoozed) BOOL snoozed;
 
 @end
@@ -51,7 +50,7 @@ NSString * const kAlarmValueChangedNotification = @"AlarmValueChangedNotificatio
         _fireDate = [decoder decodeObjectForKey:@"fireDate"];
         _daysChecked = [decoder decodeObjectForKey:@"daysChecked"];
         _jokeCollection = [decoder decodeObjectForKey:@"jokeCollection"];
-        _notificationSound = [decoder decodeObjectForKey:@"notificationSound"];
+        _notificationSoundText = [decoder decodeObjectForKey:@"notificationSoundText"];
     }
     
     return self;
@@ -67,7 +66,7 @@ NSString * const kAlarmValueChangedNotification = @"AlarmValueChangedNotificatio
     [encoder encodeObject:_fireDate forKey:@"fireDate"];
     [encoder encodeObject:_daysChecked forKey:@"daysChecked"];
     [encoder encodeObject:_jokeCollection forKey:@"jokeCollection"];
-    [encoder encodeObject:_notificationSound forKey:@"notificationSound"];
+    [encoder encodeObject:_notificationSoundText forKey:@"notificationSoundText"];
 }
 
 #pragma mark - Snooze
@@ -75,7 +74,11 @@ NSString * const kAlarmValueChangedNotification = @"AlarmValueChangedNotificatio
 - (void)snooze
 {
     self.snoozed = YES;
-    [self setFireDate:[NSDate dateWithTimeInterval:self.snoozeInterval sinceDate:[NSDate date]]];
+    if (self.snoozeInterval) {
+        [self setFireDate:[NSDate dateWithTimeInterval:self.snoozeInterval sinceDate:[NSDate date]]];
+    }   else {
+        [self setFireDate:[NSDate dateWithTimeInterval:9.0f * 60.0f sinceDate:[NSDate date]]];
+    }
 }
 
 - (void)stop
@@ -139,7 +142,7 @@ NSString * const kAlarmValueChangedNotification = @"AlarmValueChangedNotificatio
     if (!_notification) {
         self.notification = [UILocalNotification new];
         _notification.timeZone = [NSTimeZone defaultTimeZone];
-        self.notificationSound = _notificationSound;
+
     }
     
     return _notification;
@@ -157,25 +160,20 @@ NSString * const kAlarmValueChangedNotification = @"AlarmValueChangedNotificatio
     return self.notification.alertBody;
 }
 
-- (void)setNotificationSound:(NSString *)notificationSound
+//notificationSound nil
+- (void)setNotificationSoundText:(NSString *)notificationSoundText
 {
-        _notificationSound = notificationSound;
-        self.notification.soundName = [self soundNameForNotificationSound:notificationSound];
-    }
+        _notificationSoundText = notificationSoundText;
+        self.notification.soundName = [self soundNameForNotificationSoundText:notificationSoundText];
+}
 
-- (NSString *)soundNameForNotificationSound:(NSString *)notificationSound
+- (NSString *)soundNameForNotificationSoundText:(NSString *)notificationSoundText
 {
-    if (!notificationSound && !self.notification.soundName) {
-        return @"0.wav";
-    }
-    
-    //TODO: finish sounds for notification
-    return [@{
-                            @"0" : @"0",
-                                           @"1" : @"1",
-                                           @"2" : @"2",
-                                           @"3" : @"3"
-                                           } valueForKey:notificationSound];
+    if (!notificationSoundText) {
+        //return @"0.wav";
+        return [self.notificationSoundText stringByAppendingString:@".wav"];
+        //return [[NSBundle mainBundle] pathForResource:@"0" ofType:@".wav"];
+    } else return [[NSBundle mainBundle] pathForResource:self.notificationSoundText ofType:@".wav"];
 }
 
 @end
