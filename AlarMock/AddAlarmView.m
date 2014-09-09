@@ -8,8 +8,10 @@
 
 #import "AddAlarmView.h"
 
-#import "AMColor.h"
 #import "AMRadialGradientLayer.h"
+#import "UIColor+AMTheme.h"
+
+#import <Masonry.h>
 
 @interface AddAlarmView ()
 
@@ -28,7 +30,7 @@
     self.gradientLayer = ({
         AMRadialGradientLayer *gradientLayer = [AMRadialGradientLayer layer];
         
-        gradientLayer.colors = [AMColor backgroundGradientColors];
+        gradientLayer.colors = [UIColor am_backgroundGradientColors];
         
         gradientLayer.locations = @[@0.0f, @1.0f];
         

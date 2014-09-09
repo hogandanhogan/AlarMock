@@ -16,10 +16,10 @@
 #import "AlarmEngine.h"
 #import "AlarmJoke.h"
 #import "AlarMockViewController.h"
-#import "AMColor.h"
-#import "AMFont.h"
-#import "AMNavigationAppearance.h"
 #import "SnoozeJoke.h"
+#import "UIColor+AMTheme.h"
+#import "UIFont+AMTheme.h"
+#import "UINavigationBar+AMTheme.h"
 
 @interface AppDelegate ()
 
@@ -41,9 +41,9 @@
     [Parse setApplicationId:@"I62Vun47l0d1KLv218eijHMxPG9dK6nxy54DtqQl" clientKey:@"rLVtvCOQVMqLrb5qijsmuC2y0MZAHVyZubSrFYqC"];
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
 
-    [AMNavigationAppearance sharedInstance].style = AMNavigationAppearanceStyleDark;
-    [[UIBarButtonItem appearance] setTitleTextAttributes: @{ NSFontAttributeName : [AMFont book14], NSForegroundColorAttributeName: [AMColor whiteColor] } forState:UIControlStateNormal];
-    [[UITableViewCell appearance] setTintColor:[AMColor whiteColor]];
+    [UINavigationBar setAm_AppearanceStyle:AMNavigationBarStyleDark];
+    [[UIBarButtonItem appearance] setTitleTextAttributes: @{ NSFontAttributeName : [UIFont am_book14], NSForegroundColorAttributeName: [UIColor am_whiteColor] } forState:UIControlStateNormal];
+    [[UITableViewCell appearance] setTintColor:[UIColor am_whiteColor]];
     
     self.alarmEngine = [AlarmEngine loadFromSavedData];
     self.rootViewController.alarmEngine = self.alarmEngine;
@@ -58,8 +58,14 @@
                                          error:&activationErr];
     
     return YES;
+}
+
+- (void)applicationWillEnterForeground:(UIApplication *)application
+{
+    //Hack to fix iOS7 bug, notification sound does not stop when user responds to notification
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber: 1];
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber: 0];
     
-    return YES;
 }
 
 - (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
@@ -67,7 +73,8 @@
     Alarm *alarm = [self.alarmEngine alarmWithFireDate:notification.fireDate];
     if (alarm) {
         if ([[UIApplication sharedApplication] applicationState] == UIApplicationStateActive ) {
-            NSString *soundPath = [[NSBundle mainBundle] pathForResource:@"0" ofType:@".wav"];
+            //TODO:Local Notification sound will not play if app in foreground
+            NSString *soundPath = notification.soundName;
             NSURL *soundURL = [NSURL fileURLWithPath:soundPath];
             self.aVPlayer = [[AVPlayer alloc] initWithURL:soundURL];
             [self.aVPlayer play];

@@ -10,15 +10,14 @@
 		1F6CACA519A7C5070025CB67 /* AddAlarmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6CACA419A7C5070025CB67 /* AddAlarmViewController.m */; };
 		1FDC25F719B666F60009ED53 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FDC25F619B666F60009ED53 /* Images.xcassets */; };
 		410D4096FBC94DA38C5FBA9E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 60DF75B9A60E451FB11298AB /* libPods.a */; };
-		715C52AC19BEAFC600DFB68E /* AMFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 715C52AB19BEAFC600DFB68E /* AMFont.m */; };
-		715C52AF19BEAFD100DFB68E /* AMColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 715C52AE19BEAFD100DFB68E /* AMColor.m */; };
-		715C52B219BEAFDD00DFB68E /* AMNavigationAppearance.m in Sources */ = {isa = PBXBuildFile; fileRef = 715C52B119BEAFDD00DFB68E /* AMNavigationAppearance.m */; };
 		71623D2519B2B6EC0025AE4B /* JokeCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 71623D2419B2B6EC0025AE4B /* JokeCollection.m */; };
 		7172A2F919BB7B6F0087DEB0 /* AlarMockView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7172A2F819BB7B6F0087DEB0 /* AlarMockView.m */; };
 		7172A2FC19BB7CEA0087DEB0 /* UIScreen+AMScale.m in Sources */ = {isa = PBXBuildFile; fileRef = 7172A2FB19BB7CEA0087DEB0 /* UIScreen+AMScale.m */; };
 		7172A2FF19BB7EED0087DEB0 /* AMRadialGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7172A2FE19BB7EED0087DEB0 /* AMRadialGradientLayer.m */; };
 		7172A30319BB87F80087DEB0 /* ClanOT-NarrMedium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7172A30119BB87E00087DEB0 /* ClanOT-NarrMedium.otf */; };
 		7172A30419BB87FA0087DEB0 /* ClanOT-Book.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7172A30219BB87E00087DEB0 /* ClanOT-Book.otf */; };
+		7172A30719BB89840087DEB0 /* UIFont+AMTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 7172A30619BB89840087DEB0 /* UIFont+AMTheme.m */; };
+		7172A30A19BB8C0D0087DEB0 /* UIColor+AMTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 7172A30919BB8C0D0087DEB0 /* UIColor+AMTheme.m */; };
 		7172A31819BBB5E90087DEB0 /* AddAlarmView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7172A31719BBB5E90087DEB0 /* AddAlarmView.m */; };
 		71A3AE9319B4D23B00D1001C /* NSArray+AMRandomElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 71A3AE9219B4D23B00D1001C /* NSArray+AMRandomElement.m */; };
 		71F3E9CF19BBD1F20033503B /* AMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71F3E9CE19BBD1F20033503B /* AMViewController.m */; };
@@ -29,6 +28,7 @@
 		79A2518F19AE2E7F009174C8 /* AlarmEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 79A2518E19AE2E7F009174C8 /* AlarmEngine.m */; };
 		79A2519119AF8366009174C8 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79A2519019AF8365009174C8 /* AVFoundation.framework */; };
 		79A2A95B19B0C5EC005BB9AC /* Alarm.m in Sources */ = {isa = PBXBuildFile; fileRef = 79A2A95A19B0C5EC005BB9AC /* Alarm.m */; };
+		79C4656219BE915D0022B1D9 /* UINavigationBar+AMTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 79C4656119BE915D0022B1D9 /* UINavigationBar+AMTheme.m */; };
 		79E2CBEA19BCEA8200352117 /* SoundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 79E2CBE919BCEA8200352117 /* SoundView.m */; };
 		79E2CBEF19BD3A9500352117 /* 0.wav in Resources */ = {isa = PBXBuildFile; fileRef = 79E2CBED19BD3A9500352117 /* 0.wav */; };
 		79E2CBF019BD3A9500352117 /* 1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 79E2CBEE19BD3A9500352117 /* 1.wav */; };
@@ -73,12 +73,6 @@
 		1F6CACA419A7C5070025CB67 /* AddAlarmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddAlarmViewController.m; sourceTree = "<group>"; };
 		1FDC25F619B666F60009ED53 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		60DF75B9A60E451FB11298AB /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		715C52AA19BEAFC600DFB68E /* AMFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMFont.h; sourceTree = "<group>"; };
-		715C52AB19BEAFC600DFB68E /* AMFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMFont.m; sourceTree = "<group>"; };
-		715C52AD19BEAFD100DFB68E /* AMColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMColor.h; sourceTree = "<group>"; };
-		715C52AE19BEAFD100DFB68E /* AMColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMColor.m; sourceTree = "<group>"; };
-		715C52B019BEAFDD00DFB68E /* AMNavigationAppearance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMNavigationAppearance.h; sourceTree = "<group>"; };
-		715C52B119BEAFDD00DFB68E /* AMNavigationAppearance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMNavigationAppearance.m; sourceTree = "<group>"; };
 		71623D2319B2B6EC0025AE4B /* JokeCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JokeCollection.h; sourceTree = "<group>"; };
 		71623D2419B2B6EC0025AE4B /* JokeCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JokeCollection.m; sourceTree = "<group>"; };
 		7172A2F719BB7B6F0087DEB0 /* AlarMockView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarMockView.h; sourceTree = "<group>"; };
@@ -89,6 +83,10 @@
 		7172A2FE19BB7EED0087DEB0 /* AMRadialGradientLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMRadialGradientLayer.m; sourceTree = "<group>"; };
 		7172A30119BB87E00087DEB0 /* ClanOT-NarrMedium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ClanOT-NarrMedium.otf"; sourceTree = "<group>"; };
 		7172A30219BB87E00087DEB0 /* ClanOT-Book.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ClanOT-Book.otf"; sourceTree = "<group>"; };
+		7172A30519BB89840087DEB0 /* UIFont+AMTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+AMTheme.h"; sourceTree = "<group>"; };
+		7172A30619BB89840087DEB0 /* UIFont+AMTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+AMTheme.m"; sourceTree = "<group>"; };
+		7172A30819BB8C0D0087DEB0 /* UIColor+AMTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+AMTheme.h"; sourceTree = "<group>"; };
+		7172A30919BB8C0D0087DEB0 /* UIColor+AMTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+AMTheme.m"; sourceTree = "<group>"; };
 		7172A31619BBB5E90087DEB0 /* AddAlarmView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddAlarmView.h; sourceTree = "<group>"; };
 		7172A31719BBB5E90087DEB0 /* AddAlarmView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddAlarmView.m; sourceTree = "<group>"; };
 		71A3AE9119B4D23B00D1001C /* NSArray+AMRandomElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+AMRandomElement.h"; sourceTree = "<group>"; };
@@ -107,6 +105,8 @@
 		79A2519019AF8365009174C8 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		79A2A95919B0C5EC005BB9AC /* Alarm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Alarm.h; sourceTree = "<group>"; };
 		79A2A95A19B0C5EC005BB9AC /* Alarm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Alarm.m; sourceTree = "<group>"; };
+		79C4656019BE915D0022B1D9 /* UINavigationBar+AMTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+AMTheme.h"; sourceTree = "<group>"; };
+		79C4656119BE915D0022B1D9 /* UINavigationBar+AMTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+AMTheme.m"; sourceTree = "<group>"; };
 		79E2CBE819BCEA8200352117 /* SoundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundView.h; sourceTree = "<group>"; };
 		79E2CBE919BCEA8200352117 /* SoundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundView.m; sourceTree = "<group>"; };
 		79E2CBED19BD3A9500352117 /* 0.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = 0.wav; sourceTree = "<group>"; };
@@ -181,15 +181,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		715C52A919BEAF9C00DFB68E /* View */ = {
-			isa = PBXGroup;
-			children = (
-				7172A30B19BB8C110087DEB0 /* Theme */,
-				7172A30F19BB8C450087DEB0 /* Gradient */,
-			);
-			name = View;
-			sourceTree = "<group>";
-		};
 		7172A2F319BB77910087DEB0 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
@@ -211,12 +202,12 @@
 		7172A30B19BB8C110087DEB0 /* Theme */ = {
 			isa = PBXGroup;
 			children = (
-				715C52AA19BEAFC600DFB68E /* AMFont.h */,
-				715C52AB19BEAFC600DFB68E /* AMFont.m */,
-				715C52AD19BEAFD100DFB68E /* AMColor.h */,
-				715C52AE19BEAFD100DFB68E /* AMColor.m */,
-				715C52B019BEAFDD00DFB68E /* AMNavigationAppearance.h */,
-				715C52B119BEAFDD00DFB68E /* AMNavigationAppearance.m */,
+				7172A30519BB89840087DEB0 /* UIFont+AMTheme.h */,
+				7172A30619BB89840087DEB0 /* UIFont+AMTheme.m */,
+				7172A30819BB8C0D0087DEB0 /* UIColor+AMTheme.h */,
+				7172A30919BB8C0D0087DEB0 /* UIColor+AMTheme.m */,
+				79C4656019BE915D0022B1D9 /* UINavigationBar+AMTheme.h */,
+				79C4656119BE915D0022B1D9 /* UINavigationBar+AMTheme.m */,
 			);
 			name = Theme;
 			sourceTree = "<group>";
@@ -225,7 +216,9 @@
 			isa = PBXGroup;
 			children = (
 				7172A30D19BB8C2A0087DEB0 /* Array */,
+				7172A30F19BB8C450087DEB0 /* Gradient */,
 				7172A30E19BB8C3B0087DEB0 /* Screen */,
+				7172A30B19BB8C110087DEB0 /* Theme */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -260,7 +253,6 @@
 		71A3AE9019B4D21E00D1001C /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				715C52A919BEAF9C00DFB68E /* View */,
 				71F3E9CC19BBD1E30033503B /* ViewController */,
 				7172A30C19BB8C1C0087DEB0 /* Categories */,
 			);
@@ -598,17 +590,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				7172A2F919BB7B6F0087DEB0 /* AlarMockView.m in Sources */,
-				715C52AF19BEAFD100DFB68E /* AMColor.m in Sources */,
 				7172A2FF19BB7EED0087DEB0 /* AMRadialGradientLayer.m in Sources */,
 				7172A31819BBB5E90087DEB0 /* AddAlarmView.m in Sources */,
 				98315B0119ABD40300D717F0 /* AlarmJoke.m in Sources */,
 				71F3E9CF19BBD1F20033503B /* AMViewController.m in Sources */,
 				79A2A95B19B0C5EC005BB9AC /* Alarm.m in Sources */,
 				7172A2FC19BB7CEA0087DEB0 /* UIScreen+AMScale.m in Sources */,
-				715C52B219BEAFDD00DFB68E /* AMNavigationAppearance.m in Sources */,
 				98315B0419ABD4E700D717F0 /* SnoozeJoke.m in Sources */,
 				98962DD319A7C0E700DEE9B5 /* AlarMockViewController.m in Sources */,
+				7172A30719BB89840087DEB0 /* UIFont+AMTheme.m in Sources */,
 				79A2518F19AE2E7F009174C8 /* AlarmEngine.m in Sources */,
+				7172A30A19BB8C0D0087DEB0 /* UIColor+AMTheme.m in Sources */,
 				792A791619ABF4C80099A32F /* AlarMockTableViewCell.m in Sources */,
 				1F6CACA519A7C5070025CB67 /* AddAlarmViewController.m in Sources */,
 				71623D2519B2B6EC0025AE4B /* JokeCollection.m in Sources */,
@@ -617,8 +609,8 @@
 				7908639419B7C05600EDD19B /* SoundViewController.m in Sources */,
 				98962DCD19A7C0E700DEE9B5 /* AppDelegate.m in Sources */,
 				797DF3DC19A962FE00FDD94B /* RepeatViewController.m in Sources */,
-				715C52AC19BEAFC600DFB68E /* AMFont.m in Sources */,
 				98962DC919A7C0E700DEE9B5 /* main.m in Sources */,
+				79C4656219BE915D0022B1D9 /* UINavigationBar+AMTheme.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
