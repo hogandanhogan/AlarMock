@@ -21,7 +21,7 @@
 
 + (instancetype)am_switchTintColor
 {
-    return [UIColor colorWithRed:0.29f green:0.40f blue:0.56f alpha:1.0f];
+    return [UIColor colorWithRed:0.5f green:0.5f blue:0.65f alpha:1.0f];
 }
 
 + (instancetype)am_switchThumbColor
@@ -33,14 +33,12 @@
 
 + (instancetype)am_lightBlueColor
 {
-    return [UIColor colorWithRed:0.13f green:0.18f blue:0.34f alpha:1.0f];
-//    return [UIColor colorWithRed:0.11f green:0.44f blue:0.60f alpha:1.0f];
+    return [UIColor colorWithRed:38.0f/255.0f green:33.0f/255.0f blue:73.0f/255.0f alpha:1.0f];
 }
 
 + (instancetype)am_darkBlueColor
 {
-    return [UIColor colorWithRed:0.11f green:0.44f blue:0.60f alpha:1.0f];
-//    return [UIColor colorWithRed:0.13f green:0.18f blue:0.34f alpha:1.0f];
+    return [UIColor colorWithRed:0.0f/255.0f green:110.0f/255.0f blue:155.0f/255.0f alpha:1.0f];
 }
 
 + (instancetype)am_lightGrayColor
