@@ -57,6 +57,11 @@
     [[AVAudioSession sharedInstance] setActive:YES
                                          error:&activationErr];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(playNotificationSound:)
+                                                 name:@"AlertviewFired"
+                                               object:nil];
+    
     return YES;
 }
 
@@ -83,6 +88,8 @@
 
 - (void)updateAlarmQueue
 {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"AlertviewFired"
+                                                        object:nil];
     Alarm *firstFiredAlarm = self.alarmQueue.firstObject;
     [[[UIAlertView alloc] initWithTitle:firstFiredAlarm.joke
                                 message:nil
@@ -95,15 +102,18 @@
         self.aVPlayer = [[AVPlayer alloc] initWithURL:songUrl];
         [self.aVPlayer play];
     }
-//    else {
-//        NSString *soundPath = firstFiredAlarm.notification.soundName;
-//        NSURL *songUrl = [NSURL URLWithString:soundPath];
-//        self.aVPlayer = [[AVPlayer alloc] initWithURL:songUrl];
-//        [self.aVPlayer play];
-//    }
+}
+
+-(void)playNotificationSound:(NSNotification *)notification
+{
+    Alarm *firstFiredAlarm = self.alarmQueue.firstObject;
+    self.aVPlayer = [[AVPlayer alloc] initWithURL:[NSURL URLWithString:firstFiredAlarm.notification.soundName]];
+    [self.aVPlayer play];
 }
 
 #pragma mark - UIAlertViewDelegate
+
+
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
