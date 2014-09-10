@@ -79,8 +79,10 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    self.lastIndexPath = indexPath;
+    
     if (indexPath.section == 1) {
-        
         [UINavigationBar setAm_AppearanceStyle:AMNavigationBarStyleLight];
 
         MPMediaPickerController *mediaPicker = [[MPMediaPickerController alloc] initWithMediaTypes:MPMediaTypeMusic];
@@ -90,8 +92,6 @@
         mediaPicker.prompt = @"What song would you like stuck in your head?";
         [self presentViewController:mediaPicker animated:YES completion:nil];
     } else {
-        self.lastIndexPath = indexPath;
-        //TODO:Pick notification sounds
         self.notificationSoundText = [NSString stringWithFormat:@"%ld", (long)indexPath.row];
         
         NSString *soundPath = [[NSBundle mainBundle] pathForResource:self.notificationSoundText ofType:@".wav"];
