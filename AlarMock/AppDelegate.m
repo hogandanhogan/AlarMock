@@ -85,8 +85,10 @@
 {
     Alarm *firstFiredAlarm = self.alarmQueue.firstObject;
     if (firstFiredAlarm.notification.soundName) {
-        //self.aVPlayer = [[AVPlayer alloc] initWithURL:[NSURL URLWithString:[firstFiredAlarm.notificationSoundText stringByAppendingString:@".wav"]]];
-         self.aVPlayer = [[AVPlayer alloc] initWithURL:[NSURL URLWithString:[[NSBundle mainBundle] pathForResource:firstFiredAlarm.notificationSoundText ofType:@".wav"]]];
+        NSString *soundPath = [[NSBundle mainBundle] pathForResource:@"0" ofType:@".wav"];
+        NSURL *soundURL = [NSURL fileURLWithPath:soundPath];
+        
+        self.aVPlayer = [[AVPlayer alloc] initWithURL:soundURL];
         [self.aVPlayer play];
     } else if (firstFiredAlarm.alarmSong) {
         NSURL *songUrl = [firstFiredAlarm.alarmSong valueForProperty:MPMediaItemPropertyAssetURL];
