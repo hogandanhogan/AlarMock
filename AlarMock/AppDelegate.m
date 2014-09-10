@@ -57,11 +57,6 @@
     [[AVAudioSession sharedInstance] setActive:YES
                                          error:&activationErr];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(playNotificationSound:)
-                                                 name:@"AlertviewFired"
-                                               object:nil];
-    
     return YES;
 }
 
@@ -88,27 +83,23 @@
 
 - (void)updateAlarmQueue
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"AlertviewFired"
-                                                        object:nil];
     Alarm *firstFiredAlarm = self.alarmQueue.firstObject;
-    [[[UIAlertView alloc] initWithTitle:firstFiredAlarm.joke
-                                message:nil
-                               delegate:self
-                      cancelButtonTitle:nil
-                      otherButtonTitles:@"Snooze", @"Dismiss",nil] show];
-    if (firstFiredAlarm.alarmSong) {
+    if (firstFiredAlarm.notification.soundName) {
+        //self.aVPlayer = [[AVPlayer alloc] initWithURL:[NSURL URLWithString:[firstFiredAlarm.notificationSoundText stringByAppendingString:@".wav"]]];
+         self.aVPlayer = [[AVPlayer alloc] initWithURL:[NSURL URLWithString:[[NSBundle mainBundle] pathForResource:firstFiredAlarm.notificationSoundText ofType:@".wav"]]];
+        [self.aVPlayer play];
+    } else if (firstFiredAlarm.alarmSong) {
         NSURL *songUrl = [firstFiredAlarm.alarmSong valueForProperty:MPMediaItemPropertyAssetURL];
         [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:NULL];
         self.aVPlayer = [[AVPlayer alloc] initWithURL:songUrl];
         [self.aVPlayer play];
     }
-}
-
--(void)playNotificationSound:(NSNotification *)notification
-{
-    Alarm *firstFiredAlarm = self.alarmQueue.firstObject;
-    self.aVPlayer = [[AVPlayer alloc] initWithURL:[NSURL URLWithString:firstFiredAlarm.notification.soundName]];
-    [self.aVPlayer play];
+    
+    [[[UIAlertView alloc] initWithTitle:firstFiredAlarm.joke
+                                message:nil
+                               delegate:self
+                      cancelButtonTitle:nil
+                      otherButtonTitles:@"Snooze", @"Dismiss",nil] show];
 }
 
 #pragma mark - UIAlertViewDelegate
