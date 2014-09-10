@@ -22,6 +22,8 @@ NSString * const kAlarmValueChangedNotification = @"AlarmValueChangedNotificatio
 
 @implementation Alarm
 
+@synthesize notificationSoundText = _notificationSoundText;
+
 #pragma mark - Initialization
 
 - (id)initWithJokeCollection:(JokeCollection *)jokeCollection
@@ -160,11 +162,19 @@ NSString * const kAlarmValueChangedNotification = @"AlarmValueChangedNotificatio
     return self.notification.alertBody;
 }
 
+- (NSString *)notificationSoundText
+{
+    if (!_notificationSoundText) {
+        self.notificationSoundText = @"0.wav";
+    }
+    return _notificationSoundText;
+}
+
 //notificationSound nil
 - (void)setNotificationSoundText:(NSString *)notificationSoundText
 {
-        _notificationSoundText = notificationSoundText;
-        self.notification.soundName = [self soundNameForNotificationSoundText:notificationSoundText];
+    _notificationSoundText = notificationSoundText;
+    self.notification.soundName = [self soundNameForNotificationSoundText:notificationSoundText];
 }
 
 - (NSString *)soundNameForNotificationSoundText:(NSString *)notificationSoundText
@@ -173,7 +183,9 @@ NSString * const kAlarmValueChangedNotification = @"AlarmValueChangedNotificatio
         //return @"0.wav";
         return [self.notificationSoundText stringByAppendingString:@".wav"];
         //return [[NSBundle mainBundle] pathForResource:@"0" ofType:@".wav"];
-    } else return [[NSBundle mainBundle] pathForResource:self.notificationSoundText ofType:@".wav"];
+    } else {
+        return [[NSBundle mainBundle] pathForResource:self.notificationSoundText ofType:@".wav"];
+    }
 }
 
 @end
