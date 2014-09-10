@@ -16,10 +16,10 @@
 #import "AlarmEngine.h"
 #import "AlarmJoke.h"
 #import "AlarMockViewController.h"
+#import "AMColor.h"
+#import "AMFont.h"
+#import "AMNavigationAppearance.h"
 #import "SnoozeJoke.h"
-#import "UIColor+AMTheme.h"
-#import "UIFont+AMTheme.h"
-#import "UINavigationBar+AMTheme.h"
 
 @interface AppDelegate ()
 
@@ -41,9 +41,9 @@
     [Parse setApplicationId:@"I62Vun47l0d1KLv218eijHMxPG9dK6nxy54DtqQl" clientKey:@"rLVtvCOQVMqLrb5qijsmuC2y0MZAHVyZubSrFYqC"];
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
 
-    [UINavigationBar setAm_AppearanceStyle:AMNavigationBarStyleDark];
-    [[UIBarButtonItem appearance] setTitleTextAttributes: @{ NSFontAttributeName : [UIFont am_book14], NSForegroundColorAttributeName: [UIColor am_whiteColor] } forState:UIControlStateNormal];
-    [[UITableViewCell appearance] setTintColor:[UIColor am_whiteColor]];
+    [[AMNavigationAppearance sharedInstance] setStyle:AMNavigationAppearanceStyleDark];
+    [[UIBarButtonItem appearance] setTitleTextAttributes: @{ NSFontAttributeName : [AMFont book14], NSForegroundColorAttributeName: [AMColor whiteColor] } forState:UIControlStateNormal];
+    [[UITableViewCell appearance] setTintColor:[AMColor whiteColor]];
     
     self.alarmEngine = [AlarmEngine loadFromSavedData];
     self.rootViewController.alarmEngine = self.alarmEngine;

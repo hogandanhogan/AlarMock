@@ -12,10 +12,10 @@
 #import "SoundViewController.h"
 
 #import "AddAlarmViewController.h"
+#import "AMColor.h"
+#import "AMFont.h"
+#import "AMNavigationAppearance.h"
 #import "AMRadialGradientLayer.h"
-#import "UIColor+AMTheme.h"
-#import "UIFont+AMTheme.h"
-#import "UINavigationBar+AMTheme.h"
 #import "UIScreen+AMScale.h"
 
 @interface SoundViewController () <UITableViewDataSource, UITableViewDelegate, MPMediaPickerControllerDelegate>
@@ -83,7 +83,7 @@
     self.lastIndexPath = indexPath;
     
     if (indexPath.section == 1) {
-        [UINavigationBar setAm_AppearanceStyle:AMNavigationBarStyleLight];
+        [[AMNavigationAppearance sharedInstance] setStyle:AMNavigationAppearanceStyleLight];
 
         MPMediaPickerController *mediaPicker = [[MPMediaPickerController alloc] initWithMediaTypes:MPMediaTypeMusic];
         
@@ -107,13 +107,13 @@
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SoundCell"];
 
-    cell.textLabel.textColor = [UIColor am_whiteColor];
+    cell.textLabel.textColor = [AMColor whiteColor];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     if (indexPath.section == 0) {
-        cell.textLabel.font = [UIFont am_book22];
+        cell.textLabel.font = [AMFont book22];
         cell.textLabel.text = [self.sounds objectAtIndex:indexPath.row];
     } else {
-        cell.textLabel.font = [UIFont am_book16];
+        cell.textLabel.font = [AMFont book16];
         cell.textLabel.text = @"Choose a song from your Library";
     }
     
@@ -143,7 +143,7 @@
 
 - (void)mediaPicker:(MPMediaPickerController *)mediaPicker didPickMediaItems:(MPMediaItemCollection *)mediaItemCollection
 {
-    [UINavigationBar setAm_AppearanceStyle:AMNavigationBarStyleDark];
+    [[AMNavigationAppearance sharedInstance] setStyle:AMNavigationAppearanceStyleDark];
 
     [self dismissViewControllerAnimated:YES completion:^{
         self.alarmSong = [mediaItemCollection.items objectAtIndex:0];
@@ -157,7 +157,7 @@
 
 -(void)mediaPickerDidCancel:(MPMediaPickerController *)mediaPicker
 {
-    [UINavigationBar setAm_AppearanceStyle:AMNavigationBarStyleDark];
+    [[AMNavigationAppearance sharedInstance] setStyle:AMNavigationAppearanceStyleDark];
 
     [self dismissViewControllerAnimated:YES completion:nil];
 }
