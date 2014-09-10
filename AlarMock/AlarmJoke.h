@@ -12,5 +12,9 @@
 @interface AlarmJoke : PFObject<PFSubclassing>
 
 @property (nonatomic) NSString *joke;
+<<<<<<< .merge_file_nKEPcw
 
+=======
+@property PFFile *wav;
+>>>>>>> .merge_file_YNlN9D
 @end

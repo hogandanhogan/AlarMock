@@ -18,6 +18,7 @@
 
     if (self) {
         self.joke = [decoder decodeObjectForKey:@"joke"];
+//        self.joke = [decoder decodeObjectForKey:@"audio"];
     }
 
     return self;
@@ -26,6 +27,7 @@
 - (void)encodeWithCoder:(NSCoder *)encoder
 {
     [encoder encodeObject:self.joke forKey:@"joke"];
+//    [encoder encodeObject:self.joke forKey:@"audio"];
 }
 
 + (NSString *)parseClassName

@@ -57,6 +57,8 @@
     }];
 }
 
+//cave else scheme
+
 - (void)querySnoozeJokesWithHandler:(void (^)(NSArray *jokes, NSError *error))handler
 {
     PFQuery *query = [PFQuery queryWithClassName:[SnoozeJoke parseClassName]];
