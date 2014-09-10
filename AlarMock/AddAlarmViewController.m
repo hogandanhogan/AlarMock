@@ -178,7 +178,6 @@
 {
     self.alarmSong = alarmSong;
     self.notificationSoundText = soundText;
-    //self.alarm.notificationSoundText = soundText;
 }
 
 @end

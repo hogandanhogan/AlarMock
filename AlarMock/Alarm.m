@@ -78,14 +78,13 @@ NSString * const kAlarmValueChangedNotification = @"AlarmValueChangedNotificatio
     self.snoozed = YES;
     if (self.snoozeInterval) {
         [self setFireDate:[NSDate dateWithTimeInterval:self.snoozeInterval sinceDate:[NSDate date]]];
-    }   else {
-        [self setFireDate:[NSDate dateWithTimeInterval:9.0f * 60.0f sinceDate:[NSDate date]]];
     }
 }
 
 - (void)stop
 {
     self.snoozed = NO;
+    self.on = NO;
 }
 
 #pragma mark - Jokes
@@ -99,6 +98,18 @@ NSString * const kAlarmValueChangedNotification = @"AlarmValueChangedNotificatio
     }
 }
 
+#pragma mark - Fire Date
+
+- (void)scheduleLocalNotification
+{
+    while ([_fireDate timeIntervalSinceNow] <= 0.0) {
+        _fireDate = [_fireDate dateByAddingTimeInterval:60.0 * 60.0 * 24.0];
+    }
+
+    self.notification.fireDate = _fireDate;
+    [[UIApplication sharedApplication] scheduleLocalNotification:self.notification];
+}
+
 #pragma mark - Accesors
 
 - (void)setOn:(BOOL)on
@@ -106,8 +117,8 @@ NSString * const kAlarmValueChangedNotification = @"AlarmValueChangedNotificatio
     _on = on;
     
     if (on) {
-        [[UIApplication sharedApplication] scheduleLocalNotification:self.notification];
-    } else {
+        [self scheduleLocalNotification];
+    } else if ([_fireDate timeIntervalSinceNow] > 0.0) {
         [[UIApplication sharedApplication] cancelLocalNotification:self.notification];
     }
     
@@ -122,15 +133,12 @@ NSString * const kAlarmValueChangedNotification = @"AlarmValueChangedNotificatio
 
 - (void)setFireDate:(NSDate *)fireDate
 {
-    if ([fireDate timeIntervalSinceNow] <= 0) {
-        _fireDate = [fireDate dateByAddingTimeInterval:60.0f * 60.0f * 24.0f];
-    } else {
-        _fireDate = fireDate;
+    _fireDate = fireDate;
+    
+    if (self.on) {
+        [[UIApplication sharedApplication] cancelLocalNotification:self.notification];
+        [self scheduleLocalNotification];
     }
-    
-    self.notification.fireDate = _fireDate;
-    
-    [[UIApplication sharedApplication] scheduleLocalNotification:self.notification];
 }
 
 - (void)setJokeCollection:(JokeCollection *)jokeCollection
@@ -144,7 +152,6 @@ NSString * const kAlarmValueChangedNotification = @"AlarmValueChangedNotificatio
     if (!_notification) {
         self.notification = [UILocalNotification new];
         _notification.timeZone = [NSTimeZone defaultTimeZone];
-
     }
     
     return _notification;
@@ -165,8 +172,9 @@ NSString * const kAlarmValueChangedNotification = @"AlarmValueChangedNotificatio
 - (NSString *)notificationSoundText
 {
     if (!_notificationSoundText) {
-        self.notificationSoundText = @"0.wav";
+        self.notificationSoundText = @"0";
     }
+    
     return _notificationSoundText;
 }
 
@@ -179,13 +187,8 @@ NSString * const kAlarmValueChangedNotification = @"AlarmValueChangedNotificatio
 
 - (NSString *)soundNameForNotificationSoundText:(NSString *)notificationSoundText
 {
-    if (!notificationSoundText) {
-        //return @"0.wav";
-        return [self.notificationSoundText stringByAppendingString:@".wav"];
-        //return [[NSBundle mainBundle] pathForResource:@"0" ofType:@".wav"];
-    } else {
-        return [[NSBundle mainBundle] pathForResource:self.notificationSoundText ofType:@".wav"];
-    }
+    NSString *string = [self.notificationSoundText stringByAppendingString:@".wav"];
+    return string;
 }
 
 @end
