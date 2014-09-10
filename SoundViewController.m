@@ -105,7 +105,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SoundCell"];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SoundCell" forIndexPath:indexPath];
 
     cell.textLabel.textColor = [AMColor whiteColor];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -115,11 +115,6 @@
     } else {
         cell.textLabel.font = [AMFont book16];
         cell.textLabel.text = @"Choose a song from your Library";
-    }
-    
-    if(cell == nil )
-    {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"SoundCell"];
     }
     
     if ([indexPath compare:self.lastIndexPath] == NSOrderedSame) {
