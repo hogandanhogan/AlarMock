@@ -15,6 +15,7 @@
 #import "AMColor.h"
 #import "AMFont.h"
 #import "SoundViewController.h"
+#import <MZFormSheetController.h>
 
 @interface AddAlarmViewController () <UITableViewDataSource, UITableViewDelegate, SoundViewControllerDelegate>
 
@@ -106,19 +107,6 @@
 
 #pragma mark - Action handlers
 
-- (void)changeSnoozeSwitch:(id)sender
-{
-    if([sender isOn]) {
-        self.slider.hidden = NO;
-        self.snoozeTimeLabel.hidden = NO;
-        self.snoozeMockLabel.hidden = NO;
-    } else {
-        self.slider.hidden = YES;
-        self.snoozeTimeLabel.hidden = YES;
-        self.snoozeMockLabel.hidden = YES;
-    }
-}
-
 - (IBAction)onMoveSlider:(id)sender
 {
     UISlider *slider = (UISlider *)sender;
@@ -162,6 +150,13 @@
 - (IBAction)switchDidChangeValue:(UISwitch *)aSwitch
 {
     if([aSwitch isOn]) {
+        
+        MZFormSheetController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"nav"];
+        
+        [self mz_presentFormSheetController:vc animated:YES completionHandler:^(MZFormSheetController *formSheetController) {
+            
+        }];
+        
         self.slider.hidden = NO;
         self.snoozeTimeLabel.hidden = NO;
         self.snoozeMockLabel.hidden = NO;
