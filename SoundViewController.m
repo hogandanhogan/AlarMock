@@ -15,7 +15,6 @@
 #import "AMColor.h"
 #import "AMFont.h"
 #import "AMNavigationAppearance.h"
-#import "AMRadialGradientLayer.h"
 #import "UIScreen+AMScale.h"
 
 @interface SoundViewController () <UITableViewDataSource, UITableViewDelegate, MPMediaPickerControllerDelegate>
@@ -24,7 +23,6 @@
 @property (nonatomic) MPMediaItem *alarmSong;
 @property (nonatomic) NSString *notificationSoundText;
 @property (nonatomic) NSString *checkedSound;
-@property (nonatomic) AMRadialGradientLayer *gradientLayer;
 @property (nonatomic) NSArray *sounds;
 @property (nonatomic) NSIndexPath *lastIndexPath;
 @property (nonatomic) AVPlayer *aVPlayer;

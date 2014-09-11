@@ -329,29 +329,38 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <outlet property="snoozeTimeLabel" destination="tdj-KO-J7T" id="h6v-xz-0hk"/>
                         <outlet property="tableView" destination="0d0-Kt-K1p" id="mQ0-3g-GzU"/>
                         <segue destination="fie-sn-jIQ" kind="push" identifier="soundVC" id="X6R-tw-ran"/>
+                        <segue destination="m3u-S9-KBp" kind="custom" identifier="formSheet" customClass="MZFormSheetSegue" id="cSw-mO-hHG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="avP-AO-fIa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1025" y="99"/>
         </scene>
-        <!--Form Sheet Controller-->
+        <!--View Controller-->
         <scene sceneID="MnJ-Ma-mhd">
             <objects>
-                <viewController storyboardIdentifier="nav" useStoryboardIdentifierAsRestorationIdentifier="YES" id="m3u-S9-KBp" customClass="MZFormSheetController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="nav" useStoryboardIdentifierAsRestorationIdentifier="YES" id="m3u-S9-KBp" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="m97-Cm-QXq"/>
                         <viewControllerLayoutGuide type="bottom" id="upT-rO-7QN"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="isM-UU-ws6">
+                    <view key="view" contentMode="scaleToFill" id="isM-UU-ws6" customClass="MZFormSheetView">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WPd-Lb-DTl">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="7cU-rT-Le6"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V6t-kC-u5D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1025" y="665"/>
+            <point key="canvasLocation" x="1025" y="737"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="PuD-oF-KGD">
@@ -375,7 +384,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             </objects>
             <point key="canvasLocation" x="138" y="99"/>
         </scene>
-        <!--Sound View Controller - Alarm Sound-->
+        <!--Sound View Controller - ALARM SOUND-->
         <scene sceneID="9ix-WY-EhP">
             <objects>
                 <viewController storyboardIdentifier="soundVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="fie-sn-jIQ" customClass="SoundViewController" sceneMemberID="viewController">
@@ -416,7 +425,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                             <constraint firstItem="kjv-DL-RON" firstAttribute="leading" secondItem="2SO-zF-xcl" secondAttribute="leading" id="u2J-As-FkW"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Alarm Sound" id="Rx6-qJ-FXu">
+                    <navigationItem key="navigationItem" title="ALARM SOUND" id="Rx6-qJ-FXu">
                         <barButtonItem key="leftBarButtonItem" title="Back" id="797-Lg-0Ux">
                             <connections>
                                 <action selector="handleBackButton:" destination="fie-sn-jIQ" id="ANu-PS-VHX"/>
@@ -429,7 +438,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sg6-iI-XOY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1516" y="322"/>
+            <point key="canvasLocation" x="1529" y="345"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
