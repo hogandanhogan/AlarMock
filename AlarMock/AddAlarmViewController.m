@@ -17,8 +17,6 @@
 #import "SoundViewController.h"
 #import <MZFormSheetController.h>
 #import "MZFormSheetView.h"
-#import "MZFormSheetSegue.h"
-#import "MZCustomTransition.h"
 
 @interface AddAlarmViewController () <UITableViewDataSource, UITableViewDelegate, SoundViewControllerDelegate>
 
@@ -63,8 +61,6 @@
     [[MZFormSheetBackgroundWindow appearance] setBlurRadius:5.0];
     [[MZFormSheetBackgroundWindow appearance] setBackgroundColor:[UIColor clearColor]];
     
-    [MZFormSheetController registerTransitionClass:[MZCustomTransition class] forTransitionStyle:MZFormSheetTransitionStyleCustom];
-
     self.slider.hidden = YES;
 }
 
@@ -83,18 +79,10 @@
     }
 }
 
--(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+-(void)tableView:(UITableView *)tableView willDisplayCell:(AlarMockTableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    cell.alpha = 0;
-    cell.layer.transform = CATransform3DMakeScale(0.5, 0.5, 0.5);
-    cell.layer.anchorPoint = CGPointMake(0, 0.5);
-    
-    // define final state (e.g. after animation) & commit animation
-    [UIView beginAnimations:@"scaleTableViewCellAnimationID" context:NULL];
-    [UIView setAnimationDuration:0.7];
-    cell.alpha = 1;
-    cell.layer.transform = CATransform3DIdentity;
-    [UIView commitAnimations];
+    [cell prepareForAnimation];
+    [cell presentCellAnimated:YES];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -125,20 +113,6 @@
 {
     if ([segue.destinationViewController isKindOfClass:[SoundViewController class]]) {
         ((SoundViewController *)[segue destinationViewController]).delegate = self;
-    } else if ([segue.identifier isEqualToString:@"formSheet"]) {
-        MZFormSheetSegue *formSheetSegue = (MZFormSheetSegue *)segue;
-        MZFormSheetController *formSheet = formSheetSegue.formSheetController;
-        formSheet.transitionStyle = MZFormSheetTransitionStyleBounce;
-        formSheet.cornerRadius = 8.0;
-        formSheet.didTapOnBackgroundViewCompletionHandler = ^(CGPoint location) {
-            
-        };
-        
-        formSheet.shouldDismissOnBackgroundViewTap = YES;
-        
-        formSheet.didPresentCompletionHandler = ^(UIViewController *presentedFSViewController) {
-            
-        };
     }
 }
 
@@ -187,9 +161,8 @@
 - (IBAction)switchDidChangeValue:(UISwitch *)aSwitch
 {
     if([aSwitch isOn]) {
-        MZFormSheetController *vc = [[MZFormSheetController alloc] initWithViewController:[[UIViewController alloc] init]];
-        
-        [self.navigationController presentViewController:vc animated:YES completion:nil];
+        MZFormSheetController *vc = [[MZFormSheetController alloc] initWithViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"formSheetController"]];
+        [vc presentAnimated:YES completionHandler:nil];
         
         self.slider.hidden = NO;
         self.snoozeTimeLabel.hidden = NO;

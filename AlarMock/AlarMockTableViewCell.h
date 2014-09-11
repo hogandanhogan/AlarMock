@@ -15,4 +15,7 @@
 
 - (void)setText:(NSString *)text timeFormatted:(BOOL)timeFormatted;
 
+- (void)prepareForAnimation;
+- (void)presentCellAnimated:(BOOL)animated;
+
 @end

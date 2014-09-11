@@ -35,6 +35,40 @@
     self.cellSwitch.thumbTintColor = [AMColor switchThumbColor];
 }
 
+- (void)prepareForReuse
+{
+    [super prepareForReuse];
+    [self prepareForAnimation];
+}
+
+- (void)prepareForAnimation
+{
+    [self.layer removeAllAnimations];
+    
+    self.alpha = 0;
+    
+    self.layer.transform = CATransform3DMakeRotation(M_PI_2, 1.0f, 0.0f, 0.0f);
+    self.layer.anchorPoint = CGPointMake(0, 0.5);
+}
+
+- (void)presentCellAnimated:(BOOL)animated
+{
+    void (^changes)() = ^{
+        self.alpha = 1;
+        self.layer.transform = CATransform3DIdentity;
+    };
+    
+    if (animated) {
+        [UIView animateWithDuration:0.6
+                              delay:0.3
+                            options:UIViewAnimationOptionCurveEaseOut
+                         animations:changes
+                         completion:nil];
+    } else {
+        changes();
+    }
+}
+
 #pragma mark - Accessors
 
 - (void)setSwitchState:(BOOL)on

@@ -63,10 +63,16 @@
     return 88;
 }
 
+-(void)tableView:(UITableView *)tableView willDisplayCell:(AlarMockTableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [cell presentCellAnimated:(self.state == AMViewControllerStateAppeared)];
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     Alarm *alarm = self.alarmEngine.alarms[indexPath.row];
     AlarMockTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+
     cell.cellSwitch.on = alarm.on;
     cell.cellSwitch.tag = indexPath.row;
     
