@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="inj-uT-doH">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="inj-uT-doH">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
         <!--AlarMock View Controller - Alarm Mock-->
@@ -151,7 +151,7 @@
             </objects>
             <point key="canvasLocation" x="1516" y="-269"/>
         </scene>
-        <!--ADD ALARM-->
+        <!--Add Alarm View Controller - ADD ALARM-->
         <scene sceneID="Zu8-Yv-70k">
             <objects>
                 <viewController autoresizesArchivedViewToFullSize="NO" automaticallyAdjustsScrollViewInsets="NO" id="AjE-70-so0" customClass="AddAlarmViewController" sceneMemberID="viewController">
@@ -163,7 +163,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="0d0-Kt-K1p">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="0d0-Kt-K1p">
                                 <rect key="frame" x="0.0" y="226" width="320" height="151"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -218,56 +218,15 @@
                                     <!--2014-08-22 18:33:15 +0000-->
                                 </date>
                             </datePicker>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="v8C-Td-FdW">
-                                <rect key="frame" x="18" y="392" width="284" height="37"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="280" id="XLV-ps-BHO"/>
-                                </constraints>
-                                <connections>
-                                    <action selector="onMoveSlider:" destination="AjE-70-so0" eventType="valueChanged" id="Oik-kb-2ui"/>
-                                </connections>
-                            </slider>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tdj-KO-J7T" userLabel="Slider Value Label">
-                                <rect key="frame" x="60" y="377" width="200" height="21"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="BmW-2R-T50"/>
-                                    <constraint firstAttribute="width" constant="200" id="wiX-ix-me8"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="NeL-D8-Rgy" userLabel="Seriously? Label">
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="280" id="pX9-lj-Fpf"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="0d0-Kt-K1p" firstAttribute="leading" secondItem="Q2b-EW-TsS" secondAttribute="leading" id="0vp-b9-jnz"/>
-                            <constraint firstItem="tdj-KO-J7T" firstAttribute="top" secondItem="NeL-D8-Rgy" secondAttribute="bottom" id="7JD-nC-sgs"/>
-                            <constraint firstItem="v8C-Td-FdW" firstAttribute="top" secondItem="NeL-D8-Rgy" secondAttribute="bottom" constant="15" id="D7k-zv-ztP"/>
-                            <constraint firstAttribute="trailing" secondItem="v8C-Td-FdW" secondAttribute="trailing" constant="20" id="HQG-ng-7Mh"/>
-                            <constraint firstItem="NeL-D8-Rgy" firstAttribute="top" secondItem="0d0-Kt-K1p" secondAttribute="bottom" id="K07-3g-kMa"/>
-                            <constraint firstItem="tdj-KO-J7T" firstAttribute="centerX" secondItem="NeL-D8-Rgy" secondAttribute="centerX" id="M7i-kk-cpT"/>
                             <constraint firstAttribute="trailing" secondItem="0d0-Kt-K1p" secondAttribute="trailing" id="Mqn-3M-ZxI"/>
-                            <constraint firstItem="NeL-D8-Rgy" firstAttribute="leading" secondItem="Q2b-EW-TsS" secondAttribute="leading" constant="20" id="MsE-mV-i1b"/>
                             <constraint firstItem="A69-J5-BpF" firstAttribute="leading" secondItem="Q2b-EW-TsS" secondAttribute="leading" id="N3i-n5-y74"/>
-                            <constraint firstItem="v8C-Td-FdW" firstAttribute="leading" secondItem="Q2b-EW-TsS" secondAttribute="leading" constant="20" id="Qrt-P9-iC9"/>
-                            <constraint firstItem="nUY-W8-DZh" firstAttribute="top" secondItem="v8C-Td-FdW" secondAttribute="bottom" constant="8" id="W8n-qe-2zF"/>
                             <constraint firstItem="A69-J5-BpF" firstAttribute="top" secondItem="jGO-Bj-jmF" secondAttribute="bottom" id="aTx-OT-nxI"/>
                             <constraint firstItem="0d0-Kt-K1p" firstAttribute="top" secondItem="A69-J5-BpF" secondAttribute="bottom" id="cdc-Ho-z3l"/>
-                            <constraint firstAttribute="trailing" secondItem="NeL-D8-Rgy" secondAttribute="trailing" constant="20" id="d43-Tl-upU"/>
                             <constraint firstAttribute="trailing" secondItem="A69-J5-BpF" secondAttribute="trailing" id="gBh-JO-kH8"/>
-                            <constraint firstItem="NeL-D8-Rgy" firstAttribute="top" secondItem="0d0-Kt-K1p" secondAttribute="bottom" id="gcx-oo-kR6"/>
-                            <constraint firstItem="nUY-W8-DZh" firstAttribute="top" secondItem="tdj-KO-J7T" secondAttribute="bottom" constant="38" id="lKE-Gg-uVt"/>
-                            <constraint firstItem="NeL-D8-Rgy" firstAttribute="top" secondItem="0d0-Kt-K1p" secondAttribute="bottom" id="sAO-gK-ttC"/>
                             <constraint firstItem="0d0-Kt-K1p" firstAttribute="top" secondItem="A69-J5-BpF" secondAttribute="bottom" id="thU-e3-GAF"/>
                         </constraints>
                     </view>
@@ -291,9 +250,6 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="datePicker" destination="A69-J5-BpF" id="9TJ-AX-FhY"/>
-                        <outlet property="slider" destination="v8C-Td-FdW" id="0tO-Sf-pSk"/>
-                        <outlet property="snoozeMockLabel" destination="NeL-D8-Rgy" id="apK-UA-leD"/>
-                        <outlet property="snoozeTimeLabel" destination="tdj-KO-J7T" id="h6v-xz-0hk"/>
                         <outlet property="tableView" destination="0d0-Kt-K1p" id="mQ0-3g-GzU"/>
                         <segue destination="fie-sn-jIQ" kind="push" identifier="soundVC" id="X6R-tw-ran"/>
                     </connections>
@@ -310,13 +266,26 @@
                         <viewControllerLayoutGuide type="top" id="m97-Cm-QXq"/>
                         <viewControllerLayoutGuide type="bottom" id="upT-rO-7QN"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="isM-UU-ws6">
+                    <view key="view" contentMode="scaleToFill" id="isM-UU-ws6" customClass="MZFormSheetView">
                         <rect key="frame" x="0.0" y="0.0" width="280" height="280"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WPd-Lb-DTl">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
-                                <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <subviews>
+                                    <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="E9N-ye-OQo">
+                                        <rect key="frame" x="18" y="225" width="244" height="31"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="tintColor" white="0.9373574361" alpha="1" colorSpace="calibratedWhite"/>
+                                    </slider>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xtg-Ei-VqR">
+                                        <rect key="frame" x="67" y="118" width="146" height="48"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -328,7 +297,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V6t-kC-u5D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1025" y="737"/>
+            <point key="canvasLocation" x="1045" y="702"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="PuD-oF-KGD">
@@ -352,7 +321,7 @@
             </objects>
             <point key="canvasLocation" x="138" y="99"/>
         </scene>
-        <!--ALARM SOUND-->
+        <!--Sound View Controller - ALARM SOUND-->
         <scene sceneID="9ix-WY-EhP">
             <objects>
                 <viewController storyboardIdentifier="soundVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="fie-sn-jIQ" customClass="SoundViewController" sceneMemberID="viewController">
@@ -368,7 +337,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="436"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" restorationIdentifier="SoundCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="SoundCell" id="mP8-6Z-Fc2">
+                                    <tableViewCell contentMode="scaleToFill" restorationIdentifier="SoundCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="SoundCell" id="mP8-6Z-Fc2" customClass="AlarMockTableViewCell">
                                         <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mP8-6Z-Fc2" id="b21-Kb-XJ8">

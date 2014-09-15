@@ -17,6 +17,11 @@
     return @[(id)[[AMColor darkBlueColor] CGColor], (id)[[AMColor lightBlueColor] CGColor]];
 }
 
++ (NSArray *)mZFormSheetViewGradientColors
+{
+    return @[(id)[[AMColor blackColor] CGColor], (id)[[AMColor blackColor] CGColor]];
+}
+
 #pragma mark - Switch
 
 + (UIColor *)switchTintColor
@@ -44,6 +49,11 @@
 + (UIColor *)lightGrayColor
 {
     return [UIColor colorWithRed:0.78f green:0.78f blue:0.8f alpha:1];
+}
+
++ (UIColor *)darkGrayColor
+{
+    return [UIColor colorWithRed:0.32 green:0.32 blue:0.32 alpha:1];
 }
 
 + (UIColor *)whiteColor

@@ -25,10 +25,10 @@
 		7908639419B7C05600EDD19B /* SoundViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7908639319B7C05600EDD19B /* SoundViewController.m */; };
 		792A791619ABF4C80099A32F /* AlarMockTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 792A791519ABF4C80099A32F /* AlarMockTableViewCell.m */; };
 		79318CCF19A8E7F70021D655 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79318CCE19A8E7F70021D655 /* CoreData.framework */; };
+		796B520119C1FDD9006A9EF8 /* FormSheetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 796B520019C1FDD9006A9EF8 /* FormSheetViewController.m */; };
 		79A2518F19AE2E7F009174C8 /* AlarmEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 79A2518E19AE2E7F009174C8 /* AlarmEngine.m */; };
 		79A2519119AF8366009174C8 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79A2519019AF8365009174C8 /* AVFoundation.framework */; };
 		79A2A95B19B0C5EC005BB9AC /* Alarm.m in Sources */ = {isa = PBXBuildFile; fileRef = 79A2A95A19B0C5EC005BB9AC /* Alarm.m */; };
-		79AB5BF419C0BE59001FF241 /* MZFormSheetView.m in Sources */ = {isa = PBXBuildFile; fileRef = 79AB5BF319C0BE59001FF241 /* MZFormSheetView.m */; };
 		79AB5BFA19C1258F001FF241 /* MZCustomTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 79AB5BF919C1258F001FF241 /* MZCustomTransition.m */; };
 		79E2CBEA19BCEA8200352117 /* SoundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 79E2CBE919BCEA8200352117 /* SoundView.m */; };
 		79E2CBEF19BD3A9500352117 /* 0.wav in Resources */ = {isa = PBXBuildFile; fileRef = 79E2CBED19BD3A9500352117 /* 0.wav */; };
@@ -101,13 +101,13 @@
 		792A791419ABF4C80099A32F /* AlarMockTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarMockTableViewCell.h; sourceTree = "<group>"; };
 		792A791519ABF4C80099A32F /* AlarMockTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarMockTableViewCell.m; sourceTree = "<group>"; };
 		79318CCE19A8E7F70021D655 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		796B51FF19C1FDD9006A9EF8 /* FormSheetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FormSheetViewController.h; sourceTree = "<group>"; };
+		796B520019C1FDD9006A9EF8 /* FormSheetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FormSheetViewController.m; sourceTree = "<group>"; };
 		79A2518D19AE2E7F009174C8 /* AlarmEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmEngine.h; sourceTree = "<group>"; };
 		79A2518E19AE2E7F009174C8 /* AlarmEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmEngine.m; sourceTree = "<group>"; };
 		79A2519019AF8365009174C8 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		79A2A95919B0C5EC005BB9AC /* Alarm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Alarm.h; sourceTree = "<group>"; };
 		79A2A95A19B0C5EC005BB9AC /* Alarm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Alarm.m; sourceTree = "<group>"; };
-		79AB5BF219C0BE59001FF241 /* MZFormSheetView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZFormSheetView.h; sourceTree = "<group>"; };
-		79AB5BF319C0BE59001FF241 /* MZFormSheetView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZFormSheetView.m; sourceTree = "<group>"; };
 		79AB5BF819C1258F001FF241 /* MZCustomTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZCustomTransition.h; sourceTree = "<group>"; };
 		79AB5BF919C1258F001FF241 /* MZCustomTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZCustomTransition.m; sourceTree = "<group>"; };
 		79E2CBE819BCEA8200352117 /* SoundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundView.h; sourceTree = "<group>"; };
@@ -318,10 +318,10 @@
 				1F6CACA419A7C5070025CB67 /* AddAlarmViewController.m */,
 				7172A31619BBB5E90087DEB0 /* AddAlarmView.h */,
 				7172A31719BBB5E90087DEB0 /* AddAlarmView.m */,
-				79AB5BF219C0BE59001FF241 /* MZFormSheetView.h */,
-				79AB5BF319C0BE59001FF241 /* MZFormSheetView.m */,
 				79AB5BF819C1258F001FF241 /* MZCustomTransition.h */,
 				79AB5BF919C1258F001FF241 /* MZCustomTransition.m */,
+				796B51FF19C1FDD9006A9EF8 /* FormSheetViewController.h */,
+				796B520019C1FDD9006A9EF8 /* FormSheetViewController.m */,
 			);
 			name = AddAlarmViewController;
 			sourceTree = "<group>";
@@ -587,7 +587,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				7172A2F919BB7B6F0087DEB0 /* AlarMockView.m in Sources */,
-				79AB5BF419C0BE59001FF241 /* MZFormSheetView.m in Sources */,
 				7172A2FF19BB7EED0087DEB0 /* AMRadialGradientLayer.m in Sources */,
 				7172A31819BBB5E90087DEB0 /* AddAlarmView.m in Sources */,
 				98315B0119ABD40300D717F0 /* AlarmJoke.m in Sources */,
@@ -602,6 +601,7 @@
 				1F6CACA519A7C5070025CB67 /* AddAlarmViewController.m in Sources */,
 				79AB5BFA19C1258F001FF241 /* MZCustomTransition.m in Sources */,
 				71623D2519B2B6EC0025AE4B /* JokeCollection.m in Sources */,
+				796B520119C1FDD9006A9EF8 /* FormSheetViewController.m in Sources */,
 				71A3AE9319B4D23B00D1001C /* NSArray+AMRandomElement.m in Sources */,
 				79E2CBEA19BCEA8200352117 /* SoundView.m in Sources */,
 				71D409F219BFEDD900245206 /* AMNavigationAppearance.m in Sources */,
@@ -736,7 +736,7 @@
 			baseConfigurationReference = F4B85EE3794C404785136EE1 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Daniel Hogan (ERG78UCJDH)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -757,7 +757,7 @@
 			baseConfigurationReference = F4B85EE3794C404785136EE1 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Daniel Hogan (ERG78UCJDH)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (

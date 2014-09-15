@@ -7,20 +7,50 @@
 //
 
 #import "MZFormSheetView.h"
+#import "AMColor.h"
 #import <MZFormSheetController.h>
+#import "AMRadialGradientLayer.h"
+
+@interface MZFormSheetView ()
+
+@property (nonatomic) AMRadialGradientLayer *gradientLayer;
+
+@end
 
 @implementation MZFormSheetView
+
 
 - (void)awakeFromNib
 {
     [super awakeFromNib];
     
-        [[MZFormSheetBackgroundWindow appearance] setBackgroundBlurEffect:YES];
-        [[MZFormSheetBackgroundWindow appearance] setBlurRadius:5.0];
-        [[MZFormSheetBackgroundWindow appearance] setBackgroundColor:[UIColor clearColor]];
-        [[MZFormSheetController sharedBackgroundWindow] setBackgroundBlurEffect:YES];
-        [[MZFormSheetController sharedBackgroundWindow] setBlurRadius:5.0];
-        [[MZFormSheetController sharedBackgroundWindow] setBackgroundColor:[UIColor clearColor]];
+    self.gradientLayer = ({
+        
+        AMRadialGradientLayer *gradientLayer = [AMRadialGradientLayer layer];
+        
+        gradientLayer.colors = [AMColor mZFormSheetViewGradientColors
+                                ];
+        
+        gradientLayer.locations = @[@0.0f, @1.0f];
+        
+        [gradientLayer setStartPoint:CGPointMake(0.0f, 0.0f)];
+        [gradientLayer setEndPoint:CGPointMake(0.0f, 1.0f)];
+        
+        gradientLayer;
+    });
+    
+    [self.layer insertSublayer:self.gradientLayer atIndex:0];
+}
+
+#pragma mark - Layout
+
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    
+    self.gradientLayer.frame = (CGRect) { CGPointZero, self.frame.size };
+    self.gradientLayer.gradientOrigin = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMaxY(self.frame));
+    self.gradientLayer.gradientRadius = CGRectGetMaxY(self.frame) * 0.9f;
 }
 
 @end

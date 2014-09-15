@@ -9,6 +9,7 @@
 @interface AMColor : NSObject
 
 + (NSArray *)backgroundGradientColors;
++ (NSArray *)mZFormSheetViewGradientColors;
 
 + (UIColor *)switchTintColor;
 + (UIColor *)switchThumbColor;
@@ -18,5 +19,6 @@
 + (UIColor *)lightGrayColor;
 + (UIColor *)whiteColor;
 + (UIColor *)blackColor;
++ (UIColor *)darkGrayColor;
 
 @end

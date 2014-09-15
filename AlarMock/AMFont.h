@@ -13,7 +13,6 @@
 + (UIFont *)book22;
 + (UIFont *)book28;
 + (UIFont *)book48;
-+ (UIFont *)bookWithSize:(CGFloat)size;
 
 + (UIFont *)narrowMedium14;
 + (UIFont *)narrowMediumWithSize:(CGFloat)size;

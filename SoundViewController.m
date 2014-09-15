@@ -16,6 +16,7 @@
 #import "AMFont.h"
 #import "AMNavigationAppearance.h"
 #import "UIScreen+AMScale.h"
+#import "AlarMockTableViewCell.h"
 
 @interface SoundViewController () <UITableViewDataSource, UITableViewDelegate, MPMediaPickerControllerDelegate>
 
@@ -26,6 +27,9 @@
 @property (nonatomic) NSArray *sounds;
 @property (nonatomic) NSIndexPath *lastIndexPath;
 @property (nonatomic) AVPlayer *aVPlayer;
+
+@property (nonatomic) AMViewControllerState state;
+
 @end
 
 @implementation SoundViewController
@@ -34,11 +38,24 @@
 {
     [super viewDidLoad];
     
+    self.state = AMViewControllerStateAppeared;
+    
     self.notificationSoundText = [NSString new];
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
     self.sounds = @[@"Alert 1", @"Alert 2", @"Alert 3", @"Alert 4"];
     self.tableView.backgroundColor = [UIColor clearColor];
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.state = AMViewControllerStateAppearing;
+}
+
+-(void)tableView:(UITableView *)tableView willDisplayCell:(AlarMockTableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [cell presentCellAnimated:(self.state == AMViewControllerStateAppeared)];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -51,7 +68,6 @@
 {
     return 30;
 }
-
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -103,10 +119,8 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SoundCell" forIndexPath:indexPath];
+    AlarMockTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SoundCell" forIndexPath:indexPath];
 
-    cell.textLabel.textColor = [AMColor whiteColor];
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     if (indexPath.section == 0) {
         cell.textLabel.font = [AMFont book22];
         cell.textLabel.text = [self.sounds objectAtIndex:indexPath.row];
@@ -120,6 +134,8 @@
     } else {
         cell.accessoryType = UITableViewCellAccessoryNone;
     }
+    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     return cell;
 }

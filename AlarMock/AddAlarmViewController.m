@@ -79,6 +79,11 @@
     }
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 64;
+}
+
 -(void)tableView:(UITableView *)tableView willDisplayCell:(AlarMockTableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [cell prepareForAnimation];
@@ -90,6 +95,7 @@
     AlarMockTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SettingsCell"];
     cell.textLabel.text = [self.settings objectAtIndex:indexPath.row];
     cell.textLabel.font = [AMFont book22];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     if (indexPath.row == 0) {
         cell.cellSwitch.hidden = YES;
     }
